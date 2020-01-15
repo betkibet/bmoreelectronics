@@ -63,10 +63,10 @@ function closeNav() {
         	<a href="<?=SITE_URL?>">
 				<?php
 				if($logo_url) {
-        			echo '<img src="'.$logo_url.'?uniqid='.unique_id().'" class="brand-logo" max-height="74px" max-width="119">';
+        			echo '<img src="'.$logo_url.'?uniqid='.unique_id().'" class="brand-logo" max-height="70px" max-width="119">';
 				}
 				if($logo_fixed_url) {
-            		echo '<img src="'.$logo_fixed_url.'?uniqid='.unique_id().'" class="brand-logo-fixed" max-height="74px" max-width="119">';
+            		echo '<img src="'.$logo_fixed_url.'?uniqid='.unique_id().'" class="brand-logo-fixed" max-height="70px" max-width="119">';
 				} ?>
             </a>
         </h1>
