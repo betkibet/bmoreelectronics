@@ -6,7 +6,7 @@ session_start();
 $host = 'localhost'; 
 $db_user = 'bmoreelectronics_bmore'; //Production Configuration
 //$db_user = 'root'; //Local Configuration
-$db_password = 'm@70a=4@w)xa'; //Production Configuration
+$db_password = '12selldevice@34'; //Production Configuration
 //$db_password = ''; //Local Configuration
 $db_name = 'bmoreelectronics_bmoreelectronics';
 
