@@ -2,8 +2,8 @@
 //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-//$folder_name = ""; //Production configuration
-$folder_name = "bmoreelectronics"; //Local Configuration
+$folder_name = ""; //Production configuration
+//$folder_name = "bmoreelectronics"; //Local Configuration
 $folder_name = ($folder_name?"/".$folder_name:"");
 $host_scheme = ($_SERVER['REQUEST_SCHEME']?$_SERVER['REQUEST_SCHEME']:"http");
 
