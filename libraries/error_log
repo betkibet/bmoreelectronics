@@ -1,0 +1,2 @@
+[06-Dec-2019 13:46:26 UTC] PHP Warning:  fopen(./cache/timthumb_int_c3d3a36124c6d102fb55b2f2e576d824.timthumb.txt): failed to open stream: No such file or directory in /home/cellkash/public_html/libraries/phpthumb.php on line 2079
+[15-Dec-2019 17:10:35 UTC] PHP Warning:  fopen(./cache/timthumb_int_f733946626e8980f24a4eb915b978534.timthumb.txt): failed to open stream: No such file or directory in /home/cellkash/public_html/libraries/phpthumb.php on line 2079

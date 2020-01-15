@@ -1,0 +1,104 @@
+[05-Dec-2019 16:21:18 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[05-Dec-2019 16:21:44 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[05-Dec-2019 16:26:45 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[05-Dec-2019 19:13:47 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[05-Dec-2019 19:14:09 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 05:49:53 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 05:50:03 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 15:46:48 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 15:46:56 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 15:54:29 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[07-Dec-2019 15:54:42 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[08-Dec-2019 17:31:50 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[08-Dec-2019 23:29:35 UTC] PHP Fatal error:  Uncaught EasyPost\Error: Unable to complete shipment purchase. Please contact support. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 422, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 422)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(116): EasyPost\Requestor->request('post', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/admin/controllers/order/order.php(84): EasyPost\Shipment->buy(Array)
+#4 {main}
+  thrown in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268

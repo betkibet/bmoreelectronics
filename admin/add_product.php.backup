@@ -1,0 +1,1269 @@
+<?php
+$file_name="mobile";
+
+include("include/header.php"); 
+$con = $db;
+
+$step_track = $_SESSION['step_track'];
+?>
+<?php /*?>
+<link rel="stylesheet" href="plugins/bootstrap-sweetalert/sweet-alert.css" />
+<link href="plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+<link href="css/boot.css" rel="stylesheet" type="text/css" />
+<link href="plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+<?php */?>
+<!-- Nestable css -->
+<link href="plugins/nestable/jquery.nestable.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<?php /*?><link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"><?php */?>
+
+<style>
+.ui-sortable{
+    padding: 0;
+}
+.ui-state-default{
+    background: inherit;
+    list-style: none;
+    border: none;
+}
+.buttonText{
+    display:none;
+}
+.tabs-vertical-env .nav.tabs-vertical {
+    display: table-cell;
+    min-width: 120px;
+    vertical-align: top;
+    width: 150px;
+}
+.tabs-vertical-env .tab-content {
+    background: #ffffff;
+    display: table-cell;
+    padding: 0 0 0 20px;
+    vertical-align: top;
+}
+.tab-content > .active {
+    display: block;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+.ui-sortable{
+    margin: 0;
+}
+</style>
+
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+<!-- BEGIN: Header -->
+<?php include("include/admin_menu.php"); ?>
+<!-- END: Header -->
+
+<!-- begin::Body -->
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+  <!-- BEGIN: Left Aside -->
+  <?php include("include/navigation.php"); ?>
+  <!-- END: Left Aside -->
+  <div class="m-grid__item m-grid__item--fluid m-wrapper">
+	<div class="m-content ">
+	  <?php include('confirm_message.php'); ?>
+	  <!--Begin::Section-->
+		<?php
+		$sql_pro = "select * from mobile where id = '" . @$_REQUEST['id'] . "'";
+		$exe_pro = mysqli_query($con, $sql_pro);
+		$row_pro = mysqli_fetch_assoc($exe_pro);
+		$rrr = explode(",", $row_pro['cstm_group_id']);
+		?>
+		<div class="row">
+			<div class="col-lg-12">
+			
+			<?php /*?><ul class="nav nav-tabs">
+				<li class="<?=($step_track=='1'||$step_track==''?'active':'')?>" id="general_tab">
+					<a href="#general" data-toggle="tab" aria-expanded="false">
+						<span class="elusive icon-home"></span> General
+					</a>
+				</li>
+				<li class="<?=($step_track=='2'?'active':'')?>" id="add_fields_tabs">
+					<a href="#add_fields" data-toggle="tab" aria-expanded="true">
+						<span class="elusive icon-th-list"></span> Add Fields
+					</a>
+				</li>
+			</ul><?php */?>
+			
+			<div class="m-portlet">
+			<form id="form_step_1" class="m-form" data-parsley-validate="" action="action.php" method="post" enctype="multipart/form-data">
+				
+				  <div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+					  <div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+						  <?=($_REQUEST['id']?'Edit Model':'Add Model')?>
+						</h3>
+					  </div>
+					</div>
+				  </div>
+				
+				  <div class="m-portlet__body">
+					<ul class="nav nav-tabs m-tabs-line m-tabs-line m-tabs-line--2x m-tabs-line--success" role="tablist">
+					  <li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link general active show" data-toggle="tab" href="#m_tabs_6_1" role="tab" aria-selected="false">
+						  General Settings
+						</a>
+					  </li>
+					  <li class="nav-item m-tabs__item">
+						<a class="nav-link m-tabs__link add_fields" data-toggle="tab" href="#m_tabs_6_2" role="tab" aria-selected="true">
+						  Add Fields
+						</a>
+					  </li>
+					</ul>
+					
+					<div class="tab-content" style="padding:0;">
+						<div class="tab-pane general_tab active show" id="m_tabs_6_1" role="tabpanel">
+							<!--begin::Portlet-->
+							<div class="m-portlet">
+							  <div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+								  <div class="m-portlet__head-title">
+									<span class="m-portlet__head-icon m--hide">
+									  <i class="la la-gear"></i>
+									</span>
+									<h3 class="m-portlet__head-text">
+									  Enter Product Information
+									</h3>
+									<p class="text-muted font-13 m-b-10"></p>
+									<div class="alert alert-warning hidden fade in">
+									  <h4>Oh snap!</h4>
+									  <p>This form seems to be invalid :(</p>
+									</div>
+									<div class="alert alert-info hidden fade in">
+									  <h4>Yay!</h4>
+									  <p>Everything seems to be ok :)</p>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							  <!--begin::Form-->
+							  <div class="m-portlet__body">
+								<div class="m-form__section m-form__section--first">
+								  <div class="form-group m-form__group">
+									<label for="input">Select Device :</label>
+									<select class="form-control" name="device_id" id="device_id">
+									  <?php
+									  //Fetch device list
+									  $devices_data = mysqli_query($db, 'SELECT * FROM devices WHERE published=1');
+									  while ($devices_list = mysqli_fetch_assoc($devices_data)) { ?>
+										<option value="<?= $devices_list['id'] ?>" <?php if ($devices_list['id'] == $row_pro['device_id']) {
+										  echo 'selected="selected"';
+										} ?>><?= $devices_list['title'] ?></option>
+										<?php
+									  } ?>
+									</select>
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="input">Select Category :</label>
+									<select class="form-control" name="cat_id" id="cat_id">
+									  <?php
+									  //Fetch device list
+									  $categories_data = mysqli_query($db, 'SELECT * FROM categories WHERE published=1');
+									  while ($categories_list = mysqli_fetch_assoc($categories_data)) { ?>
+										<option value="<?= $categories_list['id'] ?>" <?php if ($categories_list['id'] == $row_pro['cat_id']) {
+										  echo 'selected="selected"';
+										} ?>><?= $categories_list['title'] ?></option>
+										<?php
+									  } ?>
+									</select>
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="input">
+									  Title :
+									</label>
+									<input type="text" class="form-control m-input" id="title" value="<?= $row_pro['title'] ?>" name="title">
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="input">
+									  Base Price :
+									</label>
+									<div class="input-group m-input-group">
+									  <?= ($amount_sign_with_prefix ? '<div class="input-group-prepend"><span class="input-group-text">' . $amount_sign_with_prefix . '</span></div>' : '') ?>
+									  <input type="number" class="form-control m-input" id="price" value="<?= ($row_pro['price'] > 0 ? $row_pro['price'] : '') ?>" name="price">
+									  <?= ($amount_sign_with_postfix ? '<div class="input-group-append"><span class="input-group-text">' . $amount_sign_with_postfix . '</span></div>' : '') ?>
+									</div>
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="input">
+									  Tooltip of Device :
+									</label>
+									<textarea class="form-control m-input" name="tooltip_device" rows="5"><?= $row_pro['tooltip_device'] ?></textarea>
+								  </div>
+								  
+								  <div class="form-group m-form__group">
+									<label for="model_img">Model Picture :</label>
+									<div class="custom-file">
+										<input type="file" id="model_img" class="custom-file-input" name="model_img" onChange="checkFile(this);" accept="image/*">
+										<label class="custom-file-label" for="model_img">
+											Choose file
+										</label>
+									</div>
+									
+									<?php
+									if($row_pro['model_img']!="") { ?>
+										<img src="../images/mobile/<?=$row_pro['model_img']?>" width="200" class="my-md-2">
+										<a class="btn btn-danger btn-sm" data-dismiss="fileupload" href="controllers/device.php?id=<?=$_REQUEST['id']?>&r_img_id=<?=$row_pro['id']?>" onclick="return confirm('Are you sure to delete this icon?');">Remove</a>
+										<input type="hidden" id="old_image" name="old_image" value="<?=$row_pro['model_img']?>">
+									<?php
+									} ?>
+								 </div>
+								
+								  
+								  <div class="form-group m-form__group">
+									<label for="input">
+									  Meta Title :
+									</label>
+									<input type="text" class="form-control m-input" id="meta_title" value="<?= $row_pro['meta_title'] ?>" name="meta_title">
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="exampleTextarea">
+									  Meta Description :
+									</label>
+									<textarea class="form-control m-input" name="meta_desc" rows="4"><?= $row_pro['meta_desc'] ?></textarea>
+								  </div>
+								  <div class="form-group m-form__group">
+									<label for="exampleTextarea">
+									  Meta Keywords :
+									</label>
+									<textarea class="form-control m-input" name="meta_keywords" rows="3"><?= $row_pro['meta_keywords'] ?></textarea>
+								  </div>
+								  <div class="m-form__group form-group">
+									<div class="m-checkbox-inline">
+									  <label class="m-checkbox">
+										<input type="checkbox" class="input-large" id="top_seller" value="1" name="top_seller" <?php if ($row_pro['top_seller'] == '1') {
+										  echo 'checked="checked"';
+										} ?>>
+										Top Seller
+										<span></span>
+									  </label>
+									</div>
+								  </div>
+								  <div class="m-form__group form-group">
+									<label for="input">
+									  Publish :
+									</label>
+									<div class="m-radio-inline">
+									  <label class="m-radio">
+										<input type="radio" id="published" name="published" value="1" <?php if (!$id) {
+										  echo 'checked="checked"';
+										} ?> <?= ($row_pro['published'] == 1 ? 'checked="checked"' : '') ?>>
+										Yes
+										<span></span>
+									  </label>
+									  <label class="m-radio">
+										<input type="radio" id="published" name="published" value="0" <?= ($row_pro['published'] == '0' ? 'checked="checked"' : '') ?>>
+										No
+										<span></span>
+									  </label>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							  <div class="m-portlet__foot m-portlet__foot--fit">
+								<div class="m-form__actions m-form__actions">
+								  <input type="button" class="btn btn-primary" onclick="showOtherTab()" value="Next >> ">
+								  <?php
+								  if(isset($_REQUEST['id']) && $_REQUEST['id'] != "") { ?>
+									<input type="hidden" name="action" value="add_products">
+									<input type="hidden" name="step" value="1">
+									<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+									<input type="hidden" name="id" value="<?php echo @$_REQUEST['id']; ?>">
+									<input type="submit" class="btn btn-primary" value="Save" onclick="StepTrack(1)">
+								  <?php
+								  } ?>
+								</div>
+							  </div>
+							  <!--end::Form-->
+							</div>
+							<!--end::Portlet-->
+						  </div>
+						
+						<div class="tab-pane add_fields_tabs" id="m_tabs_6_2" role="tabpanel">
+						<?php /*?><div class="tab-pane <?=($step_track=='2'?'active':'')?>" id="add_fields"><?php */?>
+						<div class="m-portlet__body">
+						<div class="m-form__section m-form__section--first">
+							<div class="m-portlet" id="step3">
+		
+								 <div class="m-portlet__head">
+									<div class="m-portlet__head-caption">
+									  <div class="m-portlet__head-title">
+										  <span class="m-portlet__head-icon m--hide">
+										<i class="la la-gear"></i>
+									  </span>
+										<h3 class="m-portlet__head-text">
+										  Enter Custom Fields Information
+										</h3>
+										<p class="text-muted font-13 m-b-10"></p>
+										<div class="alert alert-warning hidden fade in">
+										  <h4>Oh snap!</h4>
+										  <p>This form seems to be invalid :(</p>
+										</div>
+										<div class="alert alert-info hidden fade in">
+										  <h4>Yay!</h4>
+										  <p>Everything seems to be ok :)</p>
+										</div>
+										<?php
+										$no_of_fields = 0;
+										?>
+									  </div>
+									</div>
+								  </div>
+		
+								  <script>
+									function up_title(id){
+										if($("#title_"+id).val()!="") {
+											$("#tab_title_"+id).html($("#title_"+id).val());
+										}
+									}
+								  </script>
+									
+									<div class="card-box">
+										<h4 class="header-title m-t-0 m-b-30">
+											<button type="button" class="btn btn-primary" onclick="add_fields()"><i class="fa fa-plus"></i> Add More Fields</button> 
+											<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Choose From Groups</button>
+											<button type="button" class="btn btn-danger" onclick="del_current_tab()"><i class="fa fa-trash"></i> Delete Field</button>
+										</h4>
+											
+										<div class="tabs-vertical-env custom-dd-empty dd" id="nestable_list_3">
+											<input name="sorting_order" id="sorting_order" value="" type="hidden" />
+											<ol class="nav tabs-vertical dd-list" id="tab_titles">
+												<?php
+												if(isset($_REQUEST['id']) && $_REQUEST['id']!="") {  
+													
+													/*
+													if($row_pro['product_completed']==1) {
+														$sql_cus_fld = "select * from product_fields where product_id = '".$row_pro['id']."' order by sort_order";
+													} else {
+														$sql_cus_fld = "select * from custom_fields where custom_group_id in (".$custom_group_ids.") order by sort_order";
+													} */
+		
+													$sql_cus_fld = "select * from product_fields where product_id = '".$row_pro['id']."' order by sort_order";
+													$exe_cus_fld = mysqli_query($con,$sql_cus_fld);
+													$no_of_fields = mysqli_num_rows($exe_cus_fld);
+													$fid=1;
+													while($row_cus_fld = mysqli_fetch_assoc($exe_cus_fld)) {
+														//$fid = $row_cus_fld['id'];
+														?>
+														<li id="tab_<?=$fid?>" class="<?php if($fid==1){ echo "active"; } ?> dd-item dd3-item " data-id="<?=$fid?>">
+															<div class="dd-handle dd3-handle"></div>
+															<div class="dd3-content">
+																<a href="#field_<?=$fid?>" onclick="up_current_tab(<?=$fid?>)" data-toggle="tab" aria-expanded="false" style="text-align:left;"><span id="tab_title_<?=$fid?>"><?php echo $row_cus_fld['title']; ?></span></a>
+															</div>
+														</li>
+														<?php
+														$fid++;
+													}
+												} ?>
+											</ol>
+											
+											<div class="tab-content fields" id="tab_contents">	
+											<?php
+											if(isset($_REQUEST['id']) && $_REQUEST['id']!=""){
+												$sql_cus_fld = "select * from product_fields where product_id = '".$row_pro['id']."' order by sort_order";
+												$exe_cus_fld = mysqli_query($con,$sql_cus_fld);
+												$fid=1;
+												while($row_cus_fld = mysqli_fetch_assoc($exe_cus_fld)){
+													//$fid = $row_cus_fld['id']; ?>
+													<div class="tab-pane <?php if($fid==1){ echo "active"; } ?>" id="field_<?=$fid;?>"> 
+														<div class="m-portlet__body">
+															<div class="form-group m-form__group">
+																<label>Title * :</label>
+																<div class="input-group">
+																<input name="field[<?=$fid;?>][title]" required="" id="title_<?=$fid;?>" type="text" class="form-control m-input" onkeyup="up_title('<?=$fid;?>')" onkeydown="up_title('<?=$fid;?>')" value="<?php echo $row_cus_fld['title']; ?>" />
+																</div>
+															</div>
+															<div class="form-group m-form__group">
+																<label>Input Type * :</label>
+																<div class="input-group">
+																<select name="field[<?=$fid;?>][input_type]" id="input_type_<?=$fid;?>" class="form-control" data-style="btn-default" onchange="change_input_type('<?=$fid;?>')">
+																	<?php /*?><option <?php if($row_cus_fld['input_type']=="text"){ echo "selected"; } ?> value="text">Text Field</option>
+																	<option <?php if($row_cus_fld['input_type']=="textarea"){ echo "selected"; } ?> value="textarea">Text Area</option><?php */?>
+																	<option <?php if($row_cus_fld['input_type']=="select"){ echo "selected"; } ?> value="select">Drop-down List</option>
+																	<option <?php if($row_cus_fld['input_type']=="radio"){ echo "selected"; } ?> value="radio">Radio Buttons</option>
+																	<option <?php if($row_cus_fld['input_type']=="checkbox"){ echo "selected"; } ?> value="checkbox">Checkboxes</option>
+																	<option <?php if($row_cus_fld['input_type']=="datepicker"){ echo "selected"; } ?> value="datepicker">Date Picker</option>
+																	<option <?php if($row_cus_fld['input_type']=="file"){ echo "selected"; } ?> value="file">Upload Files</option>
+																</select>
+																</div>
+															</div>
+															<div class="form-group m-form__group">
+																<label>Tooltip :</label>
+																<div class="input-group">
+																<input name="field[<?=$fid;?>][tooltip]" id="tooltip_<?=$fid;?>" type="text" class="form-control" value="<?php echo @$row_cus_fld['tooltip']; ?>" />
+																<i class="fa fa-trash" onclick="deleteTooltip(this)"></i>
+																</div>
+															</div>
+															<div class="form-group m-form__group">
+																<label>Icon :</label>
+																<div class="input-group">
+																	<button class="btn btn-sm" type="button" onclick="$(this).next().click()"><i class="fa fa-folder"></i></button>
+																	<input name="field[<?=$fid;?>][icon]" id="icon_<?=$fid;?>" type="file" class="filestyle" data-input="false" style="display: none;">
+																</div>
+															</div>
+															
+															<?php
+															if(@$row_cus_fld['icon']!="") {
+															?>
+															<div class="form-group m-form__group">
+																<img src="../images/<?php echo @$row_cus_fld['icon']; ?>" width="30" />
+																<i class="fa fa-trash" onclick="deleteImage(this)"></i>
+															</div>
+															<?php
+															} ?>
+															<input name="field[<?=$fid;?>][icon_hidden]" value="<?php echo @$row_cus_fld['icon']; ?>" type="hidden" />
+															<div class="form-group m-form__group">			
+																<label class="m-checkbox">
+																	<input name="field[<?=$fid;?>][is_required]" id="is_required_<?=$fid;?>" value="1" type="checkbox" <?php if($row_cus_fld['is_required']==1){ echo "checked"; } ?>>
+																	Require customer selection
+																	<span></span>
+																</label>
+															</div>
+														</div>
+														
+														<div id="type_options_<?=$fid;?>">
+															<?php
+															$sql_cus_opt = "select * from product_options where product_field_id = '".$row_cus_fld['id']."' order by sort_order";
+															$exe_cus_opt = mysqli_query($con,$sql_cus_opt);
+															$no_of_dd_options = mysqli_num_rows($exe_cus_opt);
+																
+															if($row_cus_fld['input_type']=="select" || $row_cus_fld['input_type']=="radio" || $row_cus_fld['input_type']=="checkbox") { ?>
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="form-group">
+																			<button type="button" class="btn btn-primary" id="add_more_options_<?=$fid;?>" onclick="add_more_options('<?=$fid;?>')"> <i class="fa fa-plus"></i>  Add new Option</button>
+																		</div>
+																	</div>
+																</div>
+																<div class="row dd_header">
+																	<div class="col-lg-2">
+																		<div class="form-group" align="center">
+																			<label for="label">Title </label>
+																		</div>
+																	</div>
+																	<div class="col-lg-4">
+																		<div class="form-group" align="center">
+																			<label for="Price">Price Modifier</label>
+																		</div>
+																	</div>
+																	<div class="col-lg-2">
+																		<div class="form-group" align="center">
+																			<label for="sort_order">Tooltip</label>
+																		</div>
+																	</div>
+																	<div class="col-lg-2">
+																		<div class="form-group" align="center">
+																			<label for="sort_order">Icon</label>
+																		</div>
+																	</div>
+																	<div class="col-lg-2">
+																		<div class="form-group" align="center">
+																			<label for="sort_order">Default</label>
+																		</div>
+																	</div>
+																	<input id="no_of_dd_options_<?=$fid;?>" value="<?=$no_of_dd_options?>" type="hidden" />
+																</div>
+																
+																<?php /*?>
+																<div class="col-lg-3 m--margin-bottom-10-tablet-and-mobile">
+																	<label>
+																		RecordID:
+																	</label>
+																	<input type="text" class="form-control m-input" placeholder="E.g: 4590" data-col-index="0">
+																</div><?php */?>
+														
+															<?php    
+															}
+															?>
+															<div id="dd_options_<?=$fid;?>">    
+																<?php
+																if($no_of_dd_options>0) {
+																	$oid=1;
+																	?>
+																	<ul id="sortable_<?=$fid?>">
+																	<?php
+																	while($row_cus_opt = mysqli_fetch_assoc($exe_cus_opt)){
+																		?>
+																		<li class="ui-state-default" data-id="<?=$oid;?>">
+																			<div class="row">
+																				<div class="col-lg-2" align="center">
+																					<div class="form-group m-form__group">
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][label]" required="" id="dd_label_<?=$fid;?>_<?=$oid;?>" type="text" class="form-control m-input" value="<?php echo $row_cus_opt['label']; ?>" />
+																					</div>
+																				</div>
+																				<div class="col-lg-4" align="center">
+																					<div class="form-group">
+																						<select name="field[<?=$fid;?>][options][<?=$oid;?>][add_sub]" id="dd_add_sub_<?=$fid;?>_<?=$oid;?>" class="form-control" data-style="btn-default"/>
+																							<option <?php if($row_cus_opt['add_sub']=="+"){ echo "selected"; } ?> value="+">+</option>
+																							<option <?php if($row_cus_opt['add_sub']=="-"){ echo "selected"; } ?> value="-">-</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<select name="field[<?=$fid;?>][options][<?=$oid;?>][price_type]" id="dd_price_type_<?=$fid;?>_<?=$oid;?>" class="form-control" data-style="btn-default"/>
+																							<option <?php if($row_cus_opt['price_type']=="1"){ echo "selected"; } ?> value="1">Fixed</option>
+																							<option <?php if($row_cus_opt['price_type']=="0"){ echo "selected"; } ?> value="0">%</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][price]" id="dd_price_<?=$fid;?>_<?=$oid;?>" type="text" class="form-control" value="<?php echo $row_cus_opt['price']; ?>" placeholder="0.00"/>
+																					</div>
+																				</div>
+																				<div class="col-lg-2" align="center">
+																					<div class="form-group">
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][tooltip]" id="dd_tooltip_<?=$fid;?>_<?=$oid;?>" type="text" class="form-control" value="<?php echo @$row_cus_opt['tooltip']; ?>" />
+																						<i class="icon-trash text-danger" style="position:absolute; top:0; right:0; cursor:pointer;" onclick="deleteTooltip(this)"></i>
+																					</div>
+																				</div>
+																				<?php
+																				if(@$row_cus_opt['icon']=="") {
+																					$col_class= "2";
+																				} else {
+																					$col_class= "1";
+																				} ?>
+																				<div class="col-lg-<?php echo $col_class; ?>" align="center">
+																					<div class="input-group">
+																						<button class="btn btn-sm" type="button" onclick="$(this).next().click()"><i class="fa fa-folder"></i></button>
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][icon]" id="dd_icon_<?=$fid;?>_<?=$oid;?>" class="filestyle" type="file" data-input="false" style="display: none;">
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][icon_hidden]" class="icon_hidden" value="<?php echo @$row_cus_opt['icon']; ?>" type="hidden">
+																					</div>
+																				</div>
+																				<?php
+																				if(@$row_cus_opt['icon']!=""){
+																				?>
+																				<div class="form-group">
+																					<img src="../images/<?php echo @$row_cus_opt['icon']; ?>" width="30" />
+																					<i class="fa fa-trash" onclick="deleteImageOpt(this)"></i>
+																				</div>
+																				<?php
+																				}
+																				?>
+																				<div class="col-lg-1" align="center">
+																					<div class="m-radio-inline">
+																						<label class="m-radio">
+																						<input name="field[<?=$fid;?>][options][<?=$oid;?>][is_default]" id="is_default_<?=$fid;?>_<?=$oid;?>" <?php if($row_cus_opt['is_default']=="1"){ echo "checked"; } ?> value="1" type="radio" class="radio_class radio_<?=$fid;?>" onclick="check_default('<?=$fid;?>')" />
+																						<span></span>
+																						</label>
+																					</div>
+																				</div>
+																				<div class="col-lg-1" align="center">
+																					<div class="form-group">
+																						<i class="fa fa-trash" style="cursor: pointer;" onclick="remove_row(this)"></i>
+																					</div>
+																				</div>
+																			</div>
+																		</li>
+																	<?php
+																	$oid++;
+																	}
+																	?>
+																	</ul>
+																	
+																  <script>
+																  $(function() {
+																	$("#sortable_<?=$fid?>").sortable();
+																	$("#sortable_<?=$fid?>").disableSelection();    
+																  });
+																  </script>
+																	
+																<?php
+																} ?>
+															</div>
+															<?php
+															if($row_cus_fld['input_type']=="select" || $row_cus_fld['input_type']=="radio" || $row_cus_fld['input_type']=="checkbox") { ?>
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="form-group">
+																			<button type="button" class="btn btn-primary" id="add_more_options_<?=$fid;?>" onclick="add_more_options('<?=$fid;?>')"> <i class="fa fa-plus"></i>  Add new Option</button>
+																		</div>
+																	</div>
+																</div>
+															<?php
+															} ?>
+														</div>
+													</div>
+													<?php
+													$fid++;
+													}
+												} ?>
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<input type="hidden" name="action" value="add_products">
+										<input type="hidden" name="step" value="1">
+										<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+										<input type="hidden" name="id" value="<?php echo @$_REQUEST['id']; ?>">
+										<input type="hidden" name="step_track" id="step_track" value="1">
+										<input type="submit" class="btn btn-alt btn-large btn-primary" value="Save" onclick="StepTrack(2)">
+									</div>
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</form>
+			</div>
+			</div>
+		</div>
+													
+		<!-- sample modal content -->
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							Groups
+						</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">
+								&times;
+							</span>
+						</button>
+					</div>
+					<form onsubmit="return add_group_fields()" method="post" action="action.php">
+						<div class="modal-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Sr#</th>
+										<th>Custom Groups</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php
+								$sql_grp = "select * from custom_group where user_id = '".$_SESSION['id']."'";
+								$exe_grp = mysqli_query($con,$sql_grp);
+								$sr=1;
+								while($row_grp = mysqli_fetch_assoc($exe_grp)) {
+									if(check_status($row_grp['group_id'])==0) {
+										continue;
+									} ?>
+									<tr>
+										<td><?php echo $sr++;?></td>
+										<td><?php echo $row_grp['name'];?></td>
+										<td>
+										<label class="m-checkbox">
+											<input name="custom_groups" type="checkbox" value="<?php echo $row_grp['id'];?>" />
+											<span></span>
+										</label>
+										</td>
+									</tr>
+									<?php
+								} ?>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Add Fields</button>
+						</div>
+					</form>
+				</div>
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+					
+		<div id="field_structure" style="display:none;">
+			<div class="tab-pane active" id="field_f-no"> 
+				<div class="m-portlet__body">
+					<div class="form-group m-form__group">
+						<label>Title * :</label>
+						<div class="input-group">
+						<input name="field[f-no][title]" required="" id="title_f-no" type="text" class="form-control m-input" onkeyup="up_title('f-no')" onkeydown="up_title('f-no')" />
+						</div>
+					</div>
+					<div class="form-group m-form__group">
+						<label>Input Type * :</label>
+						<div class="input-group">
+							<select name="field[f-no][input_type]" id="input_type_f-no" class="form-control" onchange="change_input_type('f-no')">
+								<option value="text">Text Field</option>
+								<option value="textarea">Text Area</option>
+								<option value="select">Drop-down List</option>
+								<option value="radio">Radio Buttons</option>
+								<option value="checkbox">Checkboxes</option>
+								<option value="datepicker">Date Picker</option>
+								<option value="file">Upload Files</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group m-form__group">
+						<label>Tooltip :</label>
+						<div class="input-group">
+							<input name="field[f-no][tooltip]" id="tooltip_f-no" type="text" class="form-control" value="" />
+							<i class="fa fa-trash" onclick="deleteTooltip(this)"></i>
+						</div>
+					</div>
+					
+					<div class="form-group m-form__group">
+						<label>Icon :</label>
+						<div class="input-group">
+							<button class="btn btn-sm" type="button" onclick="$(this).next().click()"><i class="fa fa-folder"></i></button>
+							<input name="field[f-no][icon]" id="icon_f-no" type="file" data-input="false" style="display: none;">
+						</div>
+					</div>
+															
+					<div class="form-group m-form__group">			
+						<label class="m-checkbox">
+							<input type="checkbox" name="field[f-no][is_required]" value="1" id="is_required_f-no" />
+							Require customer selection
+							<span></span>
+						</label>
+					</div>
+				</div>
+
+				<div id="type_options_f-no">
+					
+				</div>
+			</div>
+		</div>
+					
+		<div id="dd_structure" style="display: none;">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-primary" id="add_more_options_f-no" onclick="add_more_options('f-no')"> <i class="fa fa-plus"></i>  Add new Option</button>
+					</div>
+				</div>
+			</div>
+			<div class="row dd_header">
+				<div class="col-lg-2">
+					<div class="form-group" align="center">
+						<label for="label">Title </label>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="form-group" align="center">
+						<label for="Price">Price Modifier</label>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="form-group" align="center">
+						<label for="sort_order">Tooltip</label>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="form-group" align="center">
+						<label for="sort_order">Icon</label>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="form-group" align="center">
+						<label for="sort_order">Default</label>
+					</div>
+				</div>
+				<input id="no_of_dd_options_f-no" value="0" type="hidden" />
+			</div>
+			<div id="dd_options_f-no">
+				<ul id="sortable_f-no">
+				
+				</ul>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-primary" id="add_more_options_f-no" onclick="add_more_options('f-no')"> <i class="fa fa-plus"></i>  Add new Option</button>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		<div id="dd_options_structure" style="display: none;">
+			<li class="ui-state-default" data-id="o-no">
+				<div class="row">
+					<div class="col-lg-2" align="center">
+						<div class="form-group m-form__group">
+							<input name="field[f-no][options][o-no][label]" required="" id="dd_label_f-no_o-no" type="text" class="form-control m-input" />
+						</div>
+					</div>
+					<div class="col-lg-4" align="center">
+						<div class="form-group">
+							<select name="field[f-no][options][o-no][add_sub]" id="dd_add_sub_f-no_o-no" class="form-control">
+								<option value="+">+</option>
+								<option value="-">-</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select name="field[f-no][options][o-no][price_type]" id="dd_price_type_f-no_o-no" class="form-control">
+								<option value="1">Fixed</option>
+								<option value="0">%</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input name="field[f-no][options][o-no][price]" id="dd_price_f-no_o-no" type="text" class="form-control" value="0" />
+						</div>
+					</div>
+					<div class="col-lg-2" align="center">
+						<div class="form-group">
+							<input name="field[f-no][options][o-no][tooltip]" id="dd_tooltip_f-no_o-no" type="text" class="form-control" value="" />
+							<i class="icon-trash text-danger" style="position:absolute; top:0; right:0; cursor:pointer;" onclick="deleteTooltip(this)"></i>
+						</div>
+					</div>
+					<div class="col-lg-2" align="center">
+						<div class="input-group">
+							<button class="btn btn-sm" type="button" onclick="$(this).next().click()"><i class="fa fa-folder"></i></button>
+							<input name="field[f-no][options][o-no][icon]" id="dd_icon_f-no_o-no" type="file" data-input="false" style="display: none;">
+						</div>
+					</div>
+					<div class="col-lg-1" align="center">
+						<div class="m-radio-inline">
+							<label class="m-radio">
+							<input name="field[f-no][options][o-no][is_default]" id="is_default_f-no_o-no" value="1" type="radio" class="radio_class radio_f-no" onclick="check_default('f-no')" />
+							<span></span>
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-1" align="center">
+						<div class="form-group">
+							<i class="fa fa-trash" style="cursor:pointer;" onclick="remove_row(this)"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+		</div>
+					
+		<div id="radio_structure" style="display: none;">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="label">Label * :</label>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="Price">Default * :</label>
+					</div>
+				</div>
+				<input id="no_of_radio_options" value="0" type="hidden" />
+			</div>
+			<div id="radio_options_f-no">
+				
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-info pull-right" onclick="add_more_radios('f-no')">Add More Option</button>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		<div id="radio_options_structure" style="display: none;">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<input name="radio_label[f-no][o-no]" id="dd_label_f-no_o-no" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<input name="radio_default[f-no][o-no]" id="dd_price_f-no_o-no" type="radio" class="form-control" />
+					</div>
+				</div>
+				<div class="col-sm-1">
+					<div class="form-group">
+						<i class="fa fa-trash" onclick="remove_row(this)"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		<div id="checkbox_structure" style="display: none;">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="label">Label * :</label>
+					</div>
+				</div>
+				<input id="no_of_checkbox_options" value="0" type="hidden" />
+			</div>
+
+			<div id="checkbox_options_f-no">
+				
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<button type="button" class="btn btn-info pull-right" onclick="add_more_checkboxs('f-no')">Add More Option</button>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		<div id="checkbox_options_structure" style="display: none;">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<input name="checkbox_label[f-no][o-no]" id="checkbox_label_f-no_o-no" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-sm-1">
+					<div class="form-group">
+						<i class="fa fa-trash" onclick="remove_row(this)"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+					
+		<input id="no_of_fields" value="<?php echo $no_of_fields; ?>" type="hidden" />
+		<input id="current_field" value="1" type="hidden" />
+		<!--End::Section-->
+	</div>
+  </div>
+</div>
+<!-- end:: Body -->
+<!-- begin::Footer -->
+<?php include("include/footer.php"); ?>
+<!-- end::Footer -->
+</div>
+<!-- end:: Page -->
+		  
+<!-- begin::Scroll Top -->
+<div id="m_scroll_top" class="m-scroll-top">
+	<i class="la la-arrow-up"></i>
+</div>
+<!-- end::Scroll Top -->
+
+<script type="text/javascript" src="plugins/parsleyjs/parsley.min.js"></script>
+
+<!--script for this page only-->
+<script src="plugins/nestable/jquery.nestable.js"></script>
+<!-- <script src="assets/pages/jquery.nestable.init.js"></script> -->
+<?php /*?>
+<script src="plugins/select2/js/select2.min.js" type="text/javascript"></script>
+<script src="plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+<?php */?>
+<!--Wysiwig js-->
+<script src="plugins/tinymce/tinymce.min.js"></script>
+
+<script type="text/javascript">
+!function($) {
+"use strict";
+
+var Nestable = function() {};
+
+Nestable.prototype.updateOutput = function (e) {
+	var list = e.length ? e : $(e.target),
+		output = list.data('output');
+	if(window.JSON) {
+		var sorting_order = window.JSON.stringify(list.nestable('serialize'));
+		output.val(sorting_order); //, null, 2));
+		console.log(sorting_order);
+		$('#sorting_order').html(sorting_order);
+	} else {
+		alert('JSON browser support required for this demo.');
+		output.val('JSON browser support required for this demo.');
+	}
+},
+//init
+Nestable.prototype.init = function() {
+	$('#nestable_list_3').nestable({
+		group: 1
+	}).on('change', this.updateOutput);
+
+	this.updateOutput($('#nestable_list_3').data('output', $('#sorting_order')));
+},
+//init
+$.Nestable = new Nestable, $.Nestable.Constructor = Nestable
+}(window.jQuery),
+
+//initializing 
+function($) {
+	"use strict";
+	$.Nestable.init()
+}(window.jQuery);
+
+$(document).ready(function () {
+	//$(":filestyle").filestyle({input: false});
+	
+	if($("#description").length > 0){
+		tinymce.init({
+			selector: "textarea#description",
+			theme: "modern",
+			height:200,
+			plugins: [
+				"advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+				"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+				"save table contextmenu directionality emoticons template paste textcolor"
+			],
+			toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+			style_formats: [
+				{title: 'Bold text', inline: 'b'},
+				{title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+				{title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+				{title: 'Example 1', inline: 'span', classes: 'example1'},
+				{title: 'Example 2', inline: 'span', classes: 'example2'},
+				{title: 'Table styles'},
+				{title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+			]
+		});
+	}
+	
+	$(".sortorder").TouchSpin({
+		verticalbuttons: true,
+		buttondown_class: "btn btn-default",
+		buttonup_class: "btn btn-default",
+		verticalupclass: 'ion-plus-round',
+		verticaldownclass: 'ion-minus-round'
+	});
+});
+
+function check_default(id){
+	$(".radio_"+id).on('change', function() {
+		$(".radio_"+id).not(this).prop('checked', false);  
+	});
+}
+
+function remove_row(obj){
+	var ok = confirm("You want to delete this field permanently?");
+	if(ok == true) {
+		$(obj).parent().parent().parent().remove();
+	} else {
+		return false;
+	}
+}
+
+function add_fields(){
+	var no_of_fields = $("#no_of_fields").val();
+	no_of_fields = Number(no_of_fields)+Number(1);
+	
+	field_structure = $("#field_structure").html();
+	field_structure = field_structure.replace(/f-no/g, no_of_fields);
+	
+	$('.fields div.active').removeClass('active');
+	$(".fields").append(field_structure);
+	
+	//$('#icon_'+no_of_fields).filestyle({input: false});
+	
+	$('#tab_titles li.active').removeClass('active');
+	
+	var tab_title_ = '<li id="tab_f-no" class="active dd-item dd3-item" data-id="f-no"><div class="dd-handle dd3-handle"></div><div class="dd3-content"><a href="#field_f-no" onclick="up_current_tab(f-no)" data-toggle="tab" aria-expanded="false" style="text-align:left;"><span id="tab_title_f-no">Field Label</span></a></div></li>';
+	
+	tab_title_ = tab_title_.replace(/f-no/g, no_of_fields);
+	$("#tab_titles").append(tab_title_);
+	
+	//$('#input_type_'+no_of_fields).selectpicker();
+	  
+	$("#no_of_fields").val(no_of_fields);
+	$("#current_field").val(no_of_fields);
+	
+	$.Nestable.init();
+}
+
+function showOtherTab(){
+	$("#general").removeClass("active");
+	$("#general_tab").removeClass("active");
+	
+	$("#add_fields").addClass("active");
+	$("#add_fields_tabs").addClass("active");
+}
+
+function StepTrack(step) {
+	$("#step_track").val(step);
+	return false;
+}
+
+function add_group_fields(){
+	var no_of_fields = $("#no_of_fields").val();
+	no_of_fields = Number(no_of_fields)+Number(1);
+	
+	var custom_groups = [];
+	$('input[name="custom_groups"]:checked').each(function(i){
+	  custom_groups[i] = $(this).val();
+	});
+	console.log(custom_groups);
+	custom_groups = custom_groups.toString();
+	
+	$.post("action.php",{action:"get_group_fields", custom_groups:custom_groups,no_of_fields:no_of_fields},function(res){
+		var data = JSON.parse(res);
+		if(data.success==1){
+			$("#tab_titles").append(data.lis);
+			
+			$.Nestable.init();
+			
+			$.post("action.php",{action:"get_group_fields2", custom_groups:custom_groups,no_of_fields:no_of_fields},function(field_structure){
+				$(".fields").append(field_structure);
+
+				$('.to-selectpicker').each(function(){
+					$(this).removeClass("to-selectpicker");
+					//$(this).selectpicker();
+				});
+				
+				$('.to-filestyle').each(function(){
+					$(this).removeClass("to-filestyle");
+					//$(this).filestyle({input: false});
+				});
+				
+				//$('.to-selectpicker').selectpicker();
+				
+				for(no_of_fields;no_of_fields<=data.no_of_fields;no_of_fields++) {
+					$("#sortable_"+no_of_fields).sortable();
+					$("#sortable_"+no_of_fields).disableSelection();
+				}
+				
+			});
+			
+			$("#no_of_fields").val(data.no_of_fields);
+		    $('#myModal').modal('toggle');
+		} else if(data.error==1) {
+			
+		}
+	});
+	
+	return false;
+}
+
+function deleteImage(obj){
+	$(obj).prev().remove();
+	$(obj).next().val("");
+	$(obj).remove();
+}
+
+function deleteImageOpt(obj){
+	$(obj).prev().remove();
+	$(obj).parent().parent().prev().find(".icon_hidden").val("");
+	$(obj).remove();
+}
+
+function deleteTooltip(obj){
+	$(obj).prev().val("");
+}
+
+function up_current_tab(id){
+	$('#tab_titles li.active').removeClass('active');
+	$("#current_field").val(id);
+}
+
+function del_current_tab() {
+	var ok = confirm("You want to delete this field permanently?");
+	if(ok == true) {
+		id = $("#current_field").val();
+		$.when($("#tab_"+id).remove()).then($('ol#tab_titles li:first').addClass("active"));
+		$.when($("#field_"+id).remove()).then($('div#tab_contents div:first').addClass("active"));
+		
+		var tab_ele = $('ol#tab_titles li:first').attr("id");
+		if(typeof tab_ele !== 'undefined'){
+			tab_id = tab_ele.split("_");
+			$("#current_field").val(tab_id['1']);
+		}
+	} else {
+		return false;
+	}
+}
+
+function add_more_options(f) {
+	var no_of_dd_options = $("#no_of_dd_options_"+f).val();
+	no_of_dd_options = Number(no_of_dd_options)+Number(1);
+	
+	dd_options_structure = $("#dd_options_structure").html();
+	dd_options_structure = dd_options_structure.replace(/o-no/g, no_of_dd_options);
+	dd_options_structure = dd_options_structure.replace(/f-no/g, f);
+	
+	//$("#dd_options_"+f).append(dd_options_structure);
+	$("#sortable_"+f).append(dd_options_structure);
+	
+	//$('#dd_price_type_'+f+'_'+no_of_dd_options).selectpicker();
+	//$('#dd_add_sub_'+f+'_'+no_of_dd_options).selectpicker();
+
+	//$('#dd_icon_'+f+'_'+no_of_dd_options).filestyle({input: false});
+	
+	$("#no_of_dd_options_"+f).val(no_of_dd_options);
+}
+
+function add_more_radios(f) {
+	var no_of_radio_options = $("#no_of_radio_options").val();
+	no_of_radio_options = Number(no_of_radio_options)+Number(1);
+	
+	radio_options_structure = $("#radio_options_structure").html();
+	radio_options_structure = radio_options_structure.replace(/o-no/g, no_of_radio_options);
+	radio_options_structure = radio_options_structure.replace(/f-no/g, f);
+	
+	$("#radio_options_"+f).append(radio_options_structure);
+	$("#no_of_radio_options").val(no_of_radio_options);
+}
+
+function add_more_checkboxs(f) {
+	var no_of_checkbox_options = $("#no_of_checkbox_options").val();
+	no_of_checkbox_options = Number(no_of_checkbox_options)+Number(1);
+	
+	checkbox_options_structure = $("#checkbox_options_structure").html();
+	checkbox_options_structure = checkbox_options_structure.replace(/o-no/g, no_of_checkbox_options);
+	checkbox_options_structure = checkbox_options_structure.replace(/f-no/g, f);
+	
+	$("#checkbox_options_"+f).append(checkbox_options_structure);
+	$("#no_of_checkbox_options").val(no_of_checkbox_options);
+}
+
+function change_input_type(f) {
+	var structure = "";
+	var input_type = $("#input_type_"+f).val();
+	if(input_type=="select" || input_type=="radio" || input_type=="checkbox"){
+		structure = $("#dd_structure").html();
+	}
+	
+	/*
+	else if(input_type=="radio"){
+		structure = $("#radio_structure").html();
+	}else if(input_type=="checkbox"){
+		structure = $("#checkbox_structure").html();
+	} */
+	
+	structure = structure.replace(/f-no/g, f);
+	$("#type_options_"+f).html(structure);
+	
+	$("#add_more_options_"+f).click();
+	$("#dd_label_"+f+"_1").val("Option 1");
+	
+	$("#sortable_"+f).sortable();
+	$("#sortable_"+f).disableSelection();	
+}
+
+$(document).ready(function() {
+	$('form').parsley();
+});
+
+$(function () {
+	$('#form_step_1').parsley().on('field:validated', function () {
+		var ok = $('.parsley-error').length === 0;
+		$('.alert-info').toggleClass('hidden', !ok);
+		$('.alert-warning').toggleClass('hidden', ok);
+	})
+	.on('form:submit', function () {
+		//return false; // Don't submit form for this demo
+	});
+	
+	$('#form_step_2').parsley().on('field:validated', function () {
+		var ok = $('.parsley-error').length === 0;
+		$('.alert-info').toggleClass('hidden', !ok);
+		$('.alert-warning').toggleClass('hidden', ok);
+	})
+	.on('form:submit', function () {
+		//return false; // Don't submit form for this demo
+	});
+});
+</script>
+
+<?php
+unset($_SESSION['step_track']);
+
+function check_status($group_id) {
+    global $con;
+    $sql_grp = "SELECT status FROM `groups` where id = '".$group_id."'";
+    $exe_grp = mysqli_query($con,$sql_grp);
+    $row_grp = mysqli_fetch_assoc($exe_grp);
+    return $row_grp['status'];
+} ?>

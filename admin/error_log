@@ -1,0 +1,44 @@
+[21-Oct-2019 21:15:41 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/rupnatio/buybackdemo1.r3upnation.com/admin/include/footer.php on line 48
+[28-Nov-2019 13:05:30 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 13:05:36 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 13:05:44 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 13:06:02 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 13:06:10 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 13:06:16 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 19:44:40 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[28-Nov-2019 20:36:49 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 20:39:26 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 21:07:55 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[28-Nov-2019 21:08:20 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[29-Nov-2019 06:26:49 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[29-Nov-2019 06:32:54 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[29-Nov-2019 14:19:23 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[29-Nov-2019 14:46:34 UTC] PHP Warning:  unlink(../images/mobile/20191129143000.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:48:41 UTC] PHP Warning:  unlink(../images/mobile/20191129141602.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:51:06 UTC] PHP Warning:  unlink(../images/mobile/20191129142216.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:52:08 UTC] PHP Warning:  unlink(../images/mobile/20191129142421.png): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:53:00 UTC] PHP Warning:  unlink(../images/mobile/20191129142609.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:54:29 UTC] PHP Warning:  unlink(../images/mobile/20191129143257.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:55:15 UTC] PHP Warning:  unlink(../images/mobile/20191129143444.png): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:56:00 UTC] PHP Warning:  unlink(../images/mobile/20191128235624.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 14:56:43 UTC] PHP Warning:  unlink(../images/mobile/20191129143602.jpg): No such file or directory in /home/cellkash/public_html/admin/action.php on line 158
+[29-Nov-2019 21:43:26 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[30-Nov-2019 06:39:11 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[30-Nov-2019 17:27:14 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[01-Dec-2019 23:47:15 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[03-Dec-2019 19:15:03 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[04-Dec-2019 08:26:27 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[04-Dec-2019 08:26:31 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[04-Dec-2019 08:26:35 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[04-Dec-2019 08:26:39 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/cellkash/public_html/admin/mobile.php on line 27
+[04-Dec-2019 13:20:04 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[05-Dec-2019 16:27:33 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48
+[09-Dec-2019 12:53:47 UTC] PHP Fatal error:  Uncaught EasyPost\Error: The requested resource could not be found. in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php:268
+Stack trace:
+#0 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(252): EasyPost\Requestor->handleApiError('{"error":{"code...', 404, Array)
+#1 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php(123): EasyPost\Requestor->_interpretResponse('{"error":{"code...', 404)
+#2 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/EasypostResource.php(68): EasyPost\Requestor->request('get', '/shipments/shp_...', Array)
+#3 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/EasypostResource.php(102): EasyPost\EasypostResource->refresh()
+#4 /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Shipment.php(16): EasyPost\EasypostResource::_retrieve('EasyPost\\Shipme...', 'shp_68494a9c63d...', NULL)
+#5 /home/cellkash/public_html/admin/views/order/edit in /home/cellkash/public_html/libraries/easypost-php-master/lib/EasyPost/Requestor.php on line 268
+[12-Dec-2019 07:20:02 UTC] PHP Warning:  mysqli_close(): Couldn't fetch mysqli in /home/cellkash/public_html/admin/include/footer.php on line 48

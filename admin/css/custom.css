@@ -1,0 +1,162 @@
+@font-face {
+  font-family: fontawesome;
+  src: url('font/fontawesome-webfont.ttf')
+}
+.nav-pills .nav-link {
+    border-radius: 0;
+}
+.vartical-tab.m-tabs-line--success a.m-tabs__link.active,
+.vartical-tab.m-tabs-line--success a.m-tabs__link:hover,
+.vartical-tab.m-tabs-line--success.nav.nav-tabs .nav-link.active,
+.vartical-tab.m-tabs-line--success.nav.nav-tabs .nav-link:hover{
+  background: #34bfa3;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+}
+.nav.vartical-tab .nav-item,
+.nav.vartical-tab .nav-item {
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 2px solid #fff;
+}
+.nav.vartical-tab .nav-link,
+.nav.vartical-tab .nav-link {
+  padding-left: 15px
+}
+.tab-pane ul{
+  padding: 0;
+  margin: 0;
+}
+.dd3-handle {
+    border: 1px solid #555 !important;
+    background: #555 !important;
+}
+.dd3-handle::before {
+    font-family: fontawesome !important;
+    top: 5px !important;
+}
+
+/* body .dd3-handle::before {
+  display: none;
+} */
+.m-widget4 .m-widget4__item .m-widget4__ext .m-widget4__number {
+  background: rgb(113, 106, 202);
+  color: white !important;
+  border-radius: 4px;
+  padding: 0 5px 0 5px;
+}
+.m-widget4__img .online {
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  float: right;
+  margin-top: -10px;
+  position: relative;
+}
+.bg-gray {
+  background-color: #969696;
+}
+.m-widget4 .m-widget4__item:hover{
+  cursor: pointer;
+}
+.m-messenger__wrapper .m-messenger__message-body .modify-btn {
+  float: right;
+  top: -15px;
+  right: 20px;
+  position: absolute;
+  display: none;
+}
+.m-messenger__wrapper .m-messenger__message-body .modify-btn .edit, .m-messenger__wrapper .m-messenger__message-body .modify-btn .remove {
+  /* background: rgb(113, 106, 202); */
+  background: #f5f5f5e6;
+  /* color: white; */
+  color: black;
+  -webkit-box-shadow: 0 0 5px #666 !important;
+  box-shadow: 0 0 5px #666 !important;
+  margin-left: 2px;
+}
+.m-messenger__wrapper .m-messenger__message-body .modify-btn .edit:hover {
+  background: #00c5dc;
+  color: white;
+}
+.m-messenger__wrapper .m-messenger__message-body .modify-btn .remove:hover {
+  background: #f4516c;
+  color: white;
+}
+.m-messenger__message-body:hover .modify-btn {
+  display: block
+}
+.btn-round{
+  border-radius: 20px;
+  margin-left: 10px;
+}
+.m-widget4 .m-widget4__item{
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.m-widget4 .m-widget4__item:hover,
+.m-widget4 .m-widget4__item.active{
+  background: #f2f3f8;
+}
+.m-widget4 .m-widget4__item + .m-widget4__item{
+  margin-top: 1px;
+}
+.m-messenger .m-messenger__messages .m-messenger__message .m-messenger__message-body{
+  min-width: 100px;
+}
+.m-messenger__message-text.image{
+  position: relative;
+}
+.m-messenger__message-text.image a.edit-zoom{
+  position: absolute;
+  z-index: 99;
+  background: #ddd;
+  top:50%;
+  left: 50%;
+  margin-top: -14px;
+  margin-left: -14px;
+  display: none;
+}
+.m-messenger__message-body:hover .m-messenger__message-text.image a.edit-zoom{
+  display: block;
+}
+
+.popup.popup-chat-login{
+  top:50%;
+  left: 50%;
+  margin-left: -206px;
+  margin-top: -20px;
+}
+
+.popup-chat-login,
+.chat-login{
+  background: #f2f3f8;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+button.btn-primary{
+  border: 0;
+  padding: 10px 15px;
+}
+#phoneMessage,
+input.chat-area-input{
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+}
+#firstshowPopup button{
+  background: #716aca;
+  border: none;
+  border-radius: 20px;
+  color:#fff;
+  padding: 8px 20px;
+  margin-left: 10px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+
+.hide{display:none}.tablist li{width:100%}.dd-handle-new{position:absolute;left:0;top:5px;width:100%;text-align:center;text-indent:0;color:#fff;font-size:14px;font-weight:normal;border:1px solid #ccc;background:#d5d5d5;width:30px;line-height:30px;cursor:pointer}.dd_header-new .col-sm-3,.dd_header-new .col-sm-1,.dd_header-new .col-sm-2{background:#e5e5e5;position:relative}.dd_header-new .col-sm-3 label,.dd_header-new .col-sm-1 label,.dd_header-new .col-sm-2 label{padding:10px;margin-bottom:0px}.dd_header-new .col-sm-3 a,.dd_header-new .col-sm-1 a,.dd_header-new .col-sm-2 a{position:relative;left:5px}.ui-sortable .form-group.row{border-bottom:1px solid #e5e5e5;padding-bottom:20px}.img-container{background:#f2f2f2;padding:15px;border-radius:2px}
+/*# sourceMappingURL=custom.css.map */

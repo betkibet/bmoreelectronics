@@ -1,0 +1,72 @@
+[09-Dec-2019 15:52:54 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[09-Dec-2019 21:48:13 UTC] PHP Warning:  copy(): Filename cannot be empty in /home/cellkash/public_html/controllers/revieworder/confirm.php on line 425
+[09-Dec-2019 22:31:33 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[10-Dec-2019 00:29:29 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[10-Dec-2019 00:33:00 UTC] PHP Warning:  copy(): Filename cannot be empty in /home/cellkash/public_html/controllers/revieworder/confirm.php on line 425
+[10-Dec-2019 16:36:32 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[10-Dec-2019 18:33:29 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[10-Dec-2019 20:40:33 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[10-Dec-2019 21:30:08 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[10-Dec-2019 23:38:13 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[11-Dec-2019 00:10:52 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[11-Dec-2019 04:07:57 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[11-Dec-2019 22:57:24 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 00:09:25 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 03:37:40 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 16:42:23 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 16:42:41 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 17:10:30 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 17:12:45 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 19:58:47 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 19:58:51 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 20:18:00 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 22:03:50 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[12-Dec-2019 22:20:07 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[13-Dec-2019 17:26:21 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[13-Dec-2019 19:33:18 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[14-Dec-2019 14:40:45 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[14-Dec-2019 16:31:08 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[14-Dec-2019 16:46:47 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 16:57:42 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 17:01:18 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 17:04:05 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 17:10:57 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 17:41:39 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 18:15:28 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 18:17:58 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 18:28:33 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 18:54:25 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 18:56:31 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 19:31:05 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 19:31:56 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 20:30:54 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 20:34:09 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 20:35:29 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 20:38:20 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[14-Dec-2019 22:53:25 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 22:55:40 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[14-Dec-2019 22:56:35 UTC] Error: 422:Unable to complete shipment purchase. Please contact support.
+[15-Dec-2019 01:03:53 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[15-Dec-2019 01:46:11 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[15-Dec-2019 15:39:09 UTC] Error: 422:FedEx returned error: LabelSpecification PrintedLabelOrigin contact - phoneNumber is required
+[15-Dec-2019 17:35:45 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[15-Dec-2019 17:51:57 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[15-Dec-2019 21:45:11 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[16-Dec-2019 16:57:13 UTC] Error: 422:FedEx returned error: RequestedShipment Shipper - A Contact is required for a Party
+[16-Dec-2019 18:27:38 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[16-Dec-2019 20:23:43 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[16-Dec-2019 20:27:59 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 01:46:19 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 01:47:46 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 03:17:09 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 03:17:45 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 05:53:32 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 15:54:14 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 18:21:13 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 20:27:51 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 20:31:15 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 20:33:06 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 20:46:01 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 21:11:35 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 21:34:26 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14
+[17-Dec-2019 22:50:05 UTC] PHP Warning:  array_diff(): Argument #1 is not an array in /home/cellkash/public_html/controllers/revieworder/review.php on line 14

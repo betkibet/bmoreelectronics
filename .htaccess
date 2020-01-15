@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^(.*)$ index.php
+
+## No directory listings
+IndexIgnore *
+
+## Can be commented out if causes errors, see notes above.
+Options +FollowSymlinks
+Options -Indexes
+RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
