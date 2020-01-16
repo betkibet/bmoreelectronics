@@ -9287,9 +9287,10 @@ body.inner #header,
 
 #nav ul li a {
   padding: 4px 0px;
-  color: #bdbdbd;
+  color: #000;
   display: block;
   font-size: 16px;
+  font-weight: 50px;
 }
 
 .inner #nav ul li a:hover,

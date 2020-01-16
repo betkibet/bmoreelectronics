@@ -2,10 +2,10 @@
 
 
 #header.fixed{
-    background-color: #033E76 ;
+    background-color: #1FADBB ;
 }
 body.inner #header,#header{
-    background-color: #033E76 ;
+    background-color: #1FADBB;
 }
 #howitwork .list li .roundbox img{
     /*-webkit-filter: invert(6%) sepia(0%) saturate(0%) hue-rotate(100deg) brightness(95%) contrast(99%);
