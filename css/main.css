@@ -9204,12 +9204,12 @@ body.inner #header,
 
 .brand-logo-fixed {
   display: none;
-  height: 40px;
+  height: 52px;
 }
 
 .brand-logo {
   display: block;
-  height: 40px;
+  height: 52px;
 }
 
 #header {
@@ -10847,12 +10847,10 @@ body.inner #header.fixed {
 
 body.inner #header.fixed .brand-logo-fixed {
   display: block;
-  height: 49px;
 }
 
 body.inner #header .brand-logo-fixed {
   display: block;
-  height: 49px;
 }
 
 body.inner #header.fixed .brand-logo {
