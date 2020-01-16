@@ -9241,6 +9241,7 @@ body.inner #header,
 
 #header.fixed .brand-logo-fixed {
   display: block;
+  height: 49px;
 }
 
 #header.fixed .brand-logo {
@@ -10846,10 +10847,12 @@ body.inner #header.fixed {
 
 body.inner #header.fixed .brand-logo-fixed {
   display: block;
+  height: 49px;
 }
 
 body.inner #header .brand-logo-fixed {
   display: block;
+  height: 49px;
 }
 
 body.inner #header.fixed .brand-logo {
