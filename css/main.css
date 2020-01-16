@@ -9204,12 +9204,12 @@ body.inner #header,
 
 .brand-logo-fixed {
   display: none;
-  height: 49px;
+  height: 40px;
 }
 
 .brand-logo {
   display: block;
-  height: 49px;
+  height: 40px;
 }
 
 #header {
