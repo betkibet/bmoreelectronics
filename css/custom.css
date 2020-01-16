@@ -191,6 +191,10 @@ body.inner #header,#header{
     #header.fixed .logo{
         padding: 5px 0;
     }
+    #header.fixed .logo a img.brand-logo{
+        height: 49px;
+        width: auto;
+    }
     #header.fixed .logo a img.brand-logo-fixed{
         height: 49px;
         width: auto;
