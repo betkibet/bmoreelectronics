@@ -9224,7 +9224,6 @@ body.inner #header,
 
 #header.fixed .searchfield {
   border: 2px solid #1ec475;
-  background: white;
 }
 
 #header.fixed .searchfield input {
@@ -9287,7 +9286,7 @@ body.inner #header,
 
 #nav ul li a {
   padding: 4px 0px;
-  color: #000;
+  color: #fff;
   display: block;
   font-size: 16px;
   font-weight: 50px;
