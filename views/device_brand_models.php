@@ -150,7 +150,7 @@ if(count($device_data_list)>1 && $brand_id>0 && $device_id<=0) {
 				<div class="sec-title"><h3>Select <strong>Your Model</strong></h3></div>
 				<div class="content-block">
 					<div class="list clearfix">
-						<ul id="selectbrand_slider" class="clearfix">
+						<ul class="clearfix">
 							<?php
 							foreach($model_data_list as $model_list) { ?>
 								<li><a href="<?=SITE_URL.$model_list['sef_url'].'/'.createSlug($model_list['title']).'/'.$model_list['id']?>">
