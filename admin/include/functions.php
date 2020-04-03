@@ -341,9 +341,9 @@ function amount_fomat($amount) {
 	$general_setting_data=mysqli_fetch_assoc($gs_query);
 	$currency = @explode(",",$general_setting_data['currency']);
 	if($general_setting_data['disp_currency']=="prefix")
-		return $currency[1].round($amount, 2);
+		return $currency[1].round($amount, 0);
 	elseif($general_setting_data['disp_currency']=="postfix")
-		return round($amount, 2).$currency[1];
+		return round($amount, 0).$currency[1];
 }
 
 function amount_format_without_sign($amount) {
@@ -352,9 +352,9 @@ function amount_format_without_sign($amount) {
 	$general_setting_data=mysqli_fetch_assoc($gs_query);
 	//$currency = @explode(",",$general_setting_data['currency']);
 	if($general_setting_data['disp_currency']=="prefix")
-		return round($amount, 2);
+		return round($amount, 0);
 	elseif($general_setting_data['disp_currency']=="postfix")
-		return round($amount, 2);
+		return round($amount, 0);
 }
 
 //Escape string of mysql query

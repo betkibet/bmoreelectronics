@@ -94,7 +94,11 @@
 					<form action="controllers/user.php" method="POST">
 						<input type="hidden" name="ids" id="ids" value="">
 						<button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove"><span><i class="la la-remove"></i><span>Bulk Remove</span></span></button>
+					<button class="btn btn-info" ><a href="javascript:void(0)" id="export-to-csv" style="text-decoration: none; color: #fff;">Export to csv</a></button>
 					</form>
+					<form action="controllers/user.php" method="post" id="export-form">
+						<input type="hidden" value='' id='hidden-type' name='ExportType'/>
+					  </form>
 				</div>
 			  </div>
 			  
@@ -269,4 +273,18 @@ function clickontoggle(id) {
 		}
 	});
 }
+$(document).ready(function() {
+jQuery('#export-to-csv').bind("click", function() {
+var target = $(this).attr('id');
+switch(target) {
+	case 'export-to-csv' :
+	$('#hidden-type').val(target);
+	//alert($('#hidden-type').val());
+	$('#export-form').submit();
+	$('#hidden-type').val('');
+	break
+}
+});
+});
+
 </script>

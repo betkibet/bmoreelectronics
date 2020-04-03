@@ -15,7 +15,7 @@ $shipping_option = (array)json_decode($general_setting_data['shipping_option']);
 $page_list_limit = $general_setting_data['page_list_limit'];
 $captcha_settings = (array)json_decode($general_setting_data['captcha_settings']);
 $other_settings = (array)json_decode($general_setting_data['other_settings']);
-
+$theme_settings = (array)json_decode($general_setting_data['theme_settings']);
 //Template file
 require_once("views/general_settings.php");
 

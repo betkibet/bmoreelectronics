@@ -231,8 +231,54 @@ if(isset($post['c_id'])) {
 		$_SESSION['error_msg']=$msg;
 	}
 	setRedirect(ADMIN_URL.'mobile.php');
-} else {
+} 
+/*********** Export CSV function *************/
+elseif(isset($_POST["ExportType"]))
+{
+	$data = mysqli_query($db,"SELECT m.model_img AS 'Image',m.title AS 'Mobile Title', c.title AS 'Category', b.title AS 'Brand', d.title AS 'Device Title', m.price AS 'Price'
+		FROM mobile AS m 
+		LEFT JOIN devices AS d ON d.id=m.device_id 
+		LEFT JOIN brand AS b ON b.id=m.brand_id 
+		LEFT JOIN categories AS c ON c.id=m.cat_id 
+		WHERE 1"); 
+    switch($_POST["ExportType"])
+    {
+		case "export-to-csv" :
+            // Submission from
+			$filename = 'mobile-details' . ".csv";		 
+			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+			header("Content-type: text/csv");
+			header("Content-Disposition: attachment; filename=\"$filename\"");
+			ExportCSVFile($data);
+			//$_POST["ExportType"] = '';
+            exit();
+        default :
+            die("Unknown action : ".$_POST["action"]);
+            break;
+    }
+}
+else {
 	setRedirect(ADMIN_URL.'mobile.php');
 }
+function ExportCSVFile($records) {
+	// create a file pointer connected to the output stream
+	$fh = fopen( 'php://output', 'w' );
+	$heading = false;
+		if(!empty($records))
+		  foreach($records as $row) {
+			if(!$heading) {
+			  // output the column headings
+			  fputcsv($fh, array_keys($row));
+			  $heading = true;
+			}
+			// loop over the rows, outputting them
+			 fputcsv($fh, array_values($row));
+			 
+		  }
+		  fclose($fh);
+}
+/*********** Export CSV function *************/
+
+
 exit();
 ?>

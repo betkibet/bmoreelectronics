@@ -24,7 +24,7 @@
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
                 <li class="m-portlet__nav-item">
-                  <a href="add_product.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                  <a href="bulk_add_product.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
                       <i class="la la-plus"></i>
                       <span>
@@ -50,65 +50,19 @@
             </div>
           </div>
           <div class="m-portlet__body">
-		  
-			<form method="get">
-				<div class="form-group row">
-					<div class="col-lg-3">
-						<input type="text" class="form-control m-input" placeholder="Search By Title" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
-					</div>
-					<div class="col-lg-3">
-						<select name="cat_id" id="cat_id" class="form-control m-input custom-select">
-							<option value=""> - Select Category - </option>
-							<?php
-							while($categories_list=mysqli_fetch_assoc($categories_data)) { ?>
-								<option value="<?=$categories_list['id']?>" <?php if($categories_list['id']==$post['cat_id']){echo 'selected="selected"';}?>><?=$categories_list['title']?></option>
-							<?php
-							} ?>
-						</select>
-					</div>
-					<div class="col-lg-3">
-						<select name="brand_id" id="brand_id" class="form-control m-input custom-select">
-							<option value=""> - Select Brand - </option>
-							<?php
-							while($brands_list=mysqli_fetch_assoc($brands_data)) { ?>
-								<option value="<?=$brands_list['id']?>" <?php if($brands_list['id']==$post['brand_id']){echo 'selected="selected"';}?>><?=$brands_list['title']?></option>
-							<?php
-							} ?>
-						</select>
-					</div>
-					<div class="col-lg-3">		
-						<select name="device_id" id="device_id" class="form-control m-input custom-select">
-							<option value=""> - Select Device - </option>
-							<?php
-							while($devices_list=mysqli_fetch_assoc($devices_data)) { ?>
-								<option value="<?=$devices_list['id']?>" <?php if($devices_list['id']==$post['device_id']){echo 'selected="selected"';}?>><?=$devices_list['title']?></option>
-							<?php
-							} ?>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col-lg-3">
-						<button class="btn btn-alt btn-primary searchbx" type="submit" name="search">Search <i class="la la-search"></i></button>
-						<?php
-						if($post['filter_by'] || $post['cat_id'] || $post['brand_id'] || $post['device_id']) {
-							echo '<a href="mobile.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
-						} ?>
-					</div>
-				</div>
-			</form>
-					
             <!--begin: Datatable -->
             <div id="m_table_1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
 			
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
-					<form action="controllers/mobile.php" method="POST">
+					<form action="controllers/bulk_upload.php" method="POST">
 						<input type="hidden" name="ids" id="ids" value="">
 						<button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove"><span><i class="la la-remove"></i><span>Bulk Remove</span></span></button>
 						<button class="btn btn-info" ><a href="javascript:void(0)" id="export-to-csv" style="text-decoration: none; color: #fff;">Export to csv</a></button>
 					</form>
-					<form action="controllers/mobile.php" method="post" id="export-form">
+						<div></div>
+					 
+					 <form action="controllers/bulk_upload.php" method="post" id="export-form">
 						<input type="hidden" value='' id='hidden-type' name='ExportType'/>
 					  </form>
 				</div>
@@ -116,8 +70,8 @@
 			  
               <div class="row">
                 <div class="col-sm-12">
-                  <form action="controllers/mobile.php" method="post">
-                    <table class="table table-striped table-bordered table-hover table-checkable dataTable dtr-inline" <?php /*?>id="m_table_1"<?php */?>>
+                  <form action="controllers/bulk_upload.php" method="post">
+                    <table class="table table-striped table-bordered  table-hover table-checkable dataTable dtr-inline" <?php /*?>id="m_table_1"<?php */?>>
                       <thead>
                         <tr>
                           <th width="10">
@@ -126,12 +80,15 @@
                               <span></span>
                             </label>
                           </th>
-                          <th width="110">Icon</th>
                           <th>Title</th>
-						  <th>Category</th>
-						  <th>Brand</th>
-                          <th>Device</th>
-                          <th>Price</th>
+						  <th>Carrier</th>
+						  <th>Capacity</th>
+                          <th>Offer New</th>
+                          <th>Offer Mint</th>
+                          <th>Offer Good</th>
+                          <th>Offer Fair</th>
+                          <th>Offer Broken</th>
+                          <th>Offer Damaged</th>
                           <th width="100">
                             Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
                           </th>
@@ -149,48 +106,24 @@
                               <span></span>
                             </label>
                           </td>
-                          <td>
-							<?php 
-							if($device_data['model_img']) {
-								echo '<img src="../images/mobile/'.$device_data['model_img'].'" width="100" />';
-							} ?>
-						  </td>
-							<td><?=$device_data['title']?></td>
-							<td>
-							<?php
-							if($device_data['cat_title']!="") {
-								echo '<a href="edit_category.php?id='.$device_data['cat_id'].'">'.$device_data['cat_title'].'</a>';
-							} ?>
-							</td>
-							<td>
-							<?php
-							if($device_data['brand_title']!="") {
-								echo '<a href="edit_brand.php?id='.$device_data['brand_id'].'">'.$device_data['brand_title'].'</a>';
-							} ?>
-							</td>
-							<td>
-							<?php
-							if($device_data['device_title']!="") {
-								echo '<a href="edit_device.php?id='.$device_data['device_id'].'">'.$device_data['device_title'].'</a>';
-							} ?>
-							</td>
-        				  <td>
-                            <?=amount_fomat($device_data['price'])?>
-                          </td>
+                          	<td><?=$device_data['title']?></td>
+							<td><?=$device_data['carrier_title']?></td>
+							<td><?=$device_data['storage_capacity']?></td>
+							<td><?=$device_data['offer_new']?></td>
+							<td><?=$device_data['offer_mint']?></td>
+							<td><?=$device_data['offer_good']?></td>
+							<td><?=$device_data['offer_fair']?></td>
+							<td><?=$device_data['offer_broken']?></td>
+							<td><?=$device_data['offer_damaged']?></td>
+        				  
                           <td>
                             <input type="text" class="m-input--square form-control m-input" id="ordering<?=$device_data['id']?>" value="<?=$device_data['ordering']?>" name="ordering[<?=$device_data['id']?>]">
                           </td>
-                          <td Width="190">
-                            <?php
-							if($device_data['published']==1) {
-								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Published</button></a>';
-							} elseif($device_data['published']==0) {
-								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Unpublished</button></a>';
-							}
-							?>
-                            <a href="add_product.php?id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-        					<a href="controllers/mobile.php?d_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
-							<a href="controllers/mobile.php?c_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to copy this model?')"><i class="fa fa-copy"></i></a>
+                          <td Width="120">
+                            
+                            <a href="bulk_add_product.php?id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
+        					<a href="controllers/bulk_upload.php?d_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+							<a href="controllers/bulk_upload.php?c_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to copy this model?')"><i class="fa fa-copy"></i></a>
                           </td>
                         </tr>
                         <?php }
@@ -302,6 +235,7 @@ function clickontoggle(id) {
 		}
 	});
 }
+
 $(document).ready(function() {
 jQuery('#export-to-csv').bind("click", function() {
 var target = $(this).attr('id');
@@ -314,6 +248,6 @@ switch(target) {
 	break
 }
 });
-});
+    });
 
 </script>

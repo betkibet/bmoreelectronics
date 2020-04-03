@@ -106,6 +106,23 @@
           </span>
         </a>
       </li>
+      <li class="m-menu__item <?php if($file_name=="mobile_bulk_upload"){echo 'm-menu__item--active';}?>" aria-haspopup="true" >
+        <a  href="mobile_bulk_upload.php" class="m-menu__link ">
+          <i class="m-menu__link-icon la la-maxcdn"></i>
+          <span class="m-menu__link-title">
+            <span class="m-menu__link-wrap">
+              <span class="m-menu__link-text">
+                Mobile Bulk
+              </span>
+              <span class="m-menu__link-badge">
+                <!-- <span class="m-badge m-badge--danger">
+                  2
+                </span> -->
+              </span>
+            </span>
+          </span>
+        </a>
+      </li>
       <li class="m-menu__item <?php if($file_name=="orders"){echo 'm-menu__item--active';}?>" aria-haspopup="true" >
         <a  href="orders.php" class="m-menu__link ">
           <i class="m-menu__link-icon la la-paw"></i>

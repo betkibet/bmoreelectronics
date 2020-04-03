@@ -170,7 +170,8 @@
             </table>
           </form>
           <?php
-					echo $pages->page_links(); */?>
+					//echo $pages->page_links(); */
+          ?>
         </section>
       </article>
     </div>

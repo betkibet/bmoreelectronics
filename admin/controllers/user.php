@@ -181,7 +181,50 @@ if(isset($post['d_id'])) {
 		}
 		exit();
 	}
-} else {
+} 
+/*********** Export CSV function *************/
+elseif(isset($_POST["ExportType"]))
+{
+	$data = mysqli_query($db,"SELECT a.name AS 'Name', a.email AS 'Email', a.phone AS 'Phone No', COUNT(o.id) AS 'Total Orders',  a.DATE AS 'Date' FROM users a
+LEFT JOIN orders o ON a.id = o.user_id
+WHERE o.`status`!='partial'
+GROUP BY a.id"); 
+    switch($_POST["ExportType"])
+    {
+		case "export-to-csv" :
+            // Submission from
+			$filename = 'customer-details' . ".csv";		 
+			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+			header("Content-type: text/csv");
+			header("Content-Disposition: attachment; filename=\"$filename\"");
+			ExportCSVFile($data);
+			//$_POST["ExportType"] = '';
+            exit();
+        default :
+            die("Unknown action : ".$_POST["action"]);
+            break;
+    }
+}
+else {
 	setRedirect(ADMIN_URL.'users.php');
 }
+function ExportCSVFile($records) {
+	// create a file pointer connected to the output stream
+	$fh = fopen( 'php://output', 'w' );
+	$heading = false;
+		if(!empty($records))
+		  foreach($records as $row) {
+			if(!$heading) {
+			  // output the column headings
+			  fputcsv($fh, array_keys($row));
+			  $heading = true;
+			}
+			// loop over the rows, outputting them
+			 fputcsv($fh, array_values($row));
+			 
+		  }
+		  fclose($fh);
+}
+/*********** Export CSV function *************/
+
 exit(); ?>

@@ -5,6 +5,7 @@ require_once("../../include/functions.php");
 $order_id = $post['order_id'];
 $order_data_before_saved = get_order_data($order_id);
 
+
 if(isset($post['create_shipment'])) {
 	$order_id = $post['order_id'];
 	if($order_id=="") {
@@ -382,8 +383,55 @@ if(isset($post['create_shipment'])) {
 	
 	setRedirect(ADMIN_URL.'edit_order.php?order_id='.$post['d_p_i_id']);
 	exit();
-} else {
+} 
+/*********** Export CSV function *************/
+
+elseif(isset($_POST["ExportType"]))
+{
+$data = mysqli_query($db,"SELECT o.order_id AS 'ORDER ID', oi.price, concat(u.first_name, ' ' ,u.last_name) AS 'Name', o.payment_method AS 'Payment Method', 
+o.`status` AS 'Status' ,p.store_name AS 'Store Name' 
+FROM orders AS o LEFT JOIN users AS u ON u.id=o.user_id 
+LEFT JOIN partners AS p ON p.id=o.partner_id 
+LEFT JOIN order_items oi ON o.order_id = oi.order_id
+WHERE o.status!='partial'");
+    switch($_POST["ExportType"])
+    {
+		case "export-to-csv" :
+            // Submission from
+			$filename = 'order-details' . ".csv";		 
+			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+			header("Content-type: text/csv");
+			header("Content-Disposition: attachment; filename=\"$filename\"");
+			ExportCSVFile($data);
+			//$_POST["ExportType"] = '';
+            exit();
+        default :
+            die("Unknown action : ".$_POST["action"]);
+            break;
+    }
+}
+
+
+else {
 	setRedirect(ADMIN_URL.'orders.php');
 	exit;
 }
+function ExportCSVFile($records) {
+	// create a file pointer connected to the output stream
+	$fh = fopen( 'php://output', 'w' );
+	$heading = false;
+		if(!empty($records))
+		  foreach($records as $row) {
+			if(!$heading) {
+			  // output the column headings
+			  fputcsv($fh, array_keys($row));
+			  $heading = true;
+			}
+			// loop over the rows, outputting them
+			 fputcsv($fh, array_values($row));
+			 
+		  }
+		  fclose($fh);
+}
+/*********** Export CSV function *************/
 ?>

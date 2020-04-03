@@ -131,6 +131,11 @@ function chg_mailer_type(type) {
 			                      Sitemap (XML)
 			                    </a>
 			                  </li>
+			                   <li class="nav-item m-tabs__item">
+			                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_6_11" role="tab" aria-selected="true">
+			                      Theme Settings
+			                    </a>
+			                  </li>
 			                  <?php /*?><li class="nav-item m-tabs__item">
 			                    <a class="nav-link m-tabs__link" href="home_settings.php">
 			                      Home Page Settings
@@ -522,7 +527,7 @@ function chg_mailer_type(type) {
 																		</label>
 																		<label class="m-checkbox">
 																			<input id="payment_option_cheque" type="checkbox" value="cheque" name="payment_option[cheque]" <?php if($payment_option['cheque']=="cheque"){echo 'checked="checked"';}?>>
-																			Cheque
+																			Check
 																			<span></span>
 																		</label>
 																		<label class="m-checkbox">
@@ -538,6 +543,11 @@ function chg_mailer_type(type) {
 																		<label class="m-checkbox">
 																			<input id="payment_option_venmo" type="checkbox" value="venmo" name="payment_option[venmo]" <?php if($payment_option['venmo']=="venmo"){echo 'checked="checked"';}?>>
 																			Venmo
+																			<span></span>
+																		</label>
+																		<label class="m-checkbox">
+																			<input id="payment_option_in_store" type="checkbox" value="in_store" name="payment_option[in_store]" <?php if($payment_option['in_store']=="in_store"){echo 'checked="checked"';}?>>
+																			In Store
 																			<span></span>
 																		</label>
 																		<label class="m-checkbox">
@@ -568,7 +578,7 @@ function chg_mailer_type(type) {
 																		</label>
 																		<label class="m-radio">
 																			<input type="radio" id="default_payment_option_cheque" name="default_payment_option" value="cheque" <?=($general_setting_data['default_payment_option']=="cheque"?'checked="checked"':'')?>>
-																			Cheque<span></span>
+																			Check<span></span>
 																		</label>
 																		
 																		<label class="m-radio">
@@ -584,6 +594,11 @@ function chg_mailer_type(type) {
 																		<label class="m-radio">
 																			<input id="default_payment_option_venmo" type="checkbox" value="venmo" name="default_payment_option" <?php if($general_setting_data['default_payment_option']=="venmo"){echo 'checked="checked"';}?>>
 																			Venmo
+																			<span></span>
+																		</label>
+																		<label class="m-radio">
+																			<input id="default_payment_option_in_store" type="checkbox" value="in_store" name="default_payment_option" <?php if($general_setting_data['default_payment_option']=="in_store"){echo 'checked="checked"';}?>>
+																			In Store
 																			<span></span>
 																		</label>
 																		<label class="m-radio">
@@ -1431,6 +1446,68 @@ function chg_mailer_type(type) {
 																	<div class="col-6">
 																		<label for="footer_text_color">Footer text color :</label>
 																		<input type="text" class="form-control m-input jscolor" name="other_settings[footer_text_color]" value="<?=$other_settings['footer_text_color']?>">
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="m-portlet__foot m-portlet__foot--fit">
+															<div class="m-form__actions m-form__actions">
+																<button type="submit" name="general_setting" class="btn btn-primary">
+																	Save
+																</button>
+															</div>
+														</div>
+														<!--end::Form-->
+													</div>
+													<!--end::Portlet-->
+												</div>
+
+												<div class="tab-pane" id="m_tabs_6_11" role="tabpanel">
+													<!--begin::Portlet-->
+													<div class="m-portlet">
+														<div class="m-portlet__head">
+															<div class="m-portlet__head-caption">
+																<div class="m-portlet__head-title">
+																	<span class="m-portlet__head-icon m--hide">
+																		<i class="la la-gear"></i>
+																	</span>
+																	<h3 class="m-portlet__head-text">
+																		Theme Settings
+																	</h3>
+																</div>
+															</div>
+														</div>
+														<!--begin::Form-->
+														<div class="m-portlet__body">
+															<div class="m-form__section m-form__section--first">
+																<div class="form-group m-form__group row">
+																	<div class="col-6">
+																		<label for="header_bg_color">Header bg color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[header_bg_color]" value="<?=$theme_settings['header_bg_color']?>" id="chosen-value">
+																	</div>
+																	<div class="col-6">
+																		<label for="header_text_color">Header text color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[header_text_color]" value="<?=$theme_settings['header_text_color']?>">
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<div class="col-6">
+																		<label for="footer_bg_color">Footer bg color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[footer_bg_color]" value="<?=$theme_settings['footer_bg_color']?>">
+																	</div>
+																	<div class="col-6">
+																		<label for="footer_text_color">Footer text color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[footer_text_color]" value="<?=$theme_settings['footer_text_color']?>">
+																	</div>
+																</div>
+																<div class="form-group m-form__group row">
+																	<div class="col-6">
+																		<label for="icon_br_color">Icon border color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[icon_br_color]" value="<?=$theme_settings['icon_br_color']?>">
+																	</div>
+																	<div class="col-6">
+																		<label for="footer_text_color">Footer text color :</label>
+																		<input type="text" class="form-control m-input jscolor" name="theme_settings[footer_text_color]" value="<?=$theme_settings['footer_text_color']?>">
 																	</div>
 																</div>
 															</div>
