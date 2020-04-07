@@ -62,23 +62,23 @@ function check_form(a) {
 						
 						<div class="m-portlet__body">
 							<!--begin::Form-->
-							<form id="form_step_1" class="m-form m-form--fit m-form--label-align-right" action="controllers/bulk_upload.php" method="post" enctype="multipart/form-data" onSubmit="return check_form(this);">
+							<form  class="m-form m-form--fit m-form--label-align-right" action="controllers/bulk_upload.php" method="post" enctype="multipart/form-data">
 								
 								<div class="tab-content">
 								
-									<div class="tab-pane <?=($step_track=='1'||$step_track==''?'active':'')?>" id="m_tabs_general" role="tabpanel">
+									<div>
 										<hr>
 											<div class="form-group">Upload an Excel File</div>
 										<hr>
 										<div class="form-group">
 											<div class="col-lg-4">
-												<label for="cat_id">Upload Excel</label>
+												<label for="m_id">Upload Excel</label>
 												<input type="file" name="bulk_upload">
 													
 											</div>
 										</div>	
 										<div class=" form-group">
-											<input type="submit" id="m_form_submit" class="btn btn-primary" value="Save" name="b_upload" onclick="StepTrack(1)">
+											<input type="submit" id="m_form_submit" class="btn btn-primary" value="Save" name="b_upload">
 										</div>
 									</div>
 								</div>

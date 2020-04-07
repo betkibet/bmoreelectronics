@@ -55,29 +55,19 @@
 			
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
-					<form action="controllers/bulk_upload.php" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="ids" id="ids" value="">
-						<button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove"><span><i class="la la-remove"></i><span>Bulk Remove</span></span></button>
-						<button class="btn btn-info" ><a href="javascript:void(0)" id="export-to-csv" style="text-decoration: none; color: #fff;">Export to csv</a></button>
-
-            <button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_edit pull-right" name="bulk_edit"><span><i class="la la-pencil"></i><span>Bulk Edit</span></span></button>
-
+					<form action="controllers/bulk_upload.php" method="POST">
+						
 					</form>
-          <hr>
-					<form action="controllers/bulk_upload.php" method="post" enctype="multipart/form-data">
-             <input type="submit" id="m_form_submit" class="btn btn-primary pull-right"  value="Update from Excel" name="b_upload_edit">
-            <input type="file" name="bulk_upload" class="pull-right">
-          </form>
-					 <form action="controllers/bulk_upload.php" method="post" id="export-form">
-						<input type="hidden" value='' id='hidden-type' name='ExportType'/>
-					  </form>
-
+						<div></div>
 				</div>
 			  </div>
 			  
               <div class="row">
                 <div class="col-sm-12">
                   <form action="controllers/bulk_upload.php" method="post">
+                    <input type="hidden" name="ids" id="ids" value="">
+
+            <button class="btn btn-sm btn-success m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_edit_save" name="bulk_edit_save">Save</button>
                     <table class="table table-striped table-bordered  table-hover table-checkable dataTable dtr-inline" <?php /*?>id="m_table_1"<?php */?>>
                       <thead>
                         <tr>
@@ -96,10 +86,6 @@
                           <th>Offer Fair</th>
                           <th>Offer Broken</th>
                           <th>Offer Damaged</th>
-                          <th width="100">
-                            Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
-                          </th>
-                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -107,31 +93,41 @@
                         if($num_rows>0) {
                           while($device_data=mysqli_fetch_assoc($query)) {?>
                         <tr>
+                          <input type="hidden" name="mobile_id[]" value="<?=$device_data['id']?>">
                           <td>
                             <label class="m-checkbox m-checkbox--solid m-checkbox--brand m-checkbox--single">
                               <input type="checkbox" onclick="clickontoggle('<?=$device_data['id']?>');" class="sub_chk m-input" name="chk[]" value="<?=$device_data['id']?>">
                               <span></span>
                             </label>
                           </td>
-                          	<td><?=$device_data['title']?></td>
-              							<td><?=$device_data['carrier_title']?></td>
-              							<td><?=$device_data['storage_capacity']?></td>
-              							<td><?=$device_data['offer_new']?></td>
-              							<td><?=$device_data['offer_mint']?></td>
-              							<td><?=$device_data['offer_good']?></td>
-              							<td><?=$device_data['offer_fair']?></td>
-              							<td><?=$device_data['offer_broken']?></td>
-              							<td><?=$device_data['offer_damaged']?></td>
+                            <td>
+                              <input type="text" class="form-control m-input" id="title" value="<?=$device_data['title']?>" name = "title[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="carrier_title" value="<?=$device_data['carrier_title']?>" name = "carrier_title[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="storage_capacity" value="<?=$device_data['storage_capacity']?>" name = "storage_capacity[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_new" value="<?=$device_data['offer_new']?>" name = "offer_new[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_mint" value="<?=$device_data['offer_mint']?>" name = "offer_mint[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_good" value="<?=$device_data['offer_good']?>" name = "offer_good[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_fair" value="<?=$device_data['offer_fair']?>" name = "offer_fair[]"> 
+                            </td>
+                            <td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_broken" value="<?=$device_data['offer_broken']?>" name = "offer_broken[]"> 
+                            </td>
+              							<td>
+                              <input type="text" class="m-input--square form-control m-input" id="offer_damaged" value="<?=$device_data['offer_damaged']?>" name = "offer_damaged[]"> 
+                            </td>
         				  
-                          <td>
-                            <input type="text" class="m-input--square form-control m-input" id="ordering<?=$device_data['id']?>" value="<?=$device_data['ordering']?>" name="ordering[<?=$device_data['id']?>]">
-                          </td>
-                          <td Width="120">
-                            
-                            <a href="bulk_add_product.php?id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-        					<a href="controllers/bulk_upload.php?d_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
-							<a href="controllers/bulk_upload.php?c_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to copy this model?')"><i class="fa fa-copy"></i></a>
-                          </td>
                         </tr>
                         <?php }
                         }?>
@@ -190,7 +186,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-  $('.bulk_edit').on('click', function(e) {
+  $('.bulk_edit_save').on('click', function(e) {
     var ids = document.getElementById("ids").value;
     if(ids=="") {
       alert('Please first make a selection from the list.');
@@ -270,6 +266,6 @@ switch(target) {
 	break
 }
 });
-});
+    });
 
 </script>

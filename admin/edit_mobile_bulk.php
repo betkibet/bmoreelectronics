@@ -41,7 +41,7 @@ $brands_data=mysqli_query($db,'SELECT * FROM brand WHERE published=1');
 $categories_data=mysqli_query($db,'SELECT * FROM categories WHERE published=1');
 
 //Template file
-require_once("views/mobile/mobile_bulk_upload.php");
+require_once("views/mobile/edit_mobile_bulk.php");
 
 //Footer section
 //include("include/footer.php"); ?>
