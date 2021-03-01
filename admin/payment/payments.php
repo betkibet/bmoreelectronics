@@ -12,7 +12,7 @@ include("functions.php");
 
 // Check if paypal request or response
 if(!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
-	$item_name = 'Mobile Models';
+	$item_name = 'Models';
 	
     $querystring = '';
     $querystring .= "?item_name=".urlencode($item_name)."&";

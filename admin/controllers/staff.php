@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {
 	$query=mysqli_query($db,'DELETE FROM admin WHERE id="'.$post['d_id'].'" ');
@@ -54,9 +56,11 @@ if(isset($post['d_id'])) {
 	$email=real_escape_string($post['email']);
 	$type=real_escape_string($post['type']);
 	$status=real_escape_string($post['status']);
-	if($password)
-			$upd_password = ",`password`='".md5($password)."'";
-
+	$group_id=$post['group_id'];
+	if($password) {
+		$upd_password = ",`password`='".md5($password)."'";
+	}
+	
 	if($post['id']>0) {
 		$get_userdata=mysqli_query($db,'SELECT * FROM admin WHERE username="'.$post['username'].'" AND id!="'.$post['id'].'"');
 		$get_userdata_row=mysqli_fetch_assoc($get_userdata);
@@ -76,8 +80,13 @@ if(isset($post['d_id'])) {
 			exit();
 		}
 
-		$query=mysqli_query($db,"UPDATE `admin` SET `username`='".$username."'".$upd_password.",`email`='".$email."',`type`='admin',`status`='".$status."',`updated_date`='".date('Y-m-d H:i:s')."' WHERE id='".$post['id']."'");
+		$query=mysqli_query($db,"UPDATE `admin` SET `username`='".$username."'".$upd_password.",`email`='".$email."',`type`='admin',`status`='".$status."',`updated_date`='".date('Y-m-d H:i:s')."',`group_id`='".$group_id."' WHERE id='".$post['id']."'");
 		if($query=="1") {
+			if($password!="") {
+				$login_auth_token = get_big_unique_id();
+				mysqli_query($db,'UPDATE admin SET auth_token="'.$login_auth_token.'" WHERE id="'.$post['id'].'"');
+			}
+
 			$msg="Staff has been successfully updated.";
 			$_SESSION['success_msg']=$msg;
 		} else {
@@ -110,7 +119,7 @@ if(isset($post['d_id'])) {
 			setRedirect(ADMIN_URL.'edit_staff.php');
 		}
 		
-		$query=mysqli_query($db,"INSERT INTO `admin`(`username`, password, `email`, `type`, `status`, `added_date`) VALUES('".$username."','".md5($password)."','".$email."','admin','".$status."','".date('Y-m-d H:i:s')."')");
+		$query=mysqli_query($db,"INSERT INTO `admin`(`username`, password, `email`, `type`, `status`, `added_date`, `group_id`) VALUES('".$username."','".md5($password)."','".$email."','admin','".$status."','".date('Y-m-d H:i:s')."','".$group_id."')");
 		if($query=="1") {
 			$msg="Staff has been successfully added.";
 			$_SESSION['success_msg']=$msg;

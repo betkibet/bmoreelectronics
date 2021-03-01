@@ -21,28 +21,13 @@
                 </h3>
               </div>
             </div>
-            <?php /*?><div class="m-portlet__head-tools">
-              <ul class="m-portlet__nav">
-                <li class="m-portlet__nav-item">
-                  <form action="controllers/bulk_order.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li>
-              </ul>
-            </div><?php */?>
           </div>
           <div class="m-portlet__body">
             <!--begin: Datatable -->
             <div id="m_table_1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
 			  
+			  <?php
+			  if($prms_form_delete == '1') { ?>
 			  <div class="row">
 				<div class="col-sm-12">
 					<form action="controllers/bulk_order.php" method="POST">
@@ -51,6 +36,8 @@
 					</form>
 				</div>
 			  </div>
+			  <?php
+			  } ?>
 			  
               <div class="row">
                 <div class="col-sm-12" style="overflow:scroll;">
@@ -97,9 +84,13 @@
 							<td><?=$review_data['devices']?></td>
 							<td><?=$review_data['company_name']?></td>
 							<td><?=$review_data['content']?></td>
-							<td><?=date('m/d/Y h:i A',strtotime($review_data['date']))?></td>
+							<td><?=format_date($review_data['date']).' '.format_time($review_data['date'])?></td>
 							<td>
-								<a href="controllers/bulk_order.php?d_id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+								<?php
+								if($prms_form_delete == '1') { ?>
+								<a href="controllers/bulk_order.php?d_id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure to delete this record?')"><i class="la la-trash"></i></a>
+								<?php
+								} ?>
 							</td>
 						  </tr>
                       	<?php 

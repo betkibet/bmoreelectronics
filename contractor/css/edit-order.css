@@ -1,0 +1,321 @@
+.phone-details.modern-style-image .col-md-3 .block {
+  background: #fff;
+  border-radius: 10px;
+  min-height: inherit;
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.phone-details .block {
+  padding: 0 20px 20px 20px;
+  min-height: 290px;
+}
+
+.phone-details.modern-style-image .col-md-3 .block .title {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.modern-block__row {
+  border: 1px solid #0088cc;
+  -webkit-box-shadow: 0 0 22px #c5e0ff;
+  box-shadow: 0 0 22px #c5e0ff;
+  border-radius: 0;
+  padding: 12px;
+  z-index: 1;
+  position: relative;
+  margin-left: 57px;
+}
+
+.modern-block__row.opened:after {
+  content: '';
+  display: block;
+  width: 0;
+  position: absolute;
+  left: -14px;
+  top: 19px;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-right: 14px solid #0088cc;
+  border-bottom: 12px solid transparent;
+  z-index: 1;
+}
+
+.modern-block__row.opened:before {
+  content: '';
+  display: block;
+  width: 0;
+  position: absolute;
+  left: -13px;
+  top: 19px;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-right: 14px solid #fff;
+  border-bottom: 12px solid transparent;
+  z-index: 2;
+}
+
+.modern-text__row.modern-block__row.opened {
+  padding-left: 20px;
+}
+
+.modern-block__content {
+  padding: 18px 0 0 0;
+}
+
+.modern-text__title {
+  display: inline-block;
+}
+
+.modern-block__content .form-group {
+  margin-bottom: 12px;
+}
+
+.modern-block__content .form-group .options_values {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.modern-block__row.opened .modern-text__num {
+  margin-left: -75px;
+}
+
+.modern-block__row.opened .modern-text__title {
+  margin-left: 0;
+}
+
+.modern-text__row.selected .modern-text__num b {
+  background: #0088cc;
+}
+
+.modern-text__row.modern-block__row.selected .modern-block__selected {
+  float: right;
+}
+
+.modern-text__area {
+  float: left;
+}
+
+.modern-text__row.modern-block__row.opened .modern-text__area {
+  float: none;
+}
+
+.modern-text__row.modern-block__row.opened {
+  z-index: 1;
+}
+
+.modern-text__num b {
+  margin-top: 0;
+  line-height: 35px;
+}
+
+.modern-block__selected {
+  border: 1px solid #ccc;
+  min-width: inherit;
+  font-size: 13px;
+  font-size: 13px;
+  border-radius: 20px;
+  min-height: 38px;
+  padding: 9px 46px 4px 19px;
+}
+
+#model-steps-select {
+  padding-top: 0;
+}
+
+#model-steps-select .phone-details-height .h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+#model-steps-select .heading {
+  float: left;
+  max-width: 500px;
+}
+
+#model-steps-select .heading h3 {
+  font-weight: 500;
+  line-height: 38px;
+}
+
+#model-steps-select .heading p {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+#model-steps-select .btn-blue {
+  background-color: #fff;
+  color: #0088cc;
+  border-color: #0088cc;
+  cursor: pointer;
+}
+
+#model-steps-select .btn-blue:hover {
+  background-color: #0088cc;
+  color: #fff;
+}
+
+.modern-text__num {
+  margin-left: -6px;
+}
+
+.option_value_outer {
+  margin-bottom: 20px;
+}
+
+.modern-block__content .options_values {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.modern-block__content .options_values .btn {
+  border-radius: 3px;
+  padding: 6px 12px;
+}
+
+.modern-block__content .options_values .sel {
+  background-color: #0088cc;
+  color: #fff;
+}
+
+.modern-text__row.selected .select-area__title:after,
+.modern-text__row.selected .modern-block__selected:after {
+  width: 27px;
+  height: 27px;
+  right: 4px;
+  top: 3px;
+  border: 1px solid #ccc;
+  background: url(../images/edit_icon.png) no-repeat 50% 50%;
+}
+
+.modern-text__title {
+  margin-left: 54px;
+}
+
+.modern-text__row.selected .modern-text__title {
+  color: #0088cc;
+  font-weight: 500;
+}
+
+#model-steps-select .btn-gray {
+  float: right;
+}
+
+.modern-block { position: relative; margin: 20px auto; z-index: 20 }
+.modern-image__area-device, .modern-image__area-iphone { text-align: center; margin-top: 0; box-shadow: 0 0 40px #ccc; border-radius: 20px; padding: 20px; height: 340px }
+.modern-image__area-device img, .modern-image__area-iphone img { display: none!important; max-height: 100%; width: auto }
+.modern-image__area-device img.selected, .modern-image__area-iphone img.selected { display: inline-block!important }
+#device-prop-area { position: relative;margin-left: 35px; }
+.modern-text__row, .modern-block__row.disabled, .modern-text__row.modern-block__row.selected, .modern-text__row.device-base-row, .modern-text__row.device-base-row.disabled { min-height: 44px; margin: 8px 0; position: relative }
+.modern-text__area, .modern-text__content, .modern-block__selected { display: inline-block; vertical-align: top }
+.modern-text__row .modern-text__num { overflow: hidden }
+.modern-text__num { border: 2px solid #dcdcdc; border-radius: 30px; display: inline-block; font-weight: 700; font-size: 17px; margin-right: 20px; position: absolute; width: 38px; height: 38px; text-align: center; z-index: 1; background: #fff }
+.select-area-row, .select-area-row:hover { color: #222; padding: 6px 20px; display: block; text-decoration: none }
+.select-area-row:hover { background: #f5f5f5 }
+.select-area__title span.select-arrow { display: inline-block; width: 20px; position: absolute; top: 8px; right: 0 }
+.select-area__title span.select-arrow:before { content: ''; position: absolute; right: 14px; width: 10px; height: 1px; background: #9e9e9e; transform: rotate(-50deg); top: 21px }
+.select-area__title span.select-arrow:after { content: ''; position: absolute; right: 20px; width: 10px; height: 1px; background: #9e9e9e; transform: rotate(50deg); top: 21px }
+.modern-text__num b { margin-top: 6px; display: block }
+.modern-text__row .modern-selected, .modern-text__row.selected .modern-num { display: none }
+.modern-text__num b { margin-top: 0px; display: block }
+.modern-text__title { font-size: 18px; vertical-align: top; position: relative; padding: 0 0 0 50px; display: inline; top: 1px; line-height: 2.2 }
+.modern-block .modern-block__content a, .modern-block #question span { min-width: 144px; cursor: pointer; text-decoration: none }
+.modern-text__row.selected .select-area__title, .modern-block__selected, .modern-block__content a, #question span, .condition-row { background: #ffffff; box-shadow: none; border-radius: 8px; padding: 8px 30px 6px; font-size: 18px; font-weight: 500; }
+.modern-block__content a, #question span { display: inline-block; margin-right: 10px; color: #222; text-align: center; margin-bottom: 10px;}
+.modern-text__help { background: #e2e2e2; color: #000; vertical-align: top; position: relative; top: 8px; width: 22px; height: 22px; line-height: 1.4; margin-left: 10px; z-index: 20 }
+.modern-block__selected { position: relative; display: none }
+.select-area__title, .modern-block__selected { min-width: 156px; max-width: 220px; text-align: center; min-height: 40px }
+.modern-block__selected { max-width: 420px; }
+.modern-text__row.disabled .modern-text__help, .modern-text__row .modern-disabled { display: none }
+.modern-block__row.disabled, .modern-text__row.modern-block__row.selected { border: 1px solid transparent; padding: 0 0 0 0px; margin: 18px auto; box-shadow: none }
+.modern-text__row { padding-left: 10px }
+.modern-text__row.selected .modern-text__num { background: #716aca; border: 2px solid; color: #fff; font-size: 26px }
+.modern-text__row.selected .modern-text__num b { font-weight: 400; left: -2px; top: -2px; position: relative; background: #716aca; width: 38px; height: 38px; border-radius: 20px; cursor: pointer; border: 2px solid; box-shadow: 0 0; margin: 0 }
+.modern-selected:before { content: ''; position: absolute; right: 8px; width: 15px; height: 2px; background: #fff; transform: rotate(-50deg); top: 18px }
+.modern-selected:after { content: ''; position: absolute; right: 18px; width: 8px; height: 2px; background: #fff; transform: rotate(50deg); top: 20px }
+.modern-text__row.selected .modern-selected { display: block }
+.modern-text__row.modern-block__row.selected .modern-block__selected { display: inline-block; cursor: pointer }
+.modern-text__row.selected .select-area__title:after, .modern-text__row.selected .modern-block__selected:after { content: ''; transform: rotate(0); right: -12px; background: #f3f3f3 url(https://d2um6umu4gwssp.cloudfront.net/images/logo_sprite.png) no-repeat -114px -63px; top: -12px; position: absolute; border-radius: 50px; width: 34px; height: 34px; border: 2px solid #716aca }
+.modern-text__row.disabled .modern-text__content { display: none }
+.price-area, .mobile-block, .modern-text__row.device-base-row.selected span.select-arrow, .modern-block__row.disabled .modern-block__content, .modern-text__row.modern-block__row.selected .modern-block__content, .modern-text__row.selected .modern-text__help { display: none }
+.modern .modern-text__row.disabled { background: 0; opacity: 1 }
+.modern-text__row.modern-block__row.disabled .modern-text__area { white-space: nowrap }
+.modern-text__area { width: auto; padding-right: 20px; white-space: normal }
+.modern-text__row.modern-block__row.opened .modern-text__area, #questions .modern-text__row.opened span.modern-text__area, .question-base-row.opened span.modern-text__area { width: auto }
+.modern-text__row.modern-block__row.opened { z-index: 20 }
+.modern-text__row.selected .select-area__title:hover, .modern-text__row.selected .modern-block__selected:hover, .modern-text__row.selected .modern-block__selected:hover:after { background-color: #e6e6e6 }
+.modern-block__content a.carrier-row { min-width: 100px; width: 100px; padding: 60px 0 10px; background-position: 100px; background-repeat: no-repeat; vertical-align: top }
+.modern-block__content a.carrier-row.carrier-at-t { background-position: 25px 6px }
+.modern-block__content a.carrier-row.carrier-verizon { background-position: -46px 10px }
+.modern-block__content a.carrier-row.carrier-t-mobile { background-position: -122px 8px }
+.modern-block__content a.carrier-row.carrier-sprint { background-position: -198px 8px }
+.modern-block__content a.carrier-row.carrier-unlocked, .modern-block__content a.carrier-row.carrier-wifi-cellular-any-carriers, .modern-block__content a.carrier-row.carrier-wi-fi-only { background-position: -274px 10px }
+@media(max-width:1200px) {
+.select-area .iphone-select-area__list { left: -240px; }
+.block-condition { width: 100% }
+.block-price { position: relative; width: 100%; height: auto; border: 0; padding: 0; text-align: left }
+.condition-block-row { padding-bottom: 20px; min-height: 10px; }
+}
+@media(max-width:1040px) {
+.select-area__title, .modern-block__selected { max-width: 190px; }
+}
+@media(max-width:990px) {
+.modern-text__area { width: 260px; }
+}
+@media(max-width:850px) {
+.modern-text__area { width: 200px; }
+}
+@media(max-width:780px) {
+.col-md-4.modern-image { float: none; clear: both; width: 100%; max-width: 400px; margin: 0 auto; }
+.col-md-8.modern-text { clear: both; float: none; width: 100%; padding-top: 34px; }
+.modern-text__area { width: 320px; }
+}
+@media(max-width:648px) {
+.select-area__title span.select-arrow, .select-area__title, .modern-image, .device-sell-title, .modern-text__row.selected .modern-text__title { display: none }
+.select-area .iphone-select-area__list { width: 304px }
+.select-area .iphone-select-area__list { left: 0 }
+.modern-text__title { top: 3px; font-size: 16px; padding: 0 0 0 46px }
+.modern-text__row.opened .modern-text__title { padding: 0 0 0 30px }
+.modern .modern-text__row.modern-block__row, .modern-text__row { margin: 6px 0; padding: 0; min-height: 40px }
+.modern-text__row span.modern-text__area { padding: 0 16px }
+.modern-block__content { padding: 14px 14px 0 }
+.modern-text__row.selected .select-area__title, .modern-text__row.selected .modern-block__selected { max-width: 100% }
+.modern-text__row.selected .select-area__title, .modern-text__row.modern-block__row.selected .modern-block__selected { display: block; border: 0; background: 0; padding: 8px 14px 6px 0 }
+.modern-text__row.modern-block__row.selected .modern-block__selected { height: 38px; overflow: hidden; text-align: right; padding-right: 44px }
+.modern-text__row.selected .select-area__title { text-align: right; padding-right: 44px }
+.mobile-block { display: inline-block; padding-right: 4px; line-height: 2; margin-top: -4px }
+.modern-text__row span.modern-text__area, .col-md-8.modern-text, .col-md-12.modern { padding: 0 }
+.modern .modern-text__row, .modern .modern-text__row.disabled { background: #ececec; border-radius: 22px }
+.modern .modern-text__row.disabled { overflow: hidden }
+.modern-text__row.modern-block__row.opened { background: #fff }
+.modern-text__area { position: absolute }
+.modern-text__row.opened .modern-text__area { position: relative; display: block; padding: 0 14px }
+.modern-text__row.selected .modern-text__num, .modern-text__row.selected .modern-text__num b { border: 2px solid }
+.modern-text__row.modern-block__row.opened .modern-block__content { padding: 12px 14px 4px }
+.modern-text__row.selected .select-area__title:after, .modern-text__row.selected .modern-block__selected:after { top: 0; right: 0 }
+.modern-block .modern-block__content a, .modern-block #question span { min-width: 100px }
+.modern-text__content { display: block }
+.modern .modern-text__row.device-base-row { min-height: 38px }
+.modern-block { margin: 0 }
+.modern-text__row.condition-block.opened .modern-block__content { padding: 8px 14px 0 24px }
+.modern-text__num { left: 0 }
+.select-area { position: absolute; height: 100%; width: 100%; top: 0; left: 0 }
+.modern-text__row.device-base-row.opened .select-area__title span { display: none }
+.modern-text__row.device-base-row.opened .select-area__title { border: 0; box-shadow: none; position: absolute; left: 0; top: 0; height: 38px; width: 100%; display: block; padding: 0 }
+.modern-text__area { width: 304px }
+.trade-block-content .cat-backgroud { display: none }
+.trade-block-content .cat-text { width: 100% }
+}
+.modern-loaded .animated { animation-duration: 0; }
+.modern-text { text-align: left; }
+.modern-text__title { margin-left: 50px; display: block; padding-left: 0; font-size: 16px !important; }
+.modern-text__num { float: left; margin-left: 0; display: block; }
+.phone-details.modern-style-image .col-md-3 { border: 0; box-shadow: none; }
+.phone-details.modern-style-image .col-md-3 .block { background: #fff; border-radius: 10px; min-height: inherit; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); }
+.phone-details.modern-style-image .block .phone-select { margin-top: 0px; }
+.device-get-price .btn.btn-primary { background: #716aca; }
+.modern-block__content a { background: #716aca; color: #fff !important; }

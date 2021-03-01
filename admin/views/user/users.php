@@ -9,7 +9,7 @@
     <!-- BEGIN: Left Aside -->
     <?php include("include/navigation.php"); ?>
     <!-- END: Left Aside -->
-    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class="m-grid__item m-grid__item--fluid m-wrapper"> 
       <div class="m-content">
         <?php require_once('confirm_message.php');?>
         <div class="m-portlet m-portlet--mobile">
@@ -23,6 +23,8 @@
             </div>
 			<div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			  	<?php
+				if($prms_customer_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="edit_user.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -33,19 +35,8 @@
                     </span>
                   </a>
                 </li>
-                <?php /*?><li class="m-portlet__nav-item">
-                  <form action="controllers/user.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button name="bulk_remove" class="bulk_remove btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li><?php */?>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -59,10 +50,10 @@
                     <form method="post">
                       <div class="input-group">
                         <input type="search" class="form-control form-control-md" placeholder="Search By Name, Email, Phone" name="filter_by" id="filter_by" value="<?=$_REQUEST['filter_by']?>">
-                        <button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm float-right ml-2 searchbx" type="submit" name="search">Go</button>
+                        <button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs float-right ml-2 searchbx" type="submit" name="search">Go</button>
                         <?php
 						if($_REQUEST['filter_by']) {
-        					echo '<a href="users.php"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm float-right ml-2" type="button">Clear</button></a>';
+        					echo '<a href="users.php"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs float-right ml-2" type="button">Clear</button></a>';
 						} ?>
                       </div>
                     </form>
@@ -74,14 +65,13 @@
 			  <div class="row">
                 <div class="col-sm-12">
                   <div id="m_table_1_filter" class="dataTables_filter float-left">
-                    <form method="get">
+                    <form method="post">
                         <div class="input-group">
-                          <input type="search" class="form-control m-input" placeholder="Name or Email or Phone" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
-						  	
-                          <button class="btn btn-alt btn-primary ml-2 searchbx" type="submit">Search <i class="la la-search"></i></button>
+                          <input type="search" class="form-control m-input" placeholder="Name or Email or Phone" name="filter_by" id="filter_by" value="<?=_dt_parse($post['filter_by'])?>" autocomplete="nope">
+                          <button class="btn btn-alt btn-primary ml-2 searchbx" name="search" type="submit">Search <i class="la la-search"></i></button>
                           <?php
 						  if($post['filter_by']!="") {
-          					echo '<a href="users.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
+          					echo '<a href="users.php?clear" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
 						  } ?>
                         </div>
                     </form>
@@ -89,19 +79,19 @@
                 </div>
               </div>
 			  
+			  <?php
+			  if($prms_customer_delete == '1') { ?>
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
 					<form action="controllers/user.php" method="POST">
 						<input type="hidden" name="ids" id="ids" value="">
 						<button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove"><span><i class="la la-remove"></i><span>Bulk Remove</span></span></button>
-					<button class="btn btn-info" ><a href="javascript:void(0)" id="export-to-csv" style="text-decoration: none; color: #fff;">Export to csv</a></button>
 					</form>
-					<form action="controllers/user.php" method="post" id="export-form">
-						<input type="hidden" value='' id='hidden-type' name='ExportType'/>
-					  </form>
 				</div>
 			  </div>
-			  
+			  <?php
+			  } ?>
+					
               <div class="row">
                 <div class="col-sm-12">
                 <form action="controllers/device.php" method="post">
@@ -117,10 +107,11 @@
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Email</th>
-						<th>Total Trade-in</th>
+						<th width="150">Assign Orders</th>
 						<th>Phone</th>
 						<th>Date</th>
-						<th width="160">Actions</th>
+						<th>Type</th>
+						<th width="220">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -128,34 +119,51 @@
 					$num_rows = mysqli_num_rows($user_query);
 					if($num_rows>0) {
 						while($customer_data=mysqli_fetch_assoc($user_query)) {
-						  $o_query=mysqli_query($db,"SELECT COUNT(*) AS num_of_orders FROM orders AS o WHERE o.status!='partial' AND user_id='".$customer_data['id']."'");
-						  $order_data = mysqli_fetch_assoc($o_query); ?>
-						  <tr>
-							<td>
-							  <label class="m-checkbox m-checkbox--brand m-checkbox--single m-checkbox--solid">
-								<input type="checkbox" onclick="clickontoggle('<?=$customer_data['id']?>');" class="sub_chk m-input" name="chk[]" value="<?=$customer_data['id']?>">
-								<span></span>
-							  </label>
-							</td>
+							$order_reports_data = get_order_reports($customer_data['id'], 0);
+							$statastics_arr = array(
+									'Awaiting'=>array('nums'=>$order_reports_data['num_of_awaiting_orders'],'file_nm'=>"awaiting_orders.php"),
+									'Unpaid'=>array('nums'=>$order_reports_data['num_of_unpaid_orders'],'file_nm'=>"orders.php"),
+									'Paid'=>array('nums'=>$order_reports_data['num_of_paid_orders'],'file_nm'=>"paid_orders.php"),
+									'Archive'=>array('nums'=>$order_reports_data['num_of_archive_orders'],'file_nm'=>"archive_orders.php")
+							); ?>
+							<tr>
+								<td>
+								  <label class="m-checkbox m-checkbox--brand m-checkbox--single m-checkbox--solid">
+									<input type="checkbox" onclick="clickontoggle('<?=$customer_data['id']?>');" class="sub_chk m-input" name="chk[]" value="<?=$customer_data['id']?>">
+									<span></span>
+								  </label>
+								</td>
 								<td><?=$customer_data['first_name']?></td>
 								<td><?=$customer_data['last_name']?></td>
 								<td><?=$customer_data['email']?></td>
 								<td>
-								<?=($order_data['num_of_orders']>0?'<a href="orders.php?user_id='.$customer_data['id'].'">'.$order_data['num_of_orders'].'</a>':'')?>
+								<?php
+								foreach($statastics_arr as $statastics_k=>$statastics_v_d) {
+									if($statastics_v_d['nums']>0) {
+										echo '<b>'.$statastics_k.':</b> <a href="'.$statastics_v_d['file_nm'].'?user_id='.$customer_data['id'].'">'.$statastics_v_d['nums'].'</a><br>';
+									}
+								} ?>
 								</td>
 								<td><?=$customer_data['phone']?></td>
-								<td><?=date("m/d/Y",strtotime($customer_data['date']))?></td>
-								<td Width="190">
+								<td><?=format_date($customer_data['date'])?></td>
+								<td><?=ucwords($customer_data['user_type'])?></td>
+								<td Width="220">
 								<?php
 								if($customer_data['status']==1) {
-									echo '<a href="controllers/user.php?p_id='.$customer_data['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Active</button></a>';
+									echo '<a href="controllers/user.php?p_id='.$customer_data['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Active</button></a>';
 								} elseif($customer_data['status']==0) {
-									echo '<a href="controllers/user.php?p_id='.$customer_data['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Inactive</button></a>';
+									echo '<a href="controllers/user.php?p_id='.$customer_data['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Inactive</button></a>';
+								}
+								if($prms_customer_edit == '1') { ?>
+								<a href="edit_user.php?id=<?=$customer_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+								<?php
+								}
+								if($prms_customer_delete == '1') { ?>
+								<a href="controllers/user.php?d_id=<?=$customer_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+								<?php
 								} ?>
-								<a href="edit_user.php?id=<?=$customer_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-								<a href="controllers/user.php?d_id=<?=$customer_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
 							</td>
-						  </tr>
+							</tr>
                       	<?php 
 					  	}
                       } ?>
@@ -164,7 +172,10 @@
                 </form>
                 </div>
               </div>
-              <?php echo $pages->page_links(); ?>
+              <?php
+			  $current_url_params = get_all_get_params();
+			  $current_url_params = ($current_url_params?$current_url_params.'&':'?');
+			  echo $pages->page_links($current_url_params); ?>
             </div>
           </div>
         </div>
@@ -273,18 +284,4 @@ function clickontoggle(id) {
 		}
 	});
 }
-$(document).ready(function() {
-jQuery('#export-to-csv').bind("click", function() {
-var target = $(this).attr('id');
-switch(target) {
-	case 'export-to-csv' :
-	$('#hidden-type').val(target);
-	//alert($('#hidden-type').val());
-	$('#export-form').submit();
-	$('#hidden-type').val('');
-	break
-}
-});
-});
-
 </script>

@@ -7,22 +7,9 @@ function check_form(a) {
 		return false;
 	}
 
-	<?php /*?><?php
-	if($brand_data['image']=="") { ?>
-	var str_image = a.image.value.trim();
-	if(str_image == "") {
-		alert('Please select image');
-		return false;
+	if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
 	}
-	<?php
-	} ?>
-
-	if(a.description.value.trim()==""){
-		alert('Please enter description');
-		a.description.focus();
-		a.description.value='';
-		return false;
-	}<?php */?>
 }
 
 function checkFile(fieldObj) {
@@ -97,9 +84,6 @@ function checkFile(fieldObj) {
 										<div class="form-group m-form__group">
 											<label for="field-1">Title :</label>
 											<input type="text" class="form-control m-input" id="first_name" value="<?=$brand_data['title']?>" name="title">
-											<!-- <span class="m-form__help">
-                        Please enter your username
-                      </span> -->
 										</div>
 										<div class="form-group m-form__group">
 											<label for="fileInput">Icon :</label>
@@ -120,13 +104,13 @@ function checkFile(fieldObj) {
                     					</div>
 										
 										<div class="form-group m-form__group">
-											<label for="sub_title">Sub Title</label>
-											<textarea class="form-control m-input summernote" name="sub_title" rows="5"><?=$brand_data['sub_title']?></textarea>
+											<label for="sub_title">Content Title :</label>
+											<input type="text" class="form-control m-input" id="sub_title" value="<?=$brand_data['sub_title']?>" name="sub_title">
 										</div>
 										
 										<div class="form-group m-form__group">
-											<label for="short_description">Short Description</label>
-											<textarea class="form-control m-input summernote" name="short_description" rows="5"><?=$brand_data['short_description']?></textarea>
+											<label for="short_description">Short Description :</label>
+											<textarea class="form-control m-input" name="short_description" rows="4"><?=$brand_data['short_description']?></textarea>
 										</div>
 										
 										<div class="form-group m-form__group">
@@ -141,7 +125,7 @@ function checkFile(fieldObj) {
 											</label>
 											<div class="m-radio-inline">
 												<label class="m-radio">
-													<input type="radio" id="published" name="published" value="1" <?php if(!$brand_id){echo 'checked="checked"';}?> <?=($brand_data['published']==1?'checked="checked"':'')?>>
+													<input type="radio" id="published" name="published" value="1" <?php if(!$id){echo 'checked="checked"';}?> <?=($brand_data['published']==1?'checked="checked"':'')?>>
 													Yes
 													<span></span>
 												</label>

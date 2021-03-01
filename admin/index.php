@@ -9,11 +9,23 @@ if(!empty($_SESSION['is_admin']) && $_SESSION['admin_username']!="") {
 }
 
 $cookie_data = $_COOKIE;
-if($cookie_data['remember_me'] == '1' && $cookie_data['username']!="" && $cookie_data['password']!="") {
+if(isset($cookie_data['admin_ck_remember_me']) && $cookie_data['admin_ck_remember_me'] == '1' && isset($cookie_data['admin_ck_username']) && $cookie_data['admin_ck_username']!="" && isset($cookie_data['admin_ck_password']) && $cookie_data['admin_ck_password']!="") {
 	$year = time() + 172800;
-	setcookie('username', $cookie_data['username'], $year, "/");
-	setcookie('password', $cookie_data['password'], $year, "/");
-	setcookie('remember_me', '1', $year, "/");
+	setcookie('admin_ck_username', $cookie_data['admin_ck_username'], $year, "/");
+	setcookie('admin_ck_password', $cookie_data['admin_ck_password'], $year, "/");
+	setcookie('admin_ck_remember_me', '1', $year, "/");
+}
+
+if(empty($cookie_data['admin_ck_username'])) {
+	$cookie_data['admin_ck_username'] = "";
+}
+
+if(empty($cookie_data['admin_ck_password'])) {
+	$cookie_data['admin_ck_password'] = "";
+}
+
+if(empty($cookie_data['admin_ck_remember_me'])) {
+	$cookie_data['admin_ck_remember_me'] = "";
 }
 
 //Template file

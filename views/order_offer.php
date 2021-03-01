@@ -25,7 +25,7 @@ $sum_of_orders=get_order_price($order_id);
 
 if($order_data_before_saved['promocode_id']>0 && $order_data_before_saved['promocode_amt']>0) {
 	$promocode_amt = $order_data_before_saved['promocode_amt'];
-	$discount_amt_label = "Surcharge:";
+	$discount_amt_label = "Surcharge";
 	if($order_data_before_saved['discount_type']=="percentage")
 		$discount_amt_label = "Surcharge (".$order_data_before_saved['discount']."% of Initial Quote):";
 

@@ -1,0 +1,1940 @@
+[23-Nov-2020 15:45:53 UTC] 
+[23-Nov-2020 15:45:53 UTC] Selected Field: 
+[23-Nov-2020 15:45:53 UTC] Field Type: network
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1911
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1912
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1913
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1914
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1915
+[23-Nov-2020 15:45:53 UTC] f_fields_id:-network:1916
+[23-Nov-2020 15:46:01 UTC] -network:1912
+[23-Nov-2020 15:46:01 UTC] Selected Field: -network:1912
+[23-Nov-2020 15:46:01 UTC] Field Type: storage
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1001
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1002
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1003
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1004
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1005
+[23-Nov-2020 15:46:01 UTC] f_fields_id:-network:1912-storage:1006
+[23-Nov-2020 15:46:29 UTC] -network:1912-storage:1005
+[23-Nov-2020 15:46:29 UTC] Selected Field: -network:1912-storage:1005
+[23-Nov-2020 15:46:29 UTC] Field Type: condition
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3590
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3591
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3592
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3593
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3594
+[23-Nov-2020 15:46:29 UTC] f_fields_id:-network:1912-storage:1005-condition:3595
+[23-Nov-2020 15:46:34 UTC] -network:1912-storage:1005-condition:3590
+[23-Nov-2020 15:46:34 UTC] Selected Field: -network:1912-storage:1005-condition:3590
+[23-Nov-2020 15:46:34 UTC] Field Type: accessories
+[23-Nov-2020 15:46:34 UTC] f_fields_id:-network:1912-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:46:34 UTC] f_fields_id:-network:1912-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 15:46:41 UTC] -network:1912-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:46:41 UTC] Selected Field: -network:1912-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:46:41 UTC] Field Type: 
+[23-Nov-2020 15:46:41 UTC] 115 = -network:1912-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 15:46:41 UTC] {"network":"1912","storage":"1005","condition":"3590","accessories":"231"}
+[23-Nov-2020 15:47:43 UTC] 
+[23-Nov-2020 15:47:43 UTC] Selected Field: 
+[23-Nov-2020 15:47:43 UTC] Field Type: network
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1911
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1912
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1913
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1914
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1915
+[23-Nov-2020 15:47:43 UTC] f_fields_id:-network:1916
+[23-Nov-2020 15:47:49 UTC] -network:1911
+[23-Nov-2020 15:47:49 UTC] Selected Field: -network:1911
+[23-Nov-2020 15:47:49 UTC] Field Type: storage
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1001
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1002
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1003
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1004
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1005
+[23-Nov-2020 15:47:49 UTC] f_fields_id:-network:1911-storage:1006
+[23-Nov-2020 15:47:57 UTC] -network:1911-storage:1005
+[23-Nov-2020 15:47:57 UTC] Selected Field: -network:1911-storage:1005
+[23-Nov-2020 15:47:57 UTC] Field Type: condition
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3591
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3592
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3593
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3594
+[23-Nov-2020 15:47:57 UTC] f_fields_id:-network:1911-storage:1005-condition:3595
+[23-Nov-2020 15:48:03 UTC] -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:48:03 UTC] Selected Field: -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:48:03 UTC] Field Type: accessories
+[23-Nov-2020 15:48:03 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:48:03 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 15:48:07 UTC] -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:48:07 UTC] Selected Field: -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:48:07 UTC] Field Type: 
+[23-Nov-2020 15:48:07 UTC] 115 = -network:1911-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 15:48:07 UTC] {"network":"1911","storage":"1005","condition":"3590","accessories":"231"}
+[23-Nov-2020 15:56:02 UTC] 
+[23-Nov-2020 15:56:02 UTC] Selected Field: 
+[23-Nov-2020 15:56:02 UTC] Field Type: network
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1911
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1912
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1913
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1914
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1915
+[23-Nov-2020 15:56:02 UTC] f_fields_id:-network:1916
+[23-Nov-2020 15:56:07 UTC] -network:1911
+[23-Nov-2020 15:56:07 UTC] Selected Field: -network:1911
+[23-Nov-2020 15:56:07 UTC] Field Type: storage
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1001
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1002
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1003
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1004
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1005
+[23-Nov-2020 15:56:07 UTC] f_fields_id:-network:1911-storage:1006
+[23-Nov-2020 15:56:14 UTC] -network:1911-storage:1005
+[23-Nov-2020 15:56:14 UTC] Selected Field: -network:1911-storage:1005
+[23-Nov-2020 15:56:14 UTC] Field Type: condition
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3591
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3592
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3593
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3594
+[23-Nov-2020 15:56:14 UTC] f_fields_id:-network:1911-storage:1005-condition:3595
+[23-Nov-2020 15:56:19 UTC] -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:56:19 UTC] Selected Field: -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:56:19 UTC] Field Type: accessories
+[23-Nov-2020 15:56:19 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:56:19 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 15:56:24 UTC] -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:56:24 UTC] Selected Field: -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:56:24 UTC] Field Type: 
+[23-Nov-2020 15:56:24 UTC] 115 = -network:1911-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 15:56:24 UTC] {"network":"1911","storage":"1005","condition":"3590","accessories":"231"}
+[23-Nov-2020 15:56:24 UTC] mobilekkk{"network":"AT&T","storage":"256GB","connectivity":null,"condition":"New","model":null,"case_size":null,"ram":"","graphics_card":null,"processor":null,"band_included":null,"accessories":"CHARGER"}
+[23-Nov-2020 15:58:54 UTC] 
+[23-Nov-2020 15:58:54 UTC] Selected Field: 
+[23-Nov-2020 15:58:54 UTC] Field Type: network
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1911
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1912
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1913
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1914
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1915
+[23-Nov-2020 15:58:54 UTC] f_fields_id:-network:1916
+[23-Nov-2020 15:59:06 UTC] -network:1911
+[23-Nov-2020 15:59:06 UTC] Selected Field: -network:1911
+[23-Nov-2020 15:59:06 UTC] Field Type: storage
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1001
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1002
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1003
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1004
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1005
+[23-Nov-2020 15:59:06 UTC] f_fields_id:-network:1911-storage:1006
+[23-Nov-2020 15:59:13 UTC] -network:1911-storage:1005
+[23-Nov-2020 15:59:13 UTC] Selected Field: -network:1911-storage:1005
+[23-Nov-2020 15:59:13 UTC] Field Type: condition
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3591
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3592
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3593
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3594
+[23-Nov-2020 15:59:13 UTC] f_fields_id:-network:1911-storage:1005-condition:3595
+[23-Nov-2020 15:59:18 UTC] -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:59:18 UTC] Selected Field: -network:1911-storage:1005-condition:3590
+[23-Nov-2020 15:59:18 UTC] Field Type: accessories
+[23-Nov-2020 15:59:18 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:59:18 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 15:59:23 UTC] -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:59:23 UTC] Selected Field: -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 15:59:23 UTC] Field Type: 
+[23-Nov-2020 15:59:23 UTC] 115 = -network:1911-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 15:59:23 UTC] {"network":"1911","storage":"1005","condition":"3590","accessories":"231"}
+[23-Nov-2020 15:59:23 UTC] mobilekkk{"network":"AT&T","storage":"256GB","connectivity":null,"condition":"New","model":null,"case_size":null,"ram":"","graphics_card":null,"processor":null,"band_included":null,"accessories":"CHARGER"}
+[23-Nov-2020 15:59:23 UTC] SELECT * FROM model_catalog WHERE model_id='' AND network='AT&T' AND storage='256GB'
+[23-Nov-2020 16:05:23 UTC] 
+[23-Nov-2020 16:05:23 UTC] Selected Field: 
+[23-Nov-2020 16:05:23 UTC] Field Type: network
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1911
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1912
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1913
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1914
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1915
+[23-Nov-2020 16:05:23 UTC] f_fields_id:-network:1916
+[23-Nov-2020 16:05:32 UTC] -network:1911
+[23-Nov-2020 16:05:32 UTC] Selected Field: -network:1911
+[23-Nov-2020 16:05:32 UTC] Field Type: storage
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1001
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1002
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1003
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1004
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1005
+[23-Nov-2020 16:05:32 UTC] f_fields_id:-network:1911-storage:1006
+[23-Nov-2020 16:05:38 UTC] -network:1911-storage:1005
+[23-Nov-2020 16:05:38 UTC] Selected Field: -network:1911-storage:1005
+[23-Nov-2020 16:05:38 UTC] Field Type: condition
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3591
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3592
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3593
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3594
+[23-Nov-2020 16:05:38 UTC] f_fields_id:-network:1911-storage:1005-condition:3595
+[23-Nov-2020 16:05:43 UTC] -network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:05:43 UTC] Selected Field: -network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:05:43 UTC] Field Type: accessories
+[23-Nov-2020 16:05:43 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:05:43 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 16:05:49 UTC] -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:05:49 UTC] Selected Field: -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:05:49 UTC] Field Type: 
+[23-Nov-2020 16:05:49 UTC] 115 = -network:1911-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 16:05:49 UTC] {"network":"1911","storage":"1005","condition":"3590","accessories":"231"}
+[23-Nov-2020 16:05:49 UTC] mobilekkk{"network":"AT&T","storage":"256GB","connectivity":null,"condition":"New","model":null,"case_size":null,"ram":"","graphics_card":null,"processor":null,"band_included":null,"accessories":"CHARGER"}
+[23-Nov-2020 16:05:49 UTC] SELECT * FROM model_catalog WHERE model_id='115' AND network='AT&T' AND storage='256GB'
+[23-Nov-2020 16:10:37 UTC] 
+[23-Nov-2020 16:10:37 UTC] Selected Field: 
+[23-Nov-2020 16:10:37 UTC] Field Type: network
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1911
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1912
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1913
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1914
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1915
+[23-Nov-2020 16:10:37 UTC] f_fields_id:-network:1916
+[23-Nov-2020 16:10:42 UTC] -network:1911
+[23-Nov-2020 16:10:42 UTC] Selected Field: -network:1911
+[23-Nov-2020 16:10:42 UTC] Field Type: storage
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1001
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1002
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1003
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1004
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1005
+[23-Nov-2020 16:10:42 UTC] f_fields_id:-network:1911-storage:1006
+[23-Nov-2020 16:10:48 UTC] -network:1911-storage:1005
+[23-Nov-2020 16:10:48 UTC] Selected Field: -network:1911-storage:1005
+[23-Nov-2020 16:10:48 UTC] Field Type: condition
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3591
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3592
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3593
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3594
+[23-Nov-2020 16:10:48 UTC] f_fields_id:-network:1911-storage:1005-condition:3595
+[23-Nov-2020 16:10:53 UTC] -network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:10:53 UTC] Selected Field: -network:1911-storage:1005-condition:3590
+[23-Nov-2020 16:10:53 UTC] Field Type: accessories
+[23-Nov-2020 16:10:53 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:10:53 UTC] f_fields_id:-network:1911-storage:1005-condition:3590-accessories:232
+[23-Nov-2020 16:10:58 UTC] -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:10:58 UTC] Selected Field: -network:1911-storage:1005-condition:3590-accessories:231
+[23-Nov-2020 16:10:58 UTC] Field Type: 
+[23-Nov-2020 16:10:58 UTC] 115 = -network:1911-storage:1005-condition:3590-accessories:231 =  = mobile
+[23-Nov-2020 16:10:58 UTC] {"network":"1911","storage":"1005","condition":"3590","accessories":"231"}
+[24-Nov-2020 04:54:37 UTC] Selected Field: 
+[24-Nov-2020 04:54:37 UTC] Field Type: network
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2396
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2397
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2398
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2399
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2400
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2401
+[24-Nov-2020 04:54:37 UTC] f_fields_id:-network:2402
+[24-Nov-2020 04:54:46 UTC] Selected Field: -network:2396
+[24-Nov-2020 04:54:46 UTC] Field Type: storage
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1700
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1701
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1702
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1703
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1704
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1705
+[24-Nov-2020 04:54:46 UTC] f_fields_id:-network:2396-storage:1706
+[24-Nov-2020 04:54:52 UTC] Selected Field: -network:2396-storage:1703
+[24-Nov-2020 04:54:52 UTC] Field Type: condition
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4362
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4363
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4364
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4365
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4366
+[24-Nov-2020 04:54:52 UTC] f_fields_id:-network:2396-storage:1703-condition:4367
+[24-Nov-2020 04:55:00 UTC] Selected Field: -network:2396-storage:1703-condition:4362
+[24-Nov-2020 04:55:00 UTC] Field Type: accessories
+[24-Nov-2020 04:55:00 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:537
+[24-Nov-2020 04:55:00 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:538
+[24-Nov-2020 04:55:00 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:539
+[24-Nov-2020 04:55:00 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:540
+[24-Nov-2020 04:55:00 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:541
+[24-Nov-2020 04:55:05 UTC] Selected Field: -network:2396-storage:1703-condition:4362-accessories:537
+[24-Nov-2020 04:55:05 UTC] Field Type: 
+[24-Nov-2020 04:55:05 UTC] 80 = -network:2396-storage:1703-condition:4362-accessories:537 =  = mobile
+[24-Nov-2020 04:55:05 UTC] {"network":"2396","storage":"1703","condition":"4362","accessories":"537"}
+[24-Nov-2020 04:55:48 UTC] Selected Field: 
+[24-Nov-2020 04:55:48 UTC] Field Type: connectivity
+[24-Nov-2020 04:55:48 UTC] f_fields_id:-connectivity:151
+[24-Nov-2020 04:55:48 UTC] f_fields_id:-connectivity:152
+[24-Nov-2020 04:56:32 UTC] Selected Field: -connectivity:151
+[24-Nov-2020 04:56:32 UTC] Field Type: case_size
+[24-Nov-2020 04:56:32 UTC] f_fields_id:-connectivity:151-case_size:51
+[24-Nov-2020 04:56:32 UTC] f_fields_id:-connectivity:151-case_size:52
+[24-Nov-2020 04:56:32 UTC] f_fields_id:-connectivity:151-case_size:53
+[24-Nov-2020 04:56:36 UTC] Selected Field: -connectivity:151-case_size:52
+[24-Nov-2020 04:56:36 UTC] Field Type: model
+[24-Nov-2020 04:56:36 UTC] f_fields_id:-connectivity:151-case_size:52-model:173
+[24-Nov-2020 04:56:36 UTC] f_fields_id:-connectivity:151-case_size:52-model:174
+[24-Nov-2020 04:56:36 UTC] f_fields_id:-connectivity:151-case_size:52-model:175
+[24-Nov-2020 04:56:41 UTC] Selected Field: -connectivity:151-case_size:52-model:174
+[24-Nov-2020 04:56:41 UTC] Field Type: condition
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3842
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3843
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3845
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3846
+[24-Nov-2020 04:56:41 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3847
+[24-Nov-2020 04:56:45 UTC] Selected Field: -connectivity:151-case_size:52-model:174-condition:3844
+[24-Nov-2020 04:56:45 UTC] Field Type: band_included
+[24-Nov-2020 04:56:45 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844-band_included:82
+[24-Nov-2020 04:56:45 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844-band_included:83
+[24-Nov-2020 04:56:45 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844-band_included:84
+[24-Nov-2020 04:56:50 UTC] Selected Field: -connectivity:151-case_size:52-model:174-condition:3844-band_included:83
+[24-Nov-2020 04:56:50 UTC] Field Type: accessories
+[24-Nov-2020 04:56:50 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844-band_included:83-accessories:315
+[24-Nov-2020 04:56:50 UTC] f_fields_id:-connectivity:151-case_size:52-model:174-condition:3844-band_included:83-accessories:316
+[24-Nov-2020 04:56:54 UTC] Selected Field: -connectivity:151-case_size:52-model:174-condition:3844-band_included:83-accessories:315
+[24-Nov-2020 04:56:54 UTC] Field Type: 
+[24-Nov-2020 04:56:54 UTC] 157 = -connectivity:151-case_size:52-model:174-condition:3844-band_included:83-accessories:315 =  = watch
+[24-Nov-2020 04:56:54 UTC] {"connectivity":"151","case_size":"52","model":"174","condition":"3844","band_included":"83","accessories":"315"}
+[24-Nov-2020 04:57:43 UTC] Selected Field: 
+[24-Nov-2020 04:57:43 UTC] Field Type: network
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2396
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2397
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2398
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2399
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2400
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2401
+[24-Nov-2020 04:57:43 UTC] f_fields_id:-network:2402
+[24-Nov-2020 04:57:50 UTC] Selected Field: -network:2396
+[24-Nov-2020 04:57:50 UTC] Field Type: storage
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1700
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1701
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1702
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1703
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1704
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1705
+[24-Nov-2020 04:57:50 UTC] f_fields_id:-network:2396-storage:1706
+[24-Nov-2020 04:57:54 UTC] Selected Field: -network:2396-storage:1700
+[24-Nov-2020 04:57:54 UTC] Field Type: condition
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4362
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4363
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4364
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4365
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4366
+[24-Nov-2020 04:57:54 UTC] f_fields_id:-network:2396-storage:1700-condition:4367
+[24-Nov-2020 04:58:45 UTC] Selected Field: 
+[24-Nov-2020 04:58:45 UTC] Field Type: network
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2396
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2397
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2398
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2399
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2400
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2401
+[24-Nov-2020 04:58:45 UTC] f_fields_id:-network:2402
+[24-Nov-2020 04:58:50 UTC] Selected Field: -network:2396
+[24-Nov-2020 04:58:50 UTC] Field Type: storage
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1700
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1701
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1702
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1703
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1704
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1705
+[24-Nov-2020 04:58:50 UTC] f_fields_id:-network:2396-storage:1706
+[24-Nov-2020 04:58:55 UTC] Selected Field: -network:2396-storage:1703
+[24-Nov-2020 04:58:55 UTC] Field Type: condition
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4362
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4363
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4364
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4365
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4366
+[24-Nov-2020 04:58:55 UTC] f_fields_id:-network:2396-storage:1703-condition:4367
+[24-Nov-2020 04:59:04 UTC] Selected Field: -network:2396-storage:1703-condition:4362
+[24-Nov-2020 04:59:04 UTC] Field Type: accessories
+[24-Nov-2020 04:59:04 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:537
+[24-Nov-2020 04:59:04 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:538
+[24-Nov-2020 04:59:04 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:539
+[24-Nov-2020 04:59:04 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:540
+[24-Nov-2020 04:59:04 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:541
+[24-Nov-2020 04:59:09 UTC] Selected Field: -network:2396-storage:1703-condition:4362-accessories:538
+[24-Nov-2020 04:59:09 UTC] Field Type: 
+[24-Nov-2020 04:59:09 UTC] 80 = -network:2396-storage:1703-condition:4362-accessories:538 =  = mobile
+[24-Nov-2020 04:59:09 UTC] {"network":"2396","storage":"1703","condition":"4362","accessories":"538"}
+[24-Nov-2020 04:59:33 UTC] Selected Field: 
+[24-Nov-2020 04:59:33 UTC] Field Type: network
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1821
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1822
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1823
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1824
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1825
+[24-Nov-2020 04:59:33 UTC] f_fields_id:-network:1826
+[24-Nov-2020 04:59:38 UTC] Selected Field: -network:1822
+[24-Nov-2020 04:59:38 UTC] Field Type: storage
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:857
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:858
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:859
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:860
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:861
+[24-Nov-2020 04:59:38 UTC] f_fields_id:-network:1822-storage:862
+[24-Nov-2020 04:59:42 UTC] Selected Field: -network:1822-storage:859
+[24-Nov-2020 04:59:42 UTC] Field Type: condition
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3434
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3435
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3436
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3437
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3438
+[24-Nov-2020 04:59:42 UTC] f_fields_id:-network:1822-storage:859-condition:3439
+[24-Nov-2020 04:59:45 UTC] Selected Field: -network:1822-storage:859-condition:3436
+[24-Nov-2020 04:59:45 UTC] Field Type: accessories
+[24-Nov-2020 04:59:45 UTC] f_fields_id:-network:1822-storage:859-condition:3436-accessories:179
+[24-Nov-2020 04:59:45 UTC] f_fields_id:-network:1822-storage:859-condition:3436-accessories:180
+[24-Nov-2020 04:59:49 UTC] Selected Field: -network:1822-storage:859-condition:3436-accessories:180
+[24-Nov-2020 04:59:49 UTC] Field Type: 
+[24-Nov-2020 04:59:49 UTC] 89 = -network:1822-storage:859-condition:3436-accessories:180 =  = mobile
+[24-Nov-2020 04:59:49 UTC] {"network":"1822","storage":"859","condition":"3436","accessories":"180"}
+[24-Nov-2020 05:00:11 UTC] Selected Field: 
+[24-Nov-2020 05:00:11 UTC] Field Type: network
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2396
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2397
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2398
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2399
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2400
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2401
+[24-Nov-2020 05:00:11 UTC] f_fields_id:-network:2402
+[24-Nov-2020 05:00:21 UTC] Selected Field: -network:2402
+[24-Nov-2020 05:00:21 UTC] Field Type: storage
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1700
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1701
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1702
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1703
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1704
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1705
+[24-Nov-2020 05:00:21 UTC] f_fields_id:-network:2402-storage:1706
+[24-Nov-2020 05:00:27 UTC] Selected Field: -network:2402-storage:1703
+[24-Nov-2020 05:00:27 UTC] Field Type: condition
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4362
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4363
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4364
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4365
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4366
+[24-Nov-2020 05:00:27 UTC] f_fields_id:-network:2402-storage:1703-condition:4367
+[24-Nov-2020 05:00:33 UTC] Selected Field: -network:2402-storage:1703-condition:4366
+[24-Nov-2020 05:00:33 UTC] Field Type: accessories
+[24-Nov-2020 05:00:33 UTC] f_fields_id:-network:2402-storage:1703-condition:4366-accessories:537
+[24-Nov-2020 05:00:33 UTC] f_fields_id:-network:2402-storage:1703-condition:4366-accessories:538
+[24-Nov-2020 05:00:33 UTC] f_fields_id:-network:2402-storage:1703-condition:4366-accessories:539
+[24-Nov-2020 05:00:33 UTC] f_fields_id:-network:2402-storage:1703-condition:4366-accessories:540
+[24-Nov-2020 05:00:33 UTC] f_fields_id:-network:2402-storage:1703-condition:4366-accessories:541
+[24-Nov-2020 05:00:38 UTC] Selected Field: -network:2402-storage:1703-condition:4366-accessories:538
+[24-Nov-2020 05:00:38 UTC] Field Type: 
+[24-Nov-2020 05:00:38 UTC] 80 = -network:2402-storage:1703-condition:4366-accessories:538 =  = mobile
+[24-Nov-2020 05:00:38 UTC] {"network":"2402","storage":"1703","condition":"4366","accessories":"538"}
+[24-Nov-2020 05:01:35 UTC] Selected Field: 
+[24-Nov-2020 05:01:35 UTC] Field Type: network
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2115
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2116
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2117
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2118
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2119
+[24-Nov-2020 05:01:35 UTC] f_fields_id:-network:2120
+[24-Nov-2020 05:01:44 UTC] Selected Field: -network:2116
+[24-Nov-2020 05:01:44 UTC] Field Type: storage
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1277
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1278
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1279
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1280
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1281
+[24-Nov-2020 05:01:44 UTC] f_fields_id:-network:2116-storage:1282
+[24-Nov-2020 05:02:47 UTC] Selected Field: -network:2116-storage:1279
+[24-Nov-2020 05:02:47 UTC] Field Type: condition
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3908
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3909
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3910
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3911
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3912
+[24-Nov-2020 05:02:47 UTC] f_fields_id:-network:2116-storage:1279-condition:3913
+[24-Nov-2020 05:02:56 UTC] Selected Field: -network:2116-storage:1279-condition:3909
+[24-Nov-2020 05:02:56 UTC] Field Type: accessories
+[24-Nov-2020 05:02:56 UTC] f_fields_id:-network:2116-storage:1279-condition:3909-accessories:337
+[24-Nov-2020 05:02:56 UTC] f_fields_id:-network:2116-storage:1279-condition:3909-accessories:338
+[24-Nov-2020 05:03:00 UTC] Selected Field: -network:2116-storage:1279-condition:3909-accessories:337
+[24-Nov-2020 05:03:00 UTC] Field Type: 
+[24-Nov-2020 05:03:00 UTC] 168 = -network:2116-storage:1279-condition:3909-accessories:337 =  = mobile
+[24-Nov-2020 05:03:00 UTC] {"network":"2116","storage":"1279","condition":"3909","accessories":"337"}
+[24-Nov-2020 05:03:58 UTC] Selected Field: 
+[24-Nov-2020 05:03:58 UTC] Field Type: network
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2115
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2116
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2117
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2118
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2119
+[24-Nov-2020 05:03:58 UTC] f_fields_id:-network:2120
+[24-Nov-2020 05:04:05 UTC] Selected Field: -network:2116
+[24-Nov-2020 05:04:05 UTC] Field Type: storage
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1277
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1278
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1279
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1280
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1281
+[24-Nov-2020 05:04:05 UTC] f_fields_id:-network:2116-storage:1282
+[24-Nov-2020 05:04:11 UTC] Selected Field: -network:2116-storage:1279
+[24-Nov-2020 05:04:11 UTC] Field Type: condition
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3908
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3909
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3910
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3911
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3912
+[24-Nov-2020 05:04:11 UTC] f_fields_id:-network:2116-storage:1279-condition:3913
+[24-Nov-2020 05:04:17 UTC] Selected Field: -network:2116-storage:1279-condition:3913
+[24-Nov-2020 05:04:17 UTC] Field Type: accessories
+[24-Nov-2020 05:04:17 UTC] f_fields_id:-network:2116-storage:1279-condition:3913-accessories:337
+[24-Nov-2020 05:04:17 UTC] f_fields_id:-network:2116-storage:1279-condition:3913-accessories:338
+[24-Nov-2020 05:04:22 UTC] Selected Field: -network:2116-storage:1279-condition:3913-accessories:337
+[24-Nov-2020 05:04:22 UTC] Field Type: 
+[24-Nov-2020 05:04:22 UTC] 168 = -network:2116-storage:1279-condition:3913-accessories:337 =  = mobile
+[24-Nov-2020 05:04:22 UTC] {"network":"2116","storage":"1279","condition":"3913","accessories":"337"}
+[24-Nov-2020 12:56:02 UTC] Selected Field: 
+[24-Nov-2020 12:56:02 UTC] Field Type: network
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2334
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2335
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2336
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2337
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2338
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2339
+[24-Nov-2020 12:56:02 UTC] f_fields_id:-network:2395
+[24-Nov-2020 12:56:44 UTC] Selected Field: -network:2395
+[24-Nov-2020 12:56:44 UTC] Field Type: storage
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1599
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1600
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1601
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1602
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1603
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1604
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1605
+[24-Nov-2020 12:56:44 UTC] f_fields_id:-network:2395-storage:1606
+[24-Nov-2020 12:57:05 UTC] Selected Field: -network:2395-storage:1604
+[24-Nov-2020 12:57:05 UTC] Field Type: condition
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4242
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4243
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4244
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4245
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4246
+[24-Nov-2020 12:57:05 UTC] f_fields_id:-network:2395-storage:1604-condition:4247
+[24-Nov-2020 12:58:29 UTC] Selected Field: -network:2395-storage:1604-condition:4242
+[24-Nov-2020 12:58:29 UTC] Field Type: accessories
+[24-Nov-2020 12:58:29 UTC] f_fields_id:-network:2395-storage:1604-condition:4242-accessories:465
+[24-Nov-2020 12:58:29 UTC] f_fields_id:-network:2395-storage:1604-condition:4242-accessories:466
+[24-Nov-2020 12:58:29 UTC] f_fields_id:-network:2395-storage:1604-condition:4242-accessories:467
+[24-Nov-2020 12:58:29 UTC] f_fields_id:-network:2395-storage:1604-condition:4242-accessories:468
+[24-Nov-2020 12:58:29 UTC] f_fields_id:-network:2395-storage:1604-condition:4242-accessories:469
+[24-Nov-2020 12:58:46 UTC] Selected Field: -network:2395-storage:1604-condition:4242-accessories:466
+[24-Nov-2020 12:58:46 UTC] Field Type: 
+[24-Nov-2020 12:58:46 UTC] 118 = -network:2395-storage:1604-condition:4242-accessories:466 =  = mobile
+[24-Nov-2020 12:58:46 UTC] {"network":"2395","storage":"1604","condition":"4242","accessories":"466"}
+[27-Nov-2020 18:03:15 UTC] Selected Field: 
+[27-Nov-2020 18:03:15 UTC] Field Type: network
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2229
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2230
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2231
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2232
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2233
+[27-Nov-2020 18:03:15 UTC] f_fields_id:-network:2234
+[27-Nov-2020 18:03:23 UTC] Selected Field: -network:2232
+[27-Nov-2020 18:03:23 UTC] Field Type: storage
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1427
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1428
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1429
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1430
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1431
+[27-Nov-2020 18:03:23 UTC] f_fields_id:-network:2232-storage:1432
+[27-Nov-2020 18:03:33 UTC] Selected Field: -network:2232-storage:1427
+[27-Nov-2020 18:03:33 UTC] Field Type: condition
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4064
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4065
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4066
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4067
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4068
+[27-Nov-2020 18:03:33 UTC] f_fields_id:-network:2232-storage:1427-condition:4069
+[27-Nov-2020 18:03:43 UTC] Selected Field: -network:2232-storage:1427-condition:4068
+[27-Nov-2020 18:03:43 UTC] Field Type: accessories
+[27-Nov-2020 18:03:43 UTC] f_fields_id:-network:2232-storage:1427-condition:4068-accessories:389
+[27-Nov-2020 18:03:43 UTC] f_fields_id:-network:2232-storage:1427-condition:4068-accessories:390
+[27-Nov-2020 18:03:52 UTC] Selected Field: -network:2232-storage:1427-condition:4068-accessories:389
+[27-Nov-2020 18:03:52 UTC] Field Type: 
+[27-Nov-2020 18:03:52 UTC] 194 = -network:2232-storage:1427-condition:4068-accessories:389 =  = mobile
+[27-Nov-2020 18:03:52 UTC] {"network":"2232","storage":"1427","condition":"4068","accessories":"389"}
+[27-Nov-2020 22:12:49 UTC] Selected Field: 
+[27-Nov-2020 22:12:49 UTC] Field Type: model
+[27-Nov-2020 22:12:49 UTC] f_fields_id:-model:206
+[27-Nov-2020 22:12:49 UTC] f_fields_id:-model:207
+[27-Nov-2020 22:12:49 UTC] f_fields_id:-model:208
+[27-Nov-2020 22:12:54 UTC] Selected Field: -model:208
+[27-Nov-2020 22:12:54 UTC] Field Type: condition
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4320
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4321
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4322
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4323
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4324
+[27-Nov-2020 22:12:54 UTC] f_fields_id:-model:208-condition:4325
+[27-Nov-2020 22:13:01 UTC] Selected Field: -model:208-condition:4324
+[27-Nov-2020 22:13:01 UTC] Field Type: accessories
+[27-Nov-2020 22:13:01 UTC] f_fields_id:-model:208-condition:4324-accessories:505
+[27-Nov-2020 22:13:01 UTC] f_fields_id:-model:208-condition:4324-accessories:506
+[27-Nov-2020 22:13:07 UTC] Selected Field: -model:208-condition:4324-accessories:505
+[27-Nov-2020 22:13:07 UTC] Field Type: 
+[27-Nov-2020 22:13:07 UTC] 211 = -model:208-condition:4324-accessories:505 =  = other
+[27-Nov-2020 22:13:07 UTC] {"model":"208","condition":"4324","accessories":"505"}
+[27-Nov-2020 22:13:34 UTC] Selected Field: 
+[27-Nov-2020 22:13:34 UTC] Field Type: model
+[27-Nov-2020 22:13:34 UTC] f_fields_id:-model:185
+[27-Nov-2020 22:13:34 UTC] f_fields_id:-model:186
+[27-Nov-2020 22:13:34 UTC] f_fields_id:-model:187
+[27-Nov-2020 22:13:41 UTC] Selected Field: -model:186
+[27-Nov-2020 22:13:41 UTC] Field Type: condition
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4172
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4173
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4174
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4175
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4176
+[27-Nov-2020 22:13:41 UTC] f_fields_id:-model:186-condition:4177
+[27-Nov-2020 22:13:45 UTC] Selected Field: -model:186-condition:4174
+[27-Nov-2020 22:13:45 UTC] Field Type: accessories
+[27-Nov-2020 22:13:45 UTC] f_fields_id:-model:186-condition:4174-accessories:425
+[27-Nov-2020 22:13:45 UTC] f_fields_id:-model:186-condition:4174-accessories:426
+[27-Nov-2020 22:13:49 UTC] Selected Field: -model:186-condition:4174-accessories:425
+[27-Nov-2020 22:13:49 UTC] Field Type: 
+[27-Nov-2020 22:13:49 UTC] 212 = -model:186-condition:4174-accessories:425 =  = other
+[27-Nov-2020 22:13:49 UTC] {"model":"186","condition":"4174","accessories":"425"}
+[27-Nov-2020 22:22:10 UTC] Selected Field: 
+[27-Nov-2020 22:22:10 UTC] Field Type: network
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2157
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2158
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2159
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2160
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2161
+[27-Nov-2020 22:22:10 UTC] f_fields_id:-network:2162
+[27-Nov-2020 22:22:19 UTC] Selected Field: -network:2161
+[27-Nov-2020 22:22:19 UTC] Field Type: storage
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1331
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1332
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1333
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1334
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1335
+[27-Nov-2020 22:22:19 UTC] f_fields_id:-network:2161-storage:1336
+[27-Nov-2020 22:22:25 UTC] Selected Field: -network:2161-storage:1332
+[27-Nov-2020 22:22:25 UTC] Field Type: condition
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3968
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3969
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3970
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3971
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3972
+[27-Nov-2020 22:22:25 UTC] f_fields_id:-network:2161-storage:1332-condition:3973
+[27-Nov-2020 22:22:31 UTC] Selected Field: -network:2161-storage:1332-condition:3971
+[27-Nov-2020 22:22:31 UTC] Field Type: accessories
+[27-Nov-2020 22:22:31 UTC] f_fields_id:-network:2161-storage:1332-condition:3971-accessories:357
+[27-Nov-2020 22:22:31 UTC] f_fields_id:-network:2161-storage:1332-condition:3971-accessories:358
+[27-Nov-2020 22:22:36 UTC] Selected Field: -network:2161-storage:1332-condition:3971-accessories:357
+[27-Nov-2020 22:22:36 UTC] Field Type: 
+[27-Nov-2020 22:22:36 UTC] 178 = -network:2161-storage:1332-condition:3971-accessories:357 =  = mobile
+[27-Nov-2020 22:22:36 UTC] {"network":"2161","storage":"1332","condition":"3971","accessories":"357"}
+[28-Nov-2020 13:08:31 UTC] Selected Field: 
+[28-Nov-2020 13:08:31 UTC] Field Type: network
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2295
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2296
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2297
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2298
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2299
+[28-Nov-2020 13:08:31 UTC] f_fields_id:-network:2300
+[28-Nov-2020 13:08:44 UTC] Selected Field: -network:2299
+[28-Nov-2020 13:08:44 UTC] Field Type: storage
+[28-Nov-2020 13:08:44 UTC] f_fields_id:-network:2299-storage:1520
+[28-Nov-2020 13:08:44 UTC] f_fields_id:-network:2299-storage:1521
+[28-Nov-2020 13:08:44 UTC] f_fields_id:-network:2299-storage:1522
+[29-Nov-2020 19:36:20 UTC] Selected Field: 
+[29-Nov-2020 19:36:20 UTC] Field Type: network
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2097
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2098
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2099
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2100
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2101
+[29-Nov-2020 19:36:20 UTC] f_fields_id:-network:2102
+[29-Nov-2020 19:36:29 UTC] Selected Field: -network:2101
+[29-Nov-2020 19:36:29 UTC] Field Type: storage
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1253
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1254
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1255
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1256
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1257
+[29-Nov-2020 19:36:29 UTC] f_fields_id:-network:2101-storage:1258
+[29-Nov-2020 19:36:46 UTC] Selected Field: -network:2101-storage:1254
+[29-Nov-2020 19:36:46 UTC] Field Type: condition
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3878
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3879
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3880
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3881
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3882
+[29-Nov-2020 19:36:46 UTC] f_fields_id:-network:2101-storage:1254-condition:3883
+[29-Nov-2020 19:36:53 UTC] Selected Field: -network:2101-storage:1254-condition:3880
+[29-Nov-2020 19:36:53 UTC] Field Type: accessories
+[29-Nov-2020 19:36:53 UTC] f_fields_id:-network:2101-storage:1254-condition:3880-accessories:327
+[29-Nov-2020 19:36:53 UTC] f_fields_id:-network:2101-storage:1254-condition:3880-accessories:328
+[29-Nov-2020 19:37:03 UTC] Selected Field: -network:2101-storage:1254-condition:3880-accessories:327
+[29-Nov-2020 19:37:03 UTC] Field Type: 
+[29-Nov-2020 19:37:03 UTC] 163 = -network:2101-storage:1254-condition:3880-accessories:327 =  = mobile
+[29-Nov-2020 19:37:03 UTC] {"network":"2101","storage":"1254","condition":"3880","accessories":"327"}
+[29-Nov-2020 23:16:26 UTC] Selected Field: 
+[29-Nov-2020 23:16:26 UTC] Field Type: network
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2396
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2397
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2398
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2399
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2400
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2401
+[29-Nov-2020 23:16:26 UTC] f_fields_id:-network:2402
+[29-Nov-2020 23:16:32 UTC] Selected Field: -network:2397
+[29-Nov-2020 23:16:32 UTC] Field Type: storage
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1700
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1701
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1702
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1703
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1704
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1705
+[29-Nov-2020 23:16:32 UTC] f_fields_id:-network:2397-storage:1706
+[29-Nov-2020 23:16:43 UTC] Selected Field: -network:2397-storage:1700
+[29-Nov-2020 23:16:43 UTC] Field Type: condition
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4362
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4363
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4364
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4365
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4366
+[29-Nov-2020 23:16:43 UTC] f_fields_id:-network:2397-storage:1700-condition:4367
+[29-Nov-2020 23:16:50 UTC] Selected Field: -network:2397-storage:1700-condition:4362
+[29-Nov-2020 23:16:50 UTC] Field Type: accessories
+[29-Nov-2020 23:16:50 UTC] f_fields_id:-network:2397-storage:1700-condition:4362-accessories:537
+[29-Nov-2020 23:16:50 UTC] f_fields_id:-network:2397-storage:1700-condition:4362-accessories:538
+[29-Nov-2020 23:16:50 UTC] f_fields_id:-network:2397-storage:1700-condition:4362-accessories:539
+[29-Nov-2020 23:16:50 UTC] f_fields_id:-network:2397-storage:1700-condition:4362-accessories:540
+[29-Nov-2020 23:16:50 UTC] f_fields_id:-network:2397-storage:1700-condition:4362-accessories:541
+[29-Nov-2020 23:16:59 UTC] Selected Field: -network:2397-storage:1700-condition:4362-accessories:538
+[29-Nov-2020 23:16:59 UTC] Field Type: 
+[29-Nov-2020 23:16:59 UTC] 80 = -network:2397-storage:1700-condition:4362-accessories:538 =  = mobile
+[29-Nov-2020 23:16:59 UTC] {"network":"2397","storage":"1700","condition":"4362","accessories":"538"}
+[30-Nov-2020 02:11:01 UTC] Selected Field: 
+[30-Nov-2020 02:11:01 UTC] Field Type: network
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1935
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1936
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1937
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1938
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1939
+[30-Nov-2020 02:11:01 UTC] f_fields_id:-network:1940
+[30-Nov-2020 02:11:09 UTC] Selected Field: -network:1937
+[30-Nov-2020 02:11:09 UTC] Field Type: storage
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1025
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1026
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1027
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1028
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1029
+[30-Nov-2020 02:11:09 UTC] f_fields_id:-network:1937-storage:1030
+[01-Dec-2020 02:33:26 UTC] Selected Field: 
+[01-Dec-2020 02:33:26 UTC] Field Type: network
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2097
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2098
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2099
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2100
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2101
+[01-Dec-2020 02:33:26 UTC] f_fields_id:-network:2102
+[01-Dec-2020 02:33:39 UTC] Selected Field: -network:2102
+[01-Dec-2020 02:33:39 UTC] Field Type: storage
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1253
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1254
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1255
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1256
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1257
+[01-Dec-2020 02:33:39 UTC] f_fields_id:-network:2102-storage:1258
+[01-Dec-2020 02:33:47 UTC] Selected Field: -network:2102-storage:1255
+[01-Dec-2020 02:33:47 UTC] Field Type: condition
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3878
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3879
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3880
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3881
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3882
+[01-Dec-2020 02:33:47 UTC] f_fields_id:-network:2102-storage:1255-condition:3883
+[01-Dec-2020 02:33:56 UTC] Selected Field: -network:2102-storage:1255-condition:3880
+[01-Dec-2020 02:33:56 UTC] Field Type: accessories
+[01-Dec-2020 02:33:56 UTC] f_fields_id:-network:2102-storage:1255-condition:3880-accessories:327
+[01-Dec-2020 02:33:56 UTC] f_fields_id:-network:2102-storage:1255-condition:3880-accessories:328
+[01-Dec-2020 02:34:06 UTC] Selected Field: -network:2102-storage:1255-condition:3880-accessories:327
+[01-Dec-2020 02:34:06 UTC] Field Type: 
+[01-Dec-2020 02:34:06 UTC] 163 = -network:2102-storage:1255-condition:3880-accessories:327 =  = mobile
+[01-Dec-2020 02:34:06 UTC] {"network":"2102","storage":"1255","condition":"3880","accessories":"327"}
+[01-Dec-2020 10:21:15 UTC] Selected Field: 
+[01-Dec-2020 10:21:15 UTC] Field Type: network
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2097
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2098
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2099
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2100
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2101
+[01-Dec-2020 10:21:15 UTC] f_fields_id:-network:2102
+[01-Dec-2020 10:21:26 UTC] Selected Field: -network:2101
+[01-Dec-2020 10:21:26 UTC] Field Type: storage
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1253
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1254
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1255
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1256
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1257
+[01-Dec-2020 10:21:26 UTC] f_fields_id:-network:2101-storage:1258
+[01-Dec-2020 10:21:35 UTC] Selected Field: -network:2101-storage:1254
+[01-Dec-2020 10:21:35 UTC] Field Type: condition
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3878
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3879
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3880
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3881
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3882
+[01-Dec-2020 10:21:35 UTC] f_fields_id:-network:2101-storage:1254-condition:3883
+[01-Dec-2020 10:21:41 UTC] Selected Field: -network:2101-storage:1254-condition:3880
+[01-Dec-2020 10:21:41 UTC] Field Type: accessories
+[01-Dec-2020 10:21:41 UTC] f_fields_id:-network:2101-storage:1254-condition:3880-accessories:327
+[01-Dec-2020 10:21:41 UTC] f_fields_id:-network:2101-storage:1254-condition:3880-accessories:328
+[03-Dec-2020 18:17:07 UTC] Selected Field: 
+[03-Dec-2020 18:17:07 UTC] Field Type: network
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2187
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2188
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2189
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2190
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2191
+[03-Dec-2020 18:17:07 UTC] f_fields_id:-network:2192
+[03-Dec-2020 18:17:13 UTC] Selected Field: -network:2191
+[03-Dec-2020 18:17:13 UTC] Field Type: storage
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1367
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1368
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1369
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1370
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1371
+[03-Dec-2020 18:17:13 UTC] f_fields_id:-network:2191-storage:1372
+[03-Dec-2020 18:17:32 UTC] Selected Field: -network:2191-storage:1367
+[03-Dec-2020 18:17:32 UTC] Field Type: condition
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4004
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4005
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4006
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4007
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4008
+[03-Dec-2020 18:17:32 UTC] f_fields_id:-network:2191-storage:1367-condition:4009
+[03-Dec-2020 18:17:41 UTC] Selected Field: -network:2191-storage:1367-condition:4009
+[03-Dec-2020 18:17:41 UTC] Field Type: accessories
+[03-Dec-2020 18:17:41 UTC] f_fields_id:-network:2191-storage:1367-condition:4009-accessories:369
+[03-Dec-2020 18:17:41 UTC] f_fields_id:-network:2191-storage:1367-condition:4009-accessories:370
+[03-Dec-2020 19:37:27 UTC] Selected Field: 
+[03-Dec-2020 19:37:27 UTC] Field Type: network
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2396
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2397
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2398
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2399
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2400
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2401
+[03-Dec-2020 19:37:27 UTC] f_fields_id:-network:2402
+[03-Dec-2020 19:37:40 UTC] Selected Field: -network:2398
+[03-Dec-2020 19:37:40 UTC] Field Type: storage
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1700
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1701
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1702
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1703
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1704
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1705
+[03-Dec-2020 19:37:40 UTC] f_fields_id:-network:2398-storage:1706
+[03-Dec-2020 19:38:18 UTC] Selected Field: -network:2398-storage:1701
+[03-Dec-2020 19:38:18 UTC] Field Type: condition
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4362
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4363
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4364
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4365
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4366
+[03-Dec-2020 19:38:18 UTC] f_fields_id:-network:2398-storage:1701-condition:4367
+[03-Dec-2020 19:38:29 UTC] Selected Field: -network:2398-storage:1701-condition:4365
+[03-Dec-2020 19:38:29 UTC] Field Type: accessories
+[03-Dec-2020 19:38:29 UTC] f_fields_id:-network:2398-storage:1701-condition:4365-accessories:537
+[03-Dec-2020 19:38:29 UTC] f_fields_id:-network:2398-storage:1701-condition:4365-accessories:538
+[03-Dec-2020 19:38:29 UTC] f_fields_id:-network:2398-storage:1701-condition:4365-accessories:539
+[03-Dec-2020 19:38:29 UTC] f_fields_id:-network:2398-storage:1701-condition:4365-accessories:540
+[03-Dec-2020 19:38:29 UTC] f_fields_id:-network:2398-storage:1701-condition:4365-accessories:541
+[03-Dec-2020 19:38:53 UTC] Selected Field: -network:2398-storage:1701-condition:4365-accessories:539
+[03-Dec-2020 19:38:53 UTC] Field Type: 
+[03-Dec-2020 19:38:53 UTC] 80 = -network:2398-storage:1701-condition:4365-accessories:539 =  = mobile
+[03-Dec-2020 19:38:53 UTC] {"network":"2398","storage":"1701","condition":"4365","accessories":"539"}
+[04-Dec-2020 01:11:11 UTC] Selected Field: 
+[04-Dec-2020 01:11:11 UTC] Field Type: network
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1911
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1912
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1913
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1914
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1915
+[04-Dec-2020 01:11:11 UTC] f_fields_id:-network:1916
+[04-Dec-2020 01:11:17 UTC] Selected Field: -network:1914
+[04-Dec-2020 01:11:17 UTC] Field Type: storage
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1001
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1002
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1003
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1004
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1005
+[04-Dec-2020 01:11:17 UTC] f_fields_id:-network:1914-storage:1006
+[04-Dec-2020 01:11:22 UTC] Selected Field: -network:1914-storage:1003
+[04-Dec-2020 01:11:22 UTC] Field Type: condition
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3590
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3591
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3592
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3593
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3594
+[04-Dec-2020 01:11:22 UTC] f_fields_id:-network:1914-storage:1003-condition:3595
+[04-Dec-2020 01:11:29 UTC] Selected Field: -network:1914-storage:1003-condition:3590
+[04-Dec-2020 01:11:29 UTC] Field Type: accessories
+[04-Dec-2020 01:11:29 UTC] f_fields_id:-network:1914-storage:1003-condition:3590-accessories:231
+[04-Dec-2020 01:11:29 UTC] f_fields_id:-network:1914-storage:1003-condition:3590-accessories:232
+[04-Dec-2020 01:11:37 UTC] Selected Field: -network:1914-storage:1003-condition:3590-accessories:231
+[04-Dec-2020 01:11:37 UTC] Field Type: 
+[04-Dec-2020 01:11:37 UTC] 115 = -network:1914-storage:1003-condition:3590-accessories:231 =  = mobile
+[04-Dec-2020 01:11:37 UTC] {"network":"1914","storage":"1003","condition":"3590","accessories":"231"}
+[04-Dec-2020 14:37:07 UTC] Selected Field: 
+[04-Dec-2020 14:37:07 UTC] Field Type: network
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2157
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2158
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2159
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2160
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2161
+[04-Dec-2020 14:37:07 UTC] f_fields_id:-network:2162
+[04-Dec-2020 14:37:13 UTC] Selected Field: -network:2157
+[04-Dec-2020 14:37:13 UTC] Field Type: storage
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1331
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1332
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1333
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1334
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1335
+[04-Dec-2020 14:37:13 UTC] f_fields_id:-network:2157-storage:1336
+[04-Dec-2020 14:37:21 UTC] Selected Field: -network:2157-storage:1332
+[04-Dec-2020 14:37:21 UTC] Field Type: condition
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3968
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3969
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3970
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3971
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3972
+[04-Dec-2020 14:37:21 UTC] f_fields_id:-network:2157-storage:1332-condition:3973
+[04-Dec-2020 14:37:32 UTC] Selected Field: -network:2157-storage:1332-condition:3971
+[04-Dec-2020 14:37:32 UTC] Field Type: accessories
+[04-Dec-2020 14:37:32 UTC] f_fields_id:-network:2157-storage:1332-condition:3971-accessories:357
+[04-Dec-2020 14:37:32 UTC] f_fields_id:-network:2157-storage:1332-condition:3971-accessories:358
+[04-Dec-2020 14:37:48 UTC] Selected Field: -network:2157-storage:1332-condition:3971-accessories:357
+[04-Dec-2020 14:37:48 UTC] Field Type: 
+[04-Dec-2020 14:37:48 UTC] 178 = -network:2157-storage:1332-condition:3971-accessories:357 =  = mobile
+[04-Dec-2020 14:37:48 UTC] {"network":"2157","storage":"1332","condition":"3971","accessories":"357"}
+[04-Dec-2020 15:23:47 UTC] Selected Field: 
+[04-Dec-2020 15:23:47 UTC] Field Type: network
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2187
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2188
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2189
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2190
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2191
+[04-Dec-2020 15:23:47 UTC] f_fields_id:-network:2192
+[04-Dec-2020 15:23:56 UTC] Selected Field: -network:2191
+[04-Dec-2020 15:23:56 UTC] Field Type: storage
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1367
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1368
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1369
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1370
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1371
+[04-Dec-2020 15:23:56 UTC] f_fields_id:-network:2191-storage:1372
+[04-Dec-2020 15:24:02 UTC] Selected Field: -network:2191-storage:1368
+[04-Dec-2020 15:24:02 UTC] Field Type: condition
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4004
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4005
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4006
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4007
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4008
+[04-Dec-2020 15:24:02 UTC] f_fields_id:-network:2191-storage:1368-condition:4009
+[04-Dec-2020 15:24:14 UTC] Selected Field: -network:2191-storage:1368-condition:4005
+[04-Dec-2020 15:24:14 UTC] Field Type: accessories
+[04-Dec-2020 15:24:14 UTC] f_fields_id:-network:2191-storage:1368-condition:4005-accessories:369
+[04-Dec-2020 15:24:14 UTC] f_fields_id:-network:2191-storage:1368-condition:4005-accessories:370
+[04-Dec-2020 15:24:20 UTC] Selected Field: -network:2191-storage:1368-condition:4005-accessories:369
+[04-Dec-2020 15:24:20 UTC] Field Type: 
+[04-Dec-2020 15:24:20 UTC] 184 = -network:2191-storage:1368-condition:4005-accessories:369 =  = mobile
+[04-Dec-2020 15:24:20 UTC] {"network":"2191","storage":"1368","condition":"4005","accessories":"369"}
+[04-Dec-2020 18:03:26 UTC] Selected Field: 
+[04-Dec-2020 18:03:26 UTC] Field Type: model
+[04-Dec-2020 18:03:26 UTC] f_fields_id:-model:185
+[04-Dec-2020 18:03:26 UTC] f_fields_id:-model:186
+[04-Dec-2020 18:03:26 UTC] f_fields_id:-model:187
+[04-Dec-2020 18:03:34 UTC] Selected Field: -model:187
+[04-Dec-2020 18:03:34 UTC] Field Type: condition
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4172
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4173
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4174
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4175
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4176
+[04-Dec-2020 18:03:34 UTC] f_fields_id:-model:187-condition:4177
+[04-Dec-2020 18:25:52 UTC] Selected Field: 
+[04-Dec-2020 18:25:52 UTC] Field Type: model
+[04-Dec-2020 18:25:52 UTC] f_fields_id:-model:206
+[04-Dec-2020 18:25:52 UTC] f_fields_id:-model:207
+[04-Dec-2020 18:25:52 UTC] f_fields_id:-model:208
+[04-Dec-2020 18:32:49 UTC] Selected Field: 
+[04-Dec-2020 18:32:49 UTC] Field Type: network
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2396
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2397
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2398
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2399
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2400
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2401
+[04-Dec-2020 18:32:49 UTC] f_fields_id:-network:2402
+[04-Dec-2020 18:32:57 UTC] Selected Field: 
+[04-Dec-2020 18:32:57 UTC] Field Type: network
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2295
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2296
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2297
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2298
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2299
+[04-Dec-2020 18:32:57 UTC] f_fields_id:-network:2300
+[04-Dec-2020 18:33:38 UTC] Selected Field: -network:2295
+[04-Dec-2020 18:33:38 UTC] Field Type: storage
+[04-Dec-2020 18:33:38 UTC] f_fields_id:-network:2295-storage:1520
+[04-Dec-2020 18:33:38 UTC] f_fields_id:-network:2295-storage:1521
+[04-Dec-2020 18:33:38 UTC] f_fields_id:-network:2295-storage:1522
+[04-Dec-2020 18:34:14 UTC] Selected Field: -network:2397
+[04-Dec-2020 18:34:14 UTC] Field Type: storage
+[04-Dec-2020 18:34:14 UTC] f_fields_id:-network:2397-storage:1701
+[04-Dec-2020 18:34:14 UTC] f_fields_id:-network:2397-storage:1703
+[04-Dec-2020 18:34:14 UTC] f_fields_id:-network:2397-storage:1704
+[04-Dec-2020 18:34:16 UTC] Selected Field: -network:2295-storage:1520
+[04-Dec-2020 18:34:16 UTC] Field Type: condition
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4154
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4155
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4156
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4157
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4158
+[04-Dec-2020 18:34:16 UTC] f_fields_id:-network:2295-storage:1520-condition:4159
+[04-Dec-2020 18:34:20 UTC] Selected Field: -network:2295-storage:1520-condition:4154
+[04-Dec-2020 18:34:20 UTC] Field Type: accessories
+[04-Dec-2020 18:34:20 UTC] f_fields_id:-network:2295-storage:1520-condition:4154-accessories:419
+[04-Dec-2020 18:34:20 UTC] f_fields_id:-network:2295-storage:1520-condition:4154-accessories:420
+[04-Dec-2020 18:34:22 UTC] Selected Field: -network:2397-storage:1703
+[04-Dec-2020 18:34:22 UTC] Field Type: condition
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4362
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4363
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4364
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4365
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4366
+[04-Dec-2020 18:34:22 UTC] f_fields_id:-network:2397-storage:1703-condition:4367
+[04-Dec-2020 18:34:28 UTC] Selected Field: -network:2295-storage:1520-condition:4154-accessories:419
+[04-Dec-2020 18:34:28 UTC] Field Type: 
+[04-Dec-2020 18:34:28 UTC] 90 = -network:2295-storage:1520-condition:4154-accessories:419 =  = mobile
+[04-Dec-2020 18:34:28 UTC] {"network":"2295","storage":"1520","condition":"4154","accessories":"419"}
+[04-Dec-2020 18:34:36 UTC] Selected Field: -network:2397-storage:1703-condition:4364
+[04-Dec-2020 18:34:36 UTC] Field Type: accessories
+[04-Dec-2020 18:34:36 UTC] f_fields_id:-network:2397-storage:1703-condition:4364-accessories:537
+[04-Dec-2020 18:34:36 UTC] f_fields_id:-network:2397-storage:1703-condition:4364-accessories:538
+[04-Dec-2020 18:34:36 UTC] f_fields_id:-network:2397-storage:1703-condition:4364-accessories:539
+[04-Dec-2020 18:34:36 UTC] f_fields_id:-network:2397-storage:1703-condition:4364-accessories:540
+[04-Dec-2020 18:34:36 UTC] f_fields_id:-network:2397-storage:1703-condition:4364-accessories:541
+[04-Dec-2020 18:34:47 UTC] Selected Field: -network:2397-storage:1703-condition:4364-accessories:537
+[04-Dec-2020 18:34:47 UTC] Field Type: 
+[04-Dec-2020 18:34:47 UTC] 80 = -network:2397-storage:1703-condition:4364-accessories:537 =  = mobile
+[04-Dec-2020 18:34:47 UTC] {"network":"2397","storage":"1703","condition":"4364","accessories":"537"}
+[04-Dec-2020 20:25:43 UTC] Selected Field: 
+[04-Dec-2020 20:25:43 UTC] Field Type: network
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2013
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2014
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2015
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2016
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2017
+[04-Dec-2020 20:25:43 UTC] f_fields_id:-network:2018
+[04-Dec-2020 20:25:49 UTC] Selected Field: -network:2014
+[04-Dec-2020 20:25:49 UTC] Field Type: storage
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1141
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1142
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1143
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1144
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1145
+[04-Dec-2020 20:25:49 UTC] f_fields_id:-network:2014-storage:1146
+[04-Dec-2020 20:25:54 UTC] Selected Field: -network:2014-storage:1143
+[04-Dec-2020 20:25:54 UTC] Field Type: condition
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3746
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3747
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3748
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3749
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3750
+[04-Dec-2020 20:25:54 UTC] f_fields_id:-network:2014-storage:1143-condition:3751
+[04-Dec-2020 20:26:04 UTC] Selected Field: -network:2014-storage:1143-condition:3751
+[04-Dec-2020 20:26:04 UTC] Field Type: accessories
+[04-Dec-2020 20:26:04 UTC] f_fields_id:-network:2014-storage:1143-condition:3751-accessories:283
+[04-Dec-2020 20:26:04 UTC] f_fields_id:-network:2014-storage:1143-condition:3751-accessories:284
+[04-Dec-2020 20:26:09 UTC] Selected Field: -network:2014-storage:1143-condition:3751-accessories:283
+[04-Dec-2020 20:26:09 UTC] Field Type: 
+[04-Dec-2020 20:26:09 UTC] 141 = -network:2014-storage:1143-condition:3751-accessories:283 =  = mobile
+[04-Dec-2020 20:26:09 UTC] {"network":"2014","storage":"1143","condition":"3751","accessories":"283"}
+[05-Dec-2020 01:56:02 UTC] Selected Field: 
+[05-Dec-2020 01:56:02 UTC] Field Type: network
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2145
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2146
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2147
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2148
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2149
+[05-Dec-2020 01:56:02 UTC] f_fields_id:-network:2150
+[05-Dec-2020 01:56:20 UTC] Selected Field: -network:2149
+[05-Dec-2020 01:56:20 UTC] Field Type: storage
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1313
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1314
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1315
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1316
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1317
+[05-Dec-2020 01:56:20 UTC] f_fields_id:-network:2149-storage:1318
+[05-Dec-2020 01:56:36 UTC] Selected Field: -network:2149-storage:1314
+[05-Dec-2020 01:56:36 UTC] Field Type: condition
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3950
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3951
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3952
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3953
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3954
+[05-Dec-2020 01:56:36 UTC] f_fields_id:-network:2149-storage:1314-condition:3955
+[05-Dec-2020 01:56:45 UTC] Selected Field: -network:2149-storage:1314-condition:3950
+[05-Dec-2020 01:56:45 UTC] Field Type: accessories
+[05-Dec-2020 01:56:45 UTC] f_fields_id:-network:2149-storage:1314-condition:3950-accessories:351
+[05-Dec-2020 01:56:45 UTC] f_fields_id:-network:2149-storage:1314-condition:3950-accessories:352
+[05-Dec-2020 01:56:58 UTC] Selected Field: -network:2149-storage:1314-condition:3950-accessories:351
+[05-Dec-2020 01:56:58 UTC] Field Type: 
+[05-Dec-2020 01:56:58 UTC] 175 = -network:2149-storage:1314-condition:3950-accessories:351 =  = mobile
+[05-Dec-2020 01:56:58 UTC] {"network":"2149","storage":"1314","condition":"3950","accessories":"351"}
+[06-Dec-2020 01:03:27 UTC] Selected Field: 
+[06-Dec-2020 01:03:27 UTC] Field Type: network
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2396
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2397
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2398
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2399
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2400
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2401
+[06-Dec-2020 01:03:27 UTC] f_fields_id:-network:2402
+[06-Dec-2020 01:03:31 UTC] Selected Field: -network:2396
+[06-Dec-2020 01:03:31 UTC] Field Type: storage
+[06-Dec-2020 01:03:31 UTC] f_fields_id:-network:2396-storage:1701
+[06-Dec-2020 01:03:31 UTC] f_fields_id:-network:2396-storage:1703
+[06-Dec-2020 01:03:31 UTC] f_fields_id:-network:2396-storage:1704
+[06-Dec-2020 01:03:35 UTC] Selected Field: -network:2396-storage:1703
+[06-Dec-2020 01:03:35 UTC] Field Type: condition
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4362
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4363
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4364
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4365
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4366
+[06-Dec-2020 01:03:35 UTC] f_fields_id:-network:2396-storage:1703-condition:4367
+[06-Dec-2020 01:03:40 UTC] Selected Field: -network:2396-storage:1703-condition:4362
+[06-Dec-2020 01:03:40 UTC] Field Type: accessories
+[06-Dec-2020 01:03:40 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:537
+[06-Dec-2020 01:03:40 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:538
+[06-Dec-2020 01:03:40 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:539
+[06-Dec-2020 01:03:40 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:540
+[06-Dec-2020 01:03:40 UTC] f_fields_id:-network:2396-storage:1703-condition:4362-accessories:541
+[06-Dec-2020 01:03:46 UTC] Selected Field: -network:2396-storage:1703-condition:4362-accessories:537
+[06-Dec-2020 01:03:46 UTC] Field Type: 
+[06-Dec-2020 01:03:46 UTC] 80 = -network:2396-storage:1703-condition:4362-accessories:537 =  = mobile
+[06-Dec-2020 01:03:46 UTC] {"network":"2396","storage":"1703","condition":"4362","accessories":"537"}
+[06-Dec-2020 02:48:29 UTC] Selected Field: 
+[06-Dec-2020 02:48:29 UTC] Field Type: network
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2157
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2158
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2159
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2160
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2161
+[06-Dec-2020 02:48:29 UTC] f_fields_id:-network:2162
+[06-Dec-2020 02:48:38 UTC] Selected Field: -network:2161
+[06-Dec-2020 02:48:38 UTC] Field Type: storage
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1331
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1332
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1333
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1334
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1335
+[06-Dec-2020 02:48:38 UTC] f_fields_id:-network:2161-storage:1336
+[06-Dec-2020 02:48:45 UTC] Selected Field: -network:2161-storage:1333
+[06-Dec-2020 02:48:45 UTC] Field Type: condition
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3968
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3969
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3970
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3971
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3972
+[06-Dec-2020 02:48:45 UTC] f_fields_id:-network:2161-storage:1333-condition:3973
+[06-Dec-2020 02:48:51 UTC] Selected Field: -network:2161-storage:1333-condition:3969
+[06-Dec-2020 02:48:51 UTC] Field Type: accessories
+[06-Dec-2020 02:48:51 UTC] f_fields_id:-network:2161-storage:1333-condition:3969-accessories:357
+[06-Dec-2020 02:48:51 UTC] f_fields_id:-network:2161-storage:1333-condition:3969-accessories:358
+[06-Dec-2020 02:49:02 UTC] Selected Field: -network:2161-storage:1333-condition:3969-accessories:358
+[06-Dec-2020 02:49:02 UTC] Field Type: 
+[06-Dec-2020 02:49:02 UTC] 178 = -network:2161-storage:1333-condition:3969-accessories:358 =  = mobile
+[06-Dec-2020 02:49:02 UTC] {"network":"2161","storage":"1333","condition":"3969","accessories":"358"}
+[06-Dec-2020 19:12:54 UTC] Selected Field: 
+[06-Dec-2020 19:12:54 UTC] Field Type: network
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1905
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1906
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1907
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1908
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1909
+[06-Dec-2020 19:12:54 UTC] f_fields_id:-network:1910
+[06-Dec-2020 19:12:59 UTC] Selected Field: -network:1905
+[06-Dec-2020 19:12:59 UTC] Field Type: storage
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:995
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:996
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:997
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:998
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:999
+[06-Dec-2020 19:12:59 UTC] f_fields_id:-network:1905-storage:1000
+[06-Dec-2020 19:13:07 UTC] Selected Field: -network:1905-storage:999
+[06-Dec-2020 19:13:07 UTC] Field Type: condition
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3584
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3585
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3586
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3587
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3588
+[06-Dec-2020 19:13:07 UTC] f_fields_id:-network:1905-storage:999-condition:3589
+[06-Dec-2020 19:13:17 UTC] Selected Field: -network:1905-storage:999-condition:3585
+[06-Dec-2020 19:13:17 UTC] Field Type: accessories
+[06-Dec-2020 19:13:17 UTC] f_fields_id:-network:1905-storage:999-condition:3585-accessories:229
+[06-Dec-2020 19:13:17 UTC] f_fields_id:-network:1905-storage:999-condition:3585-accessories:230
+[06-Dec-2020 19:13:25 UTC] Selected Field: -network:1905-storage:999-condition:3585-accessories:230
+[06-Dec-2020 19:13:25 UTC] Field Type: 
+[06-Dec-2020 19:13:25 UTC] 114 = -network:1905-storage:999-condition:3585-accessories:230 =  = mobile
+[06-Dec-2020 19:13:25 UTC] {"network":"1905","storage":"999","condition":"3585","accessories":"230"}
+[07-Dec-2020 14:07:40 UTC] Selected Field: 
+[07-Dec-2020 14:07:40 UTC] Field Type: network
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2396
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2397
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2398
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2399
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2400
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2401
+[07-Dec-2020 14:07:40 UTC] f_fields_id:-network:2402
+[07-Dec-2020 14:07:45 UTC] Selected Field: -network:2396
+[07-Dec-2020 14:07:45 UTC] Field Type: storage
+[07-Dec-2020 14:07:45 UTC] f_fields_id:-network:2396-storage:1701
+[07-Dec-2020 14:07:45 UTC] f_fields_id:-network:2396-storage:1703
+[07-Dec-2020 14:07:45 UTC] f_fields_id:-network:2396-storage:1704
+[07-Dec-2020 14:07:50 UTC] Selected Field: -network:2396-storage:1703
+[07-Dec-2020 14:07:50 UTC] Field Type: condition
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4362
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4363
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4364
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4365
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4366
+[07-Dec-2020 14:07:50 UTC] f_fields_id:-network:2396-storage:1703-condition:4367
+[07-Dec-2020 14:07:57 UTC] Selected Field: -network:2396-storage:1703-condition:4364
+[07-Dec-2020 14:07:57 UTC] Field Type: accessories
+[07-Dec-2020 14:07:57 UTC] f_fields_id:-network:2396-storage:1703-condition:4364-accessories:537
+[07-Dec-2020 14:07:57 UTC] f_fields_id:-network:2396-storage:1703-condition:4364-accessories:538
+[07-Dec-2020 14:07:57 UTC] f_fields_id:-network:2396-storage:1703-condition:4364-accessories:539
+[07-Dec-2020 14:07:57 UTC] f_fields_id:-network:2396-storage:1703-condition:4364-accessories:540
+[07-Dec-2020 14:07:57 UTC] f_fields_id:-network:2396-storage:1703-condition:4364-accessories:541
+[07-Dec-2020 14:08:03 UTC] Selected Field: -network:2396-storage:1703-condition:4364-accessories:537
+[07-Dec-2020 14:08:03 UTC] Field Type: 
+[07-Dec-2020 14:08:03 UTC] 80 = -network:2396-storage:1703-condition:4364-accessories:537 =  = mobile
+[07-Dec-2020 14:08:03 UTC] {"network":"2396","storage":"1703","condition":"4364","accessories":"537"}
+[07-Dec-2020 16:48:02 UTC] Selected Field: 
+[07-Dec-2020 16:48:02 UTC] Field Type: network
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2097
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2098
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2099
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2100
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2101
+[07-Dec-2020 16:48:02 UTC] f_fields_id:-network:2102
+[07-Dec-2020 16:48:22 UTC] Selected Field: -network:2098
+[07-Dec-2020 16:48:22 UTC] Field Type: storage
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1253
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1254
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1255
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1256
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1257
+[07-Dec-2020 16:48:22 UTC] f_fields_id:-network:2098-storage:1258
+[07-Dec-2020 16:48:31 UTC] Selected Field: -network:2098-storage:1257
+[07-Dec-2020 16:48:31 UTC] Field Type: condition
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3878
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3879
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3880
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3881
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3882
+[07-Dec-2020 16:48:31 UTC] f_fields_id:-network:2098-storage:1257-condition:3883
+[07-Dec-2020 16:48:40 UTC] Selected Field: -network:2098-storage:1257-condition:3879
+[07-Dec-2020 16:48:40 UTC] Field Type: accessories
+[07-Dec-2020 16:48:40 UTC] f_fields_id:-network:2098-storage:1257-condition:3879-accessories:327
+[07-Dec-2020 16:48:40 UTC] f_fields_id:-network:2098-storage:1257-condition:3879-accessories:328
+[07-Dec-2020 16:48:46 UTC] Selected Field: -network:2098-storage:1257-condition:3879-accessories:327
+[07-Dec-2020 16:48:46 UTC] Field Type: 
+[07-Dec-2020 16:48:46 UTC] 163 = -network:2098-storage:1257-condition:3879-accessories:327 =  = mobile
+[07-Dec-2020 16:48:46 UTC] {"network":"2098","storage":"1257","condition":"3879","accessories":"327"}
+[07-Dec-2020 16:49:07 UTC] Selected Field: 
+[07-Dec-2020 16:49:07 UTC] Field Type: network
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2295
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2296
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2297
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2298
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2299
+[07-Dec-2020 16:49:07 UTC] f_fields_id:-network:2300
+[07-Dec-2020 16:49:18 UTC] Selected Field: -network:2300
+[07-Dec-2020 16:49:18 UTC] Field Type: storage
+[07-Dec-2020 16:49:18 UTC] f_fields_id:-network:2300-storage:1520
+[07-Dec-2020 16:49:18 UTC] f_fields_id:-network:2300-storage:1521
+[07-Dec-2020 16:49:18 UTC] f_fields_id:-network:2300-storage:1522
+[07-Dec-2020 16:49:26 UTC] Selected Field: -network:2300-storage:1521
+[07-Dec-2020 16:49:26 UTC] Field Type: condition
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4154
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4155
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4156
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4157
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4158
+[07-Dec-2020 16:49:26 UTC] f_fields_id:-network:2300-storage:1521-condition:4159
+[07-Dec-2020 16:49:35 UTC] Selected Field: -network:2300-storage:1521-condition:4154
+[07-Dec-2020 16:49:35 UTC] Field Type: accessories
+[07-Dec-2020 16:49:35 UTC] f_fields_id:-network:2300-storage:1521-condition:4154-accessories:419
+[07-Dec-2020 16:49:35 UTC] f_fields_id:-network:2300-storage:1521-condition:4154-accessories:420
+[07-Dec-2020 16:49:43 UTC] Selected Field: -network:2300-storage:1521-condition:4154-accessories:419
+[07-Dec-2020 16:49:43 UTC] Field Type: 
+[07-Dec-2020 16:49:43 UTC] 90 = -network:2300-storage:1521-condition:4154-accessories:419 =  = mobile
+[07-Dec-2020 16:49:43 UTC] {"network":"2300","storage":"1521","condition":"4154","accessories":"419"}
+[08-Dec-2020 00:18:10 UTC] Selected Field: 
+[08-Dec-2020 00:18:10 UTC] Field Type: network
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2334
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2335
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2336
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2337
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2338
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2339
+[08-Dec-2020 00:18:10 UTC] f_fields_id:-network:2395
+[08-Dec-2020 00:18:15 UTC] Selected Field: -network:2337
+[08-Dec-2020 00:18:15 UTC] Field Type: storage
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1599
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1600
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1601
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1602
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1603
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1604
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1605
+[08-Dec-2020 00:18:15 UTC] f_fields_id:-network:2337-storage:1606
+[08-Dec-2020 00:18:21 UTC] Selected Field: -network:2337-storage:1602
+[08-Dec-2020 00:18:21 UTC] Field Type: condition
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4242
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4243
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4244
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4245
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4246
+[08-Dec-2020 00:18:21 UTC] f_fields_id:-network:2337-storage:1602-condition:4247
+[08-Dec-2020 00:18:28 UTC] Selected Field: -network:2337-storage:1602-condition:4246
+[08-Dec-2020 00:18:28 UTC] Field Type: accessories
+[08-Dec-2020 00:18:28 UTC] f_fields_id:-network:2337-storage:1602-condition:4246-accessories:465
+[08-Dec-2020 00:18:28 UTC] f_fields_id:-network:2337-storage:1602-condition:4246-accessories:466
+[08-Dec-2020 00:18:28 UTC] f_fields_id:-network:2337-storage:1602-condition:4246-accessories:467
+[08-Dec-2020 00:18:28 UTC] f_fields_id:-network:2337-storage:1602-condition:4246-accessories:468
+[08-Dec-2020 00:18:28 UTC] f_fields_id:-network:2337-storage:1602-condition:4246-accessories:469
+[08-Dec-2020 00:44:42 UTC] Selected Field: 
+[08-Dec-2020 00:44:43 UTC] Field Type: network
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2091
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2092
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2093
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2094
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2095
+[08-Dec-2020 00:44:43 UTC] f_fields_id:-network:2096
+[08-Dec-2020 00:44:59 UTC] Selected Field: -network:2095
+[08-Dec-2020 00:44:59 UTC] Field Type: storage
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1247
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1248
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1249
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1250
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1251
+[08-Dec-2020 00:44:59 UTC] f_fields_id:-network:2095-storage:1252
+[08-Dec-2020 00:49:33 UTC] Selected Field: -network:2095-storage:1248
+[08-Dec-2020 00:49:33 UTC] Field Type: condition
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3872
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3873
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3874
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3875
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3876
+[08-Dec-2020 00:49:33 UTC] f_fields_id:-network:2095-storage:1248-condition:3877
+[08-Dec-2020 00:49:44 UTC] Selected Field: -network:2095-storage:1248-condition:3877
+[08-Dec-2020 00:49:44 UTC] Field Type: accessories
+[08-Dec-2020 00:49:44 UTC] f_fields_id:-network:2095-storage:1248-condition:3877-accessories:325
+[08-Dec-2020 00:49:44 UTC] f_fields_id:-network:2095-storage:1248-condition:3877-accessories:326
+[08-Dec-2020 00:49:59 UTC] Selected Field: -network:2095-storage:1248-condition:3877-accessories:325
+[08-Dec-2020 00:49:59 UTC] Field Type: 
+[08-Dec-2020 00:49:59 UTC] 162 = -network:2095-storage:1248-condition:3877-accessories:325 =  = mobile
+[08-Dec-2020 00:49:59 UTC] {"network":"2095","storage":"1248","condition":"3877","accessories":"325"}
+[08-Dec-2020 01:57:12 UTC] Selected Field: 
+[08-Dec-2020 01:57:12 UTC] Field Type: network
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2157
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2158
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2159
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2160
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2161
+[08-Dec-2020 01:57:12 UTC] f_fields_id:-network:2162
+[08-Dec-2020 01:57:18 UTC] Selected Field: -network:2157
+[08-Dec-2020 01:57:18 UTC] Field Type: storage
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1331
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1332
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1333
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1334
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1335
+[08-Dec-2020 01:57:18 UTC] f_fields_id:-network:2157-storage:1336
+[08-Dec-2020 01:57:43 UTC] Selected Field: -network:2157-storage:1332
+[08-Dec-2020 01:57:43 UTC] Field Type: condition
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3968
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3969
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3970
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3971
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3972
+[08-Dec-2020 01:57:43 UTC] f_fields_id:-network:2157-storage:1332-condition:3973
+[08-Dec-2020 01:57:52 UTC] Selected Field: -network:2157-storage:1332-condition:3973
+[08-Dec-2020 01:57:52 UTC] Field Type: accessories
+[08-Dec-2020 01:57:52 UTC] f_fields_id:-network:2157-storage:1332-condition:3973-accessories:357
+[08-Dec-2020 01:57:52 UTC] f_fields_id:-network:2157-storage:1332-condition:3973-accessories:358
+[08-Dec-2020 01:58:01 UTC] Selected Field: -network:2157-storage:1332-condition:3973-accessories:358
+[08-Dec-2020 01:58:01 UTC] Field Type: 
+[08-Dec-2020 01:58:01 UTC] 178 = -network:2157-storage:1332-condition:3973-accessories:358 =  = mobile
+[08-Dec-2020 01:58:01 UTC] {"network":"2157","storage":"1332","condition":"3973","accessories":"358"}
+[09-Dec-2020 22:42:38 UTC] Selected Field: 
+[09-Dec-2020 22:42:38 UTC] Field Type: network
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2097
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2098
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2099
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2100
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2101
+[09-Dec-2020 22:42:38 UTC] f_fields_id:-network:2102
+[09-Dec-2020 22:42:49 UTC] Selected Field: -network:2098
+[09-Dec-2020 22:42:49 UTC] Field Type: storage
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1253
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1254
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1255
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1256
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1257
+[09-Dec-2020 22:42:49 UTC] f_fields_id:-network:2098-storage:1258
+[09-Dec-2020 22:43:26 UTC] Selected Field: -network:2098-storage:1255
+[09-Dec-2020 22:43:26 UTC] Field Type: condition
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3878
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3879
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3880
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3881
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3882
+[09-Dec-2020 22:43:26 UTC] f_fields_id:-network:2098-storage:1255-condition:3883
+[09-Dec-2020 22:44:50 UTC] Selected Field: -network:2098-storage:1255-condition:3879
+[09-Dec-2020 22:44:50 UTC] Field Type: accessories
+[09-Dec-2020 22:44:50 UTC] f_fields_id:-network:2098-storage:1255-condition:3879-accessories:327
+[09-Dec-2020 22:44:50 UTC] f_fields_id:-network:2098-storage:1255-condition:3879-accessories:328
+[09-Dec-2020 22:45:16 UTC] Selected Field: -network:2098-storage:1255-condition:3879-accessories:327
+[09-Dec-2020 22:45:16 UTC] Field Type: 
+[09-Dec-2020 22:45:16 UTC] 163 = -network:2098-storage:1255-condition:3879-accessories:327 =  = mobile
+[09-Dec-2020 22:45:16 UTC] {"network":"2098","storage":"1255","condition":"3879","accessories":"327"}
+[10-Dec-2020 00:43:17 UTC] Selected Field: 
+[10-Dec-2020 00:43:17 UTC] Field Type: network
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2295
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2296
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2297
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2298
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2299
+[10-Dec-2020 00:43:17 UTC] f_fields_id:-network:2300
+[10-Dec-2020 00:43:22 UTC] Selected Field: -network:2296
+[10-Dec-2020 00:43:22 UTC] Field Type: storage
+[10-Dec-2020 00:43:22 UTC] f_fields_id:-network:2296-storage:1520
+[10-Dec-2020 00:43:22 UTC] f_fields_id:-network:2296-storage:1521
+[10-Dec-2020 00:43:22 UTC] f_fields_id:-network:2296-storage:1522
+[10-Dec-2020 04:47:11 UTC] Selected Field: 
+[10-Dec-2020 04:47:11 UTC] Field Type: network
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2157
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2158
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2159
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2160
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2161
+[10-Dec-2020 04:47:11 UTC] f_fields_id:-network:2162
+[10-Dec-2020 04:47:20 UTC] Selected Field: -network:2161
+[10-Dec-2020 04:47:20 UTC] Field Type: storage
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1331
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1332
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1333
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1334
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1335
+[10-Dec-2020 04:47:20 UTC] f_fields_id:-network:2161-storage:1336
+[10-Dec-2020 04:47:26 UTC] Selected Field: -network:2161-storage:1332
+[10-Dec-2020 04:47:26 UTC] Field Type: condition
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3968
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3969
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3970
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3971
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3972
+[10-Dec-2020 04:47:26 UTC] f_fields_id:-network:2161-storage:1332-condition:3973
+[10-Dec-2020 04:47:35 UTC] Selected Field: -network:2161-storage:1332-condition:3972
+[10-Dec-2020 04:47:35 UTC] Field Type: accessories
+[10-Dec-2020 04:47:35 UTC] f_fields_id:-network:2161-storage:1332-condition:3972-accessories:357
+[10-Dec-2020 04:47:35 UTC] f_fields_id:-network:2161-storage:1332-condition:3972-accessories:358
+[10-Dec-2020 04:47:44 UTC] Selected Field: -network:2161-storage:1332-condition:3972-accessories:358
+[10-Dec-2020 04:47:44 UTC] Field Type: 
+[10-Dec-2020 04:47:44 UTC] 178 = -network:2161-storage:1332-condition:3972-accessories:358 =  = mobile
+[10-Dec-2020 04:47:44 UTC] {"network":"2161","storage":"1332","condition":"3972","accessories":"358"}
+[10-Dec-2020 04:48:14 UTC] Selected Field: 
+[10-Dec-2020 04:48:14 UTC] Field Type: network
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2145
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2146
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2147
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2148
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2149
+[10-Dec-2020 04:48:14 UTC] f_fields_id:-network:2150
+[10-Dec-2020 04:48:18 UTC] Selected Field: -network:2146
+[10-Dec-2020 04:48:18 UTC] Field Type: storage
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1313
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1314
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1315
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1316
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1317
+[10-Dec-2020 04:48:18 UTC] f_fields_id:-network:2146-storage:1318
+[10-Dec-2020 04:48:22 UTC] Selected Field: -network:2146-storage:1315
+[10-Dec-2020 04:48:22 UTC] Field Type: condition
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3950
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3951
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3952
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3953
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3954
+[10-Dec-2020 04:48:22 UTC] f_fields_id:-network:2146-storage:1315-condition:3955
+[10-Dec-2020 04:48:27 UTC] Selected Field: -network:2146-storage:1315-condition:3952
+[10-Dec-2020 04:48:27 UTC] Field Type: accessories
+[10-Dec-2020 04:48:27 UTC] f_fields_id:-network:2146-storage:1315-condition:3952-accessories:351
+[10-Dec-2020 04:48:27 UTC] f_fields_id:-network:2146-storage:1315-condition:3952-accessories:352
+[10-Dec-2020 04:48:32 UTC] Selected Field: -network:2146-storage:1315-condition:3952-accessories:352
+[10-Dec-2020 04:48:32 UTC] Field Type: 
+[10-Dec-2020 04:48:32 UTC] 175 = -network:2146-storage:1315-condition:3952-accessories:352 =  = mobile
+[10-Dec-2020 04:48:32 UTC] {"network":"2146","storage":"1315","condition":"3952","accessories":"352"}
+[10-Dec-2020 04:59:40 UTC] Selected Field: 
+[10-Dec-2020 04:59:40 UTC] Field Type: network
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2145
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2146
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2147
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2148
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2149
+[10-Dec-2020 04:59:40 UTC] f_fields_id:-network:2150
+[10-Dec-2020 04:59:48 UTC] Selected Field: -network:2150
+[10-Dec-2020 04:59:48 UTC] Field Type: storage
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1313
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1314
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1315
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1316
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1317
+[10-Dec-2020 04:59:48 UTC] f_fields_id:-network:2150-storage:1318
+[10-Dec-2020 04:59:57 UTC] Selected Field: -network:2150-storage:1314
+[10-Dec-2020 04:59:57 UTC] Field Type: condition
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3950
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3951
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3952
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3953
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3954
+[10-Dec-2020 04:59:57 UTC] f_fields_id:-network:2150-storage:1314-condition:3955
+[10-Dec-2020 05:00:12 UTC] Selected Field: -network:2150-storage:1314-condition:3953
+[10-Dec-2020 05:00:12 UTC] Field Type: accessories
+[10-Dec-2020 05:00:12 UTC] f_fields_id:-network:2150-storage:1314-condition:3953-accessories:351
+[10-Dec-2020 05:00:12 UTC] f_fields_id:-network:2150-storage:1314-condition:3953-accessories:352
+[10-Dec-2020 05:00:19 UTC] Selected Field: -network:2150-storage:1314-condition:3953-accessories:351
+[10-Dec-2020 05:00:19 UTC] Field Type: 
+[10-Dec-2020 05:00:19 UTC] 175 = -network:2150-storage:1314-condition:3953-accessories:351 =  = mobile
+[10-Dec-2020 05:00:19 UTC] {"network":"2150","storage":"1314","condition":"3953","accessories":"351"}
+[11-Dec-2020 03:19:31 UTC] Selected Field: 
+[11-Dec-2020 03:19:31 UTC] Field Type: network
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2157
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2158
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2159
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2160
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2161
+[11-Dec-2020 03:19:31 UTC] f_fields_id:-network:2162
+[11-Dec-2020 03:19:36 UTC] Selected Field: -network:2159
+[11-Dec-2020 03:19:36 UTC] Field Type: storage
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1331
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1332
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1333
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1334
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1335
+[11-Dec-2020 03:19:36 UTC] f_fields_id:-network:2159-storage:1336
+[11-Dec-2020 03:19:49 UTC] Selected Field: -network:2159-storage:1332
+[11-Dec-2020 03:19:49 UTC] Field Type: condition
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3968
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3969
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3970
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3971
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3972
+[11-Dec-2020 03:19:49 UTC] f_fields_id:-network:2159-storage:1332-condition:3973
+[11-Dec-2020 03:19:57 UTC] Selected Field: -network:2159-storage:1332-condition:3970
+[11-Dec-2020 03:19:57 UTC] Field Type: accessories
+[11-Dec-2020 03:19:57 UTC] f_fields_id:-network:2159-storage:1332-condition:3970-accessories:357
+[11-Dec-2020 03:19:57 UTC] f_fields_id:-network:2159-storage:1332-condition:3970-accessories:358
+[11-Dec-2020 14:41:08 UTC] Selected Field: 
+[11-Dec-2020 14:41:08 UTC] Field Type: network
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2097
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2098
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2099
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2100
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2101
+[11-Dec-2020 14:41:08 UTC] f_fields_id:-network:2102
+[11-Dec-2020 14:41:14 UTC] Selected Field: -network:2102
+[11-Dec-2020 14:41:14 UTC] Field Type: storage
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1253
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1254
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1255
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1256
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1257
+[11-Dec-2020 14:41:14 UTC] f_fields_id:-network:2102-storage:1258
+[11-Dec-2020 14:41:22 UTC] Selected Field: -network:2102-storage:1257
+[11-Dec-2020 14:41:22 UTC] Field Type: condition
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3878
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3879
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3880
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3881
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3882
+[11-Dec-2020 14:41:22 UTC] f_fields_id:-network:2102-storage:1257-condition:3883
+[11-Dec-2020 14:41:30 UTC] Selected Field: -network:2102-storage:1257-condition:3881
+[11-Dec-2020 14:41:30 UTC] Field Type: accessories
+[11-Dec-2020 14:41:30 UTC] f_fields_id:-network:2102-storage:1257-condition:3881-accessories:327
+[11-Dec-2020 14:41:30 UTC] f_fields_id:-network:2102-storage:1257-condition:3881-accessories:328
+[11-Dec-2020 15:21:43 UTC] Selected Field: 
+[11-Dec-2020 15:21:43 UTC] Field Type: network
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2181
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2182
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2183
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2184
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2185
+[11-Dec-2020 15:21:43 UTC] f_fields_id:-network:2186
+[11-Dec-2020 15:22:01 UTC] Selected Field: -network:2185
+[11-Dec-2020 15:22:01 UTC] Field Type: storage
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1361
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1362
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1363
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1364
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1365
+[11-Dec-2020 15:22:01 UTC] f_fields_id:-network:2185-storage:1366
+[15-Dec-2020 13:28:44 UTC] Selected Field: 
+[15-Dec-2020 13:28:44 UTC] Field Type: network
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2334
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2335
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2336
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2337
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2338
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2339
+[15-Dec-2020 13:28:44 UTC] f_fields_id:-network:2395
+[15-Dec-2020 13:28:52 UTC] Selected Field: -network:2339
+[15-Dec-2020 13:28:52 UTC] Field Type: storage
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1599
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1600
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1601
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1602
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1603
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1604
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1605
+[15-Dec-2020 13:28:52 UTC] f_fields_id:-network:2339-storage:1606
+[15-Dec-2020 13:28:58 UTC] Selected Field: -network:2339-storage:1602
+[15-Dec-2020 13:28:58 UTC] Field Type: condition
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4242
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4243
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4244
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4245
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4246
+[15-Dec-2020 13:28:58 UTC] f_fields_id:-network:2339-storage:1602-condition:4247
+[15-Dec-2020 13:29:10 UTC] Selected Field: -network:2339-storage:1602-condition:4247
+[15-Dec-2020 13:29:10 UTC] Field Type: accessories
+[15-Dec-2020 13:29:10 UTC] f_fields_id:-network:2339-storage:1602-condition:4247-accessories:465
+[15-Dec-2020 13:29:10 UTC] f_fields_id:-network:2339-storage:1602-condition:4247-accessories:466
+[15-Dec-2020 13:29:10 UTC] f_fields_id:-network:2339-storage:1602-condition:4247-accessories:467
+[15-Dec-2020 13:29:10 UTC] f_fields_id:-network:2339-storage:1602-condition:4247-accessories:468
+[15-Dec-2020 13:29:10 UTC] f_fields_id:-network:2339-storage:1602-condition:4247-accessories:469
+[15-Dec-2020 13:29:25 UTC] Selected Field: -network:2339-storage:1602-condition:4247-accessories:465
+[15-Dec-2020 13:29:25 UTC] Field Type: 
+[15-Dec-2020 13:29:25 UTC] 118 = -network:2339-storage:1602-condition:4247-accessories:465 =  = mobile
+[15-Dec-2020 13:29:25 UTC] {"network":"2339","storage":"1602","condition":"4247","accessories":"465"}
+[15-Dec-2020 18:12:23 UTC] Selected Field: 
+[15-Dec-2020 18:12:23 UTC] Field Type: network
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2013
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2014
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2015
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2016
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2017
+[15-Dec-2020 18:12:23 UTC] f_fields_id:-network:2018
+[15-Dec-2020 18:12:30 UTC] Selected Field: -network:2014
+[15-Dec-2020 18:12:30 UTC] Field Type: storage
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1141
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1142
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1143
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1144
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1145
+[15-Dec-2020 18:12:30 UTC] f_fields_id:-network:2014-storage:1146
+[15-Dec-2020 18:12:49 UTC] Selected Field: -network:2014-storage:1141
+[15-Dec-2020 18:12:49 UTC] Field Type: condition
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3746
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3747
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3748
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3749
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3750
+[15-Dec-2020 18:12:49 UTC] f_fields_id:-network:2014-storage:1141-condition:3751
+[15-Dec-2020 18:13:04 UTC] Selected Field: -network:2014-storage:1141-condition:3746
+[15-Dec-2020 18:13:04 UTC] Field Type: accessories
+[15-Dec-2020 18:13:04 UTC] f_fields_id:-network:2014-storage:1141-condition:3746-accessories:283
+[15-Dec-2020 18:13:04 UTC] f_fields_id:-network:2014-storage:1141-condition:3746-accessories:284
+[15-Dec-2020 18:13:07 UTC] Selected Field: -network:2014-storage:1141-condition:3746-accessories:283
+[15-Dec-2020 18:13:07 UTC] Field Type: 
+[15-Dec-2020 18:13:07 UTC] 141 = -network:2014-storage:1141-condition:3746-accessories:283 =  = mobile
+[15-Dec-2020 18:13:07 UTC] {"network":"2014","storage":"1141","condition":"3746","accessories":"283"}
+[15-Dec-2020 21:54:22 UTC] Selected Field: 
+[15-Dec-2020 21:54:22 UTC] Field Type: connectivity
+[15-Dec-2020 21:54:22 UTC] f_fields_id:-connectivity:161
+[15-Dec-2020 21:54:22 UTC] f_fields_id:-connectivity:162
+[15-Dec-2020 21:54:26 UTC] Selected Field: -connectivity:162
+[15-Dec-2020 21:54:26 UTC] Field Type: case_size
+[15-Dec-2020 21:54:26 UTC] f_fields_id:-connectivity:162-case_size:57
+[15-Dec-2020 21:54:26 UTC] f_fields_id:-connectivity:162-case_size:58
+[15-Dec-2020 21:54:26 UTC] f_fields_id:-connectivity:162-case_size:59
+[15-Dec-2020 21:55:19 UTC] Selected Field: 
+[15-Dec-2020 21:55:19 UTC] Field Type: connectivity
+[15-Dec-2020 21:55:19 UTC] f_fields_id:-connectivity:155
+[15-Dec-2020 21:55:19 UTC] f_fields_id:-connectivity:156
+[15-Dec-2020 21:55:24 UTC] Selected Field: -connectivity:155
+[15-Dec-2020 21:55:24 UTC] Field Type: case_size
+[15-Dec-2020 21:55:24 UTC] f_fields_id:-connectivity:155-case_size:54
+[15-Dec-2020 21:55:24 UTC] f_fields_id:-connectivity:155-case_size:55
+[15-Dec-2020 21:55:24 UTC] f_fields_id:-connectivity:155-case_size:56
+[15-Dec-2020 21:55:30 UTC] Selected Field: -connectivity:155-case_size:54
+[15-Dec-2020 21:55:30 UTC] Field Type: model
+[15-Dec-2020 21:55:30 UTC] f_fields_id:-connectivity:155-case_size:54-model:176
+[15-Dec-2020 21:55:30 UTC] f_fields_id:-connectivity:155-case_size:54-model:177
+[15-Dec-2020 21:55:30 UTC] f_fields_id:-connectivity:155-case_size:54-model:178
+[15-Dec-2020 21:55:41 UTC] Selected Field: -connectivity:155-case_size:54-model:176
+[15-Dec-2020 21:55:41 UTC] Field Type: condition
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3890
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3892
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3893
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3894
+[15-Dec-2020 21:55:41 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3895
+[15-Dec-2020 21:55:55 UTC] Selected Field: -connectivity:155-case_size:54-model:176-condition:3891
+[15-Dec-2020 21:55:55 UTC] Field Type: band_included
+[15-Dec-2020 21:55:55 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891-band_included:85
+[15-Dec-2020 21:55:55 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891-band_included:86
+[15-Dec-2020 21:55:55 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891-band_included:87
+[15-Dec-2020 21:55:59 UTC] Selected Field: -connectivity:155-case_size:54-model:176-condition:3891-band_included:85
+[15-Dec-2020 21:55:59 UTC] Field Type: accessories
+[15-Dec-2020 21:55:59 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891-band_included:85-accessories:331
+[15-Dec-2020 21:55:59 UTC] f_fields_id:-connectivity:155-case_size:54-model:176-condition:3891-band_included:85-accessories:332
+[15-Dec-2020 21:56:07 UTC] Selected Field: -connectivity:155-case_size:54-model:176-condition:3891-band_included:85-accessories:331
+[15-Dec-2020 21:56:07 UTC] Field Type: 
+[15-Dec-2020 21:56:07 UTC] 165 = -connectivity:155-case_size:54-model:176-condition:3891-band_included:85-accessories:331 =  = watch
+[15-Dec-2020 21:56:07 UTC] {"connectivity":"155","case_size":"54","model":"176","condition":"3891","band_included":"85","accessories":"331"}
+[16-Dec-2020 19:06:40 UTC] Selected Field: 
+[16-Dec-2020 19:06:40 UTC] Field Type: connectivity
+[16-Dec-2020 19:06:40 UTC] f_fields_id:-connectivity:155
+[16-Dec-2020 19:06:40 UTC] f_fields_id:-connectivity:156
+[16-Dec-2020 19:06:45 UTC] Selected Field: -connectivity:155
+[16-Dec-2020 19:06:45 UTC] Field Type: case_size
+[16-Dec-2020 19:06:45 UTC] f_fields_id:-connectivity:155-case_size:54
+[16-Dec-2020 19:06:45 UTC] f_fields_id:-connectivity:155-case_size:55
+[16-Dec-2020 19:06:45 UTC] f_fields_id:-connectivity:155-case_size:56
+[16-Dec-2020 19:07:04 UTC] Selected Field: -connectivity:155-case_size:55
+[16-Dec-2020 19:07:04 UTC] Field Type: model
+[16-Dec-2020 19:07:04 UTC] f_fields_id:-connectivity:155-case_size:55-model:176
+[16-Dec-2020 19:07:04 UTC] f_fields_id:-connectivity:155-case_size:55-model:177
+[16-Dec-2020 19:07:04 UTC] f_fields_id:-connectivity:155-case_size:55-model:178
+[16-Dec-2020 19:07:17 UTC] Selected Field: -connectivity:155-case_size:55-model:178
+[16-Dec-2020 19:07:17 UTC] Field Type: condition
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3890
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3891
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3892
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3893
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3894
+[16-Dec-2020 19:07:17 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3895
+[16-Dec-2020 19:07:27 UTC] Selected Field: -connectivity:155-case_size:55-model:178-condition:3891
+[16-Dec-2020 19:07:27 UTC] Field Type: band_included
+[16-Dec-2020 19:07:27 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3891-band_included:85
+[16-Dec-2020 19:07:27 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3891-band_included:86
+[16-Dec-2020 19:07:27 UTC] f_fields_id:-connectivity:155-case_size:55-model:178-condition:3891-band_included:87
+[20-Dec-2020 15:13:09 UTC] Selected Field: 
+[20-Dec-2020 15:13:09 UTC] Field Type: network
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2396
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2397
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2398
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2399
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2400
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2401
+[20-Dec-2020 15:13:09 UTC] f_fields_id:-network:2402
+[20-Dec-2020 15:13:17 UTC] Selected Field: -network:2401
+[20-Dec-2020 15:13:17 UTC] Field Type: storage
+[20-Dec-2020 15:13:17 UTC] f_fields_id:-network:2401-storage:1701
+[20-Dec-2020 15:13:17 UTC] f_fields_id:-network:2401-storage:1703
+[20-Dec-2020 15:13:17 UTC] f_fields_id:-network:2401-storage:1704
+[20-Dec-2020 15:13:22 UTC] Selected Field: -network:2401-storage:1701
+[20-Dec-2020 15:13:22 UTC] Field Type: condition
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4362
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4363
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4364
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4365
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4366
+[20-Dec-2020 15:13:22 UTC] f_fields_id:-network:2401-storage:1701-condition:4367
+[20-Dec-2020 15:13:33 UTC] Selected Field: -network:2401-storage:1701-condition:4366
+[20-Dec-2020 15:13:33 UTC] Field Type: accessories
+[20-Dec-2020 15:13:33 UTC] f_fields_id:-network:2401-storage:1701-condition:4366-accessories:537
+[20-Dec-2020 15:13:33 UTC] f_fields_id:-network:2401-storage:1701-condition:4366-accessories:538
+[20-Dec-2020 15:13:33 UTC] f_fields_id:-network:2401-storage:1701-condition:4366-accessories:539
+[20-Dec-2020 15:13:33 UTC] f_fields_id:-network:2401-storage:1701-condition:4366-accessories:540
+[20-Dec-2020 15:13:33 UTC] f_fields_id:-network:2401-storage:1701-condition:4366-accessories:541
+[20-Dec-2020 15:14:46 UTC] Selected Field: 
+[20-Dec-2020 15:14:46 UTC] Field Type: network
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2396
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2397
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2398
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2399
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2400
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2401
+[20-Dec-2020 15:14:46 UTC] f_fields_id:-network:2402
+[20-Dec-2020 15:14:52 UTC] Selected Field: -network:2401
+[20-Dec-2020 15:14:52 UTC] Field Type: storage
+[20-Dec-2020 15:14:52 UTC] f_fields_id:-network:2401-storage:1701
+[20-Dec-2020 15:14:52 UTC] f_fields_id:-network:2401-storage:1703
+[20-Dec-2020 15:14:52 UTC] f_fields_id:-network:2401-storage:1704
+[20-Dec-2020 15:14:56 UTC] Selected Field: -network:2401-storage:1701
+[20-Dec-2020 15:14:56 UTC] Field Type: condition
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4362
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4363
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4364
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4365
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4366
+[20-Dec-2020 15:14:56 UTC] f_fields_id:-network:2401-storage:1701-condition:4367
+[20-Dec-2020 15:15:03 UTC] Selected Field: -network:2401-storage:1701-condition:4367
+[20-Dec-2020 15:15:03 UTC] Field Type: accessories
+[20-Dec-2020 15:15:03 UTC] f_fields_id:-network:2401-storage:1701-condition:4367-accessories:537
+[20-Dec-2020 15:15:03 UTC] f_fields_id:-network:2401-storage:1701-condition:4367-accessories:538
+[20-Dec-2020 15:15:03 UTC] f_fields_id:-network:2401-storage:1701-condition:4367-accessories:539
+[20-Dec-2020 15:15:03 UTC] f_fields_id:-network:2401-storage:1701-condition:4367-accessories:540
+[20-Dec-2020 15:15:03 UTC] f_fields_id:-network:2401-storage:1701-condition:4367-accessories:541
+[20-Dec-2020 15:15:07 UTC] Selected Field: -network:2401-storage:1701-condition:4367-accessories:537
+[20-Dec-2020 15:15:07 UTC] Field Type: 
+[20-Dec-2020 15:15:07 UTC] 80 = -network:2401-storage:1701-condition:4367-accessories:537 =  = mobile
+[20-Dec-2020 15:15:07 UTC] {"network":"2401","storage":"1701","condition":"4367","accessories":"537"}
+[22-Dec-2020 02:58:40 UTC] Selected Field: 
+[22-Dec-2020 02:58:40 UTC] Field Type: network
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2013
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2014
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2015
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2016
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2017
+[22-Dec-2020 02:58:40 UTC] f_fields_id:-network:2018
+[22-Dec-2020 02:58:47 UTC] Selected Field: -network:2015
+[22-Dec-2020 02:58:47 UTC] Field Type: storage
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1141
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1142
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1143
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1144
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1145
+[22-Dec-2020 02:58:47 UTC] f_fields_id:-network:2015-storage:1146
+[22-Dec-2020 03:00:06 UTC] Selected Field: -network:2015-storage:1143
+[22-Dec-2020 03:00:06 UTC] Field Type: condition
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3746
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3747
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3748
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3749
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3750
+[22-Dec-2020 03:00:06 UTC] f_fields_id:-network:2015-storage:1143-condition:3751
+[22-Dec-2020 03:00:51 UTC] Selected Field: -network:2015-storage:1143-condition:3749
+[22-Dec-2020 03:00:51 UTC] Field Type: accessories
+[22-Dec-2020 03:00:51 UTC] f_fields_id:-network:2015-storage:1143-condition:3749-accessories:283
+[22-Dec-2020 03:00:51 UTC] f_fields_id:-network:2015-storage:1143-condition:3749-accessories:284
+[22-Dec-2020 03:01:01 UTC] Selected Field: -network:2015-storage:1143-condition:3749-accessories:283
+[22-Dec-2020 03:01:01 UTC] Field Type: 
+[22-Dec-2020 03:01:01 UTC] 141 = -network:2015-storage:1143-condition:3749-accessories:283 =  = mobile
+[22-Dec-2020 03:01:01 UTC] {"network":"2015","storage":"1143","condition":"3749","accessories":"283"}
+[22-Dec-2020 04:28:46 UTC] Selected Field: 
+[22-Dec-2020 04:28:46 UTC] Field Type: connectivity
+[22-Dec-2020 04:28:46 UTC] f_fields_id:-connectivity:175
+[22-Dec-2020 04:28:46 UTC] f_fields_id:-connectivity:176
+[22-Dec-2020 04:28:46 UTC] f_fields_id:-connectivity:202
+[22-Dec-2020 04:28:54 UTC] Selected Field: -connectivity:176
+[22-Dec-2020 04:28:54 UTC] Field Type: storage
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1457
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1458
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1459
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1460
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1461
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1462
+[22-Dec-2020 04:28:54 UTC] f_fields_id:-connectivity:176-storage:1726
+[22-Dec-2020 04:29:01 UTC] Selected Field: -connectivity:176-storage:1457
+[22-Dec-2020 04:29:01 UTC] Field Type: condition
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4094
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4095
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4096
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4097
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4098
+[22-Dec-2020 04:29:01 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4099
+[22-Dec-2020 04:29:11 UTC] Selected Field: -connectivity:176-storage:1457-condition:4098
+[22-Dec-2020 04:29:11 UTC] Field Type: accessories
+[22-Dec-2020 04:29:11 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4098-accessories:399
+[22-Dec-2020 04:29:11 UTC] f_fields_id:-connectivity:176-storage:1457-condition:4098-accessories:400
+[22-Dec-2020 04:29:18 UTC] Selected Field: -connectivity:176-storage:1457-condition:4098-accessories:399
+[22-Dec-2020 04:29:18 UTC] Field Type: 
+[22-Dec-2020 04:29:18 UTC] 200 = -connectivity:176-storage:1457-condition:4098-accessories:399 =  = tablet
+[22-Dec-2020 04:29:18 UTC] {"connectivity":"176","storage":"1457","condition":"4098","accessories":"399"}
+[22-Dec-2020 04:29:52 UTC] Selected Field: 
+[22-Dec-2020 04:29:52 UTC] Field Type: model
+[22-Dec-2020 04:29:52 UTC] f_fields_id:-model:206
+[22-Dec-2020 04:29:52 UTC] f_fields_id:-model:207
+[22-Dec-2020 04:29:52 UTC] f_fields_id:-model:208
+[22-Dec-2020 04:29:58 UTC] Selected Field: -model:206
+[22-Dec-2020 04:29:58 UTC] Field Type: condition
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4320
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4321
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4322
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4323
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4324
+[22-Dec-2020 04:29:58 UTC] f_fields_id:-model:206-condition:4325
+[22-Dec-2020 04:30:04 UTC] Selected Field: -model:206-condition:4323
+[22-Dec-2020 04:30:04 UTC] Field Type: accessories
+[22-Dec-2020 04:30:04 UTC] f_fields_id:-model:206-condition:4323-accessories:505
+[22-Dec-2020 04:30:04 UTC] f_fields_id:-model:206-condition:4323-accessories:506
+[22-Dec-2020 04:30:05 UTC] Selected Field: -model:206-condition:4323
+[22-Dec-2020 04:30:05 UTC] Field Type: accessories
+[22-Dec-2020 04:30:05 UTC] f_fields_id:-model:206-condition:4323-accessories:505
+[22-Dec-2020 04:30:05 UTC] f_fields_id:-model:206-condition:4323-accessories:506
+[22-Dec-2020 04:30:14 UTC] Selected Field: -model:206-condition:4323-accessories:505
+[22-Dec-2020 04:30:14 UTC] Field Type: 
+[22-Dec-2020 04:30:14 UTC] 211 = -model:206-condition:4323-accessories:505 =  = other
+[22-Dec-2020 04:30:14 UTC] {"model":"206","condition":"4323","accessories":"505"}
+[22-Dec-2020 17:16:19 UTC] Selected Field: 
+[22-Dec-2020 17:16:19 UTC] Field Type: connectivity
+[22-Dec-2020 17:16:19 UTC] f_fields_id:-connectivity:141
+[22-Dec-2020 17:16:19 UTC] f_fields_id:-connectivity:142
+[22-Dec-2020 17:16:25 UTC] Selected Field: -connectivity:142
+[22-Dec-2020 17:16:25 UTC] Field Type: case_size
+[22-Dec-2020 17:16:25 UTC] f_fields_id:-connectivity:142-case_size:42
+[22-Dec-2020 17:16:25 UTC] f_fields_id:-connectivity:142-case_size:43
+[22-Dec-2020 17:16:25 UTC] f_fields_id:-connectivity:142-case_size:44
+[22-Dec-2020 17:16:35 UTC] Selected Field: -connectivity:142-case_size:42
+[22-Dec-2020 17:16:35 UTC] Field Type: model
+[22-Dec-2020 17:16:35 UTC] f_fields_id:-connectivity:142-case_size:42-model:158
+[22-Dec-2020 17:16:35 UTC] f_fields_id:-connectivity:142-case_size:42-model:159
+[22-Dec-2020 17:16:35 UTC] f_fields_id:-connectivity:142-case_size:42-model:160
+[19-Jan-2021 00:55:30 UTC] Selected Field: 
+[19-Jan-2021 00:55:30 UTC] Field Type: network
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2115
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2116
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2117
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2118
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2119
+[19-Jan-2021 00:55:30 UTC] f_fields_id:-network:2120
+[19-Jan-2021 00:55:37 UTC] Selected Field: -network:2118
+[19-Jan-2021 00:55:37 UTC] Field Type: storage
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1277
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1278
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1279
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1280
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1281
+[19-Jan-2021 00:55:37 UTC] f_fields_id:-network:2118-storage:1282
+[19-Jan-2021 00:55:43 UTC] Selected Field: -network:2118-storage:1280
+[19-Jan-2021 00:55:43 UTC] Field Type: condition
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3908
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3909
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3910
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3911
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3912
+[19-Jan-2021 00:55:43 UTC] f_fields_id:-network:2118-storage:1280-condition:3913
+[19-Jan-2021 00:55:49 UTC] Selected Field: -network:2118-storage:1280-condition:3909
+[19-Jan-2021 00:55:49 UTC] Field Type: accessories
+[19-Jan-2021 00:55:49 UTC] f_fields_id:-network:2118-storage:1280-condition:3909-accessories:337
+[19-Jan-2021 00:55:49 UTC] f_fields_id:-network:2118-storage:1280-condition:3909-accessories:338
+[19-Jan-2021 00:55:56 UTC] Selected Field: -network:2118-storage:1280-condition:3909-accessories:337
+[19-Jan-2021 00:55:56 UTC] Field Type: 
+[19-Jan-2021 00:55:56 UTC] 168 = -network:2118-storage:1280-condition:3909-accessories:337 =  = mobile
+[19-Jan-2021 00:55:56 UTC] {"network":"2118","storage":"1280","condition":"3909","accessories":"337"}

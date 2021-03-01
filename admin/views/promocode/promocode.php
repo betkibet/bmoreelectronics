@@ -23,6 +23,8 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+			    if($prms_promocode_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="add_promocode.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -33,6 +35,8 @@
                     </span>
                   </a>
                 </li>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -49,7 +53,6 @@
 					  <th>From Date</th>
 					  <th>Expire Date</th>
 					  <th>Discount</th>
-					  <th>Active</th>
 					  <th>Action</th>
                       </tr>
                     </thead>
@@ -60,13 +63,25 @@
 						  <tr>
 							<td><?=$promocode_data['id']?></td>
 							<td><?=$promocode_data['promocode']?></td>
-							<td><?=date("m/d/Y",strtotime($promocode_data['from_date']))?></td>
-							<td><?=date("m/d/Y",strtotime($promocode_data['to_date']))?></td>
+							<td><?=format_date($promocode_data['from_date'])?></td>
+							<td><?=format_date($promocode_data['to_date'])?></td>
 							<td><?=($promocode_data['discount_type']=="percentage"?$promocode_data['discount'].'%':amount_fomat($promocode_data['discount']))?></td>
-							<td><?=$promocode_data['status']=='1'?'Yes':'No'?></td>
 							<td>
-							  <a href="edit_promocode.php?id=<?=$promocode_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-							  <a href="controllers/promocode.php?r_id=<?=$promocode_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+							<?php
+							if($promocode_data['status']==1) {
+								echo '<a href="controllers/promocode.php?p_id='.$promocode_data['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Active</button></a>';
+							} elseif($promocode_data['status']==0) {
+								echo '<a href="controllers/promocode.php?p_id='.$promocode_data['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Inactive</button></a>';
+							}
+							
+			        		if($prms_promocode_edit == '1') { ?>
+							  <a href="edit_promocode.php?id=<?=$promocode_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+							<?php
+							}
+			        		if($prms_promocode_delete == '1') { ?>
+							  <a href="controllers/promocode.php?r_id=<?=$promocode_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure to delete this record?')"><i class="la la-trash"></i></a>
+							<?php
+							} ?>
 							</td>
 						  </tr>
                       <?php }

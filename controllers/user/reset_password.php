@@ -1,6 +1,7 @@
 <?php 
 require_once("../../admin/_config/config.php");
 require_once("../../admin/include/functions.php");
+require_once("../common.php");
 
 if(trim($post['t'])=="") {
 	setRedirect(SITE_URL);

@@ -1,0 +1,33 @@
+:root {
+--sticky_header_background_color : #FFFFFF;
+
+--main_background_color : #FEFFFF;
+--main_background_text_color : #000000;
+--primary_color : #FFC805;
+--primary_text_color : #FEFFFF;
+--secondary_color : #28FF0B;
+--secondary_text_color : #FEFFFF;
+--tertiary_color : #65FF1C;
+--tertiary_text_color : #FEFFFF;
+--primary_hover_color : #00FF0C;
+--primary_text_hover_color : #000000;
+--secondary_hover_color : #FFFFFF;
+--secondary_text_hover_color : #000000;
+--tertiary_hover_color : #FEFFFF;
+--tertiary_text_hover_color : #000000;
+--header_calltoaction_button_color : #3FFF49;
+--header_calltoaction_button_text_color : #FEFFFF;
+--header_calltoaction_button_hover_color : #FEFFFF;
+--header_calltoaction_button_text_hover_color : #000000;
+--menu_color : #FEFFFF;
+--menu_hover_color : #47FF1B;
+--sub_menu_color : #FFFFFF;
+--sub_menu_hover_color : #FFFB2F;
+--sub_menu_background_color : #9BE15D;
+--footer_background_color : #000000;
+--footer_text_color : #5F5F5F;
+--social_icons_background_color : #56FF30;
+--social_icons_background_hover_color : #FEFFFF;
+--social_icons_text_color : #FEFFFF;
+--heading_title_color : #000000;
+}

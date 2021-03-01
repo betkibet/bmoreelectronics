@@ -31,6 +31,8 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_menu_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="edit_menu.php?position=<?=$menu_position?>" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -41,6 +43,8 @@
                     </span>
                   </a>
                 </li>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -61,7 +65,7 @@
 						<option value="footer_column3" <?php if("footer_column3"==$menu_position){echo 'selected="selected"';}?>>Footer Menu Column3</option>
 						<option value="copyright_menu" <?php if("copyright_menu"==$menu_position){echo 'selected="selected"';}?>>Copyright Menu</option>
 						</select>
-						<button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm float-right ml-2" type="submit" name="search">Go</button>
+						<button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs float-right ml-2" type="submit" name="search">Go</button>
                       </div>
                     </form>
                   </label>
@@ -72,7 +76,7 @@
 			  <div class="row">
                 <div class="col-sm-12">
                   <div id="m_table_1_filter" class="dataTables_filter float-left">
-                    <form method="get">
+                    <form method="post">
                         <div class="input-group">
                           <select name="position" id="position" class="form-control form-control-sm m-select2 m-select2-general w-100">
 							<option value="top_right" <?php if("top_right"==$menu_position){echo 'selected="selected"';}?>>Top Right Menu</option>
@@ -113,7 +117,7 @@
                           Page Name
                         </th>
                         <th width="100">
-                          Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
+                          Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-save"></i></button>
                         </th>
                         <th>
                           Actions
@@ -136,19 +140,24 @@
                       <tr>
                         <td width="30"><?=$n=$n+1?></td>
 						<td><?=$menu_data['menu_name']?></td>
-						<td><?=$parent_menu_data['menu_name']?></td>
+						<td><?=(isset($parent_menu_data['menu_name'])?$parent_menu_data['menu_name']:'')?></td>
 						<td><?=$menu_data['page_title']?></td>
                         <td><input type="text" class="input-small form-control m-input" id="ordering<?=$menu_data['id']?>" value="<?=$menu_data['ordering']?>" name="ordering[<?=$menu_data['id']?>]"></td>
                         <td Width="190">
                         <?php
 						if($menu_data['status']==1) {
-							echo '<a href="controllers/menu.php?p_id='.$menu_data['id'].'&published=0&position='.$menu_position.'"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Active</button></a>';
+							echo '<a href="controllers/menu.php?p_id='.$menu_data['id'].'&published=0&position='.$menu_position.'"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Active</button></a>';
 						} elseif($menu_data['status']==0) {
-							echo '<a href="controllers/menu.php?p_id='.$menu_data['id'].'&published=1&position='.$menu_position.'"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Inactive</button></a>';
+							echo '<a href="controllers/menu.php?p_id='.$menu_data['id'].'&published=1&position='.$menu_position.'"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Inactive</button></a>';
+						}
+						if($prms_menu_edit == '1') { ?>
+                        <a href="edit_menu.php?id=<?=$menu_data['id']?>&position=<?=$menu_position?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+						<?php
+						}
+						if($prms_menu_delete == '1') { ?>
+      					<a href="controllers/menu.php?d_id=<?=$menu_data['id']?>&position=<?=$menu_position?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+						<?php
 						} ?>
-
-                        <a href="edit_menu.php?id=<?=$menu_data['id']?>&position=<?=$menu_position?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-      					<a href="controllers/menu.php?d_id=<?=$menu_data['id']?>&position=<?=$menu_position?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                       <?php }

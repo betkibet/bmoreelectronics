@@ -1,6 +1,8 @@
 <?php 
 require_once("../../_config/config.php");
 require_once("../../include/functions.php");
+require_once("../common.php");
+check_admin_staff_auth();
 
 $order_id = $post['order_id'];
 $order_data_before_saved = get_order_data($order_id);
@@ -35,7 +37,7 @@ if(isset($post['update'])) {
 	$sell_order_total = ($orders_sum['sum_of_orders']>0?$orders_sum['sum_of_orders']:'');
 	
 	//START append order items to block
-	$order_query=mysqli_query($db,"SELECT oi.*, o.`payment_method`, o.`date`, o.`approved_date`, o.`expire_date`, o.`status`, o.`sales_pack`, o.`paypal_address`, o.`chk_name`, o.`chk_street_address`, o.`chk_street_address_2`, o.`chk_city`, o.`chk_state`, o.`chk_zip_code`, o.`act_name`, o.`act_number`, o.`act_short_code`, o.`note`, d.title AS device_title, m.title AS model_title FROM order_items AS oi LEFT JOIN orders AS o ON o.order_id=oi.order_id LEFT JOIN devices AS d ON d.id=oi.device_id LEFT JOIN mobile AS m ON m.id=oi.model_id WHERE o.order_id='".$order_id."' ORDER BY oi.id DESC");
+	$order_query=mysqli_query($db,"SELECT oi.*, o.`payment_method`, o.`date`, o.`approved_date`, o.`expire_date`, o.`status`, o.`sales_pack`, o.`note`, d.title AS device_title, m.title AS model_title FROM order_items AS oi LEFT JOIN orders AS o ON o.order_id=oi.order_id LEFT JOIN devices AS d ON d.id=oi.device_id LEFT JOIN mobile AS m ON m.id=oi.model_id WHERE o.order_id='".$order_id."' ORDER BY oi.id DESC");
 	while($order_data=mysqli_fetch_assoc($order_query)) {
 		$order_item_data = get_order_item($order_data['id'],'email');
 		
@@ -98,6 +100,7 @@ if(isset($post['update'])) {
 					$visitor_body .= '<div class="o_col o_col-1" style="display: inline-block;vertical-align: top;width: 100%;max-width: 100px;">';
 					  $visitor_body .= '<div class="o_px-xs o_sans o_text-xs o_center" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 14px;line-height: 21px;text-align: center;padding-left: 8px;padding-right: 8px;">';
 						$visitor_body .= '<p class="o_text-light" style="color: #82899a;margin-top: 0px;margin-bottom: 0px;">Qty</p>';
+
 					  $visitor_body .= '</div>';
 					$visitor_body .= '</div>';
 					$visitor_body .= '<div class="o_col o_col-1" style="display: inline-block;vertical-align: top;width: 100%;max-width: 100px;">';
@@ -211,12 +214,12 @@ if(isset($post['update'])) {
 		'{$customer_fullname}',
 		'{$customer_phone}',
 		'{$customer_email}',
-		'{$customer_address_line1}',
-		'{$customer_address_line2}',
-		'{$customer_city}',
-		'{$customer_state}',
+		'{$billing_address1}',
+		'{$billing_address2}',
+		'{$billing_city}',
+		'{$billing_state}',
 		'{$customer_country}',
-		'{$customer_postcode}',
+		'{$billing_postcode}',
 		'{$customer_company_name}',
 		'{$order_id}',
 		'{$order_payment_method}',
@@ -235,7 +238,16 @@ if(isset($post['update'])) {
 		'{$company_city}',
 		'{$company_state}',
 		'{$company_postcode}',
-		'{$company_country}');
+		'{$company_country}',
+		'{$shipping_fname}',
+		'{$shipping_lname}',
+		'{$shipping_company_name}',
+		'{$shipping_address1}',
+		'{$shipping_address2}',
+		'{$shipping_city}',
+		'{$shipping_state}',
+		'{$shipping_postcode}',
+		'{$shipping_phone}');
 
 	//$offer_accept_link = '<a href="'.SITE_URL.'offer-status/'.$order_id.'/offer_accepted">ACCEPT OFFER</a>';
 	//$offer_reject_link = '<a href="'.SITE_URL.'offer-status/'.$order_id.'/offer_rejected">REJECT OFFER</a>';
@@ -271,7 +283,7 @@ if(isset($post['update'])) {
 		$order_data['expire_date'],
 		ucwords(str_replace("_"," ",$order_data['order_status'])),
 		$order_data['sales_pack'],
-		date('Y-m-d H:i'),
+		format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')),
 		$post['note'],
 		$visitor_body,
 		$offer_accept_link,
@@ -281,7 +293,16 @@ if(isset($post['update'])) {
 		$company_city,
 		$company_state,
 		$company_zipcode,
-		$company_country);
+		$company_country,
+		$order_data['shipping_first_name'],
+		$order_data['shipping_last_name'],
+		$order_data['shipping_company_name'],
+		$order_data['shipping_address'],
+		$order_data['shipping_address2'],
+		$order_data['shipping_city'],
+		$order_data['shipping_state'],
+		$order_data['shipping_postcode'],
+		$order_data['shipping_phone']);
 	
 	if(!empty($template_data)) {
 		$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
@@ -294,12 +315,26 @@ if(isset($post['update'])) {
 			$to_number = '+'.$order_data['phone'];
 			if($from_number && $account_sid && $auth_token) {
 				$sms_body_text = str_replace($patterns,$replacements,$template_data['sms_content']);
+				
 				try {
+					$sms_api->messages->create(
+						$to_number,
+						array(
+							'from' => $from_number,
+							'body' => $sms_body_text
+						)
+					);
+				} catch(Services_Twilio_RestException $e) {
+					$sms_error_msg = $e->getMessage();
+					error_log($sms_error_msg);
+				}
+				
+				/*try {
 					$sms = $sms_api->account->messages->sendMessage($from_number, $to_number, $sms_body_text, $image, array('StatusCallback'=>''));
 				} catch(Services_Twilio_RestException $e) {
 					echo $sms_error_msg = $e->getMessage();
 					error_log($sms_error_msg);
-				}
+				}*/
 			}
 		} //END sms send to customer
 	}

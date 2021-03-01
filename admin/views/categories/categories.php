@@ -23,6 +23,8 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_category_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="edit_category.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -33,19 +35,8 @@
                     </span>
                   </a>
                 </li>
-                <?php /*?><li class="m-portlet__nav-item">
-                  <form action="controllers/device_categories.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li><?php */?>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -56,14 +47,14 @@
 			  <div class="row">
                 <div class="col-sm-12">
                   <div id="m_table_1_filter" class="dataTables_filter float-left">
-                    <form method="get">
+                    <form method="post">
                         <div class="input-group">
-                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
+                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=_dt_parse($post['filter_by'])?>" autocomplete="nope">
 						  	
-                          <button class="btn btn-alt btn-primary ml-2 searchbx" type="submit">Search <i class="la la-search"></i></button>
+                          <button class="btn btn-alt btn-primary ml-2 searchbx" name="search" type="submit">Search <i class="la la-search"></i></button>
                           <?php
 						  if($post['filter_by']!="") {
-          					echo '<a href="device_categories.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
+          					echo '<a href="device_categories.php?clear" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
 						  } ?>
                         </div>
                     </form>
@@ -71,6 +62,8 @@
                 </div>
               </div>
 			  
+			  <?php
+			  if($prms_category_delete == '1') { ?>
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
 					<form action="controllers/device_categories.php" method="POST">
@@ -79,6 +72,8 @@
 					</form>
 				</div>
 			  </div>
+			  <?php
+			  } ?>
 			  
               <div class="row">
                 <div class="col-sm-12">
@@ -96,10 +91,25 @@
                           Icon
                         </th><?php */?>
                         <th>
-                          Title
-                        </th>
+						  <?php
+						  if($post['title_shorting'] == "asc") { ?>
+							<a href="?title_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['title_shorting'] == "desc" || $post['title_shorting'] == "") { ?>
+							<a href="?title_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?>
+					    </th>
+						<th width="110">Type</th>
                         <th width="100">
-                          Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
+                          <?php
+						  if($post['oid_shorting'] == "asc") { ?>
+							<a href="?oid_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['oid_shorting'] == "desc" || $post['oid_shorting'] == "") { ?>
+							<a href="?oid_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?> <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-save"></i></button>
                         </th>
                         <th>
                           Actions
@@ -120,32 +130,40 @@
                         <?php /*?><td>
 							<?php if($category_data['image'])	echo '<img src="../images/categories/'.$category_data['image'].'" width="100" />';?>
 						</td><?php */?>
-                        <td>
-                          <?=$category_data['title']?>
-                        </td>
+                        <td><?=$category_data['title']?></td>
+						<td><?=$category_data['fields_type']?></td>
                         <td>
                           <input type="text" class="input-small form-control m-input m-input--square" id="ordering<?=$category_data['id']?>" value="<?=$category_data['ordering']?>" name="ordering[<?=$category_data['id']?>]">
                         </td>
                         <td Width="190">
                           <?php
 							if($category_data['published']==1) {
-								echo '<a href="controllers/device_categories.php?p_id='.$category_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Published</button></a>';
+								echo '<a href="controllers/device_categories.php?p_id='.$category_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Published</button></a>';
 							} elseif($category_data['published']==0) {
-								echo '<a href="controllers/device_categories.php?p_id='.$category_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Unpublished</button></a>';
+								echo '<a href="controllers/device_categories.php?p_id='.$category_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Unpublished</button></a>';
 							}
-							?>
-                          <a href="edit_category.php?id=<?=$category_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-      					  <a href="controllers/device_categories.php?d_id=<?=$category_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+							
+						    if($prms_category_edit == '1') { ?>
+                          	<a href="edit_category.php?id=<?=$category_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+						  	<?php
+							}
+							if($prms_category_delete == '1') { ?>
+      					  	<a href="controllers/device_categories.php?d_id=<?=$category_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+						    <?php
+						    } ?>
                         </td>
                       </tr>
                       <?php }
-                      }?>
+                      } ?>
                     </tbody>
                   </table>
                 </form>
                 </div>
               </div>
-              <?php echo $pages->page_links(); ?>
+              <?php
+			  $current_url_params = get_all_get_params();
+			  $current_url_params = ($current_url_params?$current_url_params.'&':'?');
+			  echo $pages->page_links($current_url_params); ?>
             </div>
           </div>
         </div>

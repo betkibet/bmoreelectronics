@@ -14,12 +14,12 @@ function check_form(a) {
 		return false;
 	}
 
-	if(a.state.value.trim()==""){
+	/*if(a.state.value.trim()==""){
 		alert('Please enter state');
 		a.state.focus();
 		a.state.value='';
 		return false;
-	}
+	}*/
 
 	if(a.city.value.trim()==""){
 		alert('Please enter city');
@@ -28,7 +28,7 @@ function check_form(a) {
 		return false;
 	}
 
-	if(a.stars.value.trim()==""){
+	/*if(a.stars.value.trim()==""){
 		alert('Please select rating');
 		a.stars.focus();
 		a.stars.value='';
@@ -40,8 +40,10 @@ function check_form(a) {
 		a.title.focus();
 		a.title.value='';
 		return false;
-	}
+	}*/
 
+	//var content = jQuery(".summernote").summernote("code").replace(/&nbsp;|<\/?[^>]+(>|$)/g,"").trim();
+	//if(content.length == 0) {
 	if(a.content.value.trim()==""){
 		alert('Please enter content');
 		a.content.focus();
@@ -55,6 +57,10 @@ function check_form(a) {
 		a.date.value='';
 		return false;
 	}
+	
+	/*if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
+	}*/
 }
 </script>
 
@@ -101,7 +107,7 @@ function check_form(a) {
 											<label for="input">Email : *</label>
 											<input type="text" class="form-control m-input" name="email" id="email" value="<?=$review_data['email']?>">
 										</div>
-										<div class="form-group m-form__group">
+										<?php /*?><div class="form-group m-form__group">
 											<label for="input">Country :</label>
 											<select class="form-control m-select2 m-select2-general" name="country" id="country">
 											  <option value=""> - Country - </option>
@@ -115,10 +121,14 @@ function check_form(a) {
 										<div class="form-group m-form__group">
 											<label for="input">State : *</label>
 											<input type="text" class="form-control m-input" name="state" id="state" value="<?=$review_data['state']?>">
-										</div>
+										</div><?php */?>
 										<div class="form-group m-form__group">
 											<label for="input">City : *</label>
 											<input type="text" class="form-control m-input" name="city" id="city" value="<?=$review_data['city']?>">
+										</div>
+										<div class="form-group m-form__group">
+											<label for="input">Device Sold : </label>
+											<input type="text" class="form-control m-input" name="device_sold" id="device_sold" value="<?=$review_data['device_sold']?>">
 										</div>
 										<div class="form-group m-form__group">
 											<label for="input">How would you rate this business overall? : *</label>
@@ -131,21 +141,21 @@ function check_form(a) {
 												} ?>
 											</select>
 										</div>
-										<div class="form-group m-form__group">
+										<?php /*?><div class="form-group m-form__group">
 											<label for="input">Title : *</label>
 											<input type="text" class="form-control m-input" name="title" id="title" value="<?=$review_data['title']?>">
-										</div>
+										</div><?php */?>
 										<div class="form-group m-form__group">
 											<label for="input">
 												Content :
 											</label>
-											<textarea class="form-control m-input summernote" id="input" name="content" rows="5"><?=$review_data['content']?></textarea>
+											<textarea class="form-control m-input" id="input" name="content" rows="5"><?=$review_data['content']?></textarea>
 										</div>
 										<div class="form-group m-form__group">
 											<label for="input">
 												Date : *
 											</label>
-											<input class="form-control m-input" type="date" id="date" name="date" placeholder="Select date (mm/dd/yyyy)" value="<?=($review_data['date']!='0000-00-00'?date('Y-m-d',strtotime($review_data['date'])):'')?>">
+											<input class="form-control m-input" type="date" id="date" name="date" placeholder="Select date (mm/dd/yyyy)" value="<?=($review_data['date']!='' && $review_data['date']!='0000-00-00'?date('Y-m-d',strtotime($review_data['date'])):'')?>">
 										</div>
 										
 										<div class="form-group m-form__group">
@@ -171,7 +181,7 @@ function check_form(a) {
 											</label>
 											<div class="m-radio-inline">
 												<label class="m-radio">
-													<input type="radio" id="status" name="status" value="1" <?php if(!$brand_id){echo 'checked="checked"';}?> <?=($review_data['status']==1?'checked="checked"':'')?>>
+													<input type="radio" id="status" name="status" value="1" <?php if(!$id){echo 'checked="checked"';}?> <?=($review_data['status']==1?'checked="checked"':'')?>>
 													Yes
 													<span></span>
 												</label>

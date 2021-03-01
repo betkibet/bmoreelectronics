@@ -3,7 +3,7 @@
 function get_model_data_list($brand_id) {
 	global $db;
 	$response = array();
-	$query=mysqli_query($db,"SELECT m.*, d.title AS device_title, d.sef_url, b.title AS brand_title FROM mobile AS m LEFT JOIN devices AS d ON d.id=m.device_id LEFT JOIN brand AS b ON b.id=m.brand_id LEFT JOIN categories AS c ON c.id=m.cat_id WHERE m.published=1 AND b.id='".$brand_id."' ORDER BY m.id DESC");
+	$query=mysqli_query($db,"SELECT m.*, d.title AS device_title, d.sef_url, b.title AS brand_title FROM mobile AS m LEFT JOIN devices AS d ON d.id=m.device_id LEFT JOIN brand AS b ON b.id=m.brand_id LEFT JOIN categories AS c ON c.id=m.cat_id WHERE m.published=1 AND b.id='".$brand_id."' ORDER BY m.ordering DESC");
 	$num_of_rows = mysqli_num_rows($query);
 	if($num_of_rows>0) {
 		while($model_list=mysqli_fetch_assoc($query)) {
@@ -46,7 +46,13 @@ function get_brand_devices_data_list($brand_id) {
 function get_cat_brand_devices_data_list($cat_id,$brand_id) {
 	global $db;
 	$response = array();
-	$query=mysqli_query($db,"SELECT d.*, b.title AS brand_title, b.sef_url AS brand_sef_url FROM devices AS d LEFT JOIN mobile AS m ON m.device_id=d.id LEFT JOIN brand AS b ON b.id=m.brand_id WHERE d.published=1 AND m.cat_id='".$cat_id."' AND m.brand_id='".$brand_id."' AND b.id='".$brand_id."' GROUP BY m.device_id ORDER BY d.ordering ASC");
+	
+	$sql_whr = "";
+	if($cat_id>0) {
+		$sql_whr = "AND m.cat_id='".$cat_id."'";
+	}
+	
+	$query=mysqli_query($db,"SELECT d.*, b.title AS brand_title, b.sef_url AS brand_sef_url FROM devices AS d LEFT JOIN mobile AS m ON m.device_id=d.id LEFT JOIN brand AS b ON b.id=m.brand_id WHERE d.published=1 AND m.brand_id='".$brand_id."' AND b.id='".$brand_id."'".$sql_whr." GROUP BY m.device_id ORDER BY d.ordering ASC");
 	$num_of_rows = mysqli_num_rows($query);
 	if($num_of_rows>0) {
 		while($device_list=mysqli_fetch_assoc($query)) {
@@ -73,7 +79,7 @@ function get_c_b_d_model_data_list($brand_id, $cat_id, $device_id = 0) {
 	if($cat_id>0) {
 		 $sql_whr .= " AND m.cat_id='".$cat_id."'";
 	}
-	$query=mysqli_query($db,"SELECT m.*, d.title AS device_title, d.sef_url, b.title AS brand_title FROM mobile AS m LEFT JOIN devices AS d ON d.id=m.device_id LEFT JOIN brand AS b ON b.id=m.brand_id LEFT JOIN categories AS c ON c.id=m.cat_id WHERE m.published=1 AND m.brand_id='".$brand_id."' ".$sql_whr." ORDER BY m.id DESC");
+	$query=mysqli_query($db,"SELECT m.*, d.title AS device_title, d.sef_url AS device_sef_url, b.title AS brand_title FROM mobile AS m LEFT JOIN devices AS d ON d.id=m.device_id LEFT JOIN brand AS b ON b.id=m.brand_id LEFT JOIN categories AS c ON c.id=m.cat_id WHERE m.published=1 AND m.brand_id='".$brand_id."' ".$sql_whr." ORDER BY m.ordering DESC");
 	$num_of_rows = mysqli_num_rows($query);
 	if($num_of_rows>0) {
 		while($model_list=mysqli_fetch_assoc($query)) {

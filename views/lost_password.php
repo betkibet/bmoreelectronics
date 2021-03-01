@@ -14,26 +14,26 @@ $csrf_token = generateFormToken('lost_password');
 <form action="controllers/user/lost_password.php" method="post" id="lost_psw_form" role="form">
   <section>
 	<div class="container">
-	  <div class="row">
-		<div class="col-md-12">
+	  <div class="row justify-content-center">
+		<div class="col-md-7">
 		  <div class="head user-area-head text-center">
 			<div class="h2"><strong>Forgot your password?</strong></div>
 			<p>Enter the e-mail address associated with your <?=SITE_NAME?> account, then click Reset Password.<br />We'll email you a link to a page where you can easily create a new password.</p>
 		  </div>
 		</div>
 	  </div>
-	  <div class="row">
-		<div class="col-md-12">
+	  <div class="row justify-content-center">
+		<div class="col-md-5">
 		  <div class="block clearfix">
 			<div class="form-horizontal form-login" role="form">
 			  <div class="form-wrap clearfix">
-				<div class="form-group">
+				<div class="form-group text-center">
 				  <label for="username" class="control-label">Email</label>
 				  <div class="clearfix">
-					<input type="text" class="form-control" id="email" name="email" placeholder="Enter email address" autocomplete="off">
+					<input type="text" class="form-control text-center" id="email" name="email" autocomplete="off">
 				  </div>
 				</div>
-				<div class="form-group">
+				<div class="form-group text-center">
 				  <div class="clearfix">
 					<button type="submit" class="btn btn-submit">Submit</button>
 					<input type="hidden" name="reset" id="reset" />
@@ -42,7 +42,7 @@ $csrf_token = generateFormToken('lost_password');
 				</div>
 			  </div>
 			  <div class="form-group text-center">
-				<a class="btn" href="<?=$login_link?>">Return to login</a>
+				<a  href="<?=$login_link?>">Return to login</a>
 			  </div>
 			</div>
 		  </div>

@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {
 	$query=mysqli_query($db,'DELETE FROM pages WHERE id="'.$post['d_id'].'"');
@@ -34,7 +36,7 @@ if(isset($post['d_id'])) {
 	}
 	setRedirect(ADMIN_URL.'system_page.php');
 } elseif(isset($post['p_id'])) {
-	$query=mysqli_query($db,'UPDATE pages SET published="'.$post['published'].'" WHERE id="'.$post['p_id'].'"');
+	$query=mysqli_query($db,'UPDATE pages SET published="'.$post['published'].'" WHERE slug!="home" AND id="'.$post['p_id'].'"');
 	if($query=="1"){
 		if($post['published']==1)
 			$msg="Successfully Published.";
@@ -63,6 +65,7 @@ if(isset($post['d_id'])) {
 	$meta_desc=real_escape_string($post['meta_desc']);
 	$meta_keywords=real_escape_string($post['meta_keywords']);
 	$content=real_escape_string($post['description']);
+	$css_body_class=real_escape_string($post['css_body_class']);
 	
 	$cat_id=$post['cat_id'];
 	$brand_id=$post['brand_id'];
@@ -71,6 +74,7 @@ if(isset($post['d_id'])) {
 	$show_title=$post['show_title'];
 	$image_text=real_escape_string($post['image_text']);
 	$published = $post['published'];
+	$header_section = $post['header_section'];
 	
 	$c_b_d_type = $post['c_b_d_type'];
 	if($c_b_d_type == "cat") {
@@ -102,9 +106,9 @@ if(isset($post['d_id'])) {
 		$url='';
 	}
 
-	$qry=mysqli_query($db,"SELECT * FROM pages WHERE url='".$url."' AND url!='' AND id!='".$id."'");
-	$exist_data=mysqli_fetch_assoc($qry);
-	if(!empty($exist_data)) {
+	//Check Valid SEF URL
+	$is_valid_sef_url_arr = check_sef_url_validation($url, $id, "pages");
+	if($is_valid_sef_url_arr['valid']!=true) {
 		$msg='This sef url already exist so please use other.';
 		$_SESSION['error_msg']=$msg;
 		if($id) {
@@ -141,7 +145,7 @@ if(isset($post['d_id'])) {
 	}
 		
 	if($id) {
-		$query=mysqli_query($db,'UPDATE pages SET cat_id="'.$cat_id.'", brand_id="'.$brand_id.'", device_id="'.$device_id.'", url="'.$url.'", is_custom_url="'.$is_custom_url.'", title="'.$title.'", show_title="'.$show_title.'", image_text="'.$image_text.'"'.$imageupdate.', meta_title="'.$meta_title.'", meta_desc="'.$meta_desc.'", meta_keywords="'.$meta_keywords.'", content="'.$content.'", published="'.$published.'", is_open_new_window="'.$is_open_new_window.'", updated_date="'.$date.'", css_page_class="'.$css_page_class.'", c_b_d_type="'.$c_b_d_type.'"'.$upt_query.' WHERE id="'.$id.'"');
+		$query=mysqli_query($db,'UPDATE pages SET cat_id="'.$cat_id.'", brand_id="'.$brand_id.'", device_id="'.$device_id.'", url="'.$url.'", is_custom_url="'.$is_custom_url.'", title="'.$title.'", show_title="'.$show_title.'", image_text="'.$image_text.'"'.$imageupdate.', meta_title="'.$meta_title.'", meta_desc="'.$meta_desc.'", meta_keywords="'.$meta_keywords.'", content="'.$content.'", published="'.$published.'", is_open_new_window="'.$is_open_new_window.'", updated_date="'.$date.'", css_page_class="'.$css_page_class.'", c_b_d_type="'.$c_b_d_type.'", header_section="'.$header_section.'", css_body_class="'.$css_body_class.'"'.$upt_query.' WHERE id="'.$id.'"');
 		if($query=="1") {
 			$msg="Page has been successfully updated.";
 			$_SESSION['success_msg']=$msg;
@@ -151,7 +155,7 @@ if(isset($post['d_id'])) {
 		}
 		setRedirect(ADMIN_URL.'edit_system_page.php?id='.$id.($post['slug']?'&slug='.$post['slug']:''));
 	} else {
-		$query=mysqli_query($db,'INSERT INTO pages(cat_id, brand_id, device_id, url, is_custom_url, title, show_title, image_text, image, meta_title, meta_desc, meta_keywords, content, published, added_date, type, slug, is_open_new_window, css_page_class, c_b_d_type) values("'.$cat_id.'","'.$brand_id.'","'.$device_id.'","'.$url.'","'.$is_custom_url.'","'.$title.'","'.$show_title.'","'.$image_text.'","'.$image_name.'","'.$meta_title.'","'.$meta_desc.'","'.$meta_keywords.'","'.$content.'","'.$published.'","'.$date.'","'.$type.'","'.$slug.'","'.$is_open_new_window.'","'.$css_page_class.'","'.$c_b_d_type.'")');
+		$query=mysqli_query($db,'INSERT INTO pages(cat_id, brand_id, device_id, url, is_custom_url, title, show_title, image_text, image, meta_title, meta_desc, meta_keywords, content, published, added_date, type, slug, is_open_new_window, css_page_class, c_b_d_type, header_section, css_body_class) values("'.$cat_id.'","'.$brand_id.'","'.$device_id.'","'.$url.'","'.$is_custom_url.'","'.$title.'","'.$show_title.'","'.$image_text.'","'.$image_name.'","'.$meta_title.'","'.$meta_desc.'","'.$meta_keywords.'","'.$content.'","'.$published.'","'.$date.'","'.$type.'","'.$slug.'","'.$is_open_new_window.'","'.$css_page_class.'","'.$c_b_d_type.'","'.$header_section.'","'.$css_body_class.'")');
 		if($query=="1") {
 			$msg="Page has been successfully added.";
 			$_SESSION['success_msg']=$msg;

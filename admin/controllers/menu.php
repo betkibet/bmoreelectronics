@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {
 	$query=mysqli_query($db,'DELETE FROM menus WHERE id="'.$post['d_id'].'"');
@@ -39,17 +41,18 @@ if(isset($post['d_id'])) {
 	
 	$is_open_new_window=$post['is_open_new_window'];
 	$menu_name=$post['menu_name'];
-	$css_menu_class=$post['css_menu_class'];
-	$css_menu_fa_icon=$post['css_menu_fa_icon'];
+	$css_menu_class=real_escape_string($post['css_menu_class']);
+	$css_menu_fa_icon=real_escape_string($post['css_menu_fa_icon']);
 	$parent=real_escape_string($post['parent']);
 	$ordering=real_escape_string($post['ordering']);
 	$status=real_escape_string($post['status']);
 	$date = date('Y-m-d H:i:s');
 	$position=$post['position'];
-
+	$css_body_class=real_escape_string($post['css_body_class']);
+	
 	$qry=mysqli_query($db,"SELECT * FROM menus WHERE url='".$url."' AND url!='' AND id!='".$id."'");
 	$exist_data=mysqli_fetch_assoc($qry);
-	if(!empty($exist_data)) {
+	if(!empty($exist_data) && $is_custom_url != '1') {
 		$msg='This sef url already exist so please use other.';
 		$_SESSION['error_msg']=$msg;
 		if($id) {
@@ -61,7 +64,7 @@ if(isset($post['d_id'])) {
 	}
 		
 	if($id) {
-		$query=mysqli_query($db,"UPDATE `menus` SET `page_id`='".$page_id."',`url`='".$url."',`is_custom_url`='".$is_custom_url."',`is_open_new_window`='".$is_open_new_window."',`menu_name`='".$menu_name."',`css_menu_class`='".$css_menu_class."',`css_menu_fa_icon`='".$css_menu_fa_icon."',`parent`='".$parent."',`position`='".$position."',`ordering`='".$ordering."',`status`='".$status."',`updated_date`='".$date."' WHERE id='".$id."'");
+		$query=mysqli_query($db,"UPDATE `menus` SET `page_id`='".$page_id."',`url`='".$url."',`is_custom_url`='".$is_custom_url."',`is_open_new_window`='".$is_open_new_window."',`menu_name`='".$menu_name."',`css_menu_class`='".$css_menu_class."',`css_menu_fa_icon`='".$css_menu_fa_icon."',`parent`='".$parent."',`position`='".$position."',`ordering`='".$ordering."',`status`='".$status."',`updated_date`='".$date."',`css_body_class`='".$css_body_class."' WHERE id='".$id."'");
 		if($query=="1") {
 			$msg="Menu has been successfully updated.";
 			$_SESSION['success_msg']=$msg;
@@ -71,7 +74,7 @@ if(isset($post['d_id'])) {
 		}
 		setRedirect(ADMIN_URL.'edit_menu.php?id='.$id.($post['position']?'&position='.$post['position']:''));
 	} else {
-		$query=mysqli_query($db,"INSERT INTO menus(`page_id`,`url`,`is_custom_url`,`is_open_new_window`,`menu_name`,`css_menu_class`,`css_menu_fa_icon`,`parent`,`position`,`ordering`,`status`,`added_date`) values('".$page_id."','".$url."','".$is_custom_url."','".$is_open_new_window."','".$menu_name."','".$css_menu_class."','".$css_menu_fa_icon."','".$parent."','".$position."','".$ordering."','".$status."','".$date."')");
+		$query=mysqli_query($db,"INSERT INTO menus(`page_id`,`url`,`is_custom_url`,`is_open_new_window`,`menu_name`,`css_menu_class`,`css_menu_fa_icon`,`parent`,`position`,`ordering`,`status`,`added_date`,`css_body_class`) values('".$page_id."','".$url."','".$is_custom_url."','".$is_open_new_window."','".$menu_name."','".$css_menu_class."','".$css_menu_fa_icon."','".$parent."','".$position."','".$ordering."','".$status."','".$date."','".$css_body_class."')");
 		if($query=="1") {
 			$msg="Menu has been successfully added.";
 			$_SESSION['success_msg']=$msg;

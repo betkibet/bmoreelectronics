@@ -1,6 +1,7 @@
 <?php
 require_once("../../admin/_config/config.php");
 require_once("../../admin/include/functions.php");
+require_once("../common.php");
 
 $user_id = $_SESSION['user_id'];
 if($user_id<=0) {
@@ -8,6 +9,7 @@ if($user_id<=0) {
 	exit();
 }
 
+$post = $_POST;
 if(isset($post['submit_form'])) {
 
 	$valid_csrf_token = verifyFormToken('change_psw');

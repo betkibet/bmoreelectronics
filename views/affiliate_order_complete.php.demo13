@@ -1,0 +1,178 @@
+<?php
+$meta_title = "Affiliate Complete Order";
+$meta_keywords = "Affiliate Complete Order";
+$meta_desc = "Affiliate Complete Order"; ?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge" >
+
+<meta name="keywords" content="<?=$meta_keywords?>" />
+<meta name="description" content="<?=$meta_desc?>" />
+<title><?=$meta_title?></title>
+
+<!-- Jquery Data Table -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<?=SITE_URL?>css/style.css">
+  
+<link rel="stylesheet" href="<?=SITE_URL?>css/intlTelInput.css">
+
+<link rel="stylesheet" href="<?=SITE_URL?>css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="<?=SITE_URL?>css/custom.css">
+
+<style>
+.d-none{display:none;}
+.hide{display:none;}
+</style>
+
+<script src="<?=SITE_URL?>js/jquery.min.js"></script>
+<script src="<?=SITE_URL?>js/jquery.scrollTo.min.js"></script>
+
+<?=$custom_js_code?>
+</head>
+<body class="inner">
+
+<?php
+//Get order id
+$order_id = $_SESSION['affiliate_tmp_order_id'];
+
+if(!$order_id) {
+	setRedirect(SITE_URL);
+	exit();
+}
+
+//Get order batch data, path of this function (get_order_data) admin/include/functions.php
+$order_data = get_order_data($order_id);
+$access_token = $order_data['access_token'];
+
+$num_of_sales_pack = count($choosed_sales_pack_array);
+
+//Get order price based on orderID, path of this function (get_order_price) admin/include/functions.php
+$sum_of_orders = get_order_price($order_id);
+
+$total_of_order = $sum_of_orders;
+if($order_data['promocode_id']>0 && $order_data['promocode_amt']>0) {
+	$total_of_order = $total_of_order+$order_data['promocode_amt'];
+}
+
+$express_service = !empty($order_data['express_service'])?$order_data['express_service']:0;
+$express_service_price = !empty($order_data['express_service_price'])?$order_data['express_service_price']:0;
+$shipping_insurance = !empty($order_data['shipping_insurance'])?$order_data['shipping_insurance']:0;
+$shipping_insurance_per = !empty($order_data['shipping_insurance_per'])?$order_data['shipping_insurance_per']:0;
+
+$f_express_service_price = 0;
+$f_shipping_insurance_price = 0;
+if($express_service == '1') {
+	$total_of_order = $total_of_order-$express_service_price;
+}
+if($shipping_insurance == '1') {
+	$total_of_order = $total_of_order-($sum_of_orders*$shipping_insurance_per/100);
+}
+?>
+
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- <div class="block heading page-heading text-center" id="head-graphics"> -->
+					<!-- <img src="<?=SITE_URL?>images/your-order.jpg" class="img-fluid"> -->
+					<!-- <h3>Congratulation</h3>
+				</div> -->
+				<div class="block text-center">
+					<p><img src="images/order-tick.png" class="img-fluid img-circle" alt=""></p>
+					<h1 class="text-success"><strong>Congratulation</strong></h1>
+					<h4 class="sub_title">Your order placed successfully.</h4>
+					<h5 class="order_number">Your order Number is: <code><?=$order_id?></code></h3>
+					<?php
+						if($show_cust_delivery_note == '1') { ?>
+						<a class="btn btn-primary rounded-pill" href="javascript:open_window('<?=SITE_URL?>views/print/print_delivery_note.php?order_id=<?=$order_id.'&access_token='.$access_token?>')">Delivery Note <i class="ion ion-md-download"></i></a>
+						<?php
+						}
+						if($show_cust_order_form == '1') { ?>
+						<a class="btn btn-primary rounded-pill" href="<?=SITE_URL?>pdf/order-<?=$order_id?>.pdf" target="_blank">Order Form <i class="ion ion-md-download"></i></a>
+						<?php
+						}
+						if($show_cust_sales_confirmation == '1') { ?>
+						<a class="btn btn-primary rounded-pill" href="<?=SITE_URL?>views/print/sales_confirmation.php?order_id=<?=$order_id.'&access_token='.$access_token?>" target="_blank">Sales Confirmation <i class="ion ion-md-download"></i></a>
+						<?php
+						}
+						if($order_data['sales_pack']=="own_print_label" && $order_data['shipment_label_url']!="") { ?>
+						<a class="btn btn-primary rounded-pill" href="<?=SITE_URL.'controllers/download.php?download_link='.$order_data['shipment_label_url']?>">Address Label <i class="ion ion-md-download"></i></a>
+						<?php
+						} else { ?>
+						<div class="alert alert-danger alert-dismissable mt-2">
+							Unable to create shipment, one or more parameters were invalid so please <a href="<?=$contact_link?>">contact</a> to our support team.
+						</div>
+						<?php
+						} ?>
+				</div>
+				<div class="block heading page-heading text-center">
+					<h3>what happens next ?</h3>
+				</div>
+				<div class="block text-center"">
+					<div class="row">
+						<div class="col-sm-6 col-md-3 col-xs-12">
+							<div class="card text-center">
+								<div class="card-body">
+									<!-- <div class="imgbox"><img src="images/yourorder-ico1.png" class="img-fluid img-circle" alt=""></div> -->
+									<h5><strong>PEEP IT!</strong></h5>
+									<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3 col-xs-12">
+							<div class="card text-center">
+								<div class="card-body">
+									<!-- <div class="imgbox"><img src="images/yourorder-ico2.png" class="img-fluid img-circle" alt=""></div> -->
+									<h5><strong>pack it</strong></h5>
+									<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3 col-xs-12">
+							<div class="card text-center">
+								<div class="card-body">
+									<!-- <div class="imgbox"><img src="images/yourorder-ico3.png" class="img-fluid img-circle" alt=""></div> -->
+									<h5><strong>BAG IT !</strong></h5>
+									<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3 col-xs-12">
+							<div class="card text-center">
+								<div class="card-body">
+									<!-- <div class="imgbox"><img src="images/yourorder-ico4.png" class="img-fluid img-circle" alt=""></div> -->
+									<h5><strong>POST IT !</strong></h5>
+									<p>simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script language="javascript" type="text/javascript">
+function open_window(url) {
+	apply = window.open(url,"Loading",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=0,width=1000,height=800');
+}
+</script>
+
+<script src="<?=SITE_URL?>js/popper.min.js"></script>
+<script src="<?=SITE_URL?>js/bootstrap_4.3.1.min.js"></script>
+<script src="<?=SITE_URL?>js/slick.min.js"></script>
+<script src="<?=SITE_URL?>js/jquery.autocomplete.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?=SITE_URL?>js/intlTelInput.js"></script>
+<script src="<?=SITE_URL?>js/bootstrapvalidator.min.js"></script>
+
+</body>
+</html>

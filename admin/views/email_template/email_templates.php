@@ -21,32 +21,28 @@
                 </h3>
               </div>
             </div>
+			<div class="m-portlet__head-tools">
+              <ul class="m-portlet__nav">
+			    <?php
+				if($prms_emailtmpl_add == '1') { ?>
+                <li class="m-portlet__nav-item">
+                  <a href="edit_email_template.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                    <span>
+                      <i class="la la-plus"></i>
+                      <span>
+                        Add New
+                      </span>
+                    </span>
+                  </a>
+                </li>
+				<?php
+				} ?>
+              </ul>
+            </div>
           </div>
           <div class="m-portlet__body">
             <!--begin: Datatable -->
             <div id="m_table_1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-				<?php /*?><div class="row">
-					<div class="col-sm-12">
-					  <div id="m_table_1_filter" class="dataTables_filter float-right">
-						<label class="">
-							<form method="post" onSubmit="return check_form(this);">
-								<div class="input-group">
-									<select name="filter_by" id="filter_by" class="form-control form-control-sm m-select2 m-select2-general w-100">
-										<option value="">Select</option>
-										<option value="to_admin" <?php if($post['filter_by']=="to_admin"){echo 'selected="selected"';}?>>To Admin</option>
-										<option value="to_customer" <?php if($post['filter_by']=="to_customer"){echo 'selected="selected"';}?>>To Customer</option>
-									</select>
-									<button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm float-right ml-2" type="submit" name="search">Go</button>
-									<?php
-									if($post['filter_by']) {
-										echo '<a href="email_templates.php"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm float-right ml-2" type="button">Clear</button></a>';
-									} ?>
-								</div>
-							</form>
-						</label>
-					  </div>
-					</div>
-				</div><?php */?>
 			  
 			  <div class="row">
                 <div class="col-sm-12">
@@ -57,6 +53,15 @@
 							<option value="">Select</option>
 							<option value="to_admin" <?php if($post['filter_by']=="to_admin"){echo 'selected="selected"';}?>>To Admin</option>
 							<option value="to_customer" <?php if($post['filter_by']=="to_customer"){echo 'selected="selected"';}?>>To Customer</option>
+							<?php
+							if(!empty($order_status_list)) {
+								foreach($order_status_list as $order_status_data) {
+									$template_type_val = "order_".str_replace('-','_',$order_status_data['slug'])."_status";
+									$template_type_label = "Order ".$order_status_data['name']." Status"; ?>
+									<option value="<?=$template_type_val?>" <?php if($template_type_val == $post['filter_by']){echo 'selected="selected"';}?>><?=$template_type_label?></option>
+								<?php
+								}
+							} ?>
 						  </select>
 						  	
                           <button class="btn btn-alt btn-primary ml-2 searchbx" type="submit">Search <i class="la la-search"></i></button>
@@ -79,7 +84,7 @@
 						  <th>No.</th>
 						  <th>Type</th>
 						  <th>Subject</th>
-						  <th>Actions</th>
+						  <th width="180">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -94,7 +99,17 @@
 										  <td><?=$template_type_array[$get_template_list['type']]?></td>
 										  <td><?=ucfirst($get_template_list['subject'])?></td>
 										  <td>
-										  <a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a></td>
+										    <?php
+										    if($prms_emailtmpl_edit == '1') { ?>
+										  		<a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+										  	<?php
+											}
+										    if($get_template_list['status']==1) {
+												echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Active</button></a>';
+											} elseif($get_template_list['status']==0) {
+												echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Inactive</button></a>';
+											} ?>
+										  </td>
 										</tr>
 									<?php
 									}
@@ -105,17 +120,50 @@
 										  <td><?=$template_type_array[$get_template_list['type']]?></td>
 										  <td><?=ucfirst($get_template_list['subject'])?></td>
 										  <td>
-										  <a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a></td>
+										  <?php
+										  if($prms_emailtmpl_edit == '1') { ?>
+										  <a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+										  	<?php
+											}
+										    if($get_template_list['status']==1) {
+												echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Active</button></a>';
+											} elseif($get_template_list['status']==0) {
+												echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Inactive</button></a>';
+											} ?>
+										  </td>
 										</tr>
 									<?php
 									}
 								} else { ?>
 									<tr>
 									  <td><?=$n=$n+1?></td>
-									  <td><?=$template_type_array[$get_template_list['type']]?></td>
+									  <td>
+									  <?php
+									  if($get_template_list['is_fixed'] == '0') {
+									  	 echo ucwords(str_replace("_"," ",$get_template_list['type']));
+									  } else {
+									  	 echo $template_type_array[$get_template_list['type']];
+									  } ?></td>
 									  <td><?=ucfirst($get_template_list['subject'])?></td>
 									  <td>
-									  <a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a></td>
+									  <?php
+									  if($prms_emailtmpl_edit == '1') { ?>
+									  <a href="edit_email_template.php?id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+									  <?php
+									  }
+									  if($prms_emailtmpl_delete == '1') {
+										  if($get_template_list['is_fixed'] == '0') { ?>
+											 <a href="controllers/email_template.php?d_id=<?=$get_template_list['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure you want to delete this record?')"><i class="la la-trash"></i></a>
+										  <?php
+										  }
+									  }
+									  
+									    if($get_template_list['status']==1) {
+											echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Active</button></a>';
+										} elseif($get_template_list['status']==0) {
+											echo '<a href="controllers/email_template.php?p_id='.$get_template_list['id'].'&status=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events:none;">Inactive</button></a>';
+										} ?>
+									  </td>
 									</tr>
 								<?php
 								}

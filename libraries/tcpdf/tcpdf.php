@@ -1062,6 +1062,8 @@ class TCPDF {
 	 * @protected
 	 * @since 4.1.000 (2008-10-18)
 	 */
+
+
 	protected $epsmarker = 'x#!#EPS#!#x';
 
 	/**
@@ -1884,6 +1886,7 @@ class TCPDF {
 			'courier'=>'Courier',
 			'courierB'=>'Courier-Bold',
 			'courierI'=>'Courier-Oblique',
+
 			'courierBI'=>'Courier-BoldOblique',
 			'helvetica'=>'Helvetica',
 			'helveticaB'=>'Helvetica-Bold',
@@ -5725,6 +5728,7 @@ class TCPDF {
 					$s .= sprintf('%F %F m ', $xR, $yR);
 					$s .= sprintf('%F %F l ', $xB, $yB);
 					$s .= 'S ';
+
 				} elseif (strpos($border,'B') !== false) { // B
 					$s .= sprintf('%F %F m ', $xB, $yB);
 					$s .= sprintf('%F %F l ', $xL, $yL);
@@ -5897,6 +5901,7 @@ class TCPDF {
 					// add a page (or trig AcceptPageBreak() for multicolumn mode)
 					$this->checkPageBreak($this->PageBreakTrigger + 1);
 				}
+
 				if ($this->num_columns > 1) {
 					$tmpresth -= ($this->h - $this->y - $this->bMargin);
 				} else {
@@ -12995,6 +13000,7 @@ class TCPDF {
 		}
 		// get default style
 		$prop = array_merge($this->getFormDefaultProp(), $prop);
+
 		$prop['Combo'] = true;
 		// get annotation data
 		$popt = TCPDF_STATIC::getAnnotOptFromJSProp($prop, $this->spot_colors, $this->rtl);
@@ -13335,6 +13341,7 @@ class TCPDF {
 			if (!TCPDF_STATIC::empty_string($this->ur['form'])) {
 				$out .= ' /Form['.$this->ur['form'].']';
 			}
+
 			if (!TCPDF_STATIC::empty_string($this->ur['signature'])) {
 				$out .= ' /Signature['.$this->ur['signature'].']';
 			}
@@ -15751,6 +15758,7 @@ class TCPDF {
 	 * @since 3.2.000 (2008-06-23)
 	 */
 	public function getFontSize() {
+
 		return $this->FontSize;
 	}
 
@@ -16516,7 +16524,10 @@ class TCPDF {
 					// get attributes
 					preg_match_all('/([^=\s]*)[\s]*=[\s]*"([^"]*)"/', $element, $attr_array, PREG_PATTERN_ORDER);
 					$dom[$key]['attribute'] = array(); // reset attribute array
-					while (list($id, $name) = each($attr_array[1])) {
+					/*while (list($id, $name) = each($attr_array[1])) {
+						$dom[$key]['attribute'][strtolower($name)] = $attr_array[2][$id];
+					}*/
+					foreach($attr_array[1] as $id => $name) {
 						$dom[$key]['attribute'][strtolower($name)] = $attr_array[2][$id];
 					}
 					if (!empty($css)) {
@@ -16529,8 +16540,11 @@ class TCPDF {
 						// get style attributes
 						preg_match_all('/([^;:\s]*):([^;]*)/', $dom[$key]['attribute']['style'], $style_array, PREG_PATTERN_ORDER);
 						$dom[$key]['style'] = array(); // reset style attribute array
-						while (list($id, $name) = each($style_array[1])) {
+						/*while (list($id, $name) = each($style_array[1])) {
 							// in case of duplicate attribute the last replace the previous
+							$dom[$key]['style'][strtolower($name)] = trim($style_array[2][$id]);
+						}*/
+						foreach($style_array[1] as $id => $name) {
 							$dom[$key]['style'][strtolower($name)] = trim($style_array[2][$id]);
 						}
 						// --- get some style attributes ---
@@ -21506,6 +21520,7 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 				$maxpage = max($maxpage, $outline['p']);
 			}
 			// replace templates with current values
+
 			$row = str_replace('#TOC_DESCRIPTION#', $outline['t'], $row);
 			$row = str_replace('#TOC_PAGE_NUMBER#', $pagenum, $row);
 			// add link to page

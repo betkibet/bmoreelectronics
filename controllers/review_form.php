@@ -1,6 +1,7 @@
 <?php
 require_once("../admin/_config/config.php");
 require_once("../admin/include/functions.php");
+require_once("common.php");
 
 if(isset($post['submit_form'])) {
 	$name=real_escape_string($post['name']);
@@ -79,7 +80,8 @@ if(isset($post['submit_form'])) {
 				'{$city}',
 				'{$stars}',
 				'{$form_title}',
-				'{$form_message}');
+				'{$form_message}',
+				'{$current_date_time}');
 
 			$replacements = array(
 				$logo,
@@ -99,12 +101,18 @@ if(isset($post['submit_form'])) {
 				$post['city'],
 				$post['rating'],
 				$post['title'],
-				$post['content']);
+				$post['content'],
+				format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')));
 
 			if(!empty($template_data)) {
 				$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 				$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
-				send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				//send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				
+				$reply_to_data = array();
+				$reply_to_data['name'] = $post['name'];
+				$reply_to_data['email'] = $post['email'];
+				send_email($admin_user_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL, array(), $reply_to_data);
 			}
 
 			//START email send to customer

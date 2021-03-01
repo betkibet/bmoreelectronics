@@ -1,8 +1,24 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
-if(isset($post['r_id'])) {
+if(isset($post['p_id'])) {
+	$query=mysqli_query($db,'UPDATE promocode SET status="'.$post['status'].'" WHERE id="'.$post['p_id'].'"');
+	if($query=="1"){
+		if($post['published']==1)
+			$msg="Successfully Published.";
+		elseif($post['published']==0)
+			$msg="Successfully Unpublished.";
+			
+		$_SESSION['success_msg']=$msg;
+	} else {
+		$msg='Sorry! something wrong delete failed.';
+		$_SESSION['error_msg']=$msg;
+	}
+	setRedirect(ADMIN_URL.'promocode.php');
+} elseif(isset($post['r_id'])) {
 	$id = $post['r_id'];
 	if($id) {
 		$query="DELETE FROM promocode WHERE id='".$id."'";
@@ -21,15 +37,15 @@ if(isset($post['r_id'])) {
 	$multi_act_by_same_cust_qty=real_escape_string($post['multi_act_by_same_cust_qty']);
 	$act_by_cust=real_escape_string($post['act_by_cust']);
 
-	/*$exp_from_date=explode("/",$post['from_date']);
+	$exp_from_date=explode("/",$post['from_date']);
 	$from_date=$exp_from_date[2].'-'.$exp_from_date[0].'-'.$exp_from_date[1];
 
 	$exp_to_date=explode("/",$post['to_date']);
-	$to_date=$exp_to_date[2].'-'.$exp_to_date[0].'-'.$exp_to_date[1];*/
+	$to_date=$exp_to_date[2].'-'.$exp_to_date[0].'-'.$exp_to_date[1];
 	
-	$from_date = $post['from_date'];
-	$to_date = $post['to_date'];
-	
+	//$from_date = $post['from_date'];
+	//$to_date = $post['to_date'];
+
 	if($from_date!='' && $to_date!='' && $from_date>$to_date) {
 		$msg="Expire date must be greater than of equal to from date";
 		$_SESSION['error_msg']=$msg;
@@ -88,14 +104,14 @@ if(isset($post['r_id'])) {
 	$multi_act_by_same_cust_qty=real_escape_string($post['multi_act_by_same_cust_qty']);
 	$act_by_cust=real_escape_string($post['act_by_cust']);
 
-	/*$exp_from_date=explode("/",$post['from_date']);
+	$exp_from_date=explode("/",$post['from_date']);
 	$from_date=$exp_from_date[2].'-'.$exp_from_date[0].'-'.$exp_from_date[1];
 
 	$exp_to_date=explode("/",$post['to_date']);
-	$to_date=$exp_to_date[2].'-'.$exp_to_date[0].'-'.$exp_to_date[1];*/
+	$to_date=$exp_to_date[2].'-'.$exp_to_date[0].'-'.$exp_to_date[1];
 	
-	$from_date = $post['from_date'];
-	$to_date = $post['to_date'];
+	//$from_date = $post['from_date'];
+	//$to_date = $post['to_date'];
 	
 	if($from_date!='' && $to_date!='' && $from_date>$to_date) {
 		$msg="Expire date must be greater than of equal to from date";

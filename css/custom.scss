@@ -1,0 +1,25 @@
+.block{
+  &.devices{
+    .card {
+      &:hover {
+        background-color: #5147dd;
+      }
+    }
+    .category{
+      &.row{
+        .card{
+          &:hover {
+            background-color: #5147dd;
+          }
+        }
+        &.model-category{
+          .card{
+            &:hover{
+              background-color: #5147dd;
+            }
+          }
+        }
+      }
+    }
+  }
+}

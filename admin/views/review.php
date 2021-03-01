@@ -24,6 +24,8 @@
 
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_form_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="add_edit_review.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -34,19 +36,8 @@
                     </span>
                   </a>
                 </li>
-                <?php /*?><li class="m-portlet__nav-item">
-                  <form action="controllers/review.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li><?php */?>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -54,6 +45,8 @@
             <!--begin: Datatable -->
             <div id="m_table_1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
 			
+			  <?php
+			  if($prms_form_delete == '1') { ?>
 			  <div class="row">
 				<div class="col-sm-12">
 					<form action="controllers/review.php" method="POST">
@@ -62,28 +55,30 @@
 					</form>
 				</div>
 			  </div>
-			  
+			  <?php
+			  } ?>
+					
               <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-bordered table-hover table-checkable dataTable no-footer dtr-inline collapsed">
                       <thead>
                         <tr>
-                          <th width="10">
-                            <label class="m-checkbox m-checkbox--brand m-checkbox--single m-checkbox--solid">
-                              <input type="checkbox" id="chk_all" class="m-input">
-                              <span></span>
-                            </label>
-                          </th>
-                          <th>Name</th>
+                            <th width="10">
+								<label class="m-checkbox m-checkbox--brand m-checkbox--single m-checkbox--solid">
+								  <input type="checkbox" id="chk_all" class="m-input">
+								  <span></span>
+								</label>
+                            </th>
+                            <th>Name</th>
 							<!--<th>Email</th>
 							<th>Country</th>-->
-							<th>Title</th>
+							<th>Device Sold</th>
 							<th width="300">Content</th>
 							<th>Stars</th>
 							<th>City</th>
 							<th>State</th>
 							<th>Date</th>
-							<th width="100">Status</th>
+							<?php /*?><th width="100">Status</th><?php */?>
 							<th width="200">Action</th>
                         </tr>
                       </thead>
@@ -101,28 +96,34 @@
                           <td><?=$review_data['name']?></td>
 							<!--<td><?=$review_data['email']?></td>
 							<td><?=$review_data['country']?></td>-->
-							<td><?=$review_data['title']?></td>
+							<td><?=$review_data['device_sold']?></td>
 							<td><?=$review_data['content']?></td>
 							<td><?=$review_data['stars']?></td>
-							<td><?=$review_data['state']?></td>
 							<td><?=$review_data['city']?></td>
-							<td><?=date('m/d/Y h:i A',strtotime($review_data['date']))?></td>
-							<td>
+							<td><?=$review_data['state']?></td>
+							<td><?=format_date($review_data['date']).' '.format_time($review_data['date'])?></td>
+							<?php /*?><td>
                             <span style="width: 110px;"><span class="m-badge  <?=($review_data['status']=='0'?"m-badge--danger":"m-badge--primary")?> m-badge--wide"><?=($review_data['status']=='0'?"Inactive":"Active")?></span></span>
-                            <? //=($review_data['status']=='0'?"Inactive":"Active")?>
-                          </td>
+                          </td><?php */?>
                           <td Width="150">
                             <?php
-							if($review_data['status']=='0') { ?>
-								<a href="controllers/review.php?active_id=<?=$review_data['id']?>" class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm">Active</a>
+							if($review_data['status']=='1') { ?>
+								<a href="controllers/review.php?inactive_id=<?=$review_data['id']?>" class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs">Active</a>
 							<?php
 							} else { ?>
-								<a href="controllers/review.php?inactive_id=<?=$review_data['id']?>" class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm">Inactive</a>
+								<a href="controllers/review.php?active_id=<?=$review_data['id']?>" class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs">Inactive</a>
 							<?php
 							} ?>
 							
-                            <a href="add_edit_review.php?id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-        					<a href="controllers/review.php?d_id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+							<?php
+							if($prms_form_edit == '1') { ?>
+                            <a href="add_edit_review.php?id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+							<?php
+							}
+							if($prms_form_delete == '1') { ?>
+        					<a href="controllers/review.php?d_id=<?=$review_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+							<?php
+							} ?>
                           </td>
                         </tr>
                         <?php }

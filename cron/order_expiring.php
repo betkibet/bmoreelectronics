@@ -1,16 +1,36 @@
 <?php
-require_once("../admin/_config/config.php");
-require_once("../admin/include/functions.php");
+error_reporting(E_ERROR | E_PARSE);
+date_default_timezone_set("UTC");
 
-$general_setting_data = get_general_setting_data();
+$CP_ROOT_PATH = dirname(dirname(__FILE__));
+
+define('CP_ROOT_PATH', $CP_ROOT_PATH);
+require(CP_ROOT_PATH."/admin/_config/connect_db.php");
+require(CP_ROOT_PATH."/admin/_config/common.php");
+require(CP_ROOT_PATH."/admin/include/functions.php");
+
+$website_url = rtrim($general_setting_data['website'],'/');
+$website_url = $website_url.'/';
+define('SITE_URL',$website_url);
+
 $admin_user_data = get_admin_user_data();
 $template_data = get_template_data('order_expiring');
 
+$waiting_shipment_status_id = get_order_status_data('order_status','waiting-shipment')['data']['id'];
+
+error_log("Executed Order Expiring Script");
+
+wh_log("Executed Order Expiring Script");
+function wh_log($msg) {
+	$logfile = 'logs/cron_'.date("Y-m-d-H-i-s").'.log';
+	file_put_contents($logfile,date("Y-m-d H:i:s")." | ".$msg."\n",FILE_APPEND);
+}
+
 echo '<pre>';
 $future_date = date('Y-m-d',strtotime('+7 day'));
-//$future_date = date('Y-m-d',strtotime('-0 day'));
+//$future_date = date('Y-m-d',strtotime('+30 day'));
 echo 'Date of order expiring:- '.$future_date;
-$query = "SELECT o.*, u.*, u.id AS user_id FROM orders AS o LEFT JOIN users AS u ON u.id=o.user_id WHERE o.status IN('awaiting_delivery') AND DATE_FORMAT(o.expire_date,'%Y-%m-%d')='".$future_date."' ORDER BY o.id DESC";
+$query = "SELECT o.*, u.*, u.id AS user_id FROM orders AS o LEFT JOIN users AS u ON u.id=o.user_id WHERE o.status IN('".$waiting_shipment_status_id."') AND DATE_FORMAT(o.expire_date,'%Y-%m-%d')='".$future_date."' AND u.unsubscribe='0' ORDER BY o.id DESC";
 $m_query=mysqli_query($db,$query);
 $order_num_of_rows = mysqli_num_rows($m_query);
 if($order_num_of_rows>0) {
@@ -43,6 +63,8 @@ if($order_num_of_rows>0) {
 		foreach($order_item_list as $order_item_list_data) {
 			//path of this function (get_order_item) admin/include/functions.php
 			$order_item_data = get_order_item($order_item_list_data['id'],'email');
+			
+			$item_names_list .= $order_item_list_data['device_title'].' '.$order_item_list_data['model_title'].',';
 			
 			$order_items_list .= '<table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">';
 			  $order_items_list .= '<tbody>';
@@ -153,6 +175,7 @@ if($order_num_of_rows>0) {
 										$order_item_body .= '</td>';
 									  $order_item_body .= '</tr>';
 									  
+									  $total = $total_of_order;
 									  if($is_promocode_exist) {
 									  $total = ($total_of_order+$promocode_amt);
 									  $order_item_body .= '<tr>';
@@ -193,7 +216,12 @@ if($order_num_of_rows>0) {
 		  $order_item_body .= '</tbody>';
 		$order_item_body .= '</table>';
 		//END append order items to block
-
+		
+		$item_names_list = rtrim($item_names_list,', ');
+		
+		$unsubscribe_token = get_big_unique_id();
+		$unsubscribe_link = SITE_URL."unsubscribe/".$unsubscribe_token;
+		
 		$order_data = get_order_data($order_id);
 
 		$patterns = array(
@@ -213,12 +241,12 @@ if($order_num_of_rows>0) {
 			'{$customer_fullname}',
 			'{$customer_phone}',
 			'{$customer_email}',
-			'{$customer_address_line1}',
-			'{$customer_address_line2}',
-			'{$customer_city}',
-			'{$customer_state}',
+			'{$billing_address1}',
+			'{$billing_address2}',
+			'{$billing_city}',
+			'{$billing_state}',
 			'{$customer_country}',
-			'{$customer_postcode}',
+			'{$billing_postcode}',
 			'{$order_id}',
 			'{$order_payment_method}',
 			'{$order_date}',
@@ -233,7 +261,10 @@ if($order_num_of_rows>0) {
 			'{$company_city}',
 			'{$company_state}',
 			'{$company_postcode}',
-			'{$company_country}');
+			'{$company_country}',
+			'{$item_names_list}',
+			'{$dollars_spent_order}',
+			'{$unsubscribe_link}');
 	
 		$replacements = array(
 			$logo,
@@ -263,8 +294,8 @@ if($order_num_of_rows>0) {
 			$order_data['order_date'],
 			date('m/d/Y',strtotime($order_data['approved_date'])),
 			date('m/d/Y',strtotime($order_data['expire_date'])),
-			ucwords(str_replace("_"," ",$order_data['order_status'])),
-			ucwords(str_replace("_"," ",$order_data['sales_pack'])),
+			replace_us_to_space($order_data['order_status_name']),
+			replace_us_to_space($order_data['sales_pack']),
 			date('Y-m-d H:i'),
 			$order_item_body,
 			$company_name,
@@ -272,26 +303,47 @@ if($order_num_of_rows>0) {
 			$company_city,
 			$company_state,
 			$company_zipcode,
-			$company_country);
+			$company_country,
+			$item_names_list,
+			amount_fomat($total),
+			$unsubscribe_link);
 
 		//START email send to customer
 		if(!empty($template_data)) {
 			$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 			$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
 			send_email($order_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL);
-
+			
+			$unsubsc_data_arr = array('user_id'=>$order_data['user_id'],
+								'token'=>$unsubscribe_token);
+			unsubscribe_user_tokens($unsubsc_data_arr);
+			
 			//START sms send to customer
 			if($template_data['sms_status']=='1') {
 				$from_number = '+'.$general_setting_data['twilio_long_code'];
 				$to_number = '+'.$order_data['phone'];
 				if($from_number && $account_sid && $auth_token) {
 					$sms_body_text = str_replace($patterns,$replacements,$template_data['sms_content']);
+					
 					try {
+						$sms_api->messages->create(
+							$to_number,
+							array(
+								'from' => $from_number,
+								'body' => $sms_body_text
+							)
+						);
+					} catch(Services_Twilio_RestException $e) {
+						$sms_error_msg = $e->getMessage();
+						error_log($sms_error_msg);
+					}
+					
+					/*try {
 						$sms = $sms_api->account->messages->sendMessage($from_number, $to_number, $sms_body_text, $image, array('StatusCallback'=>''));
 					} catch(Services_Twilio_RestException $e) {
 						echo 'Error: '.$sms_error_msg = $e->getMessage();
 						error_log($sms_error_msg);
-					}
+					}*/
 				}
 			} //END sms send to customer
 		} //END email send to customer

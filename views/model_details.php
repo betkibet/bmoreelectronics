@@ -2,639 +2,1001 @@
 $csrf_token = generateFormToken('model_details');
 
 //Url params
-$req_model_id=$url_third_param;
+$req_model_id=$mobile_single_data_resp['model_data']['id'];
 
 //Fetching data from model
-require_once('models/mobile.php');
+require_once('models/model.php');
 
-//Get data from models/mobile.php, get_single_model_data function
+//Get data from models/model.php, get_single_model_data function
 $model_data = get_single_model_data($req_model_id);
 $meta_title = $model_data['meta_title'];
 $meta_desc = $model_data['meta_desc'];
 $meta_keywords = $model_data['meta_keywords'];
 
+$fields_cat_type = $model_data['fields_cat_type'];
+$category_data = get_category_data($model_data['cat_id']);
+
 //Header section
 include("include/header.php");
+
+$edit_item_id = isset($_GET['item_id'])?$_GET['item_id']:'';
+$order_item_data = array();
+if($edit_item_id>0) {
+	$order_item_data = get_order_item($edit_item_id,'');
+	$order_item_data = $order_item_data['data'];
+}
+
+$fld_id_array = array();
+$opt_name_array = array();
+
+$item_name_array = json_decode((isset($order_item_data['item_name'])?$order_item_data['item_name']:''),true);
+if(!empty($item_name_array)) {
+	foreach($item_name_array as $ei_k => $item_name_data) {
+		$fld_id_array[] = $ei_k;
+		$items_opt_name = "";
+		foreach($item_name_data['opt_data'] as $opt_data) {
+			if($opt_data['opt_id']>0) {
+				$items_opt_name .= $opt_data['opt_name'].', ';
+				$opt_id_array[] = $opt_data['opt_id'];
+			} else {
+				$items_opt_name .= $opt_data['opt_name'].', ';
+			}
+		}
+		@$opt_name_array[$ei_k] .= rtrim($items_opt_name,', ');		
+	}
+}
+
+$image_name_array = json_decode((isset($order_item_data['images'])?$order_item_data['images']:''),true);
+if(!empty($image_name_array)) {
+	foreach($image_name_array as $eim_k => $image_name_data) {
+		$fld_id_array[] = $eim_k;
+		$opt_name_array[$eim_k] = $image_name_data['img_name'];
+	}
+}
+
+$fields_data_array = array();
+
+$network_items_array = get_models_networks_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['network_title'],'tooltip'=>$category_data['tooltip_network'],'type'=>'network','input-type'=>'radio','data'=>$network_items_array,'class'=>'network','required_field'=>$category_data['required_network']);
+
+$connectivity_items_array = get_models_connectivity_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['connectivity_title'],'tooltip'=>$category_data['tooltip_connectivity'],'type'=>'connectivity','input-type'=>'radio','data'=>$connectivity_items_array,'required_field'=>$category_data['required_connectivity']);
+
+$case_size_items_array = get_models_case_size_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['case_size_title'],'tooltip'=>$category_data['tooltip_case_size'],'type'=>'case_size','input-type'=>'radio','data'=>$case_size_items_array,'required_field'=>$category_data['required_case_size']);
+
+$model_items_array = get_models_model_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['model_title'],'tooltip'=>$category_data['tooltip_model'],'type'=>'model','input-type'=>'radio','data'=>$model_items_array,'class'=>'model','required_field'=>$category_data['required_model']);
+
+$processor_items_array = get_models_processor_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['processor_title'],'tooltip'=>$category_data['tooltip_processor'],'type'=>'processor','input-type'=>'radio','data'=>$processor_items_array,'required_field'=>$category_data['required_processor']);
+
+$ram_items_array = get_models_ram_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['ram_title'],'tooltip'=>$category_data['tooltip_ram'],'type'=>'ram','input-type'=>'radio','data'=>$ram_items_array,'required_field'=>$category_data['required_ram']);
+
+$storage_items_array = get_models_storage_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['storage_title'],'tooltip'=>$category_data['tooltip_storage'],'type'=>'storage','input-type'=>'radio','data'=>$storage_items_array,'class'=>'storage','required_field'=>$category_data['required_storage']);
+
+$graphics_card_items_array = get_models_graphics_card_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['graphics_card_title'],'tooltip'=>$category_data['tooltip_graphics_card'],'type'=>'graphics_card','input-type'=>'radio','data'=>$graphics_card_items_array,'required_field'=>$category_data['required_graphics_card']);
+
+$condition_items_array = get_models_condition_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['condition_title'],'tooltip'=>$category_data['tooltip_condition'],'type'=>'condition','input-type'=>'radio','data'=>$condition_items_array,'class'=>'condition','required_field'=>$category_data['required_condition']);
+
+/*$watchtype_items_array = get_models_watchtype_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['type_title'],'tooltip'=>$category_data['tooltip_watchtype'],'type'=>'watchtype','input-type'=>'radio','data'=>$watchtype_items_array);
+
+$case_material_items_array = get_models_case_material_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['case_material_title'],'tooltip'=>$category_data['tooltip_case_material'],'type'=>'case_material','input-type'=>'radio','data'=>$case_material_items_array);*/
+
+$band_included_items_array = get_models_band_included_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['band_included_title'],'tooltip'=>$category_data['tooltip_band_included'],'type'=>'band_included','input-type'=>'checkbox','data'=>$band_included_items_array,'required_field'=>$category_data['required_band_included']);
+
+$accessories_items_array = get_models_accessories_data($req_model_id);
+$fields_data_array[] = array('title'=>$category_data['accessories_title'],'tooltip'=>$category_data['tooltip_accessories'],'type'=>'accessories','input-type'=>'checkbox','data'=>$accessories_items_array,'class'=>'accessories','required_field'=>$category_data['required_accessories']);
+
+/*echo '<pre>';
+print_r($fields_data_array);
+exit;*/
+
+$exist_others_pro_fld = 0;
+$exist_con_pro_fld = 0;
+
+if(!empty($condition_items_array)) {
+	$exist_con_pro_fld = 1;
+}
+if(!empty($network_items_array) || !empty($connectivity_items_array) || !empty($case_size_items_array) || !empty($model_items_array) || !empty($processor_items_array) || !empty($ram_items_array) || !empty($storage_items_array) || !empty($graphics_card_items_array) || !empty($band_included_items_array) || !empty($accessories_items_array)) {
+	$exist_others_pro_fld = 1;
+}
+
+$model_upto_price = 0;
+$model_upto_price_data = get_model_upto_price($req_model_id,$model_data['price']);
+$model_upto_price = $model_upto_price_data['price'];
 ?>
 
-<script src="<?=SITE_URL?>js/front.js"></script>
+<form action="<?=SITE_URL?>controllers/model.php" method="post" enctype="multipart/form-data" onSubmit="return checkdata();" id="model_details_form">
+  <section  class="pb-0">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="block heading page-heading text-center">
+		    <?php
+			/*if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER']) { ?>
+			<a class="btn btn-primary rounded-pill back-button" href="javascript:void(0);" onclick="history.back();">Back</a>
+			<?php
+			}*/
+			echo '<h1>Sell your '.$model_data['title'].':</h1>';
+		    if($exist_others_pro_fld > 0) {
+            	echo '<h4 class="device-name-dt" style="display:none;"><span class="device-name"></span></h4>';
+			} ?>
+          </div>
 
-<div id="breadcrumb">
-	<div class="wrap">
-		<ul>
-			<li><a href="<?=SITE_URL?>">Home</a></li>
-			<?php
-			if($model_data['device_id']>0) { ?>
-			<li><a href="<?=SITE_URL.$model_data['sef_url']?>"><?=$model_data['device_title']?></a></li>
-			<?php
-			} elseif($model_data['brand_id']>0) { ?>
-			<li><a href="<?=SITE_URL.'brand/'.$model_data['brand_sef_url']?>"><?=$model_data['brand_title']?></a></li>
+		  <?php
+		  if($exist_others_pro_fld <= 0) { ?>
+		  <div class="block text-center">
+		  	<?php
+			if($model_data['model_img']) {
+				$md_img_path = SITE_URL.'images/mobile/'.$model_data['model_img']; ?>
+            	<img class="single-product-image" src="<?=$md_img_path?>" alt="<?=$model_data['title']?>">
 			<?php
 			} ?>
-			<li class="active"><a href="javascript:void(0);"><?=$model_data['title']?></a></li>
-		</ul>
-	</div>
-</div>
+          </div>
+		  <?php
+		  } else { ?>
+          <div class="block phone-details position-relative clearfix">
+            <div class="card">
+				<?php 
+				if($model_upto_price>0) {
+				echo '<h6 class="btn btn-primary upto-price-button">Up to '.amount_fomat($model_upto_price).'</h6>';
+				}?>
+              <div class="row center_content">
+                <div class="col-md-5 phone-image-block text-center">
+					<?php
+					if($model_data['model_img']) {
+						$md_img_path = SITE_URL.'images/mobile/'.$model_data['model_img']; ?>
+						<img class="phone-image" src="<?=$md_img_path?>" alt="<?=$model_data['title']?>">
+					<?php
+					} ?>
+                </div>
+                <div class="col-md-7">
+					<input type="hidden" name="base_price" />
+					<div id="device-prop-area">
+					<?php
+					$tooltips_data_array = array();
 
-<section id="model-steps" class="sectionbox white-bg clearfix">
-	<div class="wrap">
-		<div class="content-block">
-			<?php
-			//Order steps
-			$order_steps = 1;
-			include("include/steps.php"); ?>
+					$fid=1;
+					foreach($fields_data_array as $fields_data) {
+						if(!empty($fields_data['data'])) {
+							if($fields_data['type'] == "condition") {
+								continue;
+							}
+
+							$fields_name = $fields_data['type'];
+							$fields_input_type = $fields_data['input-type'];
+							$required_field = ($fields_data['required_field']=='1'?1:0);
+						
+							if($edit_item_id > 0) {
+								$class = "selected";
+							} elseif(in_array($fields_name,$fld_id_array)) {
+								$class = "selected";
+							} elseif($fid==1) {
+								$class = "opened";
+							} else {
+								$class = "disabled";
+							} ?>
+						
+							<div class="<?=(isset($fields_data['class'])?$fields_data['class']:'')?>" data-row_type="<?=$fields_input_type?>" data-required="<?=$required_field?>">
+								<div class="h4">
+									<?=$fields_data['title']?>
+									
+									<?php
+									if($fields_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+										$tooltips_data_array[] = array('tooltip'=>$fields_data['tooltip'], 'id'=>'p'.$fields_name, 'name'=>$fields_data['title']); ?>
+										<span class="tips" data-toggle="modal" data-target="#info_popup<?='p'.$fields_name?>"><i class="fa fa-info-circle"></i></span>
+									<?php
+									} ?>:
+								</div>
+								<div class="storage-options">
+									<?php
+									if($fields_data['type'] == "storage") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$storage_size = $f_data['storage_size'].$f_data['storage_size_postfix'];
+									
+												$checked = '';
+												if(isset($item_name_array['storage']['opt_data']['0']['opt_name']) && $storage_size == $item_name_array['storage']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$storage_size); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													
+													<input class="custom-control-input m-fields-input" name="storage" value="<?=$storage_size?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$storage_size.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									}
+									elseif($fields_data['type'] == "condition") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$condition_name = $f_data['condition_name'];
+									
+												$checked = '';
+												if(isset($item_name_array['condition']['opt_data']['0']['opt_name']) && $condition_name == $item_name_array['condition']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if($f_data['condition_terms']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['condition_terms'], 'id'=>$f_data['id'], 'name'=>$condition_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input clk_condition m-fields-input" name="condition" value="<?=$condition_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$condition_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+										<!--<span class="d-none">&nbsp;</span>-->
+										<?php
+										/*foreach($fields_data['data'] as $f_t_k => $f_t_data) {
+											if(trim($f_t_data['condition_terms'])) { ?>
+												<div class="condition-description clearfix" id="condition_term-<?=$f_t_data['id']?>">
+													<?=$f_t_data['condition_terms']?>
+												</div>
+											<?php
+											}
+										}*/
+									} elseif($fields_data['type'] == "network") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$network_name = $f_data['network_name'];
+									
+												$checked = '';
+												if(isset($item_name_array['network']['opt_data']['0']['opt_name']) && $network_name == $item_name_array['network']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$network_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="network" value="<?=$network_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if($f_data['network_icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/network/'.$f_data['network_icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$network_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									} elseif($fields_data['type'] == "connectivity") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$connectivity_name = $f_data['connectivity_name'];
+									
+												$checked = '';
+												if(isset($item_name_array['connectivity']['opt_data']['0']['opt_name']) && $connectivity_name == $item_name_array['connectivity']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$connectivity_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="connectivity" value="<?=$connectivity_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$connectivity_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									} elseif($fields_data['type'] == "case_size") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$case_size_name = $f_data['case_size'];
+									
+												$checked = '';
+												if(isset($item_name_array['case_size']['opt_data']['0']['opt_name']) && $case_size_name == $item_name_array['case_size']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$case_size_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="case_size" value="<?=$case_size_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$case_size_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									} elseif($fields_data['type'] == "model") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$model_name = $f_data['model_name'];
+									
+												$checked = '';
+												if(isset($item_name_array['model']['opt_data']['0']['opt_name']) && $model_name == $item_name_array['model']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$model_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="model" value="<?=$model_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$model_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									} elseif($fields_data['type'] == "processor") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$processor_name = $f_data['processor_name'];
+									
+												$checked = '';
+												if(isset($item_name_array['processor']['opt_data']['0']['opt_name']) && $processor_name == $item_name_array['processor']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$processor_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="processor" value="<?=$processor_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$processor_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									}
+									elseif($fields_data['type'] == "ram") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$ram_size = $f_data['ram_size'].$f_data['ram_size_postfix'];
+									
+												$checked = '';
+												if(isset($item_name_array['ram']['opt_data']['0']['opt_name']) && $ram_size == $item_name_array['ram']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$ram_size); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="ram" value="<?=$ram_size?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$ram_size.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									}
+									elseif($fields_data['type'] == "graphics_card") { ?>
+										<div class="radio_select_buttons">
+											<?php
+											foreach($fields_data['data'] as $f_d => $f_data) {
+												$graphics_card_name = $f_data['graphics_card_name'];
+
+												$checked = '';
+												if(isset($item_name_array['case_size']['opt_data']['0']['opt_name']) && $graphics_card_name == $item_name_array['graphics_card']['opt_data']['0']['opt_name']) {
+													$checked = 'checked';
+												} ?>
+												<div class="custom-control custom-radio custom-control-inline">
+													<?php 
+													if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+														$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$graphics_card_name); ?>
+														<p class="text-center mb-0"><span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span></p>
+													<?php
+													} ?>
+													<input class="custom-control-input m-fields-input" name="graphics_card" value="<?=$graphics_card_name?>" <?=$checked?> type="radio" id="<?=$f_data['id']?>" data-default="0" />
+													<label class="custom-control-label" for="<?=$f_data['id']?>">
+														<?php
+														if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+															echo '<img src="/images/'.$f_data['icon'].'" id="'.$f_data['id'].'" />';
+														} ?>
+														<?='<span>'.$graphics_card_name.'</span>'?>
+													</label>
+												</div>
+											<?php
+											} ?>
+										</div>
+									<?php
+									}
+									elseif($fields_data['type']=="band_included") { ?>
+										<div class="checkboxes">
+										<?php
+										$bni_opt_id_array = array();
+										if(!empty($item_name_array['band_included']['opt_data'])) {
+											foreach($item_name_array['band_included']['opt_data'] as $opt_data) {
+												if($opt_data['opt_id']>0) {
+													$bni_opt_id_array[] = $opt_data['opt_id'];
+												}
+											}
+										}
+										
+										foreach($fields_data['data'] as $f_d => $f_data) {
+											$checked = '';
+											$chk_lab = $f_data['band_included_name'];
+											$chk_id = $f_data['id'];
+											
+											if(in_array($f_data['id'],$bni_opt_id_array)) {
+												$checked = 'checked';
+											} ?>
+											<div class="custom-control custom-radio custom-control-inline">
+												<?php
+												if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+													$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$chk_lab); ?>
+													<span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle"></i></span>
+												<?php
+												} ?>
+												<input class="custom-control-input m-fields-input" name="band_included[]" id="<?=$chk_lab?>" <?=$checked?> value="<?=$chk_lab.':'.$f_data['id']?>" type="checkbox" data-default="0">
+												<label class="custom-control-label" for="<?=$chk_lab?>">
+													<?php
+													if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+														echo '<img src="/images/'.$f_data['icon'].'" width="50px" id="'.$f_data['id'].'" />';
+													} ?>
+													<?='<span>'.$chk_lab.'</span>'?>
+												</label>
+												
+												<?php 
+												if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+													echo '<img src="/images/'.$f_data['icon'].'" width="30px" id="'.$f_data['id'].'" />';
+												} ?>
+											</div>
+										<?php
+										} ?>
+										</div>
+									<?php
+									}
+									elseif($fields_data['type']=="accessories") { ?>
+										<div class="checkboxes">
+										<?php
+										$acc_opt_id_array = array();
+										if(!empty($item_name_array['accessories']['opt_data'])) {
+											foreach($item_name_array['accessories']['opt_data'] as $opt_data) {
+												if($opt_data['opt_id']>0) {
+													$acc_opt_id_array[] = $opt_data['opt_id'];
+												}
+											}
+										}
+									
+										foreach($fields_data['data'] as $f_d => $f_data) {
+											$checked = '';
+											$chk_lab = $f_data['accessories_name'];
+											$chk_id = $f_data['id'];
+									
+											if(in_array($f_data['id'],$acc_opt_id_array)) {
+												$checked = 'checked';
+											} ?>
+											<div class="custom-control custom-radio custom-control-inline">
+												<?php
+												if(isset($f_data['tooltip']) && $f_data['tooltip']!="" && $tooltips_of_model_fields == '1') {
+													$tooltips_data_array[] = array('tooltip'=>$f_data['tooltip'], 'id'=>$f_data['id'], 'name'=>$chk_lab); ?>
+													<span class="tooltip-text" data-toggle="modal" data-target="#info_popup<?=$f_data['id']?>"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+												<?php
+												} ?>
+												<input class="custom-control-input m-fields-input" name="accessories[]" id="<?=$chk_lab?>" <?=$checked?> value="<?=$chk_lab.':'.$f_data['id']?>" type="checkbox" data-default="0">
+												<label class="custom-control-label" for="<?=$chk_lab?>">
+													<?php
+													if(isset($f_data['icon']) && $f_data['icon']!="" && $icons_of_model_fields == '1') {
+														echo '<img src="/images/'.$f_data['icon'].'" width="50px" id="'.$f_data['id'].'" />';
+													} ?>
+													<?='<span>'.$chk_lab.'</span>'?>
+												</label>
+											</div>
+										<?php
+										} ?>
+										</div>
+									<?php
+									} ?>
+									<span class="validation-msg"></span>
+								</div>
+							</div>
+						<?php
+						$fid++;
+						$last_field_id = $fields_name;
+						}
+					} ?>
+					</div>
+                </div>
+              </div>
+            </div>
+          </div>
+		  <?php
+		  }
+
+		  if($exist_con_pro_fld>0) { ?>
+			  <div class="block heading page-heading-second text-center condition-section" <?php if($exist_others_pro_fld>0 && $exist_con_pro_fld>0){echo 'style="display:none;"';}?>>
+				<h3>Condition:</h3>
+			  </div>
+		  <?php
+		  } ?>
+
+		<div class="block condition-tab clearfix condition-section position-relative" <?php if($exist_others_pro_fld>0 && $exist_con_pro_fld>0){echo 'style="display:none;"';}?>>
+			<?php 
+			if($model_upto_price>0 && $exist_others_pro_fld <= 0) {
+				echo '<h6 class="btn btn-primary upto-price-button">Up to '.amount_fomat($model_upto_price).'</h6>';
+			} ?>
+			<div class="row">
+				<?php
+				$price_section_class = "col-md-12 col-lg-12 show-price text-center";
+				if($exist_con_pro_fld>0) { ?>
+					<div class="col-md-6 col-lg-3">
+						<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+							<?php
+							$c_c=1;
+							foreach($fields_data_array as $fields_data) {
+								if(!empty($fields_data['data'])) {
+									if($fields_data['type'] == "condition") {
+										$fields_name = $fields_data['type'];
+										$fields_input_type = $fields_data['input-type'];
+										$required_field = ($fields_data['required_field']=='1'?1:0);
+		
+										foreach($fields_data['data'] as $f_d => $f_data) {
+											$condition_name = $f_data['condition_name'];
+											
+											$is_cond_active = '';
+											if(isset($item_name_array['condition']['opt_data']['0']['opt_name']) && $condition_name == $item_name_array['condition']['opt_data']['0']['opt_name']) {
+												$is_cond_active = 'active';
+											} elseif($c_c == '1' && $edit_item_id<=0) {
+												$is_cond_active = 'active';
+											}
+					
+											if($f_data['condition_terms']!="" && $tooltips_of_model_fields == '1') {
+												$cus_opt_tooltips_data_array[] = array('is_cond_active'=>$is_cond_active, 'tooltip'=>$f_data['condition_terms'], 'id'=>$f_data['id'], 'name'=>$condition_name);
+											}
+										
+											if($is_cond_active) {
+												$condition_field = '<input type="hidden" name="condition" value="'.$condition_name.'" class="condition_field">';
+											} ?>
+											<a class="nav-link <?=$is_cond_active?>" id="v-pills-<?=$f_data['id']?>-tab" data-toggle="pill" href="#v-pills-<?=$f_data['id']?>" role="tab" aria-controls="v-pills-<?=$f_data['id']?>" aria-selected="true" data-value="<?=$condition_name?>"><?=$condition_name?></a>
+											
+											<?php /*?><div class="card">
+												<div class="card-header" id="headingOne">
+													<h2 class="mb-0">
+														<a class="btn btn-link nav-link-mbl <?=($is_cond_active?'':'collapsed')?>" id="v-pills-<?=$f_data['id']?>-tab" data-toggle="collapse" data-target="#collapse<?=$f_data['id']?>" aria-expanded="true" aria-controls="collapse<?=$f_data['id']?>" data-value="<?=$condition_name?>">
+															<?=$condition_name?>
+														</a>
+													</h2>
+												</div>
+												<div id="collapse<?=$f_data['id']?>" class="collapse <?=($is_cond_active?'show':'')?>" aria-labelledby="headingOne" data-parent="#accordionCondition">
+													<div class="card-body">
+														<?=$f_data['condition_terms']?>
+													</div>
+												</div>
+											</div><?php */?>
+											<?php
+											$c_c++;
+										}
+										echo $condition_field;
+									}
+								}
+							} ?>
+						</div>
+					</div>
+				
+				<?php /*?><div class="col-md-12 col-lg-12 d-none d-lg-block">
+					<div class="nav nav-pills nav-fill" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						<?php
+						$c_c=1;
+						foreach($fields_data_array as $fields_data) {
+							if(!empty($fields_data['data'])) {
+								if($fields_data['type'] == "condition") {
+									$fields_name = $fields_data['type'];
+									$fields_input_type = $fields_data['input-type'];
+									$required_field = ($fields_data['required_field']=='1'?1:0);
+											
+									foreach($fields_data['data'] as $f_d => $f_data) {
+										$condition_name = $f_data['condition_name'];
+										
+										$is_cond_active = '';
+										if(isset($item_name_array['condition']['opt_data']['0']['opt_name']) && $condition_name == $item_name_array['condition']['opt_data']['0']['opt_name']) {
+											$is_cond_active = 'active';
+										} elseif($c_c == '1' && $edit_item_id<=0) {
+											$is_cond_active = 'active';
+										}
+				
+										if($f_data['condition_terms']!="" && $tooltips_of_model_fields == '1') {
+											$cus_opt_tooltips_data_array[] = array('is_cond_active'=>$is_cond_active, 'tooltip'=>$f_data['condition_terms'], 'id'=>$f_data['id'], 'name'=>$condition_name);
+										}
+									
+										if($is_cond_active) {
+											$condition_field = '<input type="hidden" name="condition" value="'.$condition_name.'" class="condition_field">';
+										} ?>
+											<a class="nav-item nav-link <?=$is_cond_active?>" id="v-pills-<?=$f_data['id']?>-tab" data-toggle="pill" href="#v-pills-<?=$f_data['id']?>" role="tab" aria-controls="v-pills-<?=$f_data['id']?>" aria-selected="true" data-value="<?=$condition_name?>"><?=$condition_name?></a>
+										<?php
+										$c_c++;
+									}
+									echo $condition_field;
+								}
+							}
+						} ?>
+					</div>
+				</div><?php */?>
+				
+				<div class="col-md-6 col-lg-5">
+                <div class="tab-content" id="v-pills-tabContent">
+					<?php
+					$c_n = 1;
+					foreach($cus_opt_tooltips_data_array as $cus_opt_tooltips_data) { ?>
+					  <div class="tab-pane fade <?=($cus_opt_tooltips_data['is_cond_active']?'show active':'')?>" id="v-pills-<?=$cus_opt_tooltips_data['id']?>" role="tabpanel" aria-labelledby="v-pills-<?=$cus_opt_tooltips_data['id']?>-tab">
+						<div class="row">
+						  <div class="col-md-12">
+							<ul>
+							  <?=$cus_opt_tooltips_data['tooltip']?>
+							</ul>
+						  </div>
+						</div>
+					  </div>
+					<?php
+					$c_n++;
+					} ?>
+                </div>
+              </div>
+				<?php
+				$price_section_class = "col-md-12 col-lg-4 show-price text-center";
+				} ?>
+				<div class="<?=$price_section_class?>">
+					<h4 class="price-total show_final_amt">$0<span>.00</span></h4>
+					<h4 class="price-total apr-spining-icon" style="display:none;"></h4>
+					<p><button type="submit" class="btn btn-lg btn-primary rounded-pill">Get Paid</button></p>
+					<p><button type="submit" class="btn btn-lg rounded-pill btn-outline-light accept-btn" name="accept_offer">Accept offer & <br />add another device</button></p>
+				</div>
+			</div>
 		</div>
+		<div class="block condition-tab condition-section mt-4 d-lg-none clearfix" <?php if($exist_others_pro_fld>0 && $exist_con_pro_fld>0){echo 'style="display:none;"';}?>>
+			<div class="row">
+				<div class="col-md-12 show-price d-block d-lg-none text-center">
+					<h4 class="price-total show_final_amt">$0<span>.00</span></h4>
+					<h4 class="price-total apr-spining-icon" style="display:none;"></h4>
+					<p><button type="submit" class="btn btn-lg btn-primary rounded-pill">Get Paid</button></p>
+					<p><button type="submit" class="btn btn-lg rounded-pill btn-outline-light accept-btn" name="accept_offer">Accept offer & <br />add another device</button></p>
+				</div>
+			</div>
+		</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<span class="show_final_amt_val" style="display:none;"></span>
+
+<input type="hidden" name="sell_this_device" value="yes">
+<input type="hidden" name="quantity" id="quantity" value="1"/>
+<input type="hidden" name="device_id" id="device_id" value="<?=$model_data['device_id']?>"/>
+<input type="hidden" name="payment_amt" id="payment_amt"/>
+<input type="hidden" name="req_model_id" id="req_model_id" value="<?=$req_model_id?>"/>
+<input type="hidden" name="edit_item_id" id="edit_item_id" value="<?=$edit_item_id?>"/>
+<input id="total_price_org" type="hidden" />
+<input name="id" type="hidden" value="<?=$req_model_id?>" />
+<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
+<input type="hidden" name="fields_cat_type" value="<?=$fields_cat_type?>">
+
+<input type="hidden" name="is_condition_appear" id="is_condition_appear" value="0"/>
+</form>
+
+<?php
+foreach($tooltips_data_array as $tooltips_data) { ?>
+	<div class="modal fade common_popup" id="info_popup<?=$tooltips_data['id']?>" role="dialog">
+		<div class="modal-dialog small_dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="modal-body">
+					<h3 class="title"><?=$tooltips_data['name']?></h3>
+					<?=$tooltips_data['tooltip']?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php
+} ?>
+
+<section class="pt-0 d-none d-md-block">
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-md-4">
+		  <div class="block why-choose-page">
+			<div class="d-table m-auto">
+			  <img src="<?=SITE_URL?>images/icons/pay.png">We pay more
+			</div>
+		  </div>
+		</div>
+		<div class="col-md-4">
+		  <div class="block why-choose-page">
+			<div class="d-table m-auto">
+			  <img src="<?=SITE_URL?>images/icons/satisfaction.png">Satisfaction guaranteed
+			</div>
+		  </div>
+		</div>
+		<div class="col-md-4">
+		  <div class="block why-choose-page">
+			<div class="d-table m-auto">
+			  <img src="<?=SITE_URL?>images/icons/hours.png">24 hour payments
+			</div>
+		  </div>
+		</div>
+	  </div>
 	</div>
 </section>
 
-<form action="<?=SITE_URL?>controllers/mobile.php" method="post" enctype="multipart/form-data" onSubmit="return chechdata();" id="form_submit">
-	<section id="model-steps-select" class="sectionbox white-bg clearfix">
-	  <div class="wrap">
-	  <div class="row phone-details modern-style-image">
-		<div class="col-md-3">
-		  <div class="block">
-			<div class="text">
-			  <div class="phone-select">
-				<?php
-				if($model_data['model_img']) {
-					//$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/mobile/'.$model_data['model_img'].'&h=200';
-					$md_img_path = SITE_URL.'images/mobile/'.$model_data['model_img'];
-				  
-				  ?>
-					<div class="phone-select-inner">
-					   <img src="<?=$md_img_path?>">
+<?php
+if($model_data['cat_id']>0) {
+	$faqs_groups_data_html = get_faqs_groups_with_html(array(),$model_data['cat_id'],'model_details');
+	if($faqs_groups_data_html['html']!="") { ?>
+		<section class="faq_page">
+			<div class="container">
+				<div class="block setting-page clearfix">
+					<div class="wrap model_detail_accordion">
+						<?=$faqs_groups_data_html['html']?>
 					</div>
-				<?php
-				} ?>
-			  </div>
-			  <div class="title"><strong>Device</strong>
-			  	<span class="tips" <?=($model_data['tooltip_device']?'data-toggle="modal" data-target="#ModalTooltips"':'')?>>?</span>
-			  </div>
-              <div class="model_name"><?=$model_data['title']?></div>
+				</div>
 			</div>
-		  </div>
-		</div>
+		</section>
+	<?php	
+	}
+} ?>
+	
+<script>
+var tpj=jQuery;
+
+function checkdata() {
+	tpj("#payment_amt").val(tpj(".show_final_amt_val").html());
+
+	var is_return = true;
+	tpj('.m-fields-input').each(function(index) {
+		var is_required = tpj(this).parent().parent().parent().parent().parent().attr("data-required");
+		var is_checked = tpj(this).parent().parent().find("input:checked").length;
+		if(is_required=="1") {
+			if(is_checked == 0) {
+				is_return = false;
+				tpj(this).parent().parent().next().html("Please choose an option");
+				return false;
+			}
+		}
+	});
+
+	if(is_return == false) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function get_price(mode) {
+	<?php
+	if($exist_others_pro_fld>0 && $exist_con_pro_fld>0) { ?>
+	var is_return = true;
+	tpj('.m-fields-input').each(function(index) {
+		var is_checked = tpj(this).parent().parent().find("input:checked").length;
+			if(is_checked == 0) {
+				is_return = false;
+			}
+	});
+	console.log('is_return:',is_return);
+
+	if(is_return == false) {
+		tpj('#is_condition_appear').val(0);
+		tpj('.condition-section').hide();
+	} else {
+		tpj('#is_condition_appear').val(1);
 		
-		<!-- Modal -->
-		<div class="modal fade common_popup" id="ModalTooltips" role="dialog">
-			<div class="modal-dialog small_dialog">
-			  <!-- Modal content-->
-			  <div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<div class="modal-body">
-					<h3 class="title">Device</h3>
-				    <p><?=$model_data['tooltip_device']?></p>
-				</div><!--modal-body-->
-			  </div>
-			</div>
-		</div><!-- Modal -->
+		if(!window.matchMedia("(max-width: 1024px)").matches) {
+		 setTimeout(function() {
+		 	tpj.scrollTo(tpj('.condition-section'), 1000);
+		 }, 200);
+		}
+		
+		tpj('.condition-section').show();
+	}
+	<?php
+	} elseif($exist_con_pro_fld>0) { ?>
+		tpj('#is_condition_appear').val(1);
+	<?php
+	} ?>
+	
+	tpj.ajax({
+		type: 'POST',
+		url: '<?=SITE_URL?>ajax/get_model_price.php',
+		data: tpj('#model_details_form').serialize(),
+		success: function(data) {
+			if(data!="") {
+				var resp_data = JSON.parse(data);
 
-		<div class="col-md-9 phone-details-height">
-		  <div class="block hide_network">
-			<div class="">
-				<div class="clearfix">
-				<div class="heading">
-					<h3><strong><?=$model_data['title']?></strong></h3>
-					<p>To sell your Apple iPhone select the required fields</p>
-				</div>
+				var total_price = resp_data.payment_amt;
+				var total_price_html = resp_data.payment_amt_html;
 				
-				<div class="price_box">
-					<strong class="price">
-						<?=$amount_sign_with_prefix?><span class="show_final_amt"><?=amount_format_without_sign($total_price)?></span><?=$amount_sign_with_postfix?>
-					</strong>
-				</div>
-	
-				</div>
+				var _t_price=formatMoney(total_price);
+				var f_price=format_amount(_t_price);
+				
 				<?php
-				$path_info = parse_path();
-				$call_parts_params = $path_info['call_parts'];
-	
-				$feilds_val = array();
-				$rr=0;
-				$tr=1;
-				foreach($call_parts_params as $k=>$v) {
-					if($k>0) {
-						if($rr==0 || $rr==1) {
-							$rr++;
-							continue;
-						}
-						$feilds_val[$tr] = $v;
-						$rr++;
-						$tr++;
-					}
-				}
-	
-				function updatePrice($thisprice,$add_sub,$price_type,$total_price,$price) {
-					if($price_type==0) {
-						$temp_price = ($price*$thisprice)/100;
-					} else {
-						$temp_price = $thisprice;
-					}
-	
-					if($add_sub=="+") {
-						$total_price = $total_price + $temp_price;
-					} else {
-						$total_price = $total_price - $temp_price;
-					}
-					return $total_price;
-				}
-	
-				$sql_pro = "select * from mobile where id = '".$req_model_id."'";
-				$exe_pro = mysqli_query($db,$sql_pro);
-				$row_pro = mysqli_fetch_assoc($exe_pro);
-				$price = $row_pro['price'];
-				$total_price = $row_pro['price'];
-				?>
-	
-				<input type="hidden" name="base_price" value="<?=$price?>" />
-				<div class="modern-text slideInRight animated" id="device-prop-area">
-					<div class="sell-help">
-					   &nbsp;
-					</div>
-	
-					<?php
-					$sql_cus_fld = "select * from product_fields where product_id = '".$req_model_id."' order by sort_order";
-					$exe_cus_fld = mysqli_query($db,$sql_cus_fld);
-					$no_of_dd_fld = mysqli_num_rows($exe_cus_fld);
-					$no_of_fields = mysqli_num_rows($exe_cus_fld);
-					$fid=1;
-	
-					if($no_of_fields==count($feilds_val)) {
-						$btn_act = "display:;";
-					} else {
-						$btn_act = "display:none;";
-					}
-	
-					while($row_cus_fld = mysqli_fetch_assoc($exe_cus_fld)) {
-						$nn = $nn+1;
-						$last_next_button = "";
-						if($no_of_fields == $nn) {
-							$last_next_button = "yes";
-						}
-						
-						if(isset($feilds_val[$fid])) {
-							$class = "selected";
-						} elseif($fid==count($feilds_val)+1) {
-							$class = "opened";
-						} else {
-							$class = "disabled";
-						} ?>
-	
-						<div class="modern-text__row capacity-base-row modern-block__row <?=$class?>" data-row_type="<?=$row_cus_fld['input_type']?>" data-required="<?=$row_cus_fld['is_required']?>">
-							<span class="modern-text__area">
-								<span class="modern-text__num">
-									<b class="modern-num"><?=$fid?></b>
-									<b data-toggle="tooltip" title="Edit" class="modern-selected needhelp"></b>
-								</span>
-								<span class="modern-text__title">
-									<?php
-									if($row_cus_fld['icon']!="") { ?>
-										<img src="/images/<?=$row_cus_fld['icon']?>" width="50px" />
-									<?php
-									}
-									echo $row_cus_fld['title']; ?>
-								</span>
-								<span class="tips" data-toggle="tooltip" title="<?=$row_cus_fld['tooltip']?>">?</span>
-								<?php /*?><span class="needhelp icon-help modern-text__help" data-toggle="tooltip" data-placement="bottom" title="<?=$row_cus_fld['tooltip']?>"></span><?php */?>
-							</span>
-							<div id="capacities" class="modern-block__content block-content-base">
-								<?php
-								if($row_cus_fld['input_type']=="select" || $row_cus_fld['input_type']=="radio")
-								{
-									$sql_cus_opt = "select * from product_options where product_field_id = '".$row_cus_fld['id']."'";
-									$exe_cus_opt = mysqli_query($db,$sql_cus_opt);
-									$no_of_dd_options = mysqli_num_rows($exe_cus_opt);
-									$temp_fld_no = count($feilds_val) + 1;
-	
-									if($no_of_dd_options>0) {
-										$oid=1;
-										$checked = "";
-										$sel_class = "";
-										$tooltip_tabs = array();
-										?>
-										<div class="option_value_outer clearfix">
-										<?php
-										while($row_cus_opt = mysqli_fetch_assoc($exe_cus_opt)) {
-											$checked = '';
-											$sel_class = "";
-											$tab_sel_class = "false";
-											$tab_sel__content_class = "";
-	
-											if(@$feilds_val[$fid]==$row_cus_opt['label']) {
-												$checked = 'checked';
-												$sel_class = "sel";
-												$tab_sel_class = "true";
-												$tab_sel__content_class = "active";
-												$total_price = updatePrice($row_cus_opt['price'],$row_cus_opt['add_sub'],$row_cus_opt['price_type'],$total_price,$price);
-											} else {
-												if($temp_fld_no == $fid) {
-													if($row_cus_opt['is_default']==1) {
-														$checked = 'checked';
-														$sel_class = "sel";
-														$tab_sel_class = "true";
-														$tab_sel__content_class = "active";
-														$total_price = updatePrice($row_cus_opt['price'],$row_cus_opt['add_sub'],$row_cus_opt['price_type'],$total_price,$price);
-													}
-												}
-											} ?>
-												<span class="options_values">
-													<button data-issubmit="<?=$last_next_button?>" class="capacity-row btn btn-sm <?=$sel_class?> radio_btn" type="button" href="#<?=$fid?>_<?=$oid?>_tab" data-toggle="tab" aria-expanded="<?=$tab_sel_class?>" data-input-type="<?=$row_cus_fld['input_type']?>">
-													<?php
-													if($row_cus_opt['icon']!="") { ?>
-														<img src="/images/<?php echo $row_cus_opt['icon']; ?>" width="50px" id="<?php echo $row_cus_opt['id']; ?>" />
-														<br />
-													<?php
-													}
-													echo $row_cus_opt['label']; ?>
-													<?php
-													$tooltip_tabs[$oid]['tab_id'] = $fid."_".$oid."_tab";
-													$tooltip_tabs[$oid]['tooltip'] = $row_cus_opt['tooltip'];
-													$tooltip_tabs[$oid]['sel_class'] = $tab_sel__content_class;
-													?>
-
-													<!--Display details when you hover over tooltips -->
-														<div class="tab-content tab-pane">
-															<p><?=$row_cus_opt['tooltip']?></p>
-														</div>
-														
-												</button>
-													<input class="radioele" name="<?php echo $row_cus_fld['title']; ?>" value="<?php echo $row_cus_opt['label']; ?>" <?php echo $checked; ?> type="radio" style="display:none;" onClick="updatePrice('<?php echo $row_cus_opt['price']; ?>','<?php echo $row_cus_opt['add_sub']; ?>','<?php echo $row_cus_opt['price_type']; ?>')" data-price="<?php echo $row_cus_opt['price']; ?>" data-add_sub="<?php echo $row_cus_opt['add_sub']; ?>" data-price_type="<?php echo $row_cus_opt['price_type']; ?>" data-default="<?php echo $row_cus_opt['is_default']; ?>" />
-												</span>
-
-											<?php
-											$oid++;
-										} ?>
-										</div>
-										<!-- <div class="tab-content tab_con">
-											<?php
-											/*foreach($tooltip_tabs as $tooltip_tab) {
-												if($tooltip_tab['tooltip']) { ?>
-													<!-- <div class="tab-pane <?//=$tooltip_tab['sel_class']?>" id="<?//=$tooltip_tab['tab_id']?>">
-														<p><?//=$tooltip_tab['tooltip']?></p>
-													</div> -->
-												<?php
-												}
-											} */?>
-										</div> -->
-										
-										<?php
-										/*
-										<a href="#" class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-										<?php
-										*/ ?>
-										
-										<span class="text-danger"></span>
-										<?php
-									}
-								}
-								elseif($row_cus_fld['input_type']=="checkbox") {
-									$sql_cus_opt = "select * from product_options where product_field_id = '".$row_cus_fld['id']."'";
-									$exe_cus_opt = mysqli_query($db,$sql_cus_opt);
-									$no_of_dd_options = mysqli_num_rows($exe_cus_opt);
-									$temp_fld_no = count($feilds_val) + 1;
-	
-									if($no_of_dd_options>0) {
-										$oid=1; ?>
-										<div class="form-group">
-										<?php
-										$chks = explode(",",@$feilds_val[$fid]);
-										while($row_cus_opt = mysqli_fetch_assoc($exe_cus_opt)) {
-											$checked = '';
-											$chk_lab = $row_cus_opt['label'];
-	
-											if(isset($feilds_val[$fid]) && count($chks)>0) {
-												if(in_array($chk_lab,$chks)) {
-													$checked = 'checked';
-													$total_price = updatePrice($row_cus_opt['price'],$row_cus_opt['add_sub'],$row_cus_opt['price_type'],$total_price,$price);
-												}
-											} else {
-												if($temp_fld_no == $fid) {
-													if($row_cus_opt['is_default']==1) {
-														$checked = 'checked';
-														$total_price = updatePrice($row_cus_opt['price'],$row_cus_opt['add_sub'],$row_cus_opt['price_type'],$total_price,$price);
-													}
-												}
-											} ?>
-											<span class="options_values form-group">
-												<div class="checkbox checkbox-success">
-													<label for="<?php echo $chk_lab; ?>"><input class="checkboxele" name="<?php echo $row_cus_fld['title']; ?>[]" id="<?php echo $chk_lab; ?>" <?php echo $checked; ?> value="<?php echo $chk_lab; ?>" type="checkbox" onClick="updatePrice_chk('<?php echo $row_cus_opt['price']; ?>','<?php echo $row_cus_opt['add_sub']; ?>','<?php echo $row_cus_opt['price_type']; ?>',this)" data-price="<?php echo $row_cus_opt['price']; ?>" data-add_sub="<?php echo $row_cus_opt['add_sub']; ?>" data-price_type="<?php echo $row_cus_opt['price_type']; ?>" data-default="<?php echo $row_cus_opt['is_default']; ?>"><span class="checkmark"></span>
-													 <?php echo $chk_lab; ?> </label>
-												</div>
-											</span>
-										<?php
-										}
-										?>
-										</div>
-										<a href="#" class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-										<span class="text-danger"></span>
-										<?php
-									}
-								}
-								elseif($row_cus_fld['input_type']=="text") { ?>
-									<input name="<?php echo $row_cus_fld['title']; ?>" class="form-control input" />
-									<a class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-								<?php
-								}
-								elseif($row_cus_fld['input_type']=="textarea") { ?>
-									<textarea name="<?php echo $row_cus_fld['title']; ?>" class="form-control textarea input"></textarea>
-									<a class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-									<?php
-								}
-								elseif($row_cus_fld['input_type']=="datepicker") { ?>
-									<input type="text" class="form-control input" id="datepicker" name="<?php echo $row_cus_fld['title']; ?>" autocomplete="off" />
-									<a class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-									<?php
-								}
-								elseif($row_cus_fld['input_type']=="file") { ?>
-									<span></span>
-									<div class="clearfix fileupload">
-										<input name="<?=$row_cus_fld['title']?>" type="file" class="input" onChange="changefile(this)" />
-										<div class="filenamebox">No file choosen <?php /*?><i class="fa fa-times" onclick="selectNewFile(this);"></i><?php */?></div>
-									</div>
-									<a class="capacity-row" data-issubmit="<?=$last_next_button?>">Next</a>
-								<?php
-								} ?>
-							</div>
-							<div class="modern-block__selected">
-								<span class="mobile-block">Capacity: </span>
-								<span class="current-item">
-								<?php
-								if(isset($feilds_val[$fid])) {
-									echo $feilds_val[$fid];
-								} ?>
-								</span>
-							</div>
-							<div class="modern-disabled"></div>
-						</div>
-						<?php
-						$fid++;
-					} ?>
-		  			<br />
-					<div class="device-get-price clearfix">
-					<button type="button" class="btn btn-blue" onClick="backFeild()">Back </button>
-					<button type="submit" class="btn btn-gray arrow" id="quantity-section" style="display:none;">Next </button>
-					</div>
-					
-				</div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-
-	</section>
-    
-    <!--<section id="quantity_sec" class="sectionbox lightblue-bg">
-    	<div class="wrap">
-            <div class="intro-text">Unlike many other recyclers, our prices are guaranteed rather than 'up to' prices. Provided your device is received as described, </div>
-            <div class="subtitlebox">you'll receive the full value. Please see our Price Promise for more details.</div>
-
-            <div class="content-block">
-            	<form>
-                	<div class="row">
-                    	<div class="col-sm-12">
-                        	<div class="form_group col-sm-push-4 col-sm-3">
-                            	<label>Quantity:</label>
-                                <select class="textbox">
-                                	<option>1</option>
-                                    <option>2</option>
-                                </select>
-                                <button class="btn btn_md btn-red-bg btn-shadow">Sell this  Device</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>-->
-  
-   
-
-  <?php /*?><section id="guarantee-value" class="sectionbox white-bg clearfix">
-      <div class="wrap">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="payment-method-head text-center">
-            <div class="h3"><strong>Guaranteed Value</strong></div>
-            <p>Please select payment method:</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section><?php */?>
-  <?php /*?><section class="sectionbox white-bg clearfix">
-      <div class="wrap">
-
-	  <div class="row">
-		<div class="col-md-12">
-			<div class="payment-method clearfix">
-			  <ul data-toggle="buttons">
-			    <?php
-				if($choosed_payment_option['bank']=="bank") { ?>
-				<li class="btn <?php if($default_payment_option=="bank"){echo 'active';}?>">
-					<div class="method bank">
-						<div class="arrow"></div>
-						<div class="right-sgin"><i class="fa fa-check" aria-hidden="true"></i></div>
-						<div><strong>Bank Transfer</strong></div>
-						<div><img src="<?=SITE_URL?>images/payment/bank-transfer.png"></div>
-						<strong class="price">
-						   <?=$amount_sign_with_prefix?><span class="show_final_amt"><?=amount_format_without_sign($total_price)?></span><?=$amount_sign_with_postfix?>
-						</strong>
-					</div>
-					<input type="radio" id="payment_method_bank" name="payment_method" value="bank" <?php if($default_payment_option=="bank"){echo 'checked="checked"';}?>>
-				</li>
+				if($show_instant_price_on_model_criteria_selections!='1') { ?>
+				tpj(".showhide_f_total_secn").hide();
 				<?php
+				} else { ?>
+				if(total_price && total_price>0) {
+					tpj(".showhide_f_total_secn").show();
+				} else {
+					tpj(".showhide_f_total_secn").hide();
 				}
-				if($choosed_payment_option['cheque']=="cheque") { ?>
-				<li class="btn <?php if($default_payment_option=="cheque"){echo 'active';}?>">
-					<div class="method cheque">
-						<div class="arrow"></div>
-						<div class="right-sgin"><i class="fa fa-check" aria-hidden="true"></i></div>
-						<strong>Cheque</strong>
-						<img src="<?=SITE_URL?>images/payment/cheque.png">
-						<strong class="price">
-						   <?=$amount_sign_with_prefix?><span class="show_final_amt"><?=amount_format_without_sign($total_price)?></span><?=$amount_sign_with_postfix?>
-						</strong>
-					</div>
-				   <input type="radio" id="payment_method_cheque" name="payment_method" value="cheque" <?php if($default_payment_option=="cheque"){echo 'checked="checked"';}?>>
-				</li>
-				<?php
-				}
-				if($choosed_payment_option['paypal']=="paypal") { ?>
-				<li class="btn <?php if($default_payment_option=="paypal"){echo 'active';}?>">
-					<div class="method paypal">
-						<div class="arrow"></div>
-						<div class="right-sgin"><i class="fa fa-check" aria-hidden="true"></i></div>
-						<strong>Paypal</strong>
-						<img src="<?=SITE_URL?>images/payment/paypal.png">
-						<strong class="price">
-						   <?=$amount_sign_with_prefix?><span class="show_final_amt"><?=amount_format_without_sign($total_price)?></span><?=$amount_sign_with_postfix?>
-						</strong>
-					</div>
-				  <input type="radio" id="payment_method_paypal" name="payment_method" value="paypal" <?php if($default_payment_option=="paypal"){echo 'checked="checked"';}?>>
-				</li>
-				<?php
-				}
-				if($choosed_payment_option['cash']=="cash") { ?>
-				<li class="btn <?php if($default_payment_option=="cash"){echo 'active';}?>">
-					<div class="method paypal">
-						<div class="arrow"></div>
-						<div class="right-sgin"><i class="fa fa-check" aria-hidden="true"></i></div>
-						<strong>Cash</strong>
-						<img src="<?=SITE_URL?>images/payment/cash.png">
-						<strong class="price">
-						   <?=$amount_sign_with_prefix?><span class="show_final_amt"><?=amount_format_without_sign($total_price)?></span><?=$amount_sign_with_postfix?>
-						</strong>
-					</div>
-				  <input type="radio" id="payment_method_paypal" name="payment_method" value="cash" <?php if($default_payment_option=="cash"){echo 'checked="checked"';}?>>
-				</li>
 				<?php
 				} ?>
-			</ul>
-			</div>
-		</div>
-	  </div>
-  </div>
-</section><?php */?>
+				
+				tpj(".show_final_amt").html(total_price_html);
+				tpj(".show_final_amt_val").html(total_price);
+				
+				//tpj(".device_nm").html(resp_data.device_nm);
+				if(resp_data.device_nm) {
+					tpj('.clear-fields').show();
+				}
+				//tpj('#get-price-btn').removeAttr("disabled");
+				
+				if(mode == "click") {
+					tpj(".device-name-dt").show();
+					tpj(".device-name").html(resp_data.device_nm);
+				}
+				
+				tpj(".show_final_amt").show();
+				tpj(".apr-spining-icon").hide();
+				tpj(".apr-spining-icon").html('');
+			}
+		}
+	});
+}
 
-<?php /*?><section class="sectionbox white-bg clearfix">
-      <div class="wrap">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="gray-text">Unlike many other recyclers, our prices are guaranteed rather than 'up to' prices. Provided your device is received as described, you'll receive the full value. Please see our Price Promise for more details.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sectionbox white-bg clearfix">
-      <div class="wrap">
-      <div class="row" id="quantity-section" style="<?=$btn_act?>">
-        <div class="col-md-12">
-          <div class="block clearfix">
-            <div class="form-inline quantity-form" role="form">
-              <div class="form-group">
-                <label>Quantity:</label>
-                <!--<input type="number" class="form-control" name="quantity" id="quantity" value="1">-->
-                <div class="select-fancy">
-                  <select name="quantity" id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
-                </div>
-              </div>
-              <button type="submit" class="btn" name="sell_this_device" id="get-price-btn" style="<?=$btn_act?>">Sell this Device</button>
-            </div>
-          </div>
-        </div>
-      </div>
+tpj(document).ready(function($) {
+	
+	/*$('.clk_condition').on('click', function() {
+		var id = $(this).attr('id');
+		$(".condition-description").hide();
+		$("#condition_term-"+id).show();
+	});*/
+	
+	$('.nav-link, .nav-link-mbl').on('click', function() {
+		var name = $(this).attr("data-value");
+		$(".condition_field").val(name);
+	});
+	
+	$('#device-prop-area .radio_select_buttons, #device-prop-area .checkboxes, .nav-link, .nav-link-mbl').bind('click keyup', function(event) {
+		$(".apr-spining-icon").html('<div class="spining-icon"><i class="fa fa-spinner fa-spin"></i></div>');
+		$(".apr-spining-icon").show();
+		$(".show_final_amt").hide();
+		
+		var is_required = $(this).parent().parent().parent().attr("data-required");
+		var is_checked = $(this).parent().parent().find("input:checked").length;
+		if(is_required=="1") {
+			if(is_checked > 0) {
+				$(this).next().html("");
+			}
+		}
 
-	  <?php */?>
-	  
-	  <span class="show_final_amt_val" style="display:none;"><?=$total_price?></span>
+		setTimeout(function() {
+			get_price('click');
+		}, 500);
+	});
 
-	  <input type="hidden" name="sell_this_device" value="yes">
-	  <input type="hidden" name="quantity" id="quantity" value="1"/>
-	  <input type="hidden" name="device_id" id="device_id" value="<?=$model_data['device_id']?>"/>
-	  <input type="hidden" name="payment_amt" id="payment_amt" value="<?=$total_price?>"/>
-	  <input type="hidden" name="req_model_id" id="req_model_id" value="<?=$req_model_id?>"/>
+	$('.show-price-popup').on('click', function() {
+		$("#ModalPriceShow").modal();
+	});
 
-	  <input id="total_price_org" value="<?=$price?>" type="hidden" />
-	  <input name="id" type="hidden" value="<?=$req_model_id?>" />
-	  
-	  <input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
-	  
- <?php /*?> </div>
-</section><?php */?>
+	var buttonPlus = $('.q-increase-btn');
+	var buttonMin = $('.q-decrease-btn');
+	var quantity = $('#quantity');
+	
+	buttonPlus.click(function() {
+		quantity.val(parseInt(quantity.val()) + 1).trigger('input');
+		get_price('click');
+	});
+	buttonMin.click(function() {
+		if(quantity.val()<=1) {
+			quantity.val(1).trigger('input');
+		} else {
+			quantity.val(Math.max(parseInt(quantity.val()) - 1, 0)).trigger('input');
+		}
+		get_price('click');
+	});
+});
 
-</form>
+get_price('load');
 
-  <!--START for review section-->
-  <?php /*
-  //Get review list
-  $review_list_data = get_review_list_data_random();
-  if(!empty($review_list_data)) { ?>
-    <section class="sectionbox white-bg clearfix">
-      <div class="wrap">
-      <div class="row quota-trustpilot">
-        <div class="col-md-12">
-          <div class="block clearfix">
-            <div class="block-inner clearfix">
-              <span class="quota-icon"></span>
-              <h3><strong><?=$review_list_data['title']?></strong></h3>
-              <div class="text">
-              	<?php
-              	if($review_list_data['stars'] == '0.5' || $review_list_data['stars'] == '1') { ?>
-	                <i class="fa fa-star"></i>
-                <?php
-                } elseif($review_list_data['stars'] == '1.5' || $review_list_data['stars'] == '2') { ?>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	            <?php
-                } elseif($review_list_data['stars'] == '2.5' || $review_list_data['stars'] == '3') { ?>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	            <?php
-                } elseif($review_list_data['stars'] == '3.5' || $review_list_data['stars'] == '4') { ?>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	            <?php
-                } elseif($review_list_data['stars'] == '4.5' || $review_list_data['stars'] == '5') { ?>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-	                <i class="fa fa-star"></i>
-                <?php
-            	} ?>
-              </div>
-              <div class="text">
-                <p><?=$review_list_data['content']?></p>
-              </div>
-              <div class="arrow-down"></div>
-            </div>
-            <div class="trust-pilot-credits">
-              <p><?=$review_list_data['name']?><br /><span><?=($review_list_data['country']?$review_list_data['country'].', ':'').$review_list_data['state'].', '.$review_list_data['city']?></span><br /><span class="date"><?=date('m/d/Y',$review_list_data['date'])?></span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <?php
-  } */ ?>
-  <!--END for review section-->
-
-  <script type="text/javascript">
-  (function( $ ) {
+(function( $ ) {
 	$(function() {
-      // More code using $ as alias to jQuery
-      var stickyNavTop = $('.float-section').offset().top;
-      var stickyNav = function () {
-          var scrollTop = $(window).scrollTop();
-          if (scrollTop > stickyNavTop) {
-              $('.float-section').addClass('cloned');
-          } else {
-              $('.float-section').removeClass('cloned');
-          }
-      };
-      stickyNav();
-      $(window).scroll(function () {
-          stickyNav();
-      });
+	  // More code using $ as alias to jQuery
+	  var stickyNavTop = $('.float-section').offset().top;
+	  var stickyNav = function () {
+		  var scrollTop = $(window).scrollTop();
+		  if(scrollTop > stickyNavTop) {
+			  $('.float-section').addClass('cloned');
+		  } else {
+			  $('.float-section').removeClass('cloned');
+		  }
+	  };
+	  stickyNav();
+	  $(window).scroll(function () {
+		  stickyNav();
+	  });
 
 	  //$('[data-toggle="tooltip"]').tooltip();
-    });
-  })(jQuery);
-
-  </script>
+	});
+})(jQuery);
+</script>

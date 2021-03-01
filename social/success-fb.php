@@ -38,13 +38,13 @@ try {
 	$response = $fb->get('/me?fields=id,name,first_name,middle_name,last_name,email,gender,hometown', $accessToken);
 	
 	$user = $response->getGraphUser();
-	$query="SELECT * FROM users WHERE username = '".$user['email']."'";
+	$query="SELECT * FROM users WHERE username = '".$user['email']."' AND user_type='user'";
 	$res=mysqli_query($db,$query);
 	$checkUser=mysqli_num_rows($res);
 	if($checkUser > 0){
 		$fetch_userdata=mysqli_fetch_assoc($res);
-		$_SESSION['login_user'] = $fetch_userdata['username'];
 		$_SESSION['user_id']=$fetch_userdata['id'];
+		unset($_SESSION['guest_user_id']);
 	} else {
 		$query=mysqli_query($db,"INSERT INTO `users`(`name`, `first_name`, `last_name`, `email`, `username`, `status`, `date`,leadsource) VALUES('".$user['name']."', '".$user['first_name']."','".$user['last_name']."','".$user['email']."','".$user['email']."','1','".date('Y-m-d H:i:s')."','social')");
 		if($query=="1") {
@@ -52,9 +52,8 @@ try {
 			$res=mysqli_query($db,$query);
 			$checkUser=mysqli_num_rows($res);
 			$fetch_userdata=mysqli_fetch_assoc($res);
-
-			$_SESSION['login_user'] = $fetch_userdata['username'];
 			$_SESSION['user_id']=$fetch_userdata['id'];
+			unset($_SESSION['guest_user_id']);
 		}
 	}
 } catch(Facebook\Exceptions\FacebookResponseException $e) {

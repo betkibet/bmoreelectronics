@@ -1,272 +1,288 @@
-<!DOCTYPE HTML>
-<html>
-<head>
+<!doctype html>
+<html lang="en">
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta http-equiv="x-ua-compatible" content="IE=edge" >
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <meta name="keywords" content="<?=$meta_keywords?>" />
 <meta name="description" content="<?=$meta_desc?>" />
 <title><?=$meta_title?></title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/owl.carousel.min.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/owl.theme.default.min.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/css-org.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/theme.min.css">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/main.css">
-<link rel="stylesheet" href="<?=SITE_URL?>css/main_media.css">
+<!-- Jquery Data Table -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<?=SITE_URL?>css/style.css">
+
+<link rel="stylesheet" href="<?=SITE_URL?>css/color.css">
+  
 <link rel="stylesheet" href="<?=SITE_URL?>css/intlTelInput.css">
-<link rel="icon" href="<?=SITE_URL?>/images/favicon.ico" type="image/x-icon"/>
 
 <link rel="stylesheet" href="<?=SITE_URL?>css/bootstrapValidator.min.css">
-
-<script src="<?=SITE_URL?>js/jquery.min.js"></script>
-
 <link rel="stylesheet" href="<?=SITE_URL?>css/custom.css">
 
+<?php
+if($favicon_icon) {
+	echo '<link rel="shortcut icon" href="'.SITE_URL.'images/'.$favicon_icon.'" />';
+} ?>
 
-<script>
-function openNav() {
-    document.getElementById("nav").style.width = "250px";
-    document.getElementById("wrapper").style.marginLeft = "0";
-	document.getElementById("wrapper").style.marginLeft = "0";
-    //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-    document.getElementById("nav").style.width = "0";
-    document.getElementById("wrapper").style.marginLeft= "0";
-    //document.body.style.backgroundColor = "white";
-}
-</script>
-
+<script src="<?=SITE_URL?>js/jquery.min.js"></script>
+<script src="<?=SITE_URL?>js/jquery.scrollTo.min.js"></script>
+<script src="<?=SITE_URL?>js/jquery.matchHeight-min.js"></script>
 <?=$custom_js_code?>
-</head>
-<body <?=(trim($url_first_param)!=""?'class="inner"':'')?>>
+<?php
+require_once("include/custom_js.php");
 
-<!-- Wrapper -->
-<div id="wrapper">
+$body_class = "";
+if($page_body_class) {
+	$body_class=$page_body_class;
+} elseif($url_first_param=="cart") {
+	$body_class="inner bg-no-repeat";
+} elseif($url_first_param=="sell") { 
+	$body_class="no-bg inner";
+} elseif($url_first_param!="") {
+	$body_class="inner";	
+} ?>
+</head>
+
+<body class="<?=$body_class?>">
+	<div class="social_fixed">
+        <div class="float-sm">
+		  <?php
+		  if($site_phone) { ?>
+		  <div class="fl-fl float-whatsapp">
+		    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+		    <a href="https://api.whatsapp.com/send?phone=<?=$site_phone?>&amp;text=Hi There! Need help" target="_blank">Chat With Us</a>
+		  </div>
+		  <?php
+		  }
+		  if($site_phone) { ?>
+		  <div class="fl-fl float-contact">
+		    <i class="fa fa-phone" aria-hidden="true"></i>
+		    <a href="tel:<?=$site_phone?>" target="_blank"><?=$site_phone?></a>
+		  </div>
+		  <?php
+		  } ?>
+	</div>	
 	<?php
-	//START for confirm message
-	$confirm_message = getConfirmMessage()['msg'];
-	echo $confirm_message;
-	//END for confirm message ?>
-		
-  <!-- Header -->
-  <header id="header">
-    <div class="wrap clearfix">
-    	<span class="menuicon" onClick="openNav()">&nbsp;</span>
-        <h1 class="logo">
-        	<a href="<?=SITE_URL?>">
+	echo $after_body_js_code;
+	if($url_first_param!="order-completion") {
+		//START for confirm message
+		$confirm_message = getConfirmMessage()['msg'];
+		echo $confirm_message;
+		//END for confirm message
+	} ?>
+
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-lg-2 align-items-center">
+          <div class="block logo clearfix">
+            <a class="logo-link" <?=(trim($url_first_param)!=""?'':'')?> href="<?=SITE_URL?>">
 				<?php
 				if($logo_url) {
-        			echo '<img src="'.$logo_url.'?uniqid='.unique_id().'" class="brand-logo" max-height="70px" max-width="119">';
+        			echo '<img class="desktop_logo" width="'.$logo_width.'" height="'.$logo_height.'" src="'.$logo_url.'" alt="'.SITE_NAME.'">';
 				}
 				if($logo_fixed_url) {
-            		echo '<img src="'.$logo_fixed_url.'?uniqid='.unique_id().'" class="brand-logo-fixed" max-height="70px" max-width="119">';
+            		echo '<img width="'.$fixed_logo_width.'" height="'.$fixed_logo_height.'" src="'.$logo_fixed_url.'" class="logo-mobile" alt="'.SITE_NAME.'">';
 				} ?>
             </a>
-        </h1>
-        
-        <nav id="nav" class="ra_nav">
-        <a href="javascript:void(0)" class="closebtn" onClick="closeNav()">&times;</a>
-        <ul>
-		  <?php
-		  $header_menu_list = get_menu_list('header');
-		  foreach($header_menu_list as $header_menu_data) {
-		  	  $is_open_new_window = $header_menu_data['is_open_new_window'];
-		  	  if($header_menu_data['page_id']>0) {
-			  	  $menu_url = $header_menu_data['p_url'];
-				  $is_custom_url = $header_menu_data['p_is_custom_url'];
-			  } else {
-			      $menu_url = $header_menu_data['url'];
-				  $is_custom_url = $header_menu_data['is_custom_url'];
-			  }
-			  $menu_url = ($is_custom_url>0?$menu_url:SITE_URL.$menu_url);
-			  $is_open_new_window = ($is_open_new_window>0?'target="_blank"':'');
-			  
-			  $menu_fa_icon = "";
-			  if($header_menu_data['css_menu_fa_icon']) {
-				  $menu_fa_icon = '&nbsp;<i class="'.$header_menu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
-			  }
-			  
-			  $active_m_menu_class = "";
-			  if($active_page_data['menu_id']>0 && $active_page_data['menu_id']==$header_menu_data['id']) {
-			  	$active_m_menu_class = " active";
-			  } ?>
-			  
-			  <li class="<?=(count($header_menu_data['submenu'])>0?'submenu':'').$active_m_menu_class?>">
-				<a href="<?=$menu_url?>" class="<?=$header_menu_data['css_menu_class']?>" <?=$is_open_new_window?>><?=$header_menu_data['menu_name'].$menu_fa_icon?></a>
+            <a class="menu-toggle" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+            <ul class="mobile-user-menu">
+              <li>
 				<?php
-				if(count($header_menu_data['submenu'])>0) {
-					$header_submenu_list = $header_menu_data['submenu'];
-					echo '<ul class="droupdown">';
-						foreach($header_submenu_list as $header_submenu_data) {
-							$s_is_open_new_window = $header_submenu_data['is_open_new_window'];
-							if($header_submenu_data['page_id']>0) {
-								$s_is_custom_url = $header_submenu_data['p_is_custom_url'];
-								$s_menu_url = $header_submenu_data['p_url'];
-							} else {
-								$s_menu_url = $header_submenu_data['url'];
-								$s_is_custom_url = $header_submenu_data['is_custom_url'];
-							}
-							$s_menu_url = ($s_is_custom_url>0?$s_menu_url:SITE_URL.$s_menu_url);
-							$s_is_open_new_window = ($s_is_open_new_window>0?'target="_blank"':'');
-							
-							$submenu_fa_icon = "";
-						    if($header_menu_data['css_menu_fa_icon']) {
-							    $submenu_fa_icon = '&nbsp;<i class="'.$header_menu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
-						    }
-							
-							$active_s_menu_class = "";
-						    if($active_page_data['menu_id']>0 && $active_page_data['menu_id']==$header_submenu_data['id']) {
-							   $active_s_menu_class = " active";
-						    } ?>
-							<li class="<?=$active_s_menu_class?>"><a href="<?=$s_menu_url?>" class="<?=$header_submenu_data['css_menu_class']?>" <?=$s_is_open_new_window?>><?=$header_submenu_data['menu_name'].$submenu_fa_icon?></a></li>
-						<?php
-						}
-					echo '</ul>';
+				if(isset($_SESSION['user_id']) && $_SESSION['user_id']>0) { ?>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><img src="<?=SITE_URL?>images/icons/user.png"></a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+					  <i class="fas fa-caret-up"></i>
+					  <a class="dropdown-item first-item text-center hello-text">Hello <?=$user_data['name']?></a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>account">Orders</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>coupons">Coupons</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>profile">Setting</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>statistics">Statistics</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>bonus-system">Bonus System</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item last-item" href="<?=SITE_URL?>controllers/logout.php">Logout</a>
+					</div>
+				<?php
+				} else { ?>
+					<a href="javascript:void(0);" id="login_link" data-toggle="modal" data-target="#SignInRegistration"><img src="<?=SITE_URL?>images/icons/user.png"></a>
+					<?php /*?><i class="fas fa-caret-up"></i>
+					<a class="dropdown-item first-item text-center hello-text">Hello Guest</a>
+					<div class="dropdown-divider"></div>
+					<a href="javascript:void(0);" class="dropdown-item" id="login_link" data-toggle="modal" data-target="#SignInRegistration">Login</a><?php */?>
+				<?php
 				} ?>
-			  </li>
+              </li>
+              <li>
+                <a href="<?=SITE_URL?>cart">
+                    <img src="<?=SITE_URL?>images/icons/cart.png">
+					<?php
+					if(isset($basket_item_count_sum_data['basket_item_count']) && $basket_item_count_sum_data['basket_item_count']>0) {
+						echo '<span class="badge badge-danger">'.$basket_item_count_sum_data['basket_item_count'].'</span>';
+					} ?>
+                </a>
+              </li>
+            </ul>
+            <a class="close-icon menu-toggle" href="#"><img src="<?=SITE_URL?>images/icons/close.png" alt=""></a>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-8">
+		  <?php
+		  if($is_act_header_menu == '1') { ?>
+          <div class="block main-menu home">
+            <ul>
+			  <?php
+			  $is_private_menu_show = false;
+			  if(isset($active_menu) && ($active_menu == "account" || $active_menu == "coupons" || $active_menu == "track_order" || $active_menu == "profile" || $active_menu == "statistics" || $active_menu == "bonus-system")) {
+			  	$is_private_menu_show = true;
+			  }
+		  
+			  $header_menu_list = get_menu_list('header');
+			  foreach($header_menu_list as $header_menu_data) {
+				  $is_open_new_window = $header_menu_data['is_open_new_window'];
+				  if($header_menu_data['page_id']>0) {
+					  $menu_url = $header_menu_data['p_url'];
+				  } else {
+					  $menu_url = $header_menu_data['url'];
+				  }
+				  $is_custom_url = $header_menu_data['is_custom_url'];
+				  $menu_url = ($is_custom_url>0?$menu_url:SITE_URL.$menu_url);
+				  $is_open_new_window = ($is_open_new_window>0?'target="_blank"':'');
+				  
+				  $menu_fa_icon = "";
+				  if($header_menu_data['css_menu_fa_icon']) {
+					  $menu_fa_icon = '&nbsp;<i class="'.$header_menu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
+				  }
+				  
+				  $active_m_menu_class = "";
+				  if(isset($active_page_data['menu_id']) && $active_page_data['menu_id']>0 && $active_page_data['menu_id']==$header_menu_data['id']) {
+					$active_m_menu_class .= " active";
+				  }
+				  if($is_private_menu_show) {
+				    // $active_m_menu_class .= " d-none d-lg-block";
+				    $active_m_menu_class .= "";
+				  }
+				  
+				  $fix_menu_popup = "";
+				  if($header_menu_data['page_slug'] == "order-track") {
+					  $fix_menu_popup = 'data-toggle="modal" data-target="#trackOrderForm"';
+				  } elseif($header_menu_data['page_slug'] == "bulk-order-form") {
+					 // $fix_menu_popup = 'data-toggle="modal" data-target="#bulkOrderForm"';
+				  } ?>
+
+				  <li class="<?=(count($header_menu_data['submenu'])>0?'submenu':'').$active_m_menu_class?>">
+					<a href="<?=$menu_url?>" class="<?=$header_menu_data['css_menu_class']?>" <?=$is_open_new_window.$fix_menu_popup?>><?=$header_menu_data['menu_name'].$menu_fa_icon?> <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> --></a>
+					<?php
+					if(count($header_menu_data['submenu'])>0) {
+						$header_submenu_list = $header_menu_data['submenu'] ;
+
+						echo '<ul class="droupdown">';
+
+							foreach($header_submenu_list as $header_submenu_data) {
+								$s_is_open_new_window = $header_submenu_data['is_open_new_window'];
+								if($header_submenu_data['page_id']>0) {
+									$s_menu_url = $header_submenu_data['p_url'];
+								} else {
+									$s_menu_url = $header_submenu_data['url'];
+								}
+								$s_is_custom_url = $header_submenu_data['is_custom_url'];
+								$s_menu_url = ($s_is_custom_url>0?$s_menu_url:SITE_URL.$s_menu_url);
+								$s_is_open_new_window = ($s_is_open_new_window>0?'target="_blank"':'');
+								
+								$submenu_fa_icon = "";
+								if($header_menu_data['css_menu_fa_icon']) {
+									$submenu_fa_icon = '&nbsp;<i class="'.$header_menu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
+								}
+								
+								$active_s_menu_class = "";
+								if(isset($active_page_data['menu_id']) && $active_page_data['menu_id']>0 && $active_page_data['menu_id']==$header_submenu_data['id']) {
+								   $active_s_menu_class = " active";
+								} ?>
+								<li class="<?=$active_s_menu_class?>"><a href="<?=$s_menu_url?>" class="<?=$header_submenu_data['css_menu_class']?>" <?=$s_is_open_new_window?>><?=$header_submenu_data['menu_name'].$submenu_fa_icon?></a></li>
+							<?php
+							}
+						echo '</ul>';
+					} ?>
+				  </li>
+			  <?php
+			  }
+			  if($is_private_menu_show) {
+			  	$num_of_order = get_order_list_by_user_id($user_id)['num_of_orders']; ?>
+				<!-- <li class="d-block d-lg-none <?php if($active_menu == "account"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>account"><span><img src="<?=SITE_URL?>images/icons/orders.png" alt="orders"></span>Orders <?php if($num_of_order>0){echo '<span class="count">('.$num_of_order.')</span>';}?></a>
+				</li>
+				<li class="d-block d-lg-none <?php if($active_menu == "coupons"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>coupons"><span><img src="<?=SITE_URL?>images/icons/coupon.png" alt="coupons"></span>Coupons</a>
+				</li> -->
+				<?php /*?><li class="d-block d-lg-none <?php if($active_menu == "track_order"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>track-order"><span><img src="<?=SITE_URL?>images/icons/track-order.png" alt="track order"></span>Track order</a>
+				</li><?php */?>
+				<!-- <img src="<?=SITE_URL?>images/icons/setting.png" alt="settings"> -->
+				<!-- <li class="d-block d-lg-none <?php if($active_menu == "profile"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>profile"><span></span>Settings</a>
+				</li>
+				<li class="d-block d-lg-none <?php if($active_menu == "statistics"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>statistics"><span><img src="<?=SITE_URL?>images/icons/statistics.png" alt="statistics"></span>Statistics</a>
+				</li>
+				<li class="d-block d-lg-none <?php if($active_menu == "bonus-system"){echo 'active';}?>">
+					<a href="<?=SITE_URL?>bonus-system"><span><img src="<?=SITE_URL?>images/icons/bonus.png" alt="bonus system"></span>Bonus system</a>
+				</li> -->
+			  <?php
+			  } ?>
+            </ul>
+          </div>
 		  <?php
 		  } ?>
-        </ul>
-        </nav>
-        <!-- Nav -->
-
-		<div class="dropdown cart-btn">
-			<?php
-			if($basket_item_count_sum_data['basket_item_count']>0) {
-        		echo '<span class="count_item">'.$basket_item_count_sum_data['basket_item_count'].'</span>';
-			} ?>
-        	<a href="<?=SITE_URL?>revieworder" class="dropdown-toggle link" data-toggle="dropdown">Cart</a>
-			<?php
-			//Get data from index.php, get_basket_item_count_sum function
-			if(count($basket_item_count_sum_data['basket_item_data'])>0) { ?>
-				<div class="dropdown-menu">
-					<div class="inner">
-						<div class="dis_table">
-							<?php
-							//Get order price based on orderID, path of this function (get_order_price) admin/include/functions.php
-							$sum_of_orders=get_order_price($order_id);
-
-							foreach($basket_item_count_sum_data['basket_item_data'] as $order_item_data) {
-								$order_item_url = $order_item_data['sef_url'].'/'.createSlug($order_item_data['model_title']).'/'.$order_item_data['model_id'].'/'.$order_item_data['storage'];
-								$order_item_name = $order_item_data['model_title'].' '.$order_item_data['storage'];
-								$order_item_price = amount_fomat($order_item_data['price']); ?>
-								<div class="row">
-									<div class="col-xs-7"><?=$order_item_name?><br><span class="text-blue"><?=$order_item_data['quantity']?> x <?=$order_item_price?></span></div>
-									<div class="col-xs-3">
-										<?php
-										if($order_item_data['model_img']) {
-											echo '<img src="'.SITE_URL.'images/mobile/'.$order_item_data['model_img'].'" class="img-fluid" height="39"/>';
-										} ?>
-									</div>
-									<div class="col-xs-2"><a href="<?=SITE_URL?>controllers/revieworder/review.php?rorder_id=<?=$order_item_data['id']?>"><span class="remove">x</span></a></div>
-								</div>
-							<?php
-							} ?>
-
-							<div class="row total">
-								<div class="col-xs-12">Sell Order Total <span class="price"><?=amount_fomat($sum_of_orders)?></span></div>
-							</div>
-							<div class="row btn_row">
-								<div class="col-xs-12">
-									<a href="<?=SITE_URL?>revieworder" class="btn btn-gray">VIEW CART</a>
-									<?php /*?><a href="<?=SITE_URL?>revieworder" class="btn btn-blue">CHECK OUT</a><?php */?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			<?php
-			} else { ?>
-				<div class="dropdown-menu cartempty">
-					<div class="inner">No products in the cart</div>
-				</div>
-			<?php
-			} ?>
         </div>
-
-		<ul id="myaccountouter">
-		  <?php
-		  $topright_menu_list = get_menu_list('top_right');
-		  foreach($topright_menu_list as $topright_menu_data) {
-		  	  $is_open_new_window = $topright_menu_data['is_open_new_window'];
-		  	  if($topright_menu_data['page_id']>0) {
-			  	  $menu_url = $topright_menu_data['p_url'];
-				  $is_custom_url = $topright_menu_data['p_is_custom_url'];
-			  } else {
-			  	  $menu_url = $topright_menu_data['url'];
-				  $is_custom_url = $topright_menu_data['is_custom_url'];
-			  }
-			  $menu_url = ($is_custom_url>0?$menu_url:SITE_URL.$menu_url);
-			  $is_open_new_window = ($is_open_new_window>0?'target="_blank"':'');
-			  
-			  $menu_fa_icon = "";
-			  if($topright_menu_data['css_menu_fa_icon']) {
-				  $menu_fa_icon = '&nbsp;<i class="'.$topright_menu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
-			  } ?>
-			  <li <?=(count($topright_menu_data['submenu'])>0?'class="submenu"':'')?>>
-				<a class="myaccount <?=$topright_menu_data['css_menu_class']?>" href="<?=$menu_url?>" <?=$is_open_new_window?>><?=$topright_menu_data['menu_name'].$menu_fa_icon?></a>
-				<ul class="adroupdown">
+        <div class="col-md-5 col-lg-2">
+          <div class="block user-menu clearfix">
+            <ul class="justify-content-end">
+				<li>
 					<?php
-					if($_SESSION['user_id']>0) { ?>
-						<li><a href="<?=SITE_URL?>account">My Orders</a></li>
-						<li><a href="<?=SITE_URL?>profile">My Profile</a></li>
-						<li><a href="<?=SITE_URL?>controllers/logout.php">Logout</a></li>
+					if(isset($_SESSION['user_id']) && $_SESSION['user_id']>0) { ?>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><img src="<?=SITE_URL?>images/icons/user.png"></a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+						  <i class="fas fa-caret-up"></i>
+						  <a class="dropdown-item first-item text-center hello-text" <?php /*?>href="<?=SITE_URL?>profile"<?php */?>>Hello <?=$user_data['name']?></a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item last-item" href="<?=SITE_URL?>account">My Account</a>
+						  <div class="dropdown-divider"></div>
+						  <a class="dropdown-item last-item" href="<?=SITE_URL?>controllers/logout.php">Logout</a>
+						</div>
 					<?php
 					} else { ?>
-						<li><a href="#" id="login_link" data-toggle="modal" data-target="#signupbox">Login</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#signupbox">Signup</a></li>
+						<a href="javascript:void(0);" data-toggle="modal" data-target="#SignInRegistration"><img src="<?=SITE_URL?>images/icons/user.png"></a>
+						<?php /*?><i class="fas fa-caret-up"></i>
+						<a class="dropdown-item first-item text-center hello-text">Hello Guest</a>
+						<div class="dropdown-divider"></div>
+						<a href="javascript:void(0);" class="dropdown-item" data-toggle="modal" data-target="#SignInRegistration">Login</a><?php */?>
 					<?php
-					}
-					
-					if(count($topright_menu_data['submenu'])>0) {
-						$topright_submenu_list = $topright_menu_data['submenu'];
-						foreach($topright_submenu_list as $topright_submenu_data) {
-							$s_is_open_new_window = $topright_submenu_data['is_open_new_window'];
-							if($topright_submenu_data['page_id']>0) {
-								$s_is_custom_url = $topright_submenu_data['p_is_custom_url'];
-								$s_menu_url = $topright_submenu_data['p_url'];
-							} else {
-								$s_menu_url = $topright_submenu_data['url'];
-								$s_is_custom_url = $topright_submenu_data['is_custom_url'];
-							}
-							$s_menu_url = ($s_is_custom_url>0?$s_menu_url:SITE_URL.$s_menu_url);
-							$s_is_open_new_window = ($s_is_open_new_window>0?'target="_blank"':'');
-							
-							$submenu_fa_icon = "";
-							if($topright_submenu_data['css_menu_fa_icon']) {
-								$submenu_fa_icon = '&nbsp;<i class="'.$topright_submenu_data['css_menu_fa_icon'].'" aria-hidden="true"></i>';
-							} ?>
-							<li><a href="<?=$s_menu_url?>" class="<?=$topright_submenu_data['css_menu_class']?>" <?=$s_is_open_new_window?>><?=$topright_submenu_data['menu_name'].$submenu_fa_icon?></a></li>
-						<?php
-						}
 					} ?>
-				</ul>
-			  </li>
-		  <?php
-		  } ?>
-        </ul>
-        
-        <a href="<?=SITE_URL?>#request_quote" class="btn-quote ra_request_quote">Request A Quote</a> 
-
-        <div class="searchbox">
-        	<span class="ico-search"></span>
+				</li>
+				<li>
+					<a href="<?=SITE_URL?>cart">
+						<img src="<?=SITE_URL?>images/icons/cart.png">
+						<?php
+						if(isset($basket_item_count_sum_data['basket_item_count']) && $basket_item_count_sum_data['basket_item_count']>0) {
+							echo '<span class="badge badge-danger">'.$basket_item_count_sum_data['basket_item_count'].'</span>';
+						} ?>
+					</a>
+				</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="searchfield">
-        	<div class="relative">
-				<form action="<?=SITE_URL?>search" method="post">
-            		<input class="searchbox srch_list_of_model" type="text" name="search" placeholder="Search Model...">
-                	<span class="closebtn">X</span>
-				</form>
-            </div>
-        </div>
-        
       </div>
+    </div>
   </header>

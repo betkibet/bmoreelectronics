@@ -42,13 +42,13 @@ function google($db){
 	if($client->getAccessToken()) {
 		$user = $oauth2->userinfo->get();
 
-		$query="SELECT * FROM users WHERE username = '".$user['email']."'";
+		$query="SELECT * FROM users WHERE username = '".$user['email']."' AND user_type='user'";
 		$res=mysqli_query($db,$query);
 		$checkUser=mysqli_num_rows($res);
 		if($checkUser > 0){
 			$fetch_userdata=mysqli_fetch_assoc($res);
-			$_SESSION['login_user'] = $fetch_userdata['username'];
 			$_SESSION['user_id']=$fetch_userdata['id'];
+			unset($_SESSION['guest_user_id']);
 		} else {
 			$query=mysqli_query($db,"INSERT INTO `users`(`name`, `first_name`, `last_name`, `email`, `username`, `status`, `date`, leadsource) VALUES('".$user['name']."', '".$user['given_name']."','".$user['family_name']."','".$user['email']."','".$user['email']."','1','".date('Y-m-d H:i:s')."', 'social')");
 			if($query=="1") {
@@ -56,8 +56,8 @@ function google($db){
 				$res=mysqli_query($db,$query);
 				$checkUser=mysqli_num_rows($res);
 				$fetch_userdata=mysqli_fetch_assoc($res);
-				$_SESSION['login_user'] = $fetch_userdata['username'];
 				$_SESSION['user_id']=$fetch_userdata['id'];
+				unset($_SESSION['guest_user_id']);
 			}
 		}
 	} else {

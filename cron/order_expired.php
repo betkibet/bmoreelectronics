@@ -1,16 +1,36 @@
 <?php
-require_once("../admin/_config/config.php");
-require_once("../admin/include/functions.php");
+error_reporting(E_ERROR | E_PARSE);
+date_default_timezone_set("UTC");
 
-$general_setting_data = get_general_setting_data();
+$CP_ROOT_PATH = dirname(dirname(__FILE__));
+
+define('CP_ROOT_PATH', $CP_ROOT_PATH);
+require(CP_ROOT_PATH."/admin/_config/connect_db.php");
+require(CP_ROOT_PATH."/admin/_config/common.php");
+require(CP_ROOT_PATH."/admin/include/functions.php");
+
+$website_url = rtrim($general_setting_data['website'],'/');
+$website_url = $website_url.'/';
+define('SITE_URL',$website_url);
+
 $admin_user_data = get_admin_user_data();
 $template_data = get_template_data('order_expired');
 
+$waiting_shipment_status_id = get_order_status_data('order_status','waiting-shipment')['data']['id'];
+
+error_log("Executed Order Expired Script");
+
+wh_log("Executed Order Expired Script");
+function wh_log($msg) {
+	$logfile = 'logs/cron_'.date("Y-m-d-H-i-s").'.log';
+	file_put_contents($logfile,date("Y-m-d H:i:s")." | ".$msg."\n",FILE_APPEND);
+}
+
 echo '<pre>';
-$future_date = date('Y-m-d',strtotime('-1 day'));
-//$future_date = date('Y-m-d',strtotime('-0 day'));
+$future_date = date('Y-m-d',strtotime('-'.$order_expired_days.' day'));
+//$future_date = date('Y-m-d',strtotime('+30 day'));
 echo 'Date of order expired:- '.$future_date;
-$query = "SELECT o.*, u.*, u.id AS user_id FROM orders AS o LEFT JOIN users AS u ON u.id=o.user_id WHERE o.status IN('awaiting_delivery') AND DATE_FORMAT(o.expire_date,'%Y-%m-%d')='".$future_date."' ORDER BY o.id DESC";
+$query = "SELECT o.*, u.*, u.id AS user_id FROM orders AS o LEFT JOIN users AS u ON u.id=o.user_id WHERE o.status IN('".$waiting_shipment_status_id."') AND DATE_FORMAT(o.date,'%Y-%m-%d')='".$future_date."' AND u.unsubscribe='0' AND is_trash='0' ORDER BY o.id DESC";
 $m_query=mysqli_query($db,$query);
 $order_num_of_rows = mysqli_num_rows($m_query);
 if($order_num_of_rows>0) {
@@ -19,6 +39,7 @@ if($order_num_of_rows>0) {
 		//exit;
 		
 		$order_id = $order_data['order_id'];
+		mysqli_query($db,"UPDATE orders SET is_trash='1' WHERE order_id='".$order_id."'");
 		
 		$order_items_list = '';
 		$order_item_body = '';
@@ -30,15 +51,18 @@ if($order_num_of_rows>0) {
 
 		if($order_data['promocode_id']>0 && $order_data['promocode_amt']>0) {
 			$promocode_amt = $order_data['promocode_amt'];
-			$discount_amt_label = "Surcharge:";
+			$discount_amt_label = "Promocode:";
 			if($order_data['discount_type']=="percentage")
-				$discount_amt_label = "Surcharge (".$order_data['discount']."% of Initial Quote):";
+				$discount_amt_label = "Promocode (".$order_data['discount']."% of Initial Quote):";
 			 
 			$total_of_order = $sum_of_orders;
 			$is_promocode_exist = true;
 		} else {
 			$total_of_order = $sum_of_orders;
 		}
+		
+		$bonus_percentage = $order_data['bonus_percentage'];
+		$bonus_amount = $order_data['bonus_amount'];
 
 		//START append order items to block
 		//Get order item list based on orderID, path of this function (get_order_item_list) admin/include/functions.php
@@ -46,6 +70,8 @@ if($order_num_of_rows>0) {
 		foreach($order_item_list as $order_item_list_data) {
 			//path of this function (get_order_item) admin/include/functions.php
 			$order_item_data = get_order_item($order_item_list_data['id'],'email');
+			
+			$item_names_list .= $order_item_list_data['device_title'].' '.$order_item_list_data['model_title'].',';
 			
 			$order_items_list .= '<table width="100%" cellspacing="0" cellpadding="0" border="0" role="presentation">';
 			  $order_items_list .= '<tbody>';
@@ -156,8 +182,10 @@ if($order_num_of_rows>0) {
 										$order_item_body .= '</td>';
 									  $order_item_body .= '</tr>';
 									  
+									  $total = $total_of_order;
+									  if($is_promocode_exist || $bonus_amount) {
+									  $total = ($total_of_order+$promocode_amt+$bonus_amount);
 									  if($is_promocode_exist) {
-									  $total = ($total_of_order+$promocode_amt);
 									  $order_item_body .= '<tr>';
 										$order_item_body .= '<td width="50%" class="o_pt-xs" align="left" style="padding-top: 8px;">';
 										  $order_item_body .= '<p class="o_sans o_text o_text-secondary" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 16px;line-height: 24px;color: #424651;">'.$discount_amt_label.'</p>';
@@ -166,10 +194,24 @@ if($order_num_of_rows>0) {
 										  $order_item_body .= '<p class="o_sans o_text o_text-secondary" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 16px;line-height: 24px;color: #424651;">'.amount_fomat($promocode_amt).'</p>';
 										$order_item_body .= '</td>';
 									  $order_item_body .= '</tr>';
+									  
+									  }
+									  if($bonus_amount) {
+									  $order_item_body .= '<tr>';
+										$order_item_body .= '<td width="50%" class="o_pt-xs" align="left" style="padding-top: 8px;">';
+										  $order_item_body .= '<p class="o_sans o_text o_text-secondary" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 16px;line-height: 24px;color: #424651;">Bonus ('.$bonus_percentage.'%)</p>';
+										$order_item_body .= '</td>';
+										$order_item_body .= '<td width="50%" class="o_pt-xs" align="right" style="padding-top: 8px;">';
+										  $order_item_body .= '<p class="o_sans o_text o_text-secondary" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 16px;line-height: 24px;color: #424651;">'.amount_fomat($bonus_amount).'</p>';
+										$order_item_body .= '</td>';
+									  $order_item_body .= '</tr>';
+									  }
+									  
 									  $order_item_body .= '<tr>';
 										$order_item_body .= '<td class="o_pt o_bb-light" style="border-bottom: 1px solid #d3dce0;padding-top: 16px;">&nbsp; </td>';
 										$order_item_body .= '<td class="o_pt o_bb-light" style="border-bottom: 1px solid #d3dce0;padding-top: 16px;">&nbsp; </td>';
 									  $order_item_body .= '</tr>';
+									  
 									  $order_item_body .= '<tr>';
 										$order_item_body .= '<td width="50%" class="o_pt" align="left" style="padding-top: 16px;">';
 										  $order_item_body .= '<p class="o_sans o_text o_text-secondary" style="font-family: Helvetica, Arial, sans-serif;margin-top: 0px;margin-bottom: 0px;font-size: 16px;line-height: 24px;color: #424651;"><strong>Total</strong></p>';
@@ -196,7 +238,14 @@ if($order_num_of_rows>0) {
 		  $order_item_body .= '</tbody>';
 		$order_item_body .= '</table>';
 		//END append order items to block
-
+		
+		$item_names_list = rtrim($item_names_list,', ');
+		
+		$unsubscribe_token = get_big_unique_id();
+		$unsubscribe_link = SITE_URL."unsubscribe/".$unsubscribe_token;
+		
+		$order_data = get_order_data($order_id);
+		
 		$patterns = array(
 			'{$logo}',
 			'{$admin_logo}',
@@ -214,12 +263,12 @@ if($order_num_of_rows>0) {
 			'{$customer_fullname}',
 			'{$customer_phone}',
 			'{$customer_email}',
-			'{$customer_address_line1}',
-			'{$customer_address_line2}',
-			'{$customer_city}',
-			'{$customer_state}',
+			'{$billing_address1}',
+			'{$billing_address2}',
+			'{$billing_city}',
+			'{$billing_state}',
 			'{$customer_country}',
-			'{$customer_postcode}',
+			'{$billing_postcode}',
 			'{$order_id}',
 			'{$order_payment_method}',
 			'{$order_date}',
@@ -234,7 +283,19 @@ if($order_num_of_rows>0) {
 			'{$company_city}',
 			'{$company_state}',
 			'{$company_postcode}',
-			'{$company_country}');
+			'{$company_country}',
+			'{$item_names_list}',
+			'{$dollars_spent_order}',
+			'{$unsubscribe_link}',
+			'{$shipping_fname}',
+			'{$shipping_lname}',
+			'{$shipping_company_name}',
+			'{$shipping_address1}',
+			'{$shipping_address2}',
+			'{$shipping_city}',
+			'{$shipping_state}',
+			'{$shipping_postcode}',
+			'{$shipping_phone}');
 	
 		$replacements = array(
 			$logo,
@@ -264,8 +325,8 @@ if($order_num_of_rows>0) {
 			$order_data['order_date'],
 			date('m/d/Y',strtotime($order_data['approved_date'])),
 			date('m/d/Y',strtotime($order_data['expire_date'])),
-			ucwords(str_replace("_"," ",$order_data['order_status'])),
-			ucwords(str_replace("_"," ",$order_data['sales_pack'])),
+			replace_us_to_space($order_data['order_status_name']),
+			replace_us_to_space($order_data['sales_pack']),
 			date('Y-m-d H:i'),
 			$order_item_body,
 			$company_name,
@@ -273,7 +334,19 @@ if($order_num_of_rows>0) {
 			$company_city,
 			$company_state,
 			$company_zipcode,
-			$company_country);
+			$company_country,
+			$item_names_list,
+			amount_fomat($total),
+			$unsubscribe_link,
+			$order_data['shipping_first_name'],
+			$order_data['shipping_last_name'],
+			$order_data['shipping_company_name'],
+			$order_data['shipping_address'],
+			$order_data['shipping_address2'],
+			$order_data['shipping_city'],
+			$order_data['shipping_state'],
+			$order_data['shipping_postcode'],
+			$order_data['shipping_phone']);
 
 		//START email send to customer
 		if(!empty($template_data)) {
@@ -281,18 +354,36 @@ if($order_num_of_rows>0) {
 			$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
 			send_email($order_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL);
 
+			$unsubsc_data_arr = array('user_id'=>$order_data['user_id'],
+								'token'=>$unsubscribe_token);
+			unsubscribe_user_tokens($unsubsc_data_arr);
+			
 			//START sms send to customer
 			if($template_data['sms_status']=='1') {
 				$from_number = '+'.$general_setting_data['twilio_long_code'];
 				$to_number = '+'.$order_data['phone'];
 				if($from_number && $account_sid && $auth_token) {
 					$sms_body_text = str_replace($patterns,$replacements,$template_data['sms_content']);
+					
 					try {
+						$sms_api->messages->create(
+							$to_number,
+							array(
+								'from' => $from_number,
+								'body' => $sms_body_text
+							)
+						);
+					} catch(Services_Twilio_RestException $e) {
+						$sms_error_msg = $e->getMessage();
+						error_log($sms_error_msg);
+					}
+					
+					/*try {
 						$sms = $sms_api->account->messages->sendMessage($from_number, $to_number, $sms_body_text, $image, array('StatusCallback'=>''));
 					} catch(Services_Twilio_RestException $e) {
 						echo 'Error: '.$sms_error_msg = $e->getMessage();
 						error_log($sms_error_msg);
-					}
+					}*/
 				}
 			} //END sms send to customer
 		} //END email send to customer

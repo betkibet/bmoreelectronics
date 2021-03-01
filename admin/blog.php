@@ -33,7 +33,4 @@ function get_categories_of_blog($postID) {
 }
 
 //Template file
-require_once("views/blog/blog.php");
-
-//Footer section
-// require_once("include/footer.php"); ?>
+require_once("views/blog/blog.php"); ?>

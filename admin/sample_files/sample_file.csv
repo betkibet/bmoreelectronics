@@ -1,0 +1,465 @@
+Model_ID,Brand,Model_Title,Device,Model_Price,Field_ID,Field_Title,Field_Item_ID,Field_Item_Title,Field_Item_Price
+24,Apple,iPhone XR,iPhones,100,1323,What is the condition of the phone?,4195,Brand New,50
+,,,,,,,4196,Flawless,40
+,,,,,,,4197,Good,30
+,,,,,,,4198,Fair,20
+,,,,,,,4199,Broken,10
+,,,,,1324,Please select the phone's carrier,4200,AT&T,0
+,,,,,,,4201,Verizon,0
+,,,,,,,4202,Sprint,0
+,,,,,,,4203,T-Mobile,0
+,,,,,,,4204,Unlocked,0
+,,,,,,,4205,Other Carrier,0
+,,,,,1325,What is the phone's storage capacity?,4206,64GB,10
+,,,,,,,4207,128GB,20
+,,,,,,,4208,256GB,30
+,,,,,1326,What accessories will be included?,4209,Original Box,1
+,,,,,,,4210,New Original Headsets,1
+,,,,,,,4211,Powercable + Adapter,1
+,,,,,1327,Test 1,,,
+,,,,,1328,Test 1,4212,Option 1,0
+,,,,,,,4213,Option 2,0
+,,,,,1329,Test 2,4214,Option 1,10
+,,,,,,,4215,Option 2,15
+,,,,,1330,Test 2,4216,Option 1,5
+,,,,,,,4217,Option 2,7
+25,Apple,iMac Retina 27,MacBook,1,1164,Select the iMac's model year,3752,Late 2014,10
+,,,,,,,3753,Mid 2015,0
+26,Apple,Apple Watch (Series 4),Apple Watch,200,1232,What type of Apple Watch do you have?,3969,Series 4 GPS,10
+,,,,,,,3970,Series 4 GPS + Cellular,20
+,,,,,1233,What case material is your Watch?,3971,Aluminum,10
+,,,,,,,3972,Stainless Steel,20
+,,,,,1234,What is the size of your Watch?,3973,40MM,10
+,,,,,,,3974,44MM,20
+,,,,,1235,What is the condition of the Watch?,3975,Brand New,10
+,,,,,,,3976,Flawless,20
+,,,,,,,3977,Good,30
+,,,,,,,3978,Fair,40
+,,,,,,,3979,Broken,50
+27,,iPad Mini (5th Gen.),Ipad,250,647,Please select the iPad's carrier,2309,WiFi Only,10
+,,,,,,,2310,WiFi + Cellular,20
+,,,,,648,What is the iPad's capacity?,2311,64GB,10
+,,,,,,,2312,256GB,20
+,,,,,649,What is the condition of the iPad?,2313,Brand New,10
+,,,,,,,2314,Excellent,20
+,,,,,,,2315,Good,30
+,,,,,,,2316,Fair,40
+,,,,,,,2317,Broken,50
+28,,Mac Mini (2018),Mac mini,120,654,How do I determine my Mac's processor?,2335,3.6GHz Intel Core i3,10
+,,,,,,,2336,3.0GHz Intel Core i5,10
+,,,,,,,2337,3.2GHz Intel Core i7,0
+,,,,,655,Select the memory capacity,2338,8GB RAM,10
+,,,,,,,2339,16GB RAM,10
+,,,,,,,2340,32GB RAM,20
+,,,,,,,2341,64GB RAM,20
+,,,,,656,What is the hard drive capacity?,2342,128GB SSD,10
+,,,,,,,2343,256GB SSD,10
+,,,,,,,2344,512GB SSD,10
+,,,,,,,2345,1TB SSD,20
+,,,,,,,2346,2TB SSD,20
+,,,,,657,What is the condition of the device?,2347,Brand New,10
+,,,,,,,2348,Excellent,10
+,,,,,,,2349,Good,10
+,,,,,,,2350,Fair,10
+,,,,,,,2351,Broken,10
+29,,iPad (6th Gen.),Ipad,220,664,Please select the iPad type,2363,WiFi Only,10
+,,,,,,,2364,WiFi + Cellular,20
+,,,,,665,What is the iPad's capacity?,2365,32GB,0
+,,,,,,,2366,64GB,0
+,,,,,666,What is the condition of the iPad?,2367,Brand New,10
+,,,,,,,2368,Flawless,10
+,,,,,,,2369,Good,10
+,,,,,,,2370,Fair,10
+,,,,,,,2371,Broken,10
+31,,erwr,MacBook,111,692,Select the laptop's model year,2446,"Early 2015 (MacBook8,1)",10
+,,,,,,,2447,"Early 2016 (MacBook9,1)",10
+,,,,,,,2448,"2017 (MacBook10,1)",10
+,,,,,693,What is the laptop's processor speed?,2449,Core m3 1.2GHz,10
+,,,,,,,2450,Intel Core i5 1.3GHz,10
+,,,,,,,2451,Intel Core i7 1.4GHz,10
+,,,,,694,What is the condition of your MacBook?,2452,Brand New,10
+,,,,,,,2453,Flawless,10
+,,,,,,,2454,Good,10
+,,,,,,,2455,Fair,10
+,,,,,,,2456,Broken,10
+,,,,,695,What is the MacBook's hard drive capacity?,2457,256GB,0
+,,,,,,,2458,512GB,0
+,,,,,696,What is the laptop's memory capacity?,2459,8GB,10
+,,,,,,,2460,16GB,10
+,,,,,697,Is the MacBook fully functional?,2461,Yes,10
+,,,,,,,2462,No,10
+,,,,,698,Will you be including the charger?,2463,Yes,10
+,,,,,,,2464,No,10
+32,,Galaxy S10 Plus,Android,680,726,Please select the phone's carrier,2564,AT & T,10
+,,,,,,,2565,Sprint,10
+,,,,,,,2566,T-Mobile,10
+,,,,,,,2567,Verizon,10
+,,,,,,,2568,Unlocked,10
+,,,,,,,2569,Other Carrier,10
+,,,,,727,Select the phone's color,2570,Prism White,10
+,,,,,,,2571,Prism Black,10
+,,,,,,,2572,Prism Blue,10
+,,,,,,,2573,Flamingo Pink,10
+,,,,,,,2574,Ceramic White,10
+,,,,,,,2575,Ceramic Black,10
+,,,,,728,What is the condition of the phone?,2576,Brand New,10
+,,,,,,,2577,Flawless,10
+,,,,,,,2578,Good,10
+,,,,,,,2579,Fair,10
+,,,,,,,2580,Broken,10
+33,,Microsoft Surface Studio,Windows,2200,719,Select the Surface Studio model,2535,Surface Studio 1,10
+,,,,,,,2536,Surface Studio 2,10
+,,,,,720,Select your Surface Studio Model,2537,1TB HDD - 8GB RAM,10
+,,,,,,,2538,1TB HDD - 16GB RAM,10
+,,,,,,,2539,2TB HDD - 32GB RAM,10
+,,,,,721,What is the condition of your Surface Studio?,2540,Brand New,10
+,,,,,,,2541,Flawless,10
+,,,,,,,2542,Good,10
+,,,,,,,2543,Fair,10
+,,,,,,,2544,Broken,10
+,,,,,722,Surface Studio Shipping Insurance and Liability terms,2545,I Accept,10
+,,,,,,,2546,I Decline,10
+34,Apple,iPhone XS Max,iPhones,200,1150,What is the condition of the phone?,3698,Brand New,0
+,,,,,,,3699,Flawless,0
+,,,,,,,3700,Good,0
+,,,,,,,3701,Fair,0
+,,,,,,,3702,Broken,0
+,,,,,1151,Please select the phone's carrier,3703,AT & T,0
+,,,,,,,3704,Verizon,0
+,,,,,,,3705,Sprint,0
+,,,,,,,3706,T-Mobile,0
+,,,,,,,3707,Unlocked,0
+,,,,,,,3708,Other Carrier,0
+,,,,,1152,What is the phone's storage capacity?,3709,64GB,0
+,,,,,,,3710,256GB,0
+,,,,,,,3711,512GB,0
+35,Samsung,Sumsung A50,Samsung  A Series,225,1207,What is the condition of the phone?,3900,Brand New,0
+,,,,,,,3901,Flawless,0
+,,,,,,,3902,Good,0
+,,,,,,,3903,Fair,0
+,,,,,,,3904,Broken,0
+,,,,,1208,Please select the phone's carrier,3905,AT & T,0
+,,,,,,,3906,Verizon,0
+,,,,,,,3907,Sprint,0
+,,,,,,,3908,T-Mobile,0
+,,,,,,,3909,Unlocked,0
+,,,,,,,3910,Other Carrier,0
+,,,,,1209,What is the phone's storage capacity?,3911,64GB,0
+,,,,,,,3912,256GB,0
+,,,,,,,3913,512GB,0
+36,Samsung,Samsung J5,Samsung  J Series,150,1210,What is the condition of the phone?,3914,Brand New,0
+,,,,,,,3915,Flawless,0
+,,,,,,,3916,Good,0
+,,,,,,,3917,Fair,0
+,,,,,,,3918,Broken,0
+,,,,,1211,Please select the phone's carrier,3919,AT & T,0
+,,,,,,,3920,Verizon,0
+,,,,,,,3921,Sprint,0
+,,,,,,,3922,T-Mobile,0
+,,,,,,,3923,Unlocked,0
+,,,,,,,3924,Other Carrier,0
+,,,,,1212,What is the phone's storage capacity?,3925,64GB,0
+,,,,,,,3926,256GB,0
+37,,iPad Pro 12.9 inch (2nd Gen.),Ipad,300,745,Please select the iPad type:,2644,WiFi Only,0
+,,,,,,,2645,WiFi + Cellular,0
+,,,,,746,What is the iPad's capacity?,2646,64GB,0
+,,,,,,,2647,256GB,0
+,,,,,,,2648,512GB,0
+,,,,,747,What is the condition of the iPad?,2649,Brand New,0
+,,,,,,,2650,Flawless,0
+,,,,,,,2651,Good,0
+,,,,,,,2652,Fair,0
+,,,,,,,2653,Broken,0
+38,,iPad Pro (11 inch),Ipad,450,742,Please select the iPad type,2633,WiFi Only,0
+,,,,,,,2634,WiFi + Cellular,0
+,,,,,743,What is the iPad's capacity?,2635,64GB,0
+,,,,,,,2636,256GB,0
+,,,,,,,2637,512GB,0
+,,,,,,,2638,1TB,0
+,,,,,744,What is the condition of the iPad?,2639,Brand New,0
+,,,,,,,2640,Flawless,0
+,,,,,,,2641,Good,0
+,,,,,,,2642,Fair,0
+,,,,,,,2643,Broken,0
+39,,iPad Mini (2nd Gen.),Ipad,0,748,Please select the carrier,2654,AT & T,0
+,,,,,,,2655,Verizon,0
+,,,,,,,2656,Sprint,0
+,,,,,,,2657,T-Mobile,0
+,,,,,,,2658,Unlocked,0
+,,,,,,,2659,WiFi Only,0
+,,,,,749,What is the item's capacity?,2660,16GB,0
+,,,,,,,2661,32GB,0
+,,,,,,,2662,64GB,0
+,,,,,,,2663,128GB,0
+,,,,,750,What is the condition of the item?,2664,Brand New,0
+,,,,,,,2665,Flawless,0
+,,,,,,,2666,Good,0
+,,,,,,,2667,Fair,0
+,,,,,,,2668,Broken,0
+41,,"MacBook Pro 15"" - Touch Bar",MacBook,1050,751,Select the MacBook Pro's model year,2669,2016,0
+,,,,,,,2670,2017,0
+,,,,,,,2671,2018,0
+,,,,,,,2672,2019,0
+,,,,,752,Select your MacBook's Processor,2673,2.6 GHz Intel Core i7,0
+,,,,,,,2674,2.7 GHz Intel Core i7,0
+,,,,,,,2675,2.9 GHz Intel Core i7,0
+,,,,,753,What is the MacBook Pro's hard drive capacity?,2676,256GB,0
+,,,,,,,2677,512GB,0
+,,,,,,,2678,1TB,0
+,,,,,,,2679,2TB,0
+,,,,,,,2680,4TB,0
+,,,,,754,What is the MacBook Pro's memory capacity?,2681,8GB,0
+,,,,,,,2682,16GB,0
+,,,,,,,2683,32GB,0
+,,,,,755,What is the condition of your MacBook Pro?,2684,Brand New,0
+,,,,,,,2685,Flawless,0
+,,,,,,,2686,Good,0
+,,,,,,,2687,Fair,0
+,,,,,,,2688,Broken,0
+42,,"MacBook Pro 13"" - No Touch Bar",MacBook,1000,756,Select the laptop's model year,2689,"2016 (MacBookPro13,1)",0
+,,,,,,,2690,"2017 (MacBookPro14,1)",0
+,,,,,757,Select your MacBook's Processor,2691,2.3 GHz Intel Core i5,0
+,,,,,,,2692,2.5 GHz Intel Core i7,0
+,,,,,758,What is the laptop's hard drive capacity?,2693,128GB,0
+,,,,,,,2694,256GB,0
+,,,,,,,2695,512GB,0
+,,,,,,,2696,1TB,0
+,,,,,759,What is the laptop's memory capacity?,2697,8GB,0
+,,,,,,,2698,16GB,0
+,,,,,760,What is the condition of your laptop?,2699,Brand New,0
+,,,,,,,2700,Flawless,0
+,,,,,,,2701,Good,0
+,,,,,,,2702,Fair,0
+,,,,,,,2703,Broken,0
+43,Apple,Apple Watch (Series 1),Apple Watch,150,1236,What is the size of your Watch?,3980,38MM,0
+,,,,,,,3981,42MM,0
+,,,,,1237,What is the condition of the Watch?,3982,Brand New,0
+,,,,,,,3983,Flawless,0
+,,,,,,,3984,Good,0
+,,,,,,,3985,Fair,0
+,,,,,,,3986,Broken,0
+44,Apple,Apple Watch (Series 3),Apple Watch,200,1238,What type of Apple Watch do you have?,3987,Series 3 GPS,0
+,,,,,,,3988,Series 3 GPS + Cellular,0
+,,,,,1239,What case material is your Watch?,3989,Aluminum,0
+,,,,,,,3990,Stainless Steel,0
+,,,,,1240,What is the size of your Watch?,3991,38MM,0
+,,,,,,,3992,42MM,0
+,,,,,1241,What is the condition of the Watch?,3993,Brand New,0
+,,,,,,,3994,Flawless,0
+,,,,,,,3995,Good,0
+,,,,,,,3996,Fair,0
+,,,,,,,3997,Broken,0
+45,,Galaxy Note 9,Android,125,818,Please select the phone's carrier,2903,AT & T,0
+,,,,,,,2904,Sprint,0
+,,,,,,,2905,T-Mobile,0
+,,,,,,,2906,Verizon,0
+,,,,,,,2907,Unlocked,0
+,,,,,819,Please select the phone's capacity,2908,128GB,0
+,,,,,,,2909,512GB,0
+,,,,,820,What is the condition of the phone?,2910,Brand New,0
+,,,,,,,2911,Flawless,0
+,,,,,,,2912,Good,0
+,,,,,,,2913,Fair,0
+,,,,,,,2914,Broken,0
+46,,Galaxy S8 Active,Android,200,786,Please select the phone's carrier,2781,AT & T,0
+,,,,,,,2782,Sprint,0
+,,,,,,,2783,T-Mobile,0
+,,,,,,,2784,Verizon,0
+,,,,,,,2785,Unlocked,0
+,,,,,787,What is the condition of the phone?,2786,Brand New,0
+,,,,,,,2787,Flawless,0
+,,,,,,,2788,Good,0
+,,,,,,,2789,Fai,0
+,,,,,,,2790,Broken,0
+47,,Galaxy Note 8,Android,225,791,Please select the phone's carrier,2803,AT & T,0
+,,,,,,,2804,Sprint,0
+,,,,,,,2805,T-Mobile,0
+,,,,,,,2806,Verizon,0
+,,,,,,,2807,Unlocked,0
+,,,,,792,Please select the phone's capacity,2808,64GB,0
+,,,,,,,2809,128GB,0
+,,,,,,,2810,256GB,0
+,,,,,793,What is the condition of the phone?,2811,Brand New,0
+,,,,,,,2812,Flawless,0
+,,,,,,,2813,Good,0
+,,,,,,,2814,Fair,0
+,,,,,,,2815,Broken,0
+48,,iPad Pro (9.7 inch),Ipad,220,801,Please select the iPad's carrier,2834,WiFi Only,0
+,,,,,,,2835,WiFi + Cellular,0
+,,,,,802,What is the iPad's capacity?,2836,32GB,0
+,,,,,,,2837,128GB,0
+,,,,,,,2838,256GB,0
+,,,,,803,What is the condition of the iPad?,2839,Brand New,0
+,,,,,,,2840,Flawless,0
+,,,,,,,2841,Good,0
+,,,,,,,2842,Fair,0
+,,,,,,,2843,Broken,0
+49,,iPad Mini (4th Gen.),Ipad,180,804,Please select the iPad's carrier,2844,WiFi Only,0
+,,,,,,,2845,Unlocked,0
+,,,,,805,What is the iPad's capacity?,2846,16GB,0
+,,,,,,,2847,32GB,0
+,,,,,,,2848,64GB,0
+,,,,,,,2849,128GB,0
+,,,,,806,What is the condition of the iPad?,2850,Brand New,0
+,,,,,,,2851,Flawless,0
+,,,,,,,2852,Good,0
+,,,,,,,2853,Fair,0
+,,,,,,,2854,Broken,0
+50,,Mac Mini (2014),Mac mini,664,807,Select the processor type,2855,1.4GHz Intel Core i5,0
+,,,,,,,2856,2.6GHz Intel Core i5,0
+,,,,,,,2857,2.8GHz Intel Core i5,0
+,,,,,,,2858,3.0GHz Intel Core i7,0
+,,,,,808,What is the hard drive capacity?,2859,500GB SATA Drive,0
+,,,,,,,2860,1TB SATA Drive,0
+,,,,,,,2861,1TB Fusion Drive,0
+,,,,,,,2862,2TB Fusion Drive,0
+,,,,,,,2863,256GB SSD,0
+,,,,,,,2864,512GB SSD,0
+,,,,,,,2865,1TB SSD,0
+,,,,,809,Select the memory capacity,2866,4GB,0
+,,,,,,,2867,8GB,0
+,,,,,,,2868,16GB,0
+,,,,,810,What is the condition of the device?,2869,Brand New,0
+,,,,,,,2870,Flawless,0
+,,,,,,,2871,Good,0
+,,,,,,,2872,Fair,0
+,,,,,,,2873,Broken,0
+,,,,,811,Is the device fully functional?,2874,Yes,0
+,,,,,,,2875,No,0
+,,,,,812,What accessories will you be sending along with the device?,2876,Original Box,0
+,,,,,,,2877,Original Power Cord ,0
+,,,,,,,2878,Original Apple Keyboard,0
+,,,,,,,2879,Original Apple Mouse,0
+51,,Mac Mini (2010),Mac mini,300,813,What is the condition of the device?,2880,Brand New,0
+,,,,,,,2881,Flawless,0
+,,,,,,,2882,Good,0
+,,,,,,,2883,Fair,0
+,,,,,,,2884,Broken,0
+,,,,,814,What is the hard drive capacity?,2885,320GB SATA Drive,0
+,,,,,,,2886,500GB SATA Drive,0
+,,,,,,,2887,1TB SATA Drive,0
+,,,,,,,2888,2TB SATA Drive,0
+,,,,,,,2889,128GB SSD,0
+,,,,,,,2890,256GB SSD,0
+,,,,,,,2891,512GB SSD,0
+,,,,,,,2892,1TB SSD,0
+,,,,,815,Select the memory capacity,2893,2GB,0
+,,,,,,,2894,4GB,0
+,,,,,,,2895,8GB,0
+,,,,,,,2896,16GB,0
+,,,,,816,Is the device fully functional?,2897,Yes,0
+,,,,,,,2898,No,0
+,,,,,817,What accessories will you be sending along with the device?,2899,Original Box,0
+,,,,,,,2900,Original Power Cord ,0
+,,,,,,,2901,Original Apple Keyboard,0
+,,,,,,,2902,Original Apple Mouse,0
+52,,Windows Laptop,Windows,700,830,What type of processor does your laptop have?,2958,Intel Core i3 5th Gen.,0
+,,,,,,,2959,Intel Core i3 6th Gen.,0
+,,,,,,,2960,Intel Core i3 7th Gen.,0
+,,,,,,,2961,Intel Core i5 5th Gen.,0
+,,,,,,,2962,Intel Core i5 6th Gen.,0
+,,,,,,,2963,Intel Core i5 7th Gen.,0
+,,,,,,,2964,Intel Core i7 5th Gen.,0
+,,,,,,,2965,Intel Core i7 6th Gen.,0
+,,,,,,,2966,Intel Core i7 7th Gen.,0
+,,,,,831,What is your laptop's memory capacity?,2967,2GB RAM,0
+,,,,,,,2968,4GB RAM,0
+,,,,,,,2969,6GB RAM,0
+,,,,,,,2970,8GB RAM,0
+,,,,,,,2971,16GB RAM,0
+,,,,,,,2972,32GB RAM,0
+,,,,,,,2973,64GB RAM,0
+,,,,,832,What is your laptop's hard drive capacity?,2974,80GB - 160GB SATA,0
+,,,,,,,2975,250GB - 320GB SATA,0
+,,,,,,,2976,500GB - 1TB SATA,0
+,,,,,,,2977,1.5TB - 2TB SATA,0
+,,,,,,,2978,80GB - 160GB Hybrid HDD,0
+,,,,,,,2979,250GB - 320GB Hybrid HDD,0
+,,,,,,,2980,500GB - 1TB Hybrid HDD,0
+,,,,,,,2981,1.5TB - 2TB Hybrid HDD,0
+,,,,,,,2982,60GB - 128GB SSD,0
+,,,,,833,What is the condition of your laptop?,2983,Brand New,0
+,,,,,,,2984,Flawless,0
+,,,,,,,2985,Good,0
+,,,,,,,2986,Fair,0
+,,,,,,,2987,Broken,0
+53,,Microsoft Surface Laptop,Windows,675,834,Select your Surface Laptop Model,2988,Surface Laptop 1,0
+,,,,,,,2989,Surface Laptop 2,0
+,,,,,835,What type of processor does your Surface Laptop have?,2990,Intel Core m3,0
+,,,,,,,2991,Intel Core i5,0
+,,,,,,,2992,Intel Core i7,0
+,,,,,836,What is the memory capacity on your Surface Laptop?,2993,4GB,0
+,,,,,,,2994,8GB,0
+,,,,,,,2995,16GB,0
+,,,,,837,What is the hard drive capacity on your Surface Laptop?,2996,128GB,0
+,,,,,,,2997,256GB,0
+,,,,,,,2998,512GB,0
+,,,,,,,2999,1TB,0
+,,,,,838,What is the condition of your Surface Laptop?,3000,Brand New,0
+,,,,,,,3001,Flawless,0
+,,,,,,,3002,Good,0
+,,,,,,,3003,Fair,0
+,,,,,,,3004,Broken,0
+54,,Microsoft Surface Book,Windows,830,839,Which generation of Surface Book do you have?,3005,1st Gen.,0
+,,,,,,,3006,2nd Gen.,0
+,,,,,840,What is the condition of your Surface Book?,3007,Brand New,0
+,,,,,,,3008,Flawless,0
+,,,,,,,3009,Good,0
+,,,,,,,3010,Fair,0
+,,,,,,,3011,Broken,0
+,,,,,841,What type of processor does your Surface Book have?,3012,Intel Core i5,0
+,,,,,,,3013,Intel Core i5 dGPU,0
+,,,,,,,3014,Intel Core i7 dGPU,0
+,,,,,842,What is the memory capacity on your Surface Book?,3015,8GB,0
+,,,,,,,3016,16GB,0
+,,,,,843,What is the hard drive capacity on your Surface Book?,3017,128GB,0
+,,,,,,,3018,256GB,0
+,,,,,,,3019,512GB,0
+,,,,,,,3020,1TB,0
+,,,,,844,Is the Surface Book Fully Functional?,3021,Yes,0
+,,,,,,,3022,No,0
+,,,,,845,What accessories will you be including?,3023,Power Supply,0
+,,,,,,,3024,Pen,0
+55,Google,Dummy Iphone Model,iPhones,120,1242,In what general condition is your device?,3998,New,20
+,,,,,,,3999,Second hand,5
+,,,,,,,4000,Defective / defect,10
+,,,,,1243,What memory size do you have?,4001,64 GB,20
+,,,,,,,4002,256 GB,30
+,,,,,,,4003,512 GB,50
+,,,,,1244,What is your device color,4004,Black,0
+,,,,,,,4005,White,0
+,,,,,,,4006,Gold,0
+,,,,,1245,What accessories will be included?,4007,Option 1,0
+,,,,,,,4008,Test 2,0
+,,,,,,,4009,Test 3,0
+,,,,,1246,what is your purchase date,,,
+,,,,,1247,Please Upload Device Photo,,,
+,,,,,1248,What accessories will be included 2?,4010,Original Box,0
+,,,,,,,4011,Headset,0
+,,,,,,,4012,Charger,0
+59,,Test Bharat,MacBook,100,1058,Test,,,
+,,,,,1059,Test 3,3378,Option 1,10
+,,,,,,,3379,Option 2,20
+,,,,,1060,Test 2,,,
+,,,,,1061,Test 4,3380,Option 1,10
+,,,,,,,3381,Option 2,20
+,,,,,,,3382,Option 3,25
+,,,,,1062,Test 5,3383,Option 1,10
+60,Samsung,Samsung J7,Samsung  J Series,300,1215,Option 1,,,
+,,,,,1216,Option 2,3929,Option 1,10
+,,,,,,,3930,Option 2,15
+71,Apple,iPhone XR - Copy,iPhones,100,1317,What is the condition of the phone?,4181,Brand New,50
+,,,,,,,4182,Flawless,40
+,,,,,,,4183,Good,30
+,,,,,,,4184,Fair,20
+,,,,,,,4185,Broken,10
+,,,,,1318,What accessories will be included?,4186,Original Box,1
+,,,,,,,4187,New Original Headsets,1
+,,,,,,,4188,Powercable + Adapter,1
+,,,,,1319,Test 1,,,
+,,,,,1320,Test 1,4189,Option 1,0
+,,,,,,,4190,Option 2,0
+,,,,,1321,Test 2,4191,Option 1,10
+,,,,,,,4192,Option 2,15
+,,,,,1322,Test 2,4193,Option 1,5
+,,,,,,,4194,Option 2,7

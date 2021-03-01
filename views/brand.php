@@ -31,53 +31,60 @@ if(count($device_data_list)>1 && $brand_id>0) {
 
 	//$main_title = "Sell Your ".$brand_single_data['title'].' Device'; ?>
 
-	<div id="breadcrumb">
+	<!-- <div id="breadcrumb">
 		<div class="wrap">
 			<ul>
 				<li><a href="<?=SITE_URL?>">Home</a></li>
 				<li class="active"><a href="javascript:void(0);">Select Your Device</a></li>
 			</ul>
 		</div>
-	</div>
-
-	<!-- head-graphics -->
-	<section id="head-graphics">
+	</div> -->
+	<!-- <section id="header-message">
 		<img src="<?=SITE_URL?>images/apple_header_img.jpg" alt="" class="img-fluid">
-		<div class="header-caption">
-			<h2>Find Your <span>Model</span></h2>
-			<p>Please Select Memory Size of your model to processed</p>
-			<div class="device-h-search">
-				<form action="<?=SITE_URL?>search" method="post">
-					<input type="text" name="search" class="srch_list_of_model" placeholder="Search by device or model name..." required>
-					<button type="submit"><i class="ico-search">Search</i></button>
-				</form>
+	</section> -->
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block heading text-center">
+						<h3>Find Your Model <span>Please Select Memory Size of your model to processed</span></h3>
+						<form action="<?=SITE_URL?>search" method="post">
+							<div class="form-group">
+								<input type="text" name="search" class="form-control center mx-auto srch_list_of_model" placeholder="<?=$searchbox_placeholder?>" required>
+								<!-- <button type="submit"><i class="ico-search">Search</i></button> -->
+							</div>
+						</form>
+					</div>					
+				</div>
 			</div>
-		</div>
+		</div>		
 	</section>
 
 	<section id="select-device" class="sectionbox white-bg">
-		<div class="wrap">
+		<div class="container">
+			<div class="wrap">
 			<div class="sec-title"><h3>Select <strong>Your Device</strong></h3></div>
-			<div class="content-block"><!-- 
-				<div class="list clearfix"> -->
-					<ul id="selectbrand_slider" class="list clearfix">
+			<div class="content-block">
+				<div class="list clearfix">
+					<ul class="clearfix">
 						<?php
 						foreach($device_data_list as $device_data) { ?>
 							<li><a href="<?=SITE_URL.'brand/'.$device_data['brand_sef_url'].'/'.$device_data['sef_url']?>">
 								<div class="imgbox">
 								<?php
 								if($device_data['device_img']) {
-									$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation=images/device/'.$device_data['device_img'].'&h=138';
+									//$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/device/'.$device_data['device_img'].'&h=138';
+									$md_img_path = SITE_URL.'images/device/'.$device_data['device_img'];
 									echo '<img src="'.$md_img_path.'" alt="'.$device_data['title'].'">';
 								} ?>
 								</div>
-								<div class="btnbox"><?=$device_data['title']?></div>
-								</a>
+								<div class="btnbox"><?=$device_data['title']?></div></a>
 							</li>
 						<?php
 						} ?>
 					</ul>
-				<!-- </div> -->
+				</div>
+			</div>
 			</div>
 		</div>
 	</section>
@@ -125,61 +132,84 @@ if(count($device_data_list)>1 && $brand_id>0) {
 
 	$main_title = "Sell Your ".$brand_single_data['title'].' '.$main_title_last_word;*/ ?>
 
-	<div id="breadcrumb">
+	<!-- <div id="breadcrumb">
 		<div class="wrap">
 			<ul>
 				<li><a href="<?=SITE_URL?>">Home</a></li>
 				<li class="active"><a href="javascript:void(0);">Select Your Model</a></li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
+
+	<!-- <section id="header-message">
+		<img src="<?=SITE_URL?>images/apple_header_img.jpg" alt="" class="img-fluid">
+	</section> -->
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block heading text-center">
+						<h3>Find Your Model <span>Please Select Memory Size of your model to processed</span></h3>
+						<form action="<?=SITE_URL?>search" method="post">
+							<div class="form-group">
+								<input type="text" name="search" class="form-control center mx-auto srch_list_of_model" placeholder="<?=$searchbox_placeholder?>" required>
+								<!-- <button type="submit"><i class="ico-search">Search</i></button> -->
+							</div>
+						</form>
+					</div>					
+				</div>
+			</div>
+		</div>		
+	</section>
 
 	<!-- head-graphics -->
-	<section id="head-graphics">
+	<!-- <section id="head-graphics">
 		<img src="<?=SITE_URL?>images/apple_header_img.jpg" alt="" class="img-fluid">
 		<div class="header-caption">
 			<h2>Find Your <span>Model</span></h2>
 			<p>Please Select Memory Size of your model to processed</p>
 			<div class="device-h-search">
 				<form action="<?=SITE_URL?>search" method="post">
-					<input type="text" name="search" class="srch_list_of_model" placeholder="Search by device or model name..." required>
+					<input type="text" name="search" class="srch_list_of_model" placeholder="<?=$searchbox_placeholder?>" required>
 					<button type="submit"><i class="ico-search">Search</i></button>
 				</form>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
-	<section id="select-device" class="sectionbox white-bg">
+	<section id="select-device" class="sectionbox">
 		<div class="wrap">
 			<div class="sec-title"><h3>Select <strong>Your Model</strong></h3></div>
 			<div class="content-block">
 				<div class="list clearfix">
 					<ul class="clearfix">
 						<?php
+						$cat_ids_array = array();
 						if(count($model_data_list)>0) {
-							foreach($model_data_list as $model_list) { ?>
-								<li><a href="<?=SITE_URL.$model_list['sef_url'].'/'.createSlug($model_list['title']).'/'.$model_list['id']?>">
+							foreach($model_data_list as $model_list) {
+								$cat_ids_array[] = $model_list['cat_id']; ?>
+								<li><a href="<?=SITE_URL.$model_details_page_slug.$model_list['sef_url']?>">
 									<div class="imgbox">
 									<?php
 									if($model_list['model_img']) {
-										$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation=images/mobile/'.$model_list['model_img'].'&h=138';
+										//$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/mobile/'.$model_list['model_img'].'&h=138';
+										$md_img_path = SITE_URL.'images/mobile/'.$model_list['model_img'];
 										echo '<img src="'.$md_img_path.'" alt="'.$model_list['title'].'">';
 									} ?>
 									</div>
-									<div class="btnbox"><?=$model_list['title']?></div>
-									</a>
+									<div class="btnbox"><?=$model_list['title']?></div></a>
 								</li>
 							<?php
 							}
 							
 							//START missing product section & quote request email...
 							if($general_setting_data['missing_product_section']=='1') { ?>
-							  <li><a href="javascript:void(0);" data-toggle="modal" data-target="#MissingProduct">
+							  <li>
 								<div class="imgbox">
-									<?php echo '<img src="'.SITE_URL.'libraries/phpthumb.php?imglocation=images/iphone.png&h=138" alt="Missing Product">'; ?>
+									<?php
+									echo '<img src="'.SITE_URL.'images/iphone.png" alt="Missing Product">'; ?>
 								</div>
-								<div class="btnbox">Missing Product</div>
-								</a>
+								<div class="btnbox"><a href="javascript:void(0);" data-toggle="modal" data-target="#MissingProduct" class="btn">Missing Product</a></div>
 							  </li>	
 							<?php
 							} //END missing product section & quote request email...
@@ -226,19 +256,34 @@ if(count($device_data_list)>1 && $brand_id>0) {
 	  <?php
 	  } ?>
 	  
+	  <?php
+	  if(!empty($cat_ids_array)) {
+		$faqs_groups_data_html = get_faqs_groups_with_html(array(),array_unique($cat_ids_array),'model_list');
+		if($faqs_groups_data_html['html']!="") { ?>
+			<section class="faq_page">
+				<div class="block setting-page clearfix">
+					<div class="wrap model_detail_accordion">
+						<?=$faqs_groups_data_html['html']?>
+					</div>
+				</div>	
+			</section>
+		<?php	
+		}
+	  } ?>
+	
 	<div class="editAddress-modal modal fade" id="MissingProduct" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 		  <div class="modal-content">
 			<div class="modal-header">
-			  <h5 class="modal-title" id="locationModalLabel">Quote Request</h5>
+			  <h5 class="modal-title" id="locationModalLabel"><?=$quote_request_popup_title?></h5>
 			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			  </button>
 			</div>
-			<form method="post" action="<?=SITE_URL?>controllers/mobile.php" id="req_quote_form">
+			<form method="post" action="<?=SITE_URL?>controllers/model.php" id="req_quote_form">
 				<div class="modal-body">
-					<h2>Can’t Find Your Item?</h2>
-					<p>If you want to find out how much your item is worth, please fill out the form below and we will reply to your email within 24 hours. Remember, the more information you include about the item(s) you are trying to sell, the easier it is for us to make you an offer. Please fill out a good contact number and email address in case we need to ask you a few more questions.</p>
+					<h2><?=$quote_request_popup_sub_title?></h2>
+					<p><?=$quote_request_popup_desc?></p>
 					<div class="form-group">
 						<input type="text" name="name" id="name" placeholder="Enter name" class="form-control" />
 					</div>
@@ -308,23 +353,17 @@ if(count($device_data_list)>1 && $brand_id>0) {
 		$(function() {
 			var telInput = $("#cell_phone");
 			telInput.intlTelInput({
-			  initialCountry: "auto",
+			  initialCountry: "<?=$phone_country_short_code?>",
+		  	  allowDropdown: false,
 			  geoIpLookup: function(callback) {
 				$.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
 				  var countryCode = (resp && resp.country) ? resp.country : "";
 				  callback(countryCode);
 				});
 			  },
-			  utilsScript: "<?=SITE_URL?>js/intlTelInput-utils.js" //just for formatting/placeholders etc
+			  utilsScript: "<?=SITE_URL?>js/intlTelInput-utils.js"
 			});
 	
-			// on keyup / change flag: reset
-			telInput.on("keyup change", reset);
-		});
-	})(jQuery);
-	
-	(function( $ ) {
-		$(function() {
 			$('#req_quote_form').bootstrapValidator({
 				fields: {
 					name: {
@@ -399,7 +438,4 @@ if(count($device_data_list)>1 && $brand_id>0) {
 	})(jQuery);
 	</script>
 <?php
-if($description) {
-		echo $description;
-	} 
 } ?>

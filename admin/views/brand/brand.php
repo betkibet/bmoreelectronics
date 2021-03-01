@@ -23,6 +23,8 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_brand_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="edit_brand.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -33,19 +35,8 @@
                     </span>
                   </a>
                 </li>
-                <?php /*?><li class="m-portlet__nav-item">
-                  <form action="controllers/brand.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li><?php */?>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -56,14 +47,14 @@
 			  <div class="row">
                 <div class="col-sm-12">
                   <div id="m_table_1_filter" class="dataTables_filter float-left">
-                    <form method="get">
+                    <form method="post">
                         <div class="input-group">
-                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
+                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=_dt_parse($post['filter_by'])?>" autocomplete="nope">
 						  	
-                          <button class="btn btn-alt btn-primary ml-2 searchbx" type="submit">Search <i class="la la-search"></i></button>
+                          <button class="btn btn-alt btn-primary ml-2 searchbx" name="search" type="submit">Search <i class="la la-search"></i></button>
                           <?php
 						  if($post['filter_by']!="") {
-          					echo '<a href="brand.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
+          					echo '<a href="brand.php?clear" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
 						  } ?>
                         </div>
                     </form>
@@ -71,6 +62,8 @@
                 </div>
               </div>
 			  
+			  <?php
+			  if($prms_brand_delete == '1') { ?>
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
 					<form action="controllers/brand.php" method="POST">
@@ -79,6 +72,8 @@
 					</form>
 				</div>
 			  </div>
+			  <?php
+			  } ?>
 			  
               <div class="row">
                 <div class="col-sm-12">
@@ -96,10 +91,25 @@
                             Icon
                           </th>
                           <th>
-                            Title
+							  <?php
+							  if($post['title_shorting'] == "asc") { ?>
+								<a href="?title_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+							  <?php
+							  } elseif($post['title_shorting'] == "desc" || $post['title_shorting'] == "") { ?>
+								<a href="?title_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+							  <?php
+							  } ?>
                           </th>
                           <th width="100">
-                            Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
+						  	  <?php
+							  if($post['oid_shorting'] == "asc") { ?>
+								<a href="?oid_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+							  <?php
+							  } elseif($post['oid_shorting'] == "desc" || $post['oid_shorting'] == "") { ?>
+								<a href="?oid_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+							  <?php
+							  } ?>
+                              <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-save"></i></button>
                           </th>
                           <th>
                             Actions
@@ -129,13 +139,19 @@
                           <td Width="190">
                             <?php
 							if($brand_data['published']==1) {
-								echo '<a href="controllers/brand.php?p_id='.$brand_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Published</button></a>';
+								echo '<a href="controllers/brand.php?p_id='.$brand_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Published</button></a>';
 							} elseif($brand_data['published']==0) {
-								echo '<a href="controllers/brand.php?p_id='.$brand_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Unpublished</button></a>';
+								echo '<a href="controllers/brand.php?p_id='.$brand_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Unpublished</button></a>';
 							}
-							?>
-                            <a href="edit_brand.php?id=<?=$brand_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-        										<a href="controllers/brand.php?d_id=<?=$brand_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+							
+							if($prms_brand_edit == '1') { ?>
+                            <a href="edit_brand.php?id=<?=$brand_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+							<?php
+							}
+							if($prms_brand_delete == '1') { ?>
+        					<a href="controllers/brand.php?d_id=<?=$brand_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+							<?php
+							} ?>
                           </td>
                         </tr>
                         <?php }
@@ -145,7 +161,10 @@
                   </form>
                 </div>
               </div>
-              <?php echo $pages->page_links(); ?>
+              <?php
+			  $current_url_params = get_all_get_params();
+			  $current_url_params = ($current_url_params?$current_url_params.'&':'?');
+			  echo $pages->page_links($current_url_params); ?>
             </div>
           </div>
         </div>

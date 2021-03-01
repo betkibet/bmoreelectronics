@@ -1,4 +1,7 @@
 <?php
+$meta_title = "Account - Profile / My Orders / Change Password";
+$active_menu = "account";
+
 //Header section
 include("include/header.php");
 
@@ -6,159 +9,93 @@ include("include/header.php");
 if($user_id<=0) {
 	setRedirect(SITE_URL);
 	exit();
-} ?>
+} elseif($user_data['status'] == '0' || empty($user_data)) {
+	$is_include = 1;
+	require_once('controllers/logout.php');
 
-  <!-- Main -->
-  <div id="main" class="myorder_page">
-    <section id="user_profile_sec" class="sectionbox white-bg">
-      <div class="wrap clearfix">
-        	<div id="sidebar_profile">
-            	<div class="profile_pic clearfix">
-                	<div class="inner">
-                    	<?php
-						if($user_data['image']) {
-							$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/avatar/'.$user_data['image'].'&w=157&h=157';
-                    		echo '<img src="'.$md_img_path.'">';
-        				} else {
-							$md_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/placeholder_avatar.jpg&w=157&h=157';
-							echo '<img src="'.$md_img_path.'">';
-						} ?>
-                    </div>
-                </div>
-                <div class="profile_nav ecolumn">
-                	<ul>
-                    	<li class="active"><a href="account">My Orders</a></li>
-                        <li><a href="profile">Profile</a></li>
-                        <li><a href="change-password">Change Password</a></li>
-                    </ul>
-                    <div class="logout">
-                        <a href="controllers/logout.php">Logout</a>
-                    </div>
-                </div>
-            </div><!--#sidebar_profile-->
-            
-            <div id="container_profile">
-            	<div class="inner ecolumn">
-                    <h4>Order History</h4>
-                    <div id="review-sale-table" class="clearfix">
-                    <div class="table-responsive table-bordered">          
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Order</th>
-                            <th>Order date</th>
-                            <th>Status</th>
-                            <th class="text-center">Price</th>
-                            <th class="text-center">offer</th>
-                          </tr>
-                        </thead>
-						<tbody>
-						<?php
-						$pages = new Paginator($page_list_limit,'p');
-						
-						$order_query=mysqli_query($db,"SELECT COUNT(*) AS num_of_orders FROM orders WHERE user_id='".$user_id."' AND user_id>0");
-						$order_data = mysqli_fetch_assoc($order_query);
-						$pages->set_total($order_data['num_of_orders']);
-						
-						if($order_data['num_of_orders']>0) {
-							$order_items_query=mysqli_query($db,"SELECT * FROM orders WHERE user_id='".$user_id."' AND user_id>0 ORDER BY order_id DESC ".$pages->get_limit()."");
-							while($order_list=mysqli_fetch_assoc($order_items_query)) {
-								$order_price = 0;
-								$order_price = get_order_price($order_list['order_id']);
-								
-								$msg_query=mysqli_query($db,"SELECT * FROM order_messaging WHERE order_id='".$order_list['order_id']."' ORDER BY id DESC");
-								$num_msg_rows = mysqli_num_rows($msg_query); ?>
-								<tr>
-									<td><div class="order"><a href="view_order/<?=$order_list['order_id'].($post['p']>0?'&p='.$post['p']:'')?>"><?=$order_list['order_id']?></a></div></td>
-									<td><div class="orderdate"><?=date('m-d-Y',strtotime($order_list['date']))?></div></td>
-								<td><div class="status text-red">
-									<?=ucwords(str_replace('_',' ',$order_list['status']))?>
-									<?php
-									if($order_list['status'] == "awaiting_delivery") { ?>
-									  <a href="<?=SITE_URL?>controllers/order/order.php?order_id=<?=$order_list['order_id']?>&mode=del"
-										class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this order?');"
-										style="padding:2px 10px;">Cancel Order</a>
-									<?php
-									} ?>
-								</div></td>
-								<td><div class="price text-center"><?=amount_fomat($order_price)?></div></td>
-								<td>
-									<div class="offer text-center">
-									<?php
-									if(($order_list['status']=="processed" || $order_list['status']=="problem") && $num_msg_rows>0) {
-										echo '<a class="btn offer-button" href="order_offer/'.$order_list['order_id'].($post['p']>0?'?p='.$post['p']:'').'"><i class="fa fa-gift" aria-hidden="true"></i>&nbsp;Offer</a>';
-									} else {
-										echo 'Offer Not Available';
-									} ?>
-									</div>
-								</td>
-								</tr>
-							<?php
-							}
-							echo '<tr><td class="divider" colspan="5">'.$pages->page_links().'</td></tr>';
-						} else { ?>
-							<tr>
-								<td colspan="5" align="center">No Data Found</td>
-							</tr>
-						<?php
-						} ?>
-						</tbody>
-                      </table>
-                    </div>
-                </div>
+	$msg='Your account is inactive or removed by shop owner so please contact with support team OR re-create account.';
+	setRedirectWithMsg(SITE_URL,$msg,'warning');
+	exit();
+}
+
+$order_dlist = get_order_list_by_user_id($user_id);
+$order_data_list = $order_dlist['order_list']; ?>
+
+  <section id="showAccount" class="py-0">
+    <div class="container-fluid">
+			
+      <div class="block setting-page account py-0 clearfix">
+        <div class="row">
+          <div class="col-md-5 left-menu col-lg-4 col-xl-3">
+          	<?php require_once('views/account_menu.php');?>
+          </div>
+          <div class="col-12 col-sm-12 col-md-5 col-lg-8 col-xl-9 right-content">
+						<div class="block heading page-heading setting-heading clearfix">
+				<h3 class="float-left">Orders</h3>
+			</div>
+            <div class="block order-list text-center">
+			  <?php
+			  if(!empty($order_data_list)) { ?>
+              <table id="ac_table_id" class="display">
+                <thead>
+                  <tr>
+                    <th class="no-sort">ID</th>
+                    <th>Date<span></span></th>
+                    <th>Devices QTY<span></span></th>
+                    <th>Last update<span></span></th>
+                    <th class="no-sort">Status</th>
+                    <th class="d-md-none"></th>
+                  </tr>
+                </thead>
+                <tbody>
+				  <?php
+				  foreach($order_data_list as $order_data) {?>
+				  <tr>
+					<td><span>ID</span><a href="<?=SITE_URL?>order/<?=$order_data['order_id'].'/'.$order_data['access_token']?>"><?=$order_data['order_id']?></a></td>
+					<td data-sort="<?=$order_data['date']?>"><span>Date</span><?=format_date($order_data['date'])?></td>
+					<td><span>Devices QTY</span><?=$order_data['items_quantity']?></td>
+					<td><span>Last update</span><?=($order_data['update_date']!='0000-00-00 00:00:00'?format_date($order_data['update_date']):'No updates yet')?></td>
+					<td><span>Status</span>
+						<label class="badge badge-danger text-light"><small><?=replace_us_to_space($order_data['order_status_name'])?></small></label>
+					</td>
+					<td class="d-md-none"><a class="btn btn-lg btn-outline-dark rounded-pill ml-lg-5" href="<?=SITE_URL?>order/<?=$order_data['order_id'].'/'.$order_data['access_token']?>">more info</a></td>
+				  </tr>
+				  <?php
+				  } ?>
+                </tbody>
+              </table>
+
+              <div class="table d-block d-md-none">
+			    <?php
+				$pagination = new Paginator($page_list_limit,'p');
 				
-                <div id="sellorderstatus">
-                	<h4>Sell Order status</h4>
-                	<div class="row">
-                    	<div class="col-sm-6 listouter">
-                        	<div class="list"><span>Submitted</span> - You order has been submitted.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Expired</span> - We never received your mobile(s) - 14 days.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Expiring</span> - Still awaiting your mobile(s) - 7 days.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Processed</span> - Mobile(s) received and checked, payment pending.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Received</span> - Mobile(s) received, not yet checked.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Rejected</span> - Your order has been rejected.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Problem</span> - Problem with your order.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Posted</span> - Date mobile(s) posted recorded, awaiting mobile(s).</div>
-                        </div>
-						
-						<div class="col-sm-6 listouter">
-                        	<div class="list"><span>Completed</span> - Order complete, payment sent.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Offer Accepted</span> - Your offer has been accepted.</div>
-                        </div>
-						<div class="col-sm-6 listouter">
-                        	<div class="list"><span>Returned</span> - Mobile(s) have been returned.</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>Offer Rejected</span> - Your offer has been rejected.</div>
-                        </div>
-						<div class="col-sm-6 listouter">
-                        	<div class="list"><span>Awaiting Delivery</span> - Sales Pack printed/posted, awaiting mobile(s).</div>
-                        </div>
-                        <div class="col-sm-6 listouter">
-                        	<div class="list"><span>&nbsp;</span>&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-                     
-                </div><!--.inner-->
-            </div><!--#container_profile-->
-      	</div>
-    </section>
-  </div>
-  <!-- /.main -->
+				$order_dlist = get_order_list_by_user_id($user_id,'',$page_list_limit,'1');
+				$order_data_list = $order_dlist['order_list'];
+				foreach($order_data_list as $order_data) {?>
+				<div class="tr clearfix">
+				  <div class="td head"><span>ID</span><a href="<?=SITE_URL?>order/<?=$order_data['order_id'].'/'.$order_data['access_token']?>"><?=$order_data['order_id']?></a></div>
+				  <div class="td"><span>Date</span><?=format_date($order_data['date'])?></div>
+				  <div class="td"><span>Devices QTY</span><?=$order_data['items_quantity']?></div>
+				  <div class="td"><span>Last update</span><?=($order_data['update_date']!='0000-00-00 00:00:00'?format_date($order_data['update_date']):'No updates yet')?></div>
+				  <div class="td"><span>Status</span><span class="text-danger d-block"><?=replace_us_to_space($order_data['order_status_name'])?></span></div>
+				  <div class="td last"><a class="btn btn-lg btn-outline-dark rounded-pill ml-lg-5" href="<?=SITE_URL?>order/<?=$order_data['order_id'].'/'.$order_data['access_token']?>">more info</a></div>
+				</div>
+				<?php
+				} ?>
+              </div>
+			  
+			  <div class="d-block div-table-pagination d-md-none">
+			  	<?php
+			  	echo $pagination->page_links(); ?>
+			  </div>
+			  <?php
+			  } else {
+			  	echo '<h4>You have no orders yet.</h4>';
+			  } ?>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

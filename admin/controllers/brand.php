@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {
 	$brand_q=mysqli_query($db,'SELECT image FROM brand WHERE id="'.$post['d_id'].'"');
@@ -61,11 +63,24 @@ if(isset($post['d_id'])) {
 	setRedirect(ADMIN_URL.'brand.php');
 } elseif(isset($post['update'])) {
 	$title=real_escape_string($post['title']);
-	$sub_title=real_escape_string($post['sub_title']);
-	$short_description=real_escape_string($post['short_description']);
-	$description=real_escape_string($post['description']);
+	$sub_title=real_escape_string(str_replace("<p><br></p>","",$post['sub_title']));
+	$short_description=real_escape_string(str_replace("<p><br></p>","",$post['short_description']));
+	$description=real_escape_string(str_replace("<p><br></p>","",$post['description']));
 	$published = $post['published'];
 	$sef_url=createSlug($title);
+	
+	//Check Valid SEF URL
+	$is_valid_sef_url_arr = check_sef_url_validation($sef_url, $post['id'], "brand");
+	if($is_valid_sef_url_arr['valid']!=true) {
+		$msg='This sef url already exist so please use other.';
+		$_SESSION['error_msg']=$msg;
+		if($post['id']) {
+			setRedirect(ADMIN_URL.'edit_brand.php?id='.$post['id']);
+		} else {
+			setRedirect(ADMIN_URL.'edit_brand.php');
+		}
+		exit();
+	}
 	
 	if($_FILES['image']['name']) {
 		if(!file_exists('../../images/brand/'))

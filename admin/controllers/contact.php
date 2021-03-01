@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {	
 	$query=mysqli_query($db,'DELETE FROM contact WHERE id="'.$post['d_id'].'" ');

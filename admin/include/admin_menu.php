@@ -39,6 +39,9 @@
         <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-dark " id="m_aside_header_menu_mobile_close_btn">
           <i class="la la-close"></i>
         </button>
+		
+		<a href="<?=SITE_URL?>" class="btn btn-warning m-4 p-2" target="_blank"><i class="fa fa-eye"></i> Visit Site</a>
+		
         <!-- END: Horizontal Menu -->								<!-- BEGIN: Topbar -->
         <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general m-stack--fluid">
           <div class="m-stack__item m-topbar__nav-wrapper">

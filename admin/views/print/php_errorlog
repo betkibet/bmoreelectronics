@@ -1,0 +1,46 @@
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index: startcolumn in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19374
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index: startx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19375
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19378
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index:  in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19381
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19382
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index:  in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19382
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18072
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined offset: -1 in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19437
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined index: startx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19634
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19635
+[28-Jul-2020 15:02:37 UTC] PHP Notice:  Undefined variable: endpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19635
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index: startcolumn in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19374
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index: startx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19375
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19378
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index:  in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19381
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19382
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index:  in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19382
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18072
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: table_colwidths in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18136
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacing in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18139
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: cellspacingx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 18220
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined offset: -1 in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19437
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined index: startx in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19634
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: startpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19635
+[28-Jul-2020 15:02:53 UTC] PHP Notice:  Undefined variable: endpage in /home/webgrowt/public_html/buybackdevice-demo11/libraries/tcpdf/tcpdf.php on line 19635

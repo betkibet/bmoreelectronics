@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {	
 	$query=mysqli_query($db,'DELETE FROM reviews WHERE id="'.$post['d_id'].'" ');
@@ -71,6 +73,7 @@ if(isset($post['d_id'])) {
 	$stars=real_escape_string($post['stars']);
 	$title=real_escape_string($post['title']);
 	$content=real_escape_string($post['content']);
+	$device_sold=real_escape_string($post['device_sold']);
 	$status=$post['status'];
 
 	$exp_date=explode("/",$post['date']);
@@ -102,7 +105,7 @@ if(isset($post['d_id'])) {
 	}
 
 	if($post['id']) {
-		$query=mysqli_query($db,'UPDATE reviews SET name="'.$name.'", email="'.$email.'", country="'.$country.'", state="'.$state.'", city="'.$city.'", stars="'.$stars.'", title="'.$title.'", content="'.$content.'", status="'.$status.'"'.$imageupdate.' WHERE id="'.$post['id'].'"');
+		$query=mysqli_query($db,'UPDATE reviews SET name="'.$name.'", email="'.$email.'", country="'.$country.'", state="'.$state.'", city="'.$city.'", stars="'.$stars.'", title="'.$title.'", content="'.$content.'", status="'.$status.'", device_sold="'.$device_sold.'"'.$imageupdate.' WHERE id="'.$post['id'].'"');
 		if($query=="1") {
 			$msg="Review has been successfully updated.";
 			$_SESSION['success_msg']=$msg;
@@ -112,7 +115,7 @@ if(isset($post['d_id'])) {
 		}
 		setRedirect(ADMIN_URL.'add_edit_review.php?id='.$post['id']);
 	} else {
-		$query=mysqli_query($db,"INSERT INTO reviews(name, email, country, state, city, stars, title, content, date, status, photo) VALUES('".$name."','".$email."','".$country."','".$state."','".$city."','".$stars."','".$title."','".$content."','".date('Y-m-d H:i:s')."','".$status."','".$image_name."')");
+		$query=mysqli_query($db,"INSERT INTO reviews(name, email, country, state, city, stars, title, content, date, status, photo, device_sold) VALUES('".$name."','".$email."','".$country."','".$state."','".$city."','".$stars."','".$title."','".$content."','".date('Y-m-d H:i:s')."','".$status."','".$image_name."','".$device_sold."')");
 		if($query=="1") {
 			$msg="Review has been successfully added.";
 			$_SESSION['success_msg']=$msg;

@@ -1,16 +1,26 @@
 <?php
-$file_name="orders";
+$file_name="edit_order";
 
 //Header section
 require_once("include/header.php");
+
+if(!isset($post['order_mode'])) {
+	$post['order_mode'] = "";
+}
 
 $order_id = $post['order_id'];
 
 //Fetch order data based on order id
 $order_data_before_saved = get_order_data($order_id);
+//$order_data_before_saved = _dt_parse_array($order_data_before_saved);
 
 if(!$order_id || empty($order_data_before_saved)) {
 	setRedirect(ADMIN_URL.'orders.php');
+	exit();
+}
+
+if($prms_order_edit!='1') {
+	setRedirect(ADMIN_URL.'profile.php');
 	exit();
 }
 
@@ -22,6 +32,8 @@ $order_num_of_rows = count($order_item_list);
 $sum_of_orders=get_order_price($order_id);
 
 //Order data gathering
+$promocode_amt = 0;
+$discount_amt_label = "";
 if($order_data_before_saved['promocode_id']>0 && $order_data_before_saved['promocode_amt']>0) {
 	$promocode_amt = $order_data_before_saved['promocode_amt'];
 	$discount_amt_label = "Surcharge:";
@@ -33,10 +45,31 @@ if($order_data_before_saved['promocode_id']>0 && $order_data_before_saved['promo
 	$total_of_order = $sum_of_orders;
 }
 
+$express_service = $order_data_before_saved['express_service'];
+$express_service_price = $order_data_before_saved['express_service_price'];
+$shipping_insurance = $order_data_before_saved['shipping_insurance'];
+$shipping_insurance_per = $order_data_before_saved['shipping_insurance_per'];
+
+$f_express_service_price = 0;
+$f_shipping_insurance_price = 0;
+if($express_service == '1') {
+	$f_express_service_price = $express_service_price;
+}
+if($shipping_insurance == '1') {
+	$f_shipping_insurance_price = ($sum_of_orders*$shipping_insurance_per/100);
+}
+
+if($f_express_service_price>0 || $f_shipping_insurance_price>0) {
+	$total_of_order = ($total_of_order - $f_express_service_price - $f_shipping_insurance_price);
+}
+
 $template_data = get_template_data('admin_reply_from_order');
 $general_setting_data = get_general_setting_data();
 $admin_user_data = get_admin_user_data();
 $order_data = get_order_data($order_id);
+
+$order_status_list = get_order_status_data('order_status')['list'];
+$order_item_status_list = get_order_status_data('order_item_status')['list'];
 
 $patterns = array(
 	'{$logo}',
@@ -53,12 +86,12 @@ $patterns = array(
 	'{$customer_fullname}',
 	'{$customer_phone}',
 	'{$customer_email}',
-	'{$customer_address_line1}',
-	'{$customer_address_line2}',
-	'{$customer_city}',
-	'{$customer_state}',
+	'{$billing_address1}',
+	'{$billing_address2}',
+	'{$billing_city}',
+	'{$billing_state}',
 	'{$customer_country}',
-	'{$customer_postcode}',
+	'{$billing_postcode}',
 	'{$customer_company_name}',
 	'{$order_id}',
 	'{$order_payment_method}',
@@ -101,8 +134,11 @@ $replacements = array(
 $email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 $email_body_text = str_replace($patterns,$replacements,$template_data['content']);
 
-//Template file
-require_once("views/order/edit_order.php");
+$ac_query=mysqli_query($db,"SELECT c.*, ca.contractor_id, ca.order_id, ca.amount FROM contractors AS c LEFT JOIN contractor_orders AS ca ON ca.contractor_id=c.id WHERE ca.order_id='".$order_id."'");
+$assigned_contractor_data = mysqli_fetch_assoc($ac_query);
 
-//Footer section
-// include("include/footer.php"); ?>
+$comment_query=mysqli_query($db,"SELECT c.*, aps.name AS status_name FROM comments AS c LEFT JOIN order_status AS aps ON aps.id=c.order_status WHERE c.order_id='".$order_id."' ORDER BY c.id DESC");
+$num_of_comment = mysqli_num_rows($comment_query);
+
+//Template file
+require_once("views/order/edit_order.php"); ?>

@@ -1,4 +1,6 @@
 <?php
+$meta_title = "Change Password";
+
 $csrf_token = generateFormToken('change_psw');
 
 //Header section
@@ -7,6 +9,13 @@ include("include/header.php");
 //If direct access then it will redirect to home page
 if($user_id<=0) {
 	setRedirect(SITE_URL);
+	exit();
+} elseif($user_data['status'] == '0' || empty($user_data)) {
+	$is_include = 1;
+	require_once('controllers/logout.php');
+
+	$msg='Your account is inactive or removed by shop owner so please contact with support team OR re-create account.';
+	setRedirectWithMsg(SITE_URL,$msg,'warning');
 	exit();
 } ?>
 
@@ -34,7 +43,7 @@ if($user_id<=0) {
                         <li class="active"><a href="change-password">Change Password</a></li>
                     </ul>
                     <div class="logout">
-                        <a href="controllers/logout.php">Logout</a>
+                        <a href="controllers/logout.php" onclick="return confirm('Are you sure you want to log out?');return false;">Logout</a>
                     </div>
                 </div>
             </div><!--#sidebar_profile-->
@@ -49,11 +58,11 @@ if($user_id<=0) {
                     <hr>
                     <div class="form_box clearfix">
                         <div class="row">
-                            <div class="form_group col-sm-4">
+                            <div class="form_group col-sm-6">
                                 <label>New Password:</label>
                                 <input type="password" class="textbox" name="password" id="password" required>
                             </div>
-                            <div class="form_group col-sm-4">
+                            <div class="form_group col-sm-6">
                                 <label>Confirm Password:</label>
                                 <input type="password" class="textbox" name="password2" id="password2" required>
                             </div>

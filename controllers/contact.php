@@ -1,6 +1,7 @@
 <?php
 require_once("../admin/_config/config.php");
 require_once("../admin/include/functions.php");
+require_once("common.php");
 
 if(isset($post['submit_form'])) {
 	$name=real_escape_string($post['name']);
@@ -10,6 +11,8 @@ if(isset($post['submit_form'])) {
 	$subject=real_escape_string($post['subject']);
 	$message=real_escape_string($post['message']);
 
+	$contact_us_fill_data = array('name'=>$post['name'],'phone'=>$post['phone'],'email'=>$post['email'],'order_id'=>$post['order_id'],'subject'=>$post['subject'],'message'=>$post['message']);
+	
 	$valid_csrf_token = verifyFormToken('contact');
 	if($valid_csrf_token!='1') {
 		writeHackLog('contact');
@@ -23,6 +26,8 @@ if(isset($post['submit_form'])) {
 		$response = json_decode($response, true);
 		if($response["success"] !== true) {
 			$msg = "Invalid captcha";
+			$contact_us_fill_data = array_merge($contact_us_fill_data, array('msg_field' => 'captcha','msg_label' => $msg));
+			$_SESSION['contact_us_fill_data'] = $contact_us_fill_data;
 			setRedirectWithMsg($return_url,$msg,'warning');
 			exit();
 		}
@@ -62,7 +67,8 @@ if(isset($post['submit_form'])) {
 				'{$customer_email}',
 				'{$order_id}',
 				'{$form_subject}',
-				'{$form_message}');
+				'{$form_message}',
+				'{$current_date_time}');
 
 			$replacements = array(
 				$logo,
@@ -80,12 +86,18 @@ if(isset($post['submit_form'])) {
 				$post['email'],
 				($order_data['order_id']?$order_data['order_id']:'No Data'),
 				$post['subject'],
-				$post['message']);
+				$post['message'],
+				format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')));
 
 			if(!empty($template_data)) {
 				$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 				$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
-				send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				//send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				
+				$reply_to_data = array();
+				$reply_to_data['name'] = $post['name'];
+				$reply_to_data['email'] = $post['email'];
+				send_email($admin_user_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL, array(), $reply_to_data);
 			}
 
 			$msg="Thank you for contacting us. We'll contact you shortly.";

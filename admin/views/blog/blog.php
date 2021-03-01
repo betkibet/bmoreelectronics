@@ -23,8 +23,10 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_blog_add == '1') { ?>
                 <li class="m-portlet__nav-item">
-                  <a href="add-post.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                  <a href="addedit_blog.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
                       <i class="la la-plus"></i>
                       <span>
@@ -33,6 +35,8 @@
                     </span>
                   </a>
                 </li>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -64,10 +68,17 @@
                         <td width="30"><?=$n=$n+1?></td>
 						<td><?=$page_data['postTitle']?></td>
 						<td><?=$cats_name?></td>
-						<td><?=date('m/d/Y h:i A', strtotime($page_data['postDate']))?></td>
+						<td><?=format_date($page_data['postDate']).' '.format_time($page_data['postDate'])?></td>
                         <td>
-                          <a href="add-post.php?id=<?=$page_data['postID']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-      					  <a href="controllers/blog.php?d_b_id=<?=$page_data['postID']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+						  <?php
+							if($prms_blog_edit == '1') { ?>
+                          <a href="addedit_blog.php?id=<?=$page_data['postID']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+						  <?php
+							}
+							if($prms_blog_delete == '1') { ?>
+      					  <a href="controllers/blog.php?d_b_id=<?=$page_data['postID']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+						  <?php
+						  } ?> 
                         </td>
                       </tr>
                       <?php }

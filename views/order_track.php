@@ -1,13 +1,13 @@
 <?php
 $csrf_token = generateFormToken('order_track');
 
-$order_id = $_SESSION['track_order_id'];
+$order_id = isset($_SESSION['track_order_id'])?$_SESSION['track_order_id']:'';
 $order_data = get_order_data($order_id);
 if($order_id!="") {
 	unset($_SESSION['track_order_id']);
 }
 
-$error_message = $_SESSION['error_message'];
+$error_message = isset($_SESSION['error_message'])?$_SESSION['error_message']:'';
 if($error_message!="") {
 	unset($_SESSION['error_message']);
 } ?>
@@ -43,64 +43,72 @@ if($error_message!="") {
 		</div>
 	    <?php
 	    } ?>
-		  
+	
+		<div class="container">
+	       <div class="row">
+	       	   <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+	       	   	   <div class="block heading text-center">
+	       	   	   	  <h3 class="pt-3">Order-track</h3>
+	       	   	   </div>
+	       	   </div>	
+	       </div>	
+	    </div> 
 	  	<!-- Select Your Model -->
-		<section class="white-bg">
-		<div class="wrap">
-		  <div class="content-block">
-			<div class="row">
-			  <?php
-			  if(!empty($order_data)) { ?>
-				<div class="form-group">
-					<h4><strong>Email:</strong> <?=$order_data['email']?></h4>
-					<h4><strong>Order ID:</strong> <?=$order_data['order_id']?></h4>
-					<h4><strong>Your Order Status Is:</strong> <?=ucwords(str_replace("_"," ",$order_data['status']))?></h4>
-					<a href="<?=SITE_URL?>order-track" class="btn btn-primary btn-lg">Retry</a>
-				</div>
-			  <?php
-			  } else { ?>
-				<form action="controllers/order_track.php" method="post" id="contact_form">
-					<div class="col-sm-12">
-						<div class="sectionbox">
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form_group form-group">
-										<input type="text" name="email" id="email" placeholder="Enter email" class="form-control" value="<?=$user_email?>"/>
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<div class="form_group form-group">
-										<input type="text" name="order_id" id="order_id" placeholder="Enter order number" class="form-control" />
-									</div>
-								</div>
-								
-								<?php
-								if($order_track_form_captcha == '1') { ?>
+	  	<div class="container">
+			<div class="wrap ">
+			  <div class="content-block order_track">
+				<div class="">
+				  <?php
+				  if(!empty($order_data)) { ?>
+					<div class="form-group">
+						<h4><strong>Email:</strong> <?=$order_data['email']?></h4>
+						<h4><strong>Order ID:</strong> <?=$order_data['order_id']?></h4>
+						<h4><strong>Your Order Status Is:</strong> <?=ucwords(str_replace("_"," ",$order_data['status']))?></h4>
+						<a href="<?=SITE_URL?>order-track" class="btn btn-primary btn-lg">Retry</a>
+					</div>
+				  <?php
+				  } else { ?>
+					<form action="controllers/order_track.php" method="post" id="contact_form">
+						<div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 offset-xl-3 offset-lg-3 offset-md-2">
+							<div class="sectionbox order_track_form"> 
+								<div class="row">
 									<div class="col-sm-12">
-										<div class="form-group">
-											<div id="g_form_gcaptcha"></div>
-											<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
+										<div class="form_group form-group">
+											<input type="text" name="email" id="email" placeholder="Enter email" class="form-control" value="<?=$user_email?>"/>
 										</div>
 									</div>
-								<?php
-								} ?>
-				
-								<div class="col-sm-12 btn_row">
-									<button type="submit" class="btn btn-blue-bg">SUBMIT</button>
-									<input type="hidden" name="submit_form" id="submit_form" />
+									<div class="col-sm-12">
+										<div class="form_group form-group">
+											<input type="text" name="order_id" id="order_id" placeholder="Enter order number" class="form-control" />
+										</div>
+									</div>
+									
+									<?php
+									if($order_track_form_captcha == '1') { ?>
+										<div class="col-sm-12">
+											<div class="form-group">
+												<div id="g_form_gcaptcha"></div>
+												<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
+											</div>
+										</div>
+									<?php
+									} ?>
+					
+									<div class="col-sm-12 btn_row">
+										<button type="submit" class="btn btn-primary btn-lg rounded-pill">SUBMIT</button>
+										<input type="hidden" name="submit_form" id="submit_form" />
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
-				</form>
+						<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
+					</form>
 				<?php
-		  } ?>
-				
+			  	} ?>	
+				</div>
+			  </div>
 			</div>
-		  </div>
 		</div>
-		</section>
 	</div>
 </div>
 

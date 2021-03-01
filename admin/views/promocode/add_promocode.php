@@ -15,7 +15,8 @@ function form_validation(a){
 		a.promocode.focus();
 		return false;
 	}
-	if(a.description.value.trim()=="") {
+	var description = jQuery(".summernote").summernote("code").replace(/&nbsp;|<\/?[^>]+(>|$)/g,"").trim();
+	if(description.length == 0) {
 		alert('Please enter promocode description');
 		a.description.focus();
 		return false;
@@ -27,11 +28,15 @@ function form_validation(a){
 		alert('Please enter expire date');
 		a.to_date.focus();
 		return false;
-	}/* else if(a.discount.value.trim()=="") {
+	} else if(a.discount.value.trim()=="") {
 		alert('Please enter discount');
 		a.discount.focus();
 		return false;
-	}*/
+	}
+	
+	if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
+	}
 }
 
 function change_disc_type(val) {
@@ -42,13 +47,13 @@ function change_disc_type(val) {
 	}
 }
 
-function change_multi_act_by_same_cust() {
+/*function change_multi_act_by_same_cust() {
 	if(document.getElementById("multiple_act_by_same_cust").checked == true) {
 		jQuery(".showhide_cust_qty").show();
 	} else {
 		jQuery(".showhide_cust_qty").hide();
 	}
-}
+}*/
 
 function checkFile(fieldObj) {
 	if(fieldObj.files.length == 0) {
@@ -137,14 +142,14 @@ function checkFile(fieldObj) {
 											<label for="input">
 												From Date : *
 											</label>
-											<input class="form-control m-input" type="date" id="from_date" name="from_date" placeholder="Enter from date (mm/dd/yyyy)">
+											<input class="form-control m-input datepicker" type="text" id="from_date" name="from_date" placeholder="Enter from date (mm/dd/yyyy)">
 										</div>
 									</div>
 									<div class="form-group m-form__group">
 										<label for="input">
 											Expire Date : *
 										</label>
-										<input class="form-control m-input" type="date" id="to_date" name="to_date" placeholder="Enter to date (mm/dd/yyyy)">
+										<input class="form-control m-input datepicker" type="text" id="to_date" name="to_date" placeholder="Enter to date (mm/dd/yyyy)">
 									</div>
 									<div class="m-form__group form-group">
 										<div class="m-checkbox-list">
@@ -170,22 +175,22 @@ function checkFile(fieldObj) {
 										</div>
 									</div>
 									<div class="form-group m-form__group">
-										<label class="control-label discount_lbl" for="discount">Surcharge <?=($promocode_data['discount_type']=='flat'?'('.$currency_symbol.') ':'(%)')?> *</label>
-										<input type="text" class="form-control m-input" id="discount" name="discount" placeholder="Enter discount" value="<?=$promocode_data['discount']?>">
+										<label class="control-label discount_lbl" for="discount">Surcharge (%) *</label>
+										<input type="text" class="form-control m-input" id="discount" name="discount" placeholder="Enter discount" value="">
 									</div>
-									<div class="m-form__group form-group">
+									<?php /*?><div class="m-form__group form-group">
 										<div class="m-checkbox-list">
 											<label class="m-checkbox">
 												<input type="checkbox" value="1" id="multiple_act_by_same_cust" name="multiple_act_by_same_cust" onchange="change_multi_act_by_same_cust()">
 												Allow multiple activation by same customer.
 												<span></span>
 											</label>
-											<input type="number" class="form-control m-input showhide_cust_qty" id="multi_act_by_same_cust_qty" name="multi_act_by_same_cust_qty" value="<?=$promocode_data['multi_act_by_same_cust_qty']?>" placeholder="Enter Qty" style="display:none;">
+											<input type="number" class="form-control m-input showhide_cust_qty" id="multi_act_by_same_cust_qty" name="multi_act_by_same_cust_qty" value="" placeholder="Enter Qty" style="display:none;">
 										</div>
-									</div>
+									</div><?php */?>
 									<div class="form-group m-form__group">
 										<label for="act_by_cust">How many times can this code be activated? </label>
-										<input type="number" class="form-control m-input" id="act_by_cust" name="act_by_cust" value="<?=$promocode_data['act_by_cust']?>">
+										<input type="number" class="form-control m-input" id="act_by_cust" name="act_by_cust" value="">
 									</div>
 									<div class="m-form__group form-group">
 										<label for="">
@@ -234,4 +239,3 @@ function checkFile(fieldObj) {
 	<i class="la la-arrow-up"></i>
 </div>
 <!-- end::Scroll Top -->
-

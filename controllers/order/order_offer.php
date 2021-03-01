@@ -1,9 +1,13 @@
 <?php
 require_once("../../admin/_config/config.php");
 require_once("../../admin/include/functions.php");
-		
+require_once("../common.php");
+
 $user_id = $_SESSION['user_id'];
 $order_id = $post['order_id'];
+
+//Get user data based on userID
+$user_data = get_user_data($user_id);
 
 //Get order batch data, path of this function (get_order_data) admin/include/functions.php
 $order_data_before_saved = get_order_data($order_id);
@@ -219,12 +223,12 @@ if(isset($post['submit_resp_offer'])) {
 				'{$customer_fullname}',
 				'{$customer_phone}',
 				'{$customer_email}',
-				'{$customer_address_line1}',
-				'{$customer_address_line2}',
-				'{$customer_city}',
-				'{$customer_state}',
+				'{$billing_address1}',
+				'{$billing_address2}',
+				'{$billing_city}',
+				'{$billing_state}',
 				'{$customer_country}',
-				'{$customer_postcode}',
+				'{$billing_postcode}',
 				'{$order_id}',
 				'{$order_payment_method}',
 				'{$order_date}',
@@ -241,7 +245,16 @@ if(isset($post['submit_resp_offer'])) {
 				'{$company_city}',
 				'{$company_state}',
 				'{$company_postcode}',
-				'{$company_country}');
+				'{$company_country}',
+				'{$shipping_fname}',
+				'{$shipping_lname}',
+				'{$shipping_company_name}',
+				'{$shipping_address1}',
+				'{$shipping_address2}',
+				'{$shipping_city}',
+				'{$shipping_state}',
+				'{$shipping_postcode}',
+				'{$shipping_phone}');
 	
 			$replacements = array(
 				$logo,
@@ -273,7 +286,7 @@ if(isset($post['submit_resp_offer'])) {
 				ucwords(str_replace("_"," ",$order_data['order_status'])),
 				ucwords(str_replace("_"," ",$status)),
 				$order_data['sales_pack'],
-				date('Y-m-d H:i'),
+				format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')),
 				$post['note'],
 				$visitor_body,
 				$company_name,
@@ -281,14 +294,28 @@ if(isset($post['submit_resp_offer'])) {
 				$company_city,
 				$company_state,
 				$company_zipcode,
-				$company_country);
+				$company_country,
+				$order_data['shipping_first_name'],
+				$order_data['shipping_last_name'],
+				$order_data['shipping_company_name'],
+				$order_data['shipping_address'],
+				$order_data['shipping_address2'],
+				$order_data['shipping_city'],
+				$order_data['shipping_state'],
+				$order_data['shipping_postcode'],
+				$order_data['shipping_phone']);
 	
 			if(!empty($template_data)) {
 				$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 				$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
-				send_email($admin_user_data['email'], $email_subject, $email_body_text, $user_data['name'], $user_data['email']);
+				//send_email($admin_user_data['email'], $email_subject, $email_body_text, $user_data['name'], $user_data['email']);
+
+				$reply_to_data = array();
+				$reply_to_data['name'] = $user_data['name'];
+				$reply_to_data['email'] = $user_data['email'];
+				send_email($admin_user_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL, array(), $reply_to_data);
 			}
-			
+
 			$msg='You have successfully message send.';
 			setRedirectWithMsg($return_url,$msg,'success');
 		} else {

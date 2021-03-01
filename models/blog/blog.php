@@ -8,12 +8,12 @@ function get_recent_posts($blog_recent_posts) {
 		$stmt = mysqli_query($db,'SELECT postTitle, postSlug FROM blog_posts_seo ORDER BY postID DESC LIMIT 5');
 		$num_of_recent_post = mysqli_num_rows($stmt);
 		if($num_of_recent_post>0) {
-		  $output .= '<div class="h3">Recent Posts</div>';
+		  $output .= '<div class="block"><div><h1 class="title">Recent Posts</h1></div>';
 		  $output .= '<ul>';
 			  while($row = mysqli_fetch_assoc($stmt)) {
 				$output .= '<li><i class="fa fa-angle-right" aria-hidden="true"></i><a href="'.SITE_URL.$blog_url.'/'.$row['postSlug'].'">'.$row['postTitle'].'</a></li>';
 			  }
-		  $output .= '</ul>';
+		  $output .= '</ul></div>';
 		}
 		echo $output;
 	}
@@ -26,12 +26,12 @@ function get_blog_categories($blog_categories) {
 		$stmt = mysqli_query($db,'SELECT catTitle, catSlug FROM blog_cats ORDER BY catID DESC');
 		$num_of_recent_post = mysqli_num_rows($stmt);
 		if($num_of_recent_post>0) {
-			$output .= '<div class="h3">Catgories</div>';
+			$output .= '<div class="block"><div><h1 class="title">Catgories</h1></div>';
 			$output .= '<ul>';
-				while($row = mysqli_fetch_assoc($stmt)){
+				while($row = mysqli_fetch_assoc($stmt)){ 
 					$output .= '<li><i class="fa fa-angle-right" aria-hidden="true"></i><a href="'.SITE_URL.'category/'.$row['catSlug'].'">'.$row['catTitle'].'</a></li>';
 				}
-			$output .= '</ul>';
+			$output .= '</ul></div>';
 		}
 		echo $output;
 	}
@@ -51,7 +51,7 @@ function get_blog_list($page_list_limit, $blog_rm_words_limit, $page_url) {
 			if($row['image']) {
 				$output .= '<img src="'.SITE_URL.'images/blog/'.$row['image'].'" alt="">';
 			}
-			$output .= '<h1 class="h3"><a href="'.$page_url.'/'.$row['postSlug'].'">'.$row['postTitle'].'</a></h1>';
+			$output .= '<h1 class="title"><a href="'.SITE_URL.$page_url.'/'.$row['postSlug'].'">'.$row['postTitle'].'</a></h1>';
 			$output .= '<div class="blog-credits">Posted on <span class="date">'.date('jS M Y H:i:s', strtotime($row['postDate'])).'</span> in ';
 				$stmt2 = mysqli_query($db,'SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = "'.$row['postID'].'"');
 				$links = array();
@@ -61,7 +61,7 @@ function get_blog_list($page_list_limit, $blog_rm_words_limit, $page_url) {
 				$output .= implode(", ", $links);
 			$output .= '</div>';
 			$output .= '<p>'.limit_words($row['postCont'],$blog_rm_words_limit).'</p>';
-			$output .= '<p><a href="'.$page_url.'/'.$row['postSlug'].'">Read More</a></p>';
+			$output .= '<p class="readmore"><a class="link" href="'.SITE_URL.$page_url.'/'.$row['postSlug'].'">Read More..</a></p>';
 		$output .= '</div>';
 		}
 		$output .= $pages->page_links();
@@ -89,7 +89,7 @@ function get_blog_details($blog_url) {
 			if($row['image']) {
 				$output .= '<img src="'.SITE_URL.'images/blog/'.$row['image'].'" alt="">';
 			}
-			$output .= '<div class="h3">'.$row['postTitle'].'</div>';
+			$output .= '<div><h2 class="title">'.$row['postTitle'].'</h2></div>';
 			$output .= '<div class="blog-credits">Posted on <span class="date">'.date('jS M Y H:i:s', strtotime($row['postDate'])).'</span> in ';
 				$stmt2 = mysqli_query($db,'SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = "'.$row['postID'].'"');
 				$links = array();
@@ -121,7 +121,7 @@ function get_blog_list_based_on_cat($cat_url, $blog_rm_words_limit, $page_list_l
 			exit;
 		}
 		
-		$output .= '<div class="h1 nomargintop">Blog <small><i class="fa fa-angle-double-right" aria-hidden="true"></i> Posts in '.$row['catTitle'].'</small></div>';
+		$output .= '<div class="block heading page-heading"><div><h1 class="title">Blog <small><i class="fa fa-angle-double-right" aria-hidden="true"></i> Posts in '.$row['catTitle'].'</small></h1></div></div>';
 		try {
 			$pages = new Paginator($page_list_limit,'p');
 	
@@ -148,7 +148,7 @@ function get_blog_list_based_on_cat($cat_url, $blog_rm_words_limit, $page_list_l
 					if($row['image']) {
 						$output .= '<img src="'.SITE_URL.'images/blog/'.$row['image'].'" alt="">';
 					}
-					$output .= '<div class="h3"><a href="'.$row['postSlug'].'">'.$row['postTitle'].'</a></div>';
+					$output .= '<div><h2 class="title"><a href="'.SITE_URL.$blog_url.'/'.$row['postSlug'].'">'.$row['postTitle'].'</a></h2></div>';
 					$output .= '<div class="blog-credits">Posted on <span class="date">'.date('jS M Y H:i:s', strtotime($row['postDate'])).'</span> in ';
 						$stmt2 = mysqli_query($db,'SELECT catTitle, catSlug	FROM blog_cats, blog_post_cats WHERE blog_cats.catID = blog_post_cats.catID AND blog_post_cats.postID = "'.$row['postID'].'"');
 		
@@ -160,10 +160,11 @@ function get_blog_list_based_on_cat($cat_url, $blog_rm_words_limit, $page_list_l
 		
 					$output .= '</div>';
 					$output .= '<p>'.limit_words($row['postCont'],$blog_rm_words_limit).'</p>';
-					$output .= '<p><a href="'.SITE_URL.$blog_url.'/'.$row['postSlug'].'">Read More</a></p>';
+					$output .= '<p class="readmore"><a class="link" href="'.SITE_URL.$blog_url.'/'.$row['postSlug'].'">Read More..</a></p>';
 				$output .= '</div>';
 			}
-			$output .= $pages->page_links('c-'.$_GET['id'].'&');
+			$output .= $pages->page_links();
+			//$output .= $pages->page_links('c-'.$_GET['id'].'&');
 		} catch(Exception $e) {
 			$output .= $e->getMessage();
 		}

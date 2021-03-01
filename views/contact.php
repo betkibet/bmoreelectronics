@@ -1,21 +1,28 @@
 <?php
 $csrf_token = generateFormToken('contact');
 
+$is_show_title = true;
+$header_section = $active_page_data['header_section'];
+$header_image = $active_page_data['image'];
+$show_title = $active_page_data['show_title'];
+$image_text = $active_page_data['image_text'];
+$page_title = $active_page_data['title'];
+
 //Url encode for embed map
 $business_address = trim(urlencode($company_name.' '.$company_address.' '.$company_city.' '.$company_state.' '.$company_zipcode));
 
 $service_hours_data = get_service_hours_data();
-$open_time=json_decode($service_hours_data['open_time'],true);
+$open_time = json_decode($service_hours_data['open_time'],true);
 $open_time_zone = json_decode($service_hours_data['open_time_zone'],true);
-$hours_opening=@array_merge_recursive($open_time, $open_time_zone);
-$close_time=json_decode($service_hours_data['close_time'],true);
+$hours_opening = @array_merge_recursive($open_time, $open_time_zone);
+$close_time = json_decode($service_hours_data['close_time'],true);
 $close_time_zone = json_decode($service_hours_data['close_time_zone'],true);
-$hours_closing=@array_merge_recursive($close_time, $close_time_zone);
-$opening_slot=@array_merge_recursive($hours_opening, $hours_closing);
+$hours_closing = @array_merge_recursive($close_time, $close_time_zone);
+$opening_slot = @array_merge_recursive($hours_opening, $hours_closing);
 $closed = json_decode($service_hours_data['is_close'],true);
 
 $new_array = array();
-if(count($open_time) > 0) {
+if($open_time > 0) {
 	foreach($open_time as $k => $v) {
 		switch($k) {
 			case "sunday":
@@ -41,8 +48,8 @@ if(count($open_time) > 0) {
 				break;
 		}
 		if(array_key_exists($k, $open_time_zone)) {
-			$new_array1_day[$k] = '<span>'.ucfirst(substr($k,0,3)).':</span><a href="javascript:void(0)" class="time_box"> '.$v.$open_time_zone[$k].' - '.$close_time[$k].$close_time_zone[$k].'</a>';
-			$new_array1[$day_order] = '<p><span>'.ucfirst(substr($k,0,3)).':</span>'.$v.$open_time_zone[$k].' - '.$close_time[$k].$close_time_zone[$k].'</p>';
+			$new_array1_day[$k] = '<tr><td><strong>'.ucfirst(substr($k,0,3)).'</strong></td><td><a href="javascript:void(0)" class="time_box"> '.$v.$open_time_zone[$k].' - '.$close_time[$k].$close_time_zone[$k].'</a></td></tr>';
+			$new_array1[$day_order] = '<tr><td><strong>'.ucfirst(substr($k,0,3)).'</strong></td><td>'.$v.$open_time_zone[$k].' - '.$close_time[$k].$close_time_zone[$k].'</td></tr>';
 		}
 	}
 }
@@ -73,8 +80,8 @@ if(count($closed) > 0) {
 					$day_order=6;
 					break;
 			}
-			$new_array1_day[$k] = ''.ucfirst(substr($k,0,3)).': <a href="javascript:void(0)" class="time_box">Closed</a>';
-			$new_array1[$day_order] = '<p class="sun"><span>'.ucfirst(substr($k,0,3)).':</span>Closed</p>';
+			$new_array1_day[$k] = '<tr><td><strong>'.ucfirst(substr($k,0,3)).'</strong></td><td><a href="javascript:void(0)" class="time_box">Closed</a></td></tr>';
+			$new_array1[$day_order] = '<tr><td><strong>'.ucfirst(substr($k,0,3)).'</strong></td><td>Closed</td></tr>';
 		}
 	}
 }
@@ -108,11 +115,8 @@ if(count($open_time) > 0) {
 				$is_office_open = 'yes';
 				$office_open_close_status = 'Today: '.$opentimezone_label.' - '.$closetimezone.'<br><span class="opennow">Open Now</span>';	
 			} else {
-				/*$is_office_open = 'no';
-				$office_open_close_status = 'Today: '.$opentimezone_label.' - '.$closetimezone.'<br><span class="opennow">Closed Now</span>';*/
-
-				$is_office_open = 'yes';
-				$office_open_close_status = 'Today: '.$opentimezone_label.' - '.$closetimezone.'<br><span class="opennow">Open Now</span>';			
+				$is_office_open = 'no';
+				$office_open_close_status = 'Today: '.$opentimezone_label.' - '.$closetimezone.'<br><span class="opennow">Closed Now</span>';		
 			}
 		}
 	}
@@ -126,59 +130,75 @@ if(count($closed) > 0) {
 		}
 	}
 }
-?>	
-								
-<div id="breadcrumb">
-	<div class="wrap">
-		<ul>
-			<li><a href="<?=SITE_URL?>">Home</a></li>
-			<li class="active"><a href="#"><?=$active_page_data['menu_name']?></a></li>
-		</ul>
-	</div>
-</div>
-  
-<?php
-//Header Image
-if($active_page_data['image'] != "") { ?>
-  <section id="head-graphics"> 
-  	<img src="<?=SITE_URL.'images/pages/'.$active_page_data['image']?>" class="img-fluid" alt="<?=$active_page_data['title']?>">
-  	<div class="header-caption caption_contact">
-    	<h2><?=$active_page_data['title']?></h2>
-        <?php
-		if($active_page_data['image_text'] != "") { ?>
-			<p><?=$active_page_data['image_text']?></p>
-		<?php
-		} ?>
-    </div>
-  </section>
-<?php
-} else { ?>
-  <section id="head-graphics">
-  	<div class="header-caption caption_contact">
-    	<h2><?=$active_page_data['title']?></h2>
-    </div>
-  </section>
-<?php
-}
-
-if($office_open_close_status) {
+							
+$is_show_title = true;
+$header_section = $active_page_data['header_section'];
+$header_image = $active_page_data['image'];
+$show_title = $active_page_data['show_title'];
+$image_text = $active_page_data['image_text'];
+$page_title = $active_page_data['title'];
 ?>
-<section id="contact_time_sec">
-	<div class="content_bg <?=($is_office_open=='no'?'office_close':'')?>">
-		<div class="inner">
-			<?=$office_open_close_status?>
+<section id="breadcrumb" class="<?=$active_page_data['css_page_class']?> py-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block breadcrumb clearfix">
+					<ul class="breadcrumb m-0">
+						<li class="breadcrumb-item">
+							<a href="<?=SITE_URL?>">Home</a>
+						</li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0);"><?=$active_page_data['menu_name']?></a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
+
+<?php
+//Header Image
+if($header_section == '1' && ($header_image || $show_title == '1' || $image_text)) { ?>
+	<section class="head-graphics <?=$active_page_data['css_page_class']?>" id="head-graphics" <?php if($header_image != ""){echo 'style="background-image: url('.SITE_URL.'images/pages/'.$header_image.')"';}?>>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block header-caption text-center">
+						<?php
+						if($show_title == '1') {
+							echo '<h1>'.$page_title.'</h1>';
+						}
+						if($image_text) {
+							echo '<p>'.$image_text.'</p>';
+						} ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php
+$is_show_title = false;
+} ?>
+
+<?php
+if($is_show_title && $show_title == '1') { ?>
+	<section id="head-graphics-title" class="<?=$active_page_data['css_page_class']?>">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="block heading page-heading text-center">
+					<h3><?=$page_title?></h3>
+					<?php if($office_open_close_status) { ?>
+							<p class="<?=($is_office_open=='no'?'office_close':'')?>"><?=$office_open_close_status?></p>
+						<?php } ?>
+				</div>
+			</div>
+		</div>
+	</section>
 <?php
 } ?>
-  
-  <!-- Main -->
-  <div id="main"> 
     
     <!-- Select Your Device -->
-    <section id="contact-detail" class="sectionbox white-bg">
-    	<div class="wrap">
+    <section id="contact-detail" class="<?=$active_page_data['css_page_class']?> white-bg">
+    	<div class="container-fluid">
         	<div class="row">
             	<div class="col-sm-4">
                 	<div class="contact_block">
@@ -217,100 +237,125 @@ if($office_open_close_status) {
                 </div>
                 <div class="col-sm-4">
                 	<div class="contact_block">
-                    	<div class="inner">
-                        	<div class="img_box"><img src="images/ico_clock.png" class="img-fluid"></div>
-                        	<h5>Working Hours</h5>
-                            <p><?=$new_array1_day[strtolower(date('l'))]?></p>
-                            
-                            <div id="time_block">
-                            	<?php
-								@ksort($new_array1);
-								if(!empty($new_array1)) {
-									foreach($new_array1 as $k => $v) {
-										echo $v; 
-									}
-								} ?>
-                            </div>
-                        </div>
+						<div class="inner">
+							<div class="img_box"><img src="images/ico_clock.png" class="img-fluid"></div>
+							<h5>Working Hours</h5>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Show Hours</button>
+						</div>
                     </div>
+                  </div>
                 </div>
             </div> 
         </div>
     </section>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Working Hours</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<img src="<?=SITE_URL?>images/payment/close.png" alt="">
+						</button>
+					</div>
+					<div class="modal-body pt-0">
+						<table class="table">
+							<?=$new_array1_day[strtolower(date('l'))]?>
+							<?php
+							@ksort($new_array1);
+							if (!empty($new_array1)) {
+								foreach ($new_array1 as $k => $v) {
+									echo $v;
+								}
+							}
+							?>    
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
     
     <!-- Select Your Device -->
-    <section id="map" class="sectionbox white-bg">
-    	<div class="googlemap">
+    <section id="map" class="<?=$active_page_data['css_page_class']?> white-bg">
+    	<div class="google-map">
         	<?php
-			if($business_address) { ?>
-				<iframe width="100%" height="425px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<?=$business_address?>&key=AIzaSyCQ5WCiLnyjH-_5_RTHdicyRFb1l_L43Kc" allowfullscreen></iframe>
+			if($business_address && $map_key) { ?>
+				<iframe width="100%" height="425px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<?=$business_address?>&key=<?=$map_key?>" allowfullscreen></iframe>
 			<?php
 			} ?>
         </div>
     </section>
     
 	<form action="controllers/contact.php" class="phone-sell-form" method="post" id="contact_form">
-    <section id="contact-form" class="clearfix">
-    	<div class="wrap">
-        	<div class="form_inner">
-            	<h3>Let's Talk about your business</h3>
-                <p class="para"><?=$active_page_data['content']?></p>
-            </div>
-            <div class="form-outer">
-            	<div class="row">
-                	<div class="col-sm-6">
-                    	<div class="form_group form-group">
-                            <input type="text" class="textbox" name="name" id="name" placeholder="Enter name">
-                        </div>
-					</div>
-					<div class="col-sm-6">
-                        <div class="form_group form-group">
-							<input type="tel" id="cell_phone" name="cell_phone" class="textbox" placeholder="">
-							<input type="hidden" name="phone" id="phone" />
-                        </div>
-					</div>
-					<div class="col-sm-6">
-                        <div class="form_group form-group">
-                            <input type="text" class="textbox" name="email" id="email" placeholder="Enter email">
-                        </div>
-						<div class="form_group form-group">
-                            <input type="text" class="textbox" name="order_id" id="order_id" placeholder="Enter order number">
-                        </div>
-						<div class="form_group form-group">
-                            <input type="text" class="textbox" name="subject" id="subject" placeholder="Enter subject">
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-6">
-                    	<div class="form_group form-group">
-                            <textarea class="textbox" name="message" id="message" placeholder="Enter message"></textarea>
-                        </div>
-                    </div>
-                </div>
-				<?php
-				if($contact_form_captcha == '1') { ?>
-				  <div class="row">
+    <section id="contact-form" class="<?=$active_page_data['css_page_class']?> clearfix">
+    	<div class="container-fluid">
+				<div class="row">
 					<div class="col-md-12">
-						<div class="form-group">
-							<div id="g_form_gcaptcha"></div>
-							<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
+						<div class="block">
+							<h3>Let's Talk about your business</h3>
+							<p class="para"><?=$active_page_data['content']?></p>
+							<div class="form-outer">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form_group form-group">
+											<input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form_group form-group">
+											<input type="tel" id="cell_phone" name="cell_phone" class="form-control" placeholder="">
+											<input type="hidden" name="phone" id="phone" />
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form_group form-group">
+											<input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+										</div>
+										<div class="form_group form-group">
+											<input type="text" class="form-control" name="order_id" id="order_id" placeholder="Enter order number">
+										</div>
+										<div class="form_group form-group">
+											<input type="text" class="form-control" name="subject" id="subject" placeholder="Enter subject">
+										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form_group form-group">
+											<textarea class="form-control" name="message" id="message" placeholder="Enter message"></textarea>
+										</div>
+									</div>
+								</div>
+								<?php
+								if($contact_form_captcha == '1') { ?>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<div id="g_form_gcaptcha"></div>
+												<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
+											</div>
+										</div>
+									</div>
+								<?php
+								} ?>
+								<div class="row">
+									<div class="col-sm-12 btn_row">
+										<button class="btn btn-primary" type="submit">Submit</button>
+										<input type="hidden" name="submit_form" id="submit_form" />
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				  </div>
-				<?php
-				} ?>
-                <div class="row">
-                	<div class="col-sm-12 btn_row">
-                    	<button class="btn btn-blue-bg" type="submit">Submit</button>
-						<input type="hidden" name="submit_form" id="submit_form" />
-                    </div>
-                </div>
-            </div>
-        </div>
+				</div>
+      </div>
     </section>
-	<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
-    </form>
-  </div><!-- /.main -->
+		<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
+  </form>
+  
 
 <?php
 if($contact_form_captcha == '1') {
@@ -343,7 +388,8 @@ var onSubmitForm = function(response) {
 	$(function() {
 		var telInput = $("#cell_phone");
 		telInput.intlTelInput({
-		  initialCountry: "auto",
+		  initialCountry: "<?=$phone_country_short_code?>",
+		  allowDropdown: false,
 		  geoIpLookup: function(callback) {
 			$.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
 			  var countryCode = (resp && resp.country) ? resp.country : "";

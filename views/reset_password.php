@@ -7,26 +7,6 @@ include("include/header.php");
 //Fetching data from model
 require_once('models/user/reset_password.php'); ?>
 
-<script type="text/javascript">
-function check_form(a){
-	if(a.new_password.value.trim()==""){
-		alert('Please enter new password.');
-		a.new_password.focus();
-		return false;
-	}
-	if(a.confirm_password.value.trim()==""){
-		alert('Please enter confirm password.');
-		a.confirm_password.focus();
-		return false;
-	}
-	if(a.new_password.value.trim()!=a.confirm_password.value.trim()){
-		alert('New password and confirm password not matched.');
-		a.confirm_password.focus();
-		return false;
-	}	
-}
-</script>
-
 <form action="controllers/user/reset_password.php" method="post" id="reset_psw_form" role="form">
   <section>
 	<div class="container">
@@ -37,35 +17,30 @@ function check_form(a){
 		  </div>
 		</div>
 	  </div>
-	  <div class="row">
-		<div class="col-md-12">
-		  <div class="block clearfix">
-			<div class="form-horizontal form-login" role="form">
-			  <div class="form-wrap clearfix">
-				<div class="form-group">
-				  <label for="username" class="control-label">New Password</label>
-				  <div class="clearfix">
-					<input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new password" autocomplete="off">
-				  </div>
+	  <div class="row justify-content-center">
+		<div class="col-md-6">
+		  <div class="block login clearfix">
+				<div class="card">
+					<div class="card-body">
+						<div class="form-horizontal form-login" role="form">
+							<div class="form-wrap clearfix">
+							<div class="form-group with-icon password-field">
+								<label for="new_password">New Password</label>
+								<input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new password" autocomplete="off">
+							</div>
+							<div class="form-group with-icon password-field">
+								<label for="confirm_password">Confirm Password</label>
+								<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Enter confirm password" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-block btn-primary">Submit</button>
+								<input type="hidden" name="reset" id="reset" />
+								<input type="hidden" name="t" id="t" value="<?=$post['t']?>" />
+							</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-				  <label for="username" class="control-label">Confirm Password</label>
-				  <div class="clearfix">
-					<input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Enter confirm password" autocomplete="off">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <div class="clearfix">
-					<button type="submit" class="btn btn-submit">Submit</button>
-					<input type="hidden" name="reset" id="reset" />
-					<input type="hidden" name="t" id="t" value="<?=$post['t']?>" />
-				  </div>
-				</div>
-			  </div>
-			  <div class="form-group text-center">
-				<a class="btn" href="<?=$login_link?>">Return to login</a>
-			  </div>
-			</div>
 		  </div>
 		</div>
 	  </div>  

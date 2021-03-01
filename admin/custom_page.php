@@ -4,6 +4,21 @@ $file_name="custom_page";
 //Header section
 require_once("include/header.php");
 
+if(isset($_POST['search'])) {
+	$_SESSION['custom_page_filter_data'] = array('filter_by'=>$post['filter_by']);
+	setRedirect(ADMIN_URL.'custom_page.php');
+}
+
+if(isset($_GET['clear'])) {
+	unset($_SESSION['custom_page_filter_data']);
+	setRedirect(ADMIN_URL.'custom_page.php');
+}
+
+if(isset($_SESSION['custom_page_filter_data'])) {
+	$custom_page_filter_data = $_SESSION['custom_page_filter_data'];
+	$post['filter_by'] = $custom_page_filter_data['filter_by'];
+}
+
 $order_by = "";
 $filter_by = "";
 
@@ -11,16 +26,12 @@ if($post['filter_by']) {
 	$filter_by .= " AND title LIKE '%".$post['filter_by']."%'";
 }
 
-if($post['id_shorting'] && $post['title_shorting']) {
-	$order_by .= " ORDER BY id ".$post['id_shorting'].", title ".$post['title_shorting'];
-}
-elseif($post['id_shorting']) {
+if($post['id_shorting']) {
 	$order_by .= " ORDER BY id ".$post['id_shorting'];
-}
-elseif($post['title_shorting']) {
+} elseif($post['title_shorting']) {
 	$order_by .= " ORDER BY title ".$post['title_shorting'];
 } else {
-	$order_by .= " ORDER BY id, title ASC";
+	$order_by .= " ORDER BY id ASC";
 }
 
 //Fetch data list of pages
@@ -59,8 +70,19 @@ foreach($inbuild_page_array as $inbuild_page_data) {
 	$inbuild_page_slug[] = $inbuild_page_data['slug'];
 }
 
-//Template file
-require_once("views/page/custom_page.php");
+$url_params_array = array(
+	'oid_shorting' => $post['oid_shorting'],
+	'title_shorting' => $post['title_shorting'],
+	'filter_by' => $post['filter_by']
+);
 
-//Footer section
-// require_once("include/footer.php"); ?>
+unset($url_params_array['oid_shorting']);
+unset($url_params_array['title_shorting']);
+
+$url_params = http_build_query($url_params_array);
+$url_params = ($url_params?'&'.$url_params:'');
+
+$shorting_label = 'Select to sort by this column';
+
+//Template file
+require_once("views/page/custom_page.php"); ?>

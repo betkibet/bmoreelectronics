@@ -21,28 +21,31 @@
                 </h3>
               </div>
             </div>
-            <?php /*?><div class="m-portlet__head-tools">
+			<div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_order_add == '1') { ?>
                 <li class="m-portlet__nav-item">
-                  <form action="controllers/affiliate.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
+                  <a href="edit_affiliate.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                    <span>
+                      <i class="la la-plus"></i>
                       <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
+                        Add New
                       </span>
-                    </button>
-                  </form>
+                    </span>
+                  </a>
                 </li>
+				<?php
+				} ?>
               </ul>
-            </div><?php */?>
+            </div>
           </div>
           <div class="m-portlet__body">
             <!--begin: Datatable -->
             <div id="m_table_1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-			
+			  
+			  <?php
+			  if($prms_order_delete == '1') { ?>
 			  <div class="row">
 				<div class="col-sm-12">
 					<form action="controllers/affiliate.php" method="POST">
@@ -51,6 +54,8 @@
 					</form>
 				</div>
 			  </div>
+			  <?php
+			  } ?>
 			  
               <div class="row">
                 <div class="col-sm-12" style="overflow:scroll;">
@@ -65,13 +70,11 @@
                         </th>
                         <th>Name</th>
 						<th>Company</th>
-						<th>Web Address</th>
 						<th>Phone</th>
-						<th>Email</th>
-						<th>Subject</th>
-						<th>Message</th>
+						<?php /*?><th>Email</th><?php */?>
+						<?php /*?><th>Message</th><?php */?>
 						<th>Date/Time</th>
-						<th>Action</th>
+						<th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -88,14 +91,26 @@
 							</td>
 							<td><?=$affiliate_data['name']?></td>
 							<td><?=$affiliate_data['company']?></td>
-							<td><?=$affiliate_data['web_address']?></td>
 							<td><?=$affiliate_data['phone']?></td>
-							<td><?=$affiliate_data['email']?></td>
-							<td><?=$affiliate_data['subject']?></td>
-							<td><?=$affiliate_data['message']?></td>
-							<td><?=date('m/d/Y H:i A',strtotime($affiliate_data['date']))?></td>
+							<?php /*?><td><?=$affiliate_data['email']?></td><?php */?>
+							<?php /*?><td><?=$affiliate_data['message']?></td><?php */?>
+							<td><?=format_date($affiliate_data['date']).' '.format_time($affiliate_data['date'])?></td>
 							<td>
-								<a href="controllers/affiliate.php?d_id=<?=$affiliate_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
+								<?php
+								if($affiliate_data['status']==1) {
+									echo '<a href="controllers/affiliate.php?p_id='.$affiliate_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Published</button></a>';
+								} elseif($affiliate_data['status']==0) {
+									echo '<a href="controllers/affiliate.php?p_id='.$affiliate_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Unpublished</button></a>';
+								} ?>
+								<?php
+								if($prms_order_edit == '1') { ?>
+								<a href="edit_affiliate.php?id=<?=$affiliate_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+								<?php
+								}
+								if($prms_order_delete == '1') { ?>
+								<a href="controllers/affiliate.php?d_id=<?=$affiliate_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure to delete this record?')"><i class="la la-trash"></i></a>
+								<?php
+								} ?>
 							</td>
 						  </tr>
                       	<?php 

@@ -7,19 +7,64 @@ if($user_id>0) {
 
 $csrf_token = generateFormToken('login');
 
+$is_show_title = true;
+$header_section = $active_page_data['header_section'];
+$header_image = $active_page_data['image'];
+$show_title = $active_page_data['show_title'];
+$image_text = $active_page_data['image_text'];
+$page_title = $active_page_data['title'];
+?>
+<section id="breadcrumb" class="<?=$active_page_data['css_page_class']?> py-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="block breadcrumb clearfix">
+					<ul class="breadcrumb m-0">
+						<li class="breadcrumb-item">
+							<a href="<?=SITE_URL?>">Home</a>
+						</li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0);"><?=$active_page_data['menu_name']?></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php
 //Header Image
-if($active_page_data['image'] != "") { ?>
-	<section>
-	  <div class="row">
+if($header_section == '1' && ($header_image || $show_title == '1' || $image_text)) { ?>
+	<section class="head-graphics <?=$active_page_data['css_page_class']?>" id="head-graphics" <?php if($header_image != ""){echo 'style="background-image: url('.SITE_URL.'images/pages/'.$header_image.')"';}?>>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block header-caption text-center">
+						<?php
+						if($show_title == '1') {
+							echo '<h1>'.$page_title.'</h1>';
+						}
+						if($image_text) {
+							echo '<p>'.$image_text.'</p>';
+						} ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php
+$is_show_title = false;
+} ?>
 
-		<?php
-		if($active_page_data['image_text'] != "") { ?>
-			<h2><?=$active_page_data['image_text']?></h2>
-		<?php
-		} ?>
-
-		<img src="<?=SITE_URL.'images/pages/'.$active_page_data['image']?>" alt="<?=$active_page_data['title']?>" width="100%">
-	  </div>
+<?php
+if($is_show_title && $show_title == '1') { ?>
+	<section id="head-graphics-title" class="<?=$active_page_data['css_page_class']?>">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="block heading page-heading text-center">
+					<h3><?=$page_title?></h3>
+				</div>
+			</div>
+		</div>
 	</section>
 <?php
 } ?>
@@ -27,82 +72,76 @@ if($active_page_data['image'] != "") { ?>
 <form action="controllers/user/login.php" method="post" id="login_form">
   <section>
 	<div class="container">
-	  <div class="row">
-		<div class="col-md-12">
-		  <div class="head user-area-head text-center">
-			<div class="h2"><strong>Login</strong></div>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-		  </div>
+	  <div class="row justify-content-center">
+		<div class="col-md-5">
+			<div class="card">
+				<div class="card-body">
+					<div class="col-md-12">
+					<div class="text-center clearfix">
+						<div class="form-horizontal form-login" role="form">
+							<div class="head user-area-head text-center">
+							<div class="h2"><strong>Login</strong></div>
+							<?=($active_page_data['content']?'<p>'.$active_page_data['content'].'</p>':'')?>
+							</div>
+							<div class="form-wrap clearfix">
+								<div class="form-group">
+									<label for="username" class="control-label">Email</label>
+									<div class="clearfix">
+									<input type="text" class="form-control text-center" id="username" name="username" placeholder="Enter email address" autocomplete="off">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password" class="control-label">Password</label>
+									<div class="clearfix">
+									<input type="password" class="form-control text-center" id="password" name="password" placeholder="Enter password" autocomplete="off">
+									</div>
+								</div>
+							
+								<?php
+								if($login_form_captcha == '1') { ?>
+									<div class="form-group">
+									<div id="g_form_gcaptcha"></div>
+									<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
+									</div>
+								<?php
+								} ?>
+								
+								<div class="form-group">
+									<div class="clearfix">
+									<button type="submit" class="btn btn-primary btn-lg">Login</button>
+									<input type="hidden" name="submit_form" id="submit_form" />
+									</div>
+								</div>
+							</div>
+								<div class="form-group text-center">
+								<p><a href="<?=$signup_link?>">Are you alredy not Member? click here to Signup</a></p>
+								<p><a href="lost_password">Forgotten your password?</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
 		</div>
 	  </div>
-	  <div class="row">
-		<div class="col-md-12">
-		  <div class="block clearfix cust-box">
-			<div class="form-horizontal form-login" role="form">
-			  <div class="form-wrap clearfix">
-				<div class="form-group">
-				  <label for="username" class="control-label">Enter email address</label>
-				  <div class="clearfix">
-					<input type="text" class="form-control cust-form-control w-100" id="username" name="username" placeholder="" autocomplete="off">
-				  </div>
-				</div>
-				<div class="form-group">
-				  <label for="password" class="control-label">Enter password</label>
-				  <div class="clearfix">
-					<input type="password" class="form-control cust-form-control w-100" id="password" name="password" placeholder="" autocomplete="off">
-				  </div>
-				</div>
-				
-				<?php
-				if($login_form_captcha == '1') { ?>
-				  <div class="form-group">
-					<div id="g_form_gcaptcha"></div>
-					<input type="hidden" id="g_captcha_token" name="g_captcha_token" value=""/>
-				  </div>
-				<?php
-				} ?>
-				  
-				<div class="form-group text-center">
-				  <div class="clearfix">
-					<button type="submit" class="btn btn-submit">Login</button>
-					<input type="hidden" name="submit_form" id="submit_form" />
-				  </div>
-				</div>
-			  </div>
-			  <div class="form-group text-center">
-				<a class="btn" href="<?=$signup_link?>">Are you alredy not Member? click here to Signup</a>
-				<a class="btn" href="lost_password">Forgotten your password?</a>
-			  </div>
-			</div>
-		  </div>
-		</div>
+	  <div class="row justify-content-center">
+		
 	  </div>
 
 	  <?php
 	  if($social_login=='1') { ?>
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<div class="head head-divider clarfix">
-					<div class="h2">or  Sign in Using</div>
-				</div>
-			</div>
-		</div>
-
 		<script type="text/javascript" src="social/js/oauthpopup.js"></script>
 		<script type="text/javascript">
 		jQuery(document).ready(function($){
 			//For Google
-			$('a.login').oauthpopup({
+			$('.p_google_auth').oauthpopup({
 				path: 'social/social.php?google',
 				width:650,
 				height:350,
 			});
-			$('a.google_logout').googlelogout({
-				redirect_url:'<?php echo $base_url; ?>social/logout.php?google'
-			});
-
+			
 			//For Facebook
-			$('#facebook').oauthpopup({
+			$('.p_facebook_auth').oauthpopup({
 				path: 'social/social.php?facebook',
 				width:1000,
 				height:1000,
@@ -110,25 +149,33 @@ if($active_page_data['image'] != "") { ?>
 		});
 		</script>
 
-		<div class="row">
-		<div class="col-md-12">
-		  <div class="block social text-center mt-3 mb-3">
-			<ul>
-			<?php
-			if($social_login_option=="g_f") { ?>
-				<li class="facebook"><a id="facebook" class="h4" href="javascript:void(0);"><i class="fa fa-facebook"></i>Facebook</a></li>
-				<li class="google"><a class="login h4" href="javascript:void(0);"><i class="fa fa-google-plus"></i>Google</a></li>
-			<?php
-			} elseif($social_login_option=="g") { ?>
-				<li class="google"><a class="login h4" href="javascript:void(0);"><i class="fa fa-google-plus"></i>Google</a></li>
-			<?php
-			} elseif($social_login_option=="f") { ?>
-				<li class="facebook"><a id="facebook" class="h4" href="javascript:void(0);"><i class="fa fa-facebook"></i>Facebook</a></li>
-			<?php
-			} ?>
-			</ul>
-		  </div>
-		</div>
+		<div id="signupbox2">
+			<div class="row justify-content-center">
+				<div class="col-md-7">
+					<div class="block text-center">
+						<div id="signupbox">
+							<div class="orsignup">
+								<div class="row">
+									<div class="btn_box dis_table_cell col-sm-12">
+										<?php
+										if($social_login_option=="g_f") { ?>
+											<a class="btn btn_md btn_fb facebook_auth" href="javascript:void(0);"><img src="<?=SITE_URL?>images/fb_img.png" alt=""></a>
+											<a class="btn btn_md btn_gplus google_auth" href="javascript:void(0);"><img src="<?=SITE_URL?>images/google_plus.png" alt=""></a>
+										<?php
+										} elseif($social_login_option=="g") { ?>
+											<a class="btn btn_md btn_gplus google_auth" href="javascript:void(0);"><img src="<?=SITE_URL?>images/google_plus.png" alt=""></a>
+										<?php
+										} elseif($social_login_option=="f") { ?>
+											<a class="btn btn_md btn_fb facebook_auth" href="javascript:void(0);"><img src="<?=SITE_URL?>images/fb_img.png" alt=""></a>
+										<?php
+										} ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	  <?php
 	  } ?>

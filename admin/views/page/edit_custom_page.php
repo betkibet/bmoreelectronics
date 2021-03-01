@@ -1,12 +1,5 @@
 <script type="text/javascript">
 function check_form(a){
-	if(a.menu_name.value.trim()=="") {
-		alert('Please enter menu name');
-		a.menu_name.focus();
-		return false;
-	}
-	<?php
-	if(!in_array($post['slug'],array("home"))) { ?>
 	if(a.title.value.trim()=="") {
 		alert('Please enter title');
 		a.title.focus();
@@ -16,17 +9,10 @@ function check_form(a){
 		a.url.focus();
 		return false;
 	}
-	<?php
+
+	if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
 	}
-	if(!$post['slug']) { ?>
-	if(a.description.value.trim()=="") {
-		alert('Please enter description');
-		a.description.focus();
-		a.description.value='';
-		return false;
-	}
-	<?php
-	} ?>
 }
 
 function get_c_b_d_type(type) {
@@ -177,13 +163,13 @@ function get_c_b_d_type(type) {
 											<label for="input">
 												Title :
 											</label>
-											<input type="text" class="form-control m-input" id="title" value="<?=($title?$title:$inbuild_page_data['title'])?>" name="title">
+											<input type="text" class="form-control m-input" id="title" value="<?=($title?$title:'')?>" name="title">
 										</div>
 										<div class="form-group m-form__group">
 											<div class="m-checkbox-list">
-												<label class="m-checkbox showhide_menu_url" <?=($menu_data['page_id']>0?'style="display:none;"':'')?>>
+												<label class="m-checkbox showhide_menu_url" <?=(isset($menu_data['page_id']) && $menu_data['page_id']>0?'style="display:none;"':'')?>>
 													<input type="checkbox" id="show_title" value="1" name="show_title" <?=($page_data['show_title']=='1'?'checked="checked"':'')?>>
-													Show Title.
+													Show Title
 													<span></span>
 												</label>
 											</div>
@@ -193,16 +179,21 @@ function get_c_b_d_type(type) {
 											<label for="input">CSS Main Class :</label>
 											<input type="text" class="form-control m-input" id="css_page_class" value="<?=$page_data['css_page_class']?>" name="css_page_class">
 										</div>
+										
+										<div class="form-group m-form__group">
+											<label for="input">CSS Body Class :</label>
+											<input type="text" class="form-control m-input" id="css_body_class" value="<?=$page_data['css_body_class']?>" name="css_body_class">
+										</div>
 											
 										<?php
 										if(!in_array($post['slug'],array("home"))) { ?>
 											<div class="form-group m-form__group">
 												<label for="input">
-	                        URL :
-	                      </label>
+													URL :
+												</label>
 												<input type="text" class="form-control m-input" id="url" value="<?=$finl_url?>" name="url">
 											</div>
-											<div class="form-group m-form__group">
+											<?php /*?><div class="form-group m-form__group">
 												<div class="m-checkbox-list">
 													<label class="m-checkbox showhide_menu_url" <?=($menu_data['page_id']>0?'style="display:none;"':'')?>>
 														<input type="checkbox" id="is_custom_url" value="1" name="is_custom_url" <?=($page_data['is_custom_url']=='1'?'checked="checked"':'')?>>
@@ -215,13 +206,13 @@ function get_c_b_d_type(type) {
 														<span></span>
 													</label>
 												</div>
-											</div>
+											</div><?php */?>
 										<?php
 										} ?>
 										<div class="form-group m-form__group">
 											<label for="input">
-                        Meta Title :
-                      </label>
+												Meta Title :
+											</label>
 											<input type="text" class="form-control m-input" id="meta_title" value="<?=$page_data['meta_title']?>" name="meta_title">
 										</div>
 										<div class="form-group m-form__group">
@@ -241,6 +232,17 @@ function get_c_b_d_type(type) {
 										//,'contact'
 										$slug_desc_not_show_array = array('blog','terms-and-conditions');
 										if(!in_array($post['slug'],$slug_desc_not_show_array)) { ?>
+										<div class="m-separator m-separator--dash m-separator--sm"></div>
+										<div class="form-group m-form__group">
+											<div class="m-checkbox-list">
+												<label class="m-checkbox">
+													<input type="checkbox" id="header_section" value="1" name="header_section" <?=($page_data['header_section']=='1'?'checked="checked"':'')?>>
+													Page Header
+													<span></span>
+												</label>
+											</div>
+										</div>
+										
 										<div class="form-group m-form__group">
 											<label for="fileInput">Header Image :</label>
 											<div class="custom-file">
@@ -263,6 +265,8 @@ function get_c_b_d_type(type) {
 											<label for="input">Header Image Text :</label>
 											<input type="text" class="form-control m-input" id="image_text" value="<?=$page_data['image_text']?>" name="image_text">
 										</div>
+										
+										<div class="m-separator m-separator--dash m-separator--sm"></div>
 										<div class="form-group m-form__group">
 											<label for="input">
 												Description :
@@ -272,6 +276,8 @@ function get_c_b_d_type(type) {
 										<?php
 										} ?>
 
+										<?php
+										if(!in_array($page_data['slug'],array("home"))) { ?>
 										<div class="m-form__group form-group">
 											<label for="">
 												Publish :
@@ -289,6 +295,10 @@ function get_c_b_d_type(type) {
 												</label>
 											</div>
 										</div>
+										<?php
+										} else {
+											echo '<input name="published" type="hidden" value="1">';
+										} ?>
 									</div>
 								</div>
 								<input type="hidden" name="id" value="<?=$page_data['id']?>" />

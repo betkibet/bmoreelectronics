@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_b_id'])) {
 	$query=mysqli_query($db,'DELETE FROM blog_posts_seo WHERE postID="'.$post['d_b_id'].'"');
@@ -39,9 +41,9 @@ if(isset($post['d_b_id'])) {
 			$msg="Image type must be png, jpg, jpeg, gif";
 			$_SESSION['success_msg']=$msg;
 			if($id) {
-				setRedirect(ADMIN_URL.'edit-post.php?id='.$id);
+				setRedirect(ADMIN_URL.'addedit_blog.php?id='.$id);
 			} else {
-				setRedirect(ADMIN_URL.'add-post.php');
+				setRedirect(ADMIN_URL.'addedit_blog.php');
 			}
 		}
 	}
@@ -65,7 +67,7 @@ if(isset($post['d_b_id'])) {
 			$msg='Sorry! something wrong updation failed.';
 			$_SESSION['error_msg']=$msg;
 		}
-		setRedirect(ADMIN_URL.'add-post.php?id='.$id);
+		setRedirect(ADMIN_URL.'addedit_blog.php?id='.$id);
 	} else {
 		$query=mysqli_query($db,'INSERT INTO blog_posts_seo(postTitle,meta_title,meta_desc,meta_keywords,postSlug,postDesc,postCont,postDate,image) values("'.$postTitle.'","'.$meta_title.'","'.$meta_desc.'","'.$meta_keywords.'","'.createSlug($postSlug).'","'.$postDesc.'","'.$postCont.'","'.$postDate.'","'.$image_name.'")');
 		if($query=="1") {
@@ -83,13 +85,13 @@ if(isset($post['d_b_id'])) {
 		} else {
 			$msg='Sorry! something wrong updation failed.';
 			$_SESSION['error_msg']=$msg;
-			setRedirect(ADMIN_URL.'add-post.php');
+			setRedirect(ADMIN_URL.'addedit_blog.php');
 		}
 	}
 	exit();
 } elseif($post['r_b_img_id']) {
 	mysqli_query($db,'UPDATE blog_posts_seo SET image="" WHERE postID='.$post['r_b_img_id']);
-	setRedirect(ADMIN_URL.'add-post.php?id='.$post['r_b_img_id']);
+	setRedirect(ADMIN_URL.'addedit_blog.php?id='.$post['r_b_img_id']);
 	exit();
 } elseif(isset($_REQUEST['d_c_id'])) {
 	$query=mysqli_query($db,'DELETE FROM blog_cats WHERE catID="'.$_REQUEST['d_c_id'].'"');
@@ -117,7 +119,7 @@ if(isset($post['d_b_id'])) {
 				$msg='Sorry! something wrong updation failed.';
 				$_SESSION['error_msg']=$msg;
 			}
-			setRedirect(ADMIN_URL.'add-category.php?id='.$id);
+			setRedirect(ADMIN_URL.'addedit_blogcategory.php?id='.$id);
 		} else {
 			$query=mysqli_query($db,'INSERT INTO blog_cats(catTitle,catSlug) VALUES("'.$catTitle.'","'.createSlug($catSlug).'")');
 			if($query=="1") {
@@ -127,7 +129,7 @@ if(isset($post['d_b_id'])) {
 			} else {
 				$msg='Sorry! something wrong updation failed.';
 				$_SESSION['error_msg']=$msg;
-				setRedirect(ADMIN_URL.'add-category.php');
+				setRedirect(ADMIN_URL.'addedit_blogcategory.php');
 			}
 		}
 		exit();

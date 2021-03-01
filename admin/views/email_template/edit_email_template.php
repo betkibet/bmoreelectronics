@@ -15,12 +15,7 @@ $(document).ready(function() {
 });
 
 function form_validation(a){
-	if(a.subject.value.trim()=="") {
-		alert('Please enter subject');
-		a.subject.focus();
-		a.subject.value='';
-		return false;
-	} else if(a.content.value.trim()=="") {
+	if(a.content.value.trim()=="") {
 		alert('Please enter email content');
 		a.content.focus();
 		a.content.value='';
@@ -39,6 +34,10 @@ function form_validation(a){
 	}
 	<?php
 	} ?>
+	
+	if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
+	}
 }
 </script>
 
@@ -80,20 +79,26 @@ function form_validation(a){
 											Template type :
 										</label>
 										<?php
-  										if($template_data['id']!="") { ?>
-  											<input type="text" class="form-control m-input" id="field-1" value="<?=$template_type_array[$template_data['type']]?>" readonly="" />
-  										<?php
-  										} else{ ?>
-  											<select class="form-control m-select2 m-select2-general" name="type" id="type">
-  												<option value="">Select Template Type</option>
-  												<?php
-  												foreach($template_type_final_array as $template_type_key=>$template_type_value){?>
-  													<option value="<?=$template_type_key?>"><?=$template_type_value?></option>
-  												<?php
-  												} ?>
-  											</select>
-  										<?php
-  										} ?>
+										if($template_data['id']!='' && $template_data['is_fixed'] == '1') { ?>
+											<input type="text" class="form-control m-input" value="<?=$template_type_array[$template_data['type']]?>" readonly="" />
+											<input type="hidden" name="is_fixed" value="1" />
+										<?php 
+										} else{ ?>
+											<select class="form-control m-select2 m-select2-general" name="type" id="type" required>
+												<option value="">Select Template Type</option>
+												<?php
+												if(!empty($order_status_list)) {
+													foreach($order_status_list as $order_status_data) {
+														$template_type_val = "order_".str_replace('-','_',$order_status_data['slug'])."_status";
+														$template_type_label = "Order ".$order_status_data['name']." Status"; ?>
+														<option value="<?=$template_type_val?>" <?php if($template_data['type'] == $template_type_val){echo 'selected="selected"';}?>><?=$template_type_label?></option>
+													<?php
+													}
+												} ?>
+											</select>
+											<input type="hidden" name="is_fixed" value="0" />
+										<?php 
+										} ?>
 										</div>
                    					    <div class="form-group m-form__group">
 											<label for="input">Subject</label>
@@ -121,7 +126,7 @@ function form_validation(a){
 										</div>
 
 										<?php
-										if(in_array($template_data['type'],$sms_sec_show_in_tmpl_array)) { ?>
+									if(in_array($template_data['type'],$sms_sec_show_in_tmpl_array) || ($template_data['id']=='' || $template_data['is_fixed'] != '1')) { ?>
 										<div class="form-group m-form__group">
 											<label for="published">SMS Section</label>
 											<div class="m-radio-inline">
@@ -190,114 +195,9 @@ function form_validation(a){
 	<!-- end::Footer -->
 </div>
 <!-- end:: Page -->
+
 <!-- begin::Scroll Top -->
 <div id="m_scroll_top" class="m-scroll-top">
 	<i class="la la-arrow-up"></i>
 </div>
 <!-- end::Scroll Top -->
-
-<!-- Old -->
-<!-- <div id="wrapper">
-    <header id="header" class="container">
-    	<?php /* include("include/admin_menu.php"); ?>
-    </header>
-
-	<section class="container" role="main">
-		<div class="row">
-            <article class="span12 data-block">
-				<header><h2>Edit Email template</h2></header>
-                <section>
-					<?php include('confirm_message.php');?>
-                    <div class="row-fluid">
-                        <div class="span9">
-                            <form role="form" action="controllers/email_template.php" class="form-horizontal form-groups-bordered" method="post" enctype="multipart/form-data" onSubmit="return form_validation(this);">
-                                <fieldset>
-
-									<div class="control-group">
-										<label class="control-label" for="input">Template type</label>
-										<div class="controls">
-										<?php
-										if($template_data['id']!="") { ?>
-											<input type="text" class="form-control" id="field-1" value="<?=$template_type_array[$template_data['type']]?>" readonly="" />
-										<?php
-										} else{ ?>
-											<select class="select2" name="type" id="type">
-												<option value="">Select Template Type</option>
-												<?php
-												foreach($template_type_final_array as $template_type_key=>$template_type_value){?>
-													<option value="<?=$template_type_key?>"><?=$template_type_value?></option>
-												<?php
-												} ?>
-											</select>
-										<?php
-										} ?>
-										</div>
-									</div>
-
-									<div class="control-group">
-									  <label class="control-label" for="input">Subject</label>
-									  <div class="controls">
-									  <input type="text" class="form-control" id="subject" value="<?=$template_data['subject']?>" name="subject"></div>
-									</div>
-
-									<div class="control-group">
-									  <label class="control-label" for="input">Copy</label>
-									  <div class="controls">
-									  <select class="form-control" name="varName" id="varName">
-										 <option value="">Select Constant to Copy</option>
-										 <?php
-										 foreach($constants_array as $constants_value) { ?>
-										 	<option value="<?=$constants_value?>"><?=$constants_value?></option>
-										 <?php
-										 } ?>
-									  </select>&nbsp;<input type="button" class="btn btn-alt btn-md btn-primary" id="copy-dynamic" style="cursor:pointer;" value="COPY">
-									  </div>
-									</div>
-
-									<div class="control-group">
-									  <label class="control-label" for="input">Email Content</label>
-									  <div class="controls">
-									  <textarea class="form-control wysihtml5" id="text_editor" name="content" rows="8"><?=$template_data['content']?></textarea>
-									  </div>
-									</div>
-
-									<?php
-									if(in_array($template_data['type'],$sms_sec_show_in_tmpl_array)) { ?>
-									<div class="control-group radio-inline">
-										<label class="control-label" for="published">SMS Section</label>
-										<div class="controls">
-											<label class="radio custom-radio">
-												<input type="radio" id="sms_status_on" name="sms_status" value="1" <?=($template_data['sms_status']==1?'checked="checked"':'')?>>
-												ON
-											</label>
-											<label class="radio custom-radio">
-												<input type="radio" id="sms_status_off" name="sms_status" value="0" <?=(intval($template_data['sms_status'])=='0'?'checked="checked"':'')?>>
-												OFF
-											</label>
-										</div>
-									</div>
-
-									<div class="control-group">
-									  <label class="control-label" for="input">SMS Content</label>
-									  <div class="controls">
-									  <textarea class="form-control" id="sms_content" name="sms_content" rows="5" cols="50"><?=$template_data['sms_content']?></textarea>
-									  </div>
-									</div>
-									<?php
-									} ?>
-
-									<div class="form-actions">
-                                        <button class="btn btn-alt btn-large btn-primary" type="submit" name="update">Submit</button>
-										<a href="email_templates.php" class="btn btn-alt btn-large btn-black">Back</a>
-                                    </div>
-								 </fieldset>
-								 <input type="hidden" name="id" value="<?=$template_data['id'] */ ?>" />
-                            </form>
-                        </div>
-                    </div>
-                </section>
-            </article>
-        </div>
-    </section>
-	<div id="push"></div>
-</div> -->

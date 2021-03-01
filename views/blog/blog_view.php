@@ -1,33 +1,32 @@
 <?php
 //Get data from model
 include("models/blog/blog.php"); ?>
-
+<div class="all_blog_detail_section">
 <section class="blog clearfix">
-  <div class="container">
-    <div class="row display-md-inline-flex">
-      <div class="col-md-9 float-none">
-        <div class="contain">
-          <?php
-      		//Get blog details based on slug of blog
-      		get_blog_details($blog_url);
-      		?>
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+        <?php
+		//Get blog details based on slug of blog
+		get_blog_details($blog_url);
+		?>
       </div>
       <?php
 	  if($blog_recent_posts == '1' || $blog_categories == '1') { ?>
-      <div class="col-md-3 float-none">
-        <div class="right-sidebar clearfix">
+      <div class="col-md-3 right-sidebar">
+        
           <?php
 		  //Get recent posts
 		  get_recent_posts($blog_recent_posts);
 		  
 		  //Get Catgories
-		  get_blog_categories($blog_categories); 
+		  get_blog_categories($blog_categories);  
 		  ?>
-        </div>
+        
       </div>
 	  <?php
 	  } ?>
     </div>
   </div>
 </section>
+</div> 

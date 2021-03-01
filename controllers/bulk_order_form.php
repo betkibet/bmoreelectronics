@@ -1,8 +1,12 @@
 <?php
 require_once("../admin/_config/config.php");
 require_once("../admin/include/functions.php");
+require_once("common.php");
 
 if(isset($post['submit_form'])) {
+	/*echo '<pre>';
+	print_r($post);
+	exit;*/
 	
 	$valid_csrf_token = verifyFormToken('bulk_order');
 	if($valid_csrf_token!='1') {
@@ -30,9 +34,10 @@ if(isset($post['submit_form'])) {
 	$zip_code=real_escape_string($post['zip_code']);
 	$company_name=real_escape_string($post['company_name']);
 	$content=real_escape_string($post['content']);
+	$quantity=real_escape_string($post['quantity']);
 	$imp_devices=implode(", ",$post['devices']);
-	if($name && $state && $email && $city && $zip_code && $company_name && $content) {
-		$query=mysqli_query($db,"INSERT INTO bulk_order_form(name, email, country, state, city, zip_code, devices, company_name, content, date) VALUES('".$name."','".$email."','".$country."','".$state."','".$city."','".$zip_code."','".$imp_devices."','".$company_name."','".$content."','".date('Y-m-d H:i:s')."')");
+	if($name && $state && $email && $city && $zip_code && $company_name && $content && $quantity) {
+		$query=mysqli_query($db,"INSERT INTO bulk_order_form(name, email, country, state, city, zip_code, devices, company_name, content, date, quantity) VALUES('".$name."','".$email."','".$country."','".$state."','".$city."','".$zip_code."','".$imp_devices."','".$company_name."','".$content."','".date('Y-m-d H:i:s')."','".$quantity."')");
 		$last_insert_id = mysqli_insert_id($db);
 		if($query=="1") {
 			$template_data = get_template_data('bulk_order_form_alert');
@@ -60,7 +65,9 @@ if(isset($post['submit_form'])) {
 				'{$zip_code}',
 				'{$company_name}',
 				'{$devices}',
-				'{$form_message}');
+				'{$form_message}',
+				'{$current_date_time}',
+				'{$quantity}');
 
 			$replacements = array(
 				$logo,
@@ -81,12 +88,19 @@ if(isset($post['submit_form'])) {
 				$post['zip_code'],
 				$post['company_name'],
 				$imp_devices,
-				$post['content']);
+				$post['content'],
+				format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')),
+				$quantity);
 
 			if(!empty($template_data)) {
 				$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
 				$email_body_text = str_replace($patterns,$replacements,$template_data['content']);
-				send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				//send_email($admin_user_data['email'], $email_subject, $email_body_text, $post['name'], $post['email']);
+				
+				$reply_to_data = array();
+				$reply_to_data['name'] = $post['name'];
+				$reply_to_data['email'] = $post['email'];
+				send_email($admin_user_data['email'], $email_subject, $email_body_text, FROM_NAME, FROM_EMAIL, array(), $reply_to_data);
 			}
 
 			//START email send to customer

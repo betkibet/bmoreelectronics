@@ -17,14 +17,16 @@
             <div class="m-portlet__head-caption">
               <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                  Mobile Models
+                  Models
                 </h3>
               </div>
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			    <?php
+				if($prms_model_add == '1') { ?>
                 <li class="m-portlet__nav-item">
-                  <a href="add_product.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                  <a href="edit_mobile.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
                       <i class="la la-plus"></i>
                       <span>
@@ -33,30 +35,29 @@
                     </span>
                   </a>
                 </li>
-                <?php /*?><li class="m-portlet__nav-item">
-                  <form action="controllers/mobile.php" method="POST">
-                    <input type="hidden" name="ids" id="ids" value="">
-                    <button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove">
-                      <span>
-                        <i class="la la-remove"></i>
-                        <span>
-                			Bulk Remove
-                        </span>
-                      </span>
-                    </button>
-                  </form>
-                </li><?php */?>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
           <div class="m-portlet__body">
 		  
-			<form method="get">
+			<form method="post">
 				<div class="form-group row">
-					<div class="col-lg-3">
-						<input type="text" class="form-control m-input" placeholder="Search By Title" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
+					<div class="col-lg-2">
+						<input type="text" class="form-control m-input" placeholder="Search By Title" name="filter_by" id="filter_by" value="<?=_dt_parse($post['filter_by'])?>" autocomplete="nope" maxlength="255">
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-2">
+						<select name="field_type" id="field_type" class="form-control m-input custom-select">
+							<option value=""> - Select Type - </option>
+							<option value="mobile" <?php if("mobile"==$post['field_type']){echo 'selected="selected"';}?>>Mobile</option>
+							<option value="tablet" <?php if("tablet"==$post['field_type']){echo 'selected="selected"';}?>>Tablet</option>
+							<option value="watch" <?php if("watch"==$post['field_type']){echo 'selected="selected"';}?>>Watch</option>
+							<option value="laptop" <?php if("laptop"==$post['field_type']){echo 'selected="selected"';}?>>Laptop</option>
+							<option value="other" <?php if("other"==$post['field_type']){echo 'selected="selected"';}?>>Other</option>
+						</select>
+					</div>
+					<div class="col-lg-2">
 						<select name="cat_id" id="cat_id" class="form-control m-input custom-select">
 							<option value=""> - Select Category - </option>
 							<?php
@@ -66,7 +67,7 @@
 							} ?>
 						</select>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-2">
 						<select name="brand_id" id="brand_id" class="form-control m-input custom-select">
 							<option value=""> - Select Brand - </option>
 							<?php
@@ -76,7 +77,7 @@
 							} ?>
 						</select>
 					</div>
-					<div class="col-lg-3">		
+					<div class="col-lg-2">		
 						<select name="device_id" id="device_id" class="form-control m-input custom-select">
 							<option value=""> - Select Device - </option>
 							<?php
@@ -86,13 +87,11 @@
 							} ?>
 						</select>
 					</div>
-				</div>
-				<div class="form-group row">
-					<div class="col-lg-3">
+					<div class="col-lg-2">
 						<button class="btn btn-alt btn-primary searchbx" type="submit" name="search">Search <i class="la la-search"></i></button>
 						<?php
-						if($post['filter_by'] || $post['cat_id'] || $post['brand_id'] || $post['device_id']) {
-							echo '<a href="mobile.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
+						if($post['filter_by'] || $post['cat_id'] || $post['brand_id'] || $post['device_id'] || $post['field_type']) {
+							echo '<a href="mobile.php?clear" class="btn btn-alt btn-danger ml-2 mt-2">Clear <i class="la la-remove"></i></a>';
 						} ?>
 					</div>
 				</div>
@@ -105,19 +104,41 @@
 				<div class="col-sm-12">
 					<form action="controllers/mobile.php" method="POST">
 						<input type="hidden" name="ids" id="ids" value="">
+						<input type="hidden" name="cat_id" value="<?=$post['cat_id']?>">
+						<input type="hidden" name="brand_id" value="<?=$post['brand_id']?>">
+						<input type="hidden" name="device_id" value="<?=$post['device_id']?>">
+						<input type="hidden" name="filter_by" value="<?=$post['filter_by']?>">
+						<input type="hidden" name="field_type" value="<?=$post['field_type']?>">
+						
+						<?php
+						if($prms_model_delete == '1') { ?>
 						<button class="btn btn-sm btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air bulk_remove" name="bulk_remove"><span><i class="la la-remove"></i><span>Bulk Remove</span></span></button>
-						<button class="btn btn-info" ><a href="javascript:void(0)" id="export-to-csv" style="text-decoration: none; color: #fff;">Export to csv</a></button>
+						<?php
+						} ?>
+						<button class="btn btn-sm btn-accept m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air m--margin-left-10" type="button" onclick="ExportModal();return false;" name="import"><span><i class="la la-download"></i><span> Import</span></span></button>
+						<?php
+						if($post['cat_id']) { ?>
+						<button class="btn btn-sm btn-info m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air m--margin-left-10" name="export"><span><i class="la la-upload"></i><span> Export</span></span></button>
+						<?php
+						} ?>
+						
+						<button class="btn btn-sm btn-accept m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air m--margin-left-10" type="button" onclick="ImportMetaModal();return false;"><i class="la la-download"></i> Import Meta</button>
+						<button class="btn btn-sm btn-info m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air m--margin-left-10" type="submit" name="export_meta"><i class="la la-upload"></i> Export Meta</button>				
 					</form>
-					<form action="controllers/mobile.php" method="post" id="export-form">
-						<input type="hidden" value='' id='hidden-type' name='ExportType'/>
-					  </form>
 				</div>
 			  </div>
 			  
               <div class="row">
                 <div class="col-sm-12">
                   <form action="controllers/mobile.php" method="post">
-                    <table class="table table-striped table-bordered table-hover table-checkable dataTable dtr-inline" <?php /*?>id="m_table_1"<?php */?>>
+				  
+				  	<input type="hidden" name="cat_id" value="<?=$post['cat_id']?>">
+					<input type="hidden" name="brand_id" value="<?=$post['brand_id']?>">
+					<input type="hidden" name="device_id" value="<?=$post['device_id']?>">
+					<input type="hidden" name="filter_by" value="<?=$post['filter_by']?>">
+					<input type="hidden" name="field_type" value="<?=$post['field_type']?>">
+					
+                    <table class="table table-bordered table-hover table-checkable dataTable dtr-inline" <?php /*?>id="m_table_1"<?php */?>>
                       <thead>
                         <tr>
                           <th width="10">
@@ -127,15 +148,43 @@
                             </label>
                           </th>
                           <th width="110">Icon</th>
-                          <th>Title</th>
-						  <th>Category</th>
-						  <th>Brand</th>
-                          <th>Device</th>
-                          <th>Price</th>
+						  <th width="50">
+						  <?php
+						  if($post['id_shorting'] == "asc") { ?>
+							<a href="?id_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">ID <?=($post['id_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['id_shorting'] == "desc" || $post['id_shorting'] == "") { ?>
+							<a href="?id_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">ID <?=($post['id_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?>
+						  </th>
+                          <th width="200">
+						  <?php
+						  if($post['title_shorting'] == "asc") { ?>
+							<a href="?title_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['title_shorting'] == "desc" || $post['title_shorting'] == "") { ?>
+							<a href="?title_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?>
+						  </th>
+						  <th>Category / Brand / Device</th>
+						  <?php
+						  if($post['device_id']) { ?>
                           <th width="100">
-                            Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
+							  <?php
+							  if($post['oid_shorting'] == "asc") { ?>
+								<a href="?oid_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+							  <?php
+							  } elseif($post['oid_shorting'] == "desc" || $post['oid_shorting'] == "") { ?>
+								<a href="?oid_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Order <?=($post['oid_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+							  <?php
+							  } ?>
+                              <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-save"></i></button>
                           </th>
-                          <th>Actions</th>
+						  <?php
+						  } ?>
+                          <th width="220">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -155,52 +204,67 @@
 								echo '<img src="../images/mobile/'.$device_data['model_img'].'" width="100" />';
 							} ?>
 						  </td>
-							<td><?=$device_data['title']?></td>
-							<td>
-							<?php
-							if($device_data['cat_title']!="") {
-								echo '<a href="edit_category.php?id='.$device_data['cat_id'].'">'.$device_data['cat_title'].'</a>';
-							} ?>
-							</td>
-							<td>
-							<?php
-							if($device_data['brand_title']!="") {
-								echo '<a href="edit_brand.php?id='.$device_data['brand_id'].'">'.$device_data['brand_title'].'</a>';
-							} ?>
-							</td>
-							<td>
-							<?php
-							if($device_data['device_title']!="") {
-								echo '<a href="edit_device.php?id='.$device_data['device_id'].'">'.$device_data['device_title'].'</a>';
-							} ?>
-							</td>
-        				  <td>
-                            <?=amount_fomat($device_data['price'])?>
+						  <td>
+						    <?=$device_data['id']?>
                           </td>
+							<td><a href="edit_mobile.php?id=<?=$device_data['id']?>"><?=$device_data['title']?></a></td>
+							<td>
+							<?php
+							$cat_brand_dev_title = '';
+							if($device_data['cat_title']!="") {
+								$cat_brand_dev_title .= '<a href="edit_category.php?id='.$device_data['cat_id'].'">'.$device_data['cat_title'].'</a> / ';
+							} else {
+								$cat_brand_dev_title .= ' - / ';
+							}
+							if($device_data['brand_title']!="") {
+								$cat_brand_dev_title .= '<a href="edit_brand.php?id='.$device_data['brand_id'].'">'.$device_data['brand_title'].'</a> / ';
+							} else {
+								$cat_brand_dev_title .= ' - / ';
+							}
+							if($device_data['device_title']!="") {
+								$cat_brand_dev_title .= '<a href="edit_device.php?id='.$device_data['device_id'].'">'.$device_data['device_title'].'</a>';
+							} else {
+								$cat_brand_dev_title .= ' - ';
+							}
+							echo $cat_brand_dev_title; ?>
+							</td>
+						  <?php
+						  if($post['device_id']) { ?>
                           <td>
                             <input type="text" class="m-input--square form-control m-input" id="ordering<?=$device_data['id']?>" value="<?=$device_data['ordering']?>" name="ordering[<?=$device_data['id']?>]">
                           </td>
+						  <?php
+						  } ?>
                           <td Width="190">
                             <?php
 							if($device_data['published']==1) {
-								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Published</button></a>';
+								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Published</button></a>';
 							} elseif($device_data['published']==0) {
-								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Unpublished</button></a>';
+								echo '<a href="controllers/mobile.php?p_id='.$device_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Unpublished</button></a>';
 							}
-							?>
-                            <a href="add_product.php?id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-        					<a href="controllers/mobile.php?d_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
-							<a href="controllers/mobile.php?c_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('Are you sure to copy this model?')"><i class="fa fa-copy"></i></a>
+							
+							if($prms_model_edit == '1') { ?>
+                            <a href="edit_mobile.php?id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
+							<?php
+							}
+							if($prms_model_delete == '1') { ?>
+        					<a href="controllers/mobile.php?d_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure to delete this record?')"><i class="la la-trash"></i></a>
+							<?php
+							} ?>
+							<a href="controllers/mobile.php?c_id=<?=$device_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('Are you sure to copy this model?')"><i class="la la-copy"></i></a>
                           </td>
                         </tr>
                         <?php }
-                        }?>
+                        } ?>
                       </tbody>
                     </table>
                   </form>
                 </div>
               </div>
-              <?php echo $pages->page_links(); ?>
+              <?php
+			  $current_url_params = get_all_get_params();
+			  $current_url_params = ($current_url_params?$current_url_params.'&':'?');
+			  echo $pages->page_links($current_url_params); ?>
             </div>
           </div>
         </div>
@@ -222,14 +286,102 @@
 </div>
 <!-- end::Scroll Top -->
 
+<div class="modal fade" id="export_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document" style="min-width:500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Model(s) Import</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="controllers/mobile.php" method="POST" enctype="multipart/form-data">
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="recipient-name" class="form-control-label">Select File</label>
+					<input type="file" class="form-control" id="file_name" name="file_name">
+				</div>
+				<div class="form-group">
+					<label>Choose Type To Download Sample File</label>
+					<div class="controls">
+						<select name="cat_d_type" id="cat_d_type" class="form-control" style="width:100px; display:inline;">
+							<option value="mobile">Mobile</option>
+							<option value="tablet">Tablet</option>
+							<option value="watch">Watch</option>
+							<option value="laptop">Laptop</option>
+							<option value="other">Other</option>
+						</select>
+
+						<a href="sample_files/models-mobile-sample-file.csv" class="btn btn-md btn-success sample_file_d_link" style="margin-left:3px;"><i class="la la-download"></i> Download Sample File</a>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<!--<a href="sample_files/sample_file.csv" class="btn btn-sm btn-success"><i class="la la-download"></i> Download Sample File</a>
+					<br />-->
+					<small>Models icon you need to upload in this folder by FTP/Cpanel (<?=CP_ROOT_PATH?>/images/mobile)</small>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary" name="import">IMPORT</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="import_meta_modal" tabindex="-1" role="dialog" aria-labelledby="import_meta_modal_lbl" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document" style="min-width:500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="import_meta_modal_lbl">Model(s) Meta Import</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="controllers/mobile.php" method="POST" enctype="multipart/form-data">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label">Select File</label>
+						<input type="file" class="form-control" id="file_name" name="file_name">
+					</div>
+					<div class="form-group">
+						<a href="sample_files/sample_file_for_meta.csv" class="btn btn-md btn-success"><i class="la la-download"></i> Download Sample File</a>
+						<br />
+						<small>Models icon you need to upload in this folder by FTP/Cpanel (<?=CP_ROOT_PATH?>/images/mobile)</small>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary" name="import_meta">IMPORT</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
+function ExportModal() {
+	jQuery(document).ready(function($) {
+		$('#export_modal').modal({backdrop: 'static',keyboard: false});
+	});
+}
+
+function ImportMetaModal() {
+	jQuery(document).ready(function($) {
+		$('#import_meta_modal').modal({backdrop: 'static',keyboard: false});
+	});
+}
+
 jQuery(document).ready(function($) {
 	$('.searchbx').on('click', function(e) {
 		var val = document.getElementById("filter_by").value;
 		var cat_id = document.getElementById("cat_id").value;
 		var brand_id = document.getElementById("brand_id").value;
 		var device_id = document.getElementById("device_id").value;
-		if(val.trim()=="" && cat_id=="" && brand_id=="" && device_id=="") {
+		var field_type = document.getElementById("field_type").value;
+		if(val.trim()=="" && cat_id=="" && brand_id=="" && device_id=="" && field_type=="") {
 			alert('Please enter Title or Select value from dropdowns');
 			return false;
 		}
@@ -283,6 +435,36 @@ jQuery(document).ready(function($) {
 			$('#ids').val(values);
 		}
 	});
+	
+	$("#cat_d_type").on('change', function(e) {
+		var val = $(this).val();
+		
+		var sample_file_path;
+
+		if(val == "mobile") {
+			sample_file_path = "sample_files/models-mobile-sample-file.csv";
+		}
+		if(val == "tablet") {
+			sample_file_path = "sample_files/models-tablet-sample-file.csv";
+		}
+		if(val == "watch") {
+			sample_file_path = "sample_files/models-watch-sample-file.csv";
+		}
+		if(val == "laptop") {
+			sample_file_path = "sample_files/models-laptop-sample-file.csv";
+		}
+		if(val == "other") {
+			sample_file_path = "sample_files/models-other-sample-file.csv";
+		}
+		if(sample_file_path) {
+			$(".sample_file_d_link").show();
+			$(".sample_file_d_link").attr("href", sample_file_path);
+		} else {
+			$(".sample_file_d_link").hide();
+			$(".sample_file_d_link").attr("href", "");
+		}
+	});
+	
 });
 
 function clickontoggle(id) {
@@ -302,18 +484,4 @@ function clickontoggle(id) {
 		}
 	});
 }
-$(document).ready(function() {
-jQuery('#export-to-csv').bind("click", function() {
-var target = $(this).attr('id');
-switch(target) {
-	case 'export-to-csv' :
-	$('#hidden-type').val(target);
-	//alert($('#hidden-type').val());
-	$('#export-form').submit();
-	$('#hidden-type').val('');
-	break
-}
-});
-});
-
 </script>

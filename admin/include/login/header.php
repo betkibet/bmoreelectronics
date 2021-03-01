@@ -1,6 +1,7 @@
 <?php
 include("_config/config.php");
-include("include/functions.php"); ?>
+include("include/functions.php");
+is_allowed_ip(); ?>
 
 <!DOCTYPE html>
 <!--[if IE 8]>    <html class="no-js ie8 ie" lang="en"> <![endif]-->
@@ -31,14 +32,9 @@ include("include/functions.php"); ?>
   <link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
   <!--end::Base Styles -->
 
-	<!-- Styles -->
-	<!-- <link rel='stylesheet' type='text/css' href='css/sangoma-purple.css'> -->
-
-	<!-- JS Libs -->
-	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery.js"><\/script>')</script> -->
-
-	<!-- <script src="js/libs/modernizr.js"></script>
-	<script src="js/libs/selectivizr.js"></script> -->
+	<?php
+	if($favicon_icon) {
+		echo '<link rel="shortcut icon" href="'.SITE_URL.'images/'.$favicon_icon.'" />';
+	} ?>
 </head>
 <body  class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">

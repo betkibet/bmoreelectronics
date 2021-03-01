@@ -1,6 +1,7 @@
 <?php
 require_once("../../admin/_config/config.php");
 require_once("../../admin/include/functions.php");
+require_once("../common.php");
 
 $user_id = $_SESSION['user_id'];
 if($user_id<=0) {
@@ -12,8 +13,21 @@ if(isset($post['submit_form'])) {
 	$first_name = real_escape_string($post['first_name']);
 	$last_name = real_escape_string($post['last_name']);
 	$email = real_escape_string($post['email']);
-	$phone = preg_replace("/[^\d]/", "", $post['phone']);
+	$phone = preg_replace("/[^\d]/", "", $post['cell_phone']);
 	$name = $first_name.' '.$last_name;
+	$unsubscribe = $post['unsubscribe'];
+	
+	$company_name = real_escape_string($post['company_name']);
+	$phone_c_code = $post['phone_c_code'];
+	//$shipping_first_name = real_escape_string($post['shipping_first_name']);
+	//$shipping_last_name = real_escape_string($post['shipping_last_name']);
+	//$shipping_company_name = real_escape_string($post['shipping_company_name']);
+	//$shipping_phone = preg_replace("/[^\d]/", "", $post['shipping_phone']);
+	//$shipping_phone_c_code = $post['shipping_phone_c_code'];
+	$use_shipping_adddress_prefilled = $post['use_shipping_adddress_prefilled'];
+	$use_payment_method_prefilled = $post['use_payment_method_prefilled'];
+	$email_preference_alert = $post['email_preference_alert'];
+	$payment_method_details = real_escape_string(json_encode(array('my_payment_option'=>$post['payment_method'], 'data'=>$post['data'])));
 	
 	$valid_csrf_token = verifyFormToken('profile');
 	if($valid_csrf_token!='1') {
@@ -24,7 +38,7 @@ if(isset($post['submit_form'])) {
 	}
 	
 	if($first_name && $last_name && $email && $phone) {
-		$get_userdata=mysqli_query($db,'SELECT * FROM users WHERE email="'.$email.'" AND id!="'.$post['id'].'"');
+		$get_userdata=mysqli_query($db,'SELECT * FROM users WHERE email="'.$email.'" AND id!="'.$post['id'].'" AND user_type="user"');
 		$user_data=mysqli_fetch_assoc($get_userdata);
 		if(!empty($user_data)) {
 			$msg='This email address already used so please use different email address.';
@@ -51,11 +65,32 @@ if(isset($post['submit_form'])) {
 				exit();
 			}
 		}
-
-		$query=mysqli_query($db,"UPDATE `users` SET `name`='".$name."',`first_name`='".$first_name."',`last_name`='".$last_name."',`phone`='".$phone."',`email`='".$email."',`address`='".real_escape_string($post['address'])."',`address2`='".real_escape_string($post['address2'])."',`city`='".real_escape_string($post['city'])."',`state`='".real_escape_string($post['state'])."',`postcode`='".real_escape_string($post['postcode'])."',`username`='".$email."',`update_date`='".date('Y-m-d H:i:s')."'".$imageupdate." WHERE id='".$post['id']."'");
+		
+				//,`shipping_first_name`='".$shipping_first_name."',`shipping_last_name`='".$shipping_last_name."',`shipping_company_name`='".$shipping_company_name."',`shipping_phone`='".$shipping_phone."',`shipping_country_code`='".$shipping_phone_c_code."'
+		$query=mysqli_query($db,"UPDATE `users` SET `unsubscribe`='".$unsubscribe."',`name`='".$name."',`first_name`='".$first_name."',`last_name`='".$last_name."',`phone`='".$phone."',`email`='".$email."',`address`='".real_escape_string($post['address'])."',`address2`='".real_escape_string($post['address2'])."',`city`='".real_escape_string($post['city'])."',`state`='".real_escape_string($post['state'])."',`postcode`='".real_escape_string($post['postcode'])."',`username`='".$email."',`update_date`='".date('Y-m-d H:i:s')."',`company_name`='".$company_name."',`country_code`='".$phone_c_code."',`use_shipping_adddress_prefilled`='".$use_shipping_adddress_prefilled."',`use_payment_method_prefilled`='".$use_payment_method_prefilled."',`email_preference_alert`='".$email_preference_alert."',`payment_method_details`='".$payment_method_details."'".$imageupdate." WHERE id='".$post['id']."'");
 		if($query=="1") {
+			
+			if($post['profl_password']!="" && $post['profl_password']==$post['profl_password2']) {
+				$query=mysqli_query($db,"UPDATE `users` SET `password`='".md5($post['profl_password'])."' WHERE id='".$post['id']."'");
+				if($query=="1") {
+					unset($_SESSION['login_user']);
+					unset($_SESSION['user_id']);
+					$msg = 'Password has been successfully changed';
+					setRedirectWithMsg($return_url,$msg,'success');
+					exit();
+				}
+			} elseif($post['profl_password']!="") {
+				$msg = 'New password and confirm password not matched.';
+				setRedirectWithMsg($return_url,$msg,'warning');
+				exit();
+			}
+			
 			$msg = 'Customer profile has been successfully updated';
 			setRedirectWithMsg($return_url,$msg,'success');
+			exit();
+		} else {
+			$msg = 'Something went wrong! Updation failed so please try again OR contact with support team.';
+			setRedirectWithMsg($return_url,$msg,'warning');
 			exit();
 		}
 	}

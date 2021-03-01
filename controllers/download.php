@@ -1,4 +1,6 @@
 <?php
+require_once("common.php");
+
 $download_link = $_REQUEST['download_link'];
 if($_REQUEST['download_link']!="") {
 	if(function_exists('mime_content_type')) {

@@ -75,7 +75,7 @@ function SelectPage(page) {
 											<input type="text" class="form-control m-input" id="url" value="<?=$menu_data['url']?>" name="url">
 										</div>
 										<div class="form-group m-form__group">
-											<div class="m-checkbox-list">
+											<div class="m-checkbox-inline m--margin-top-5">
 												<label class="m-checkbox showhide_menu_url" <?=($menu_data['page_id']>0?'style="display:none;"':'')?>>
 													<input type="checkbox" id="is_custom_url" value="1" name="is_custom_url" <?=($menu_data['is_custom_url']=='1'?'checked="checked"':'')?>>
 													Custom Url.
@@ -88,10 +88,28 @@ function SelectPage(page) {
 												</label>
 											</div>
 										</div>
+										<?php /*?><div class="form-group m-form__group">
+											<div class="m-checkbox-list">
+												<label class="m-checkbox showhide_menu_url" <?=($menu_data['page_id']>0?'style="display:none;"':'')?>>
+													<input type="checkbox" id="is_custom_url" value="1" name="is_custom_url" <?=($menu_data['is_custom_url']=='1'?'checked="checked"':'')?>>
+													Custom Url.
+													<span></span>
+												</label>
+												<label class="m-checkbox">
+													<input type="checkbox" id="is_open_new_window" value="1" name="is_open_new_window" <?=($menu_data['is_open_new_window']=='1'?'checked="checked"':'')?>>
+													Is Open New Window
+													<span></span>
+												</label>
+											</div>
+										</div><?php */?>
 										<div class="form-group m-form__group">
 											<label for="input">Name :</label>
 											<input type="text" class="form-control m-input" id="menu_name" value="<?=$menu_data['menu_name']?>" name="menu_name">
 										</div>
+										<div class="form-group m-form__group">
+										<label for="input">Custom Body Class :</label>
+										<input type="text" class="form-control m-input" id="css_body_class" value="<?=$menu_data['css_body_class']?>" name="css_body_class">
+									</div>
 										<div class="form-group m-form__group">
 											<label for="input">Custom CSS Class :</label>
 											<input type="text" class="form-control m-input" id="css_menu_class" value="<?=$menu_data['css_menu_class']?>" name="css_menu_class">
@@ -102,7 +120,7 @@ function SelectPage(page) {
 										</div>
 										<div class="form-group m-form__group">
 											<label for="input">Parent Menu :</label>
-											<select class="form-control m-select2 m-select2-general	" name="parent" id="parent">
+											<select class="form-control m-select2 m-select2-general-clear" name="parent" id="parent">
 												<option value=""> -Select- </option>
 												<?php
 												//Fetch page list

@@ -4,6 +4,26 @@ $file_name="menu";
 //Header section
 require_once("include/header.php");
 
+if(isset($_GET['position']) && $_GET['position']) {
+	$_SESSION['menu_filter_data'] = array('position'=>$_GET['position']);
+	//setRedirect(ADMIN_URL.'menu.php');
+}
+
+if(isset($_POST['search'])) {
+	$_SESSION['menu_filter_data'] = array('position'=>$post['position']);
+	setRedirect(ADMIN_URL.'menu.php');
+}
+
+if(isset($_GET['clear'])) {
+	unset($_SESSION['menu_filter_data']);
+	setRedirect(ADMIN_URL.'menu.php');
+}
+
+if(isset($_SESSION['menu_filter_data'])) {
+	$menu_filter_data = $_SESSION['menu_filter_data'];
+	$post['position'] = $menu_filter_data['position'];
+}
+
 $menu_position = $post['position'];
 
 //Fetch data list of pages
@@ -21,7 +41,4 @@ function get_parent_menu_data($id) {
 }
 
 //Template file
-require_once("views/menu/menu.php");
-
-//Footer section
-// require_once("include/footer.php"); ?>
+require_once("views/menu/menu.php"); ?>

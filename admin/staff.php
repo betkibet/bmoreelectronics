@@ -10,7 +10,7 @@ $admin_p_data = mysqli_fetch_assoc($admin_p_query);
 $pages->set_total($admin_p_data['num_of_admins']);
 
 //Fetch admins data
-$query=mysqli_query($db,"SELECT * FROM admin WHERE type!='super_admin' ".$pages->get_limit()."");
+$query=mysqli_query($db,"SELECT a.*, sg.name AS group_name FROM admin AS a LEFT JOIN staff_groups AS sg ON sg.id=a.group_id WHERE a.type!='super_admin' ".$pages->get_limit()."");
 
 //Template file
 require_once("views/staff/staff.php");

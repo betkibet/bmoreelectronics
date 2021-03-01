@@ -1,6 +1,7 @@
 <?php
 require_once("../admin/_config/config.php");
 require_once("../admin/include/functions.php");
+require_once("common.php");
 
 if(isset($post['submit_quote'])) {
 	if($post['quote_make']!="" && $post['quote_device']!="" && $post['quote_model']!="") {
@@ -13,3 +14,4 @@ if(isset($post['submit_quote'])) {
 	exit();
 }
 ?>
+

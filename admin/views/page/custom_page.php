@@ -31,6 +31,8 @@
             </div>
             <div class="m-portlet__head-tools">
               <ul class="m-portlet__nav">
+			  	<?php
+				if($prms_page_add == '1') { ?>
                 <li class="m-portlet__nav-item">
                   <a href="edit_custom_page.php" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
                     <span>
@@ -41,6 +43,8 @@
                     </span>
                   </a>
                 </li>
+				<?php
+				} ?>
               </ul>
             </div>
           </div>
@@ -50,21 +54,22 @@
 			  <div class="row">
                 <div class="col-sm-12">
                   <div id="m_table_1_filter" class="dataTables_filter float-left">
-                    <form method="get">
+                    <form method="post">
                         <div class="input-group">
-                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=$post['filter_by']?>" autocomplete="nope">
-						  	
-                          <button class="btn btn-alt btn-primary ml-2 searchbx" type="submit">Search <i class="la la-search"></i></button>
+                          <input type="search" class="form-control m-input" placeholder="Title" name="filter_by" id="filter_by" value="<?=_dt_parse($post['filter_by'])?>" autocomplete="nope">
+                          <button class="btn btn-alt btn-primary ml-2 searchbx" name="search" type="submit">Search <i class="la la-search"></i></button>
                           <?php
 						  if($post['filter_by']!="") {
-          					echo '<a href="custom_page.php" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
+          					echo '<a href="custom_page.php?clear" class="btn btn-alt btn-danger ml-2">Clear <i class="la la-remove"></i></a>';
 						  } ?>
                         </div>
                     </form>
                   </div>
                 </div>
               </div>
-
+			  
+			  <?php
+			  if($prms_page_delete == '1') { ?>
 			  <div class="row m--margin-top-20">
 				<div class="col-sm-12">
 					<form action="controllers/custom_page.php" method="POST">
@@ -73,6 +78,8 @@
 					</form>
 				</div>
 			  </div>
+			  <?php
+			  } ?>
 			  
               <div class="row">
                 <div class="col-sm-12">
@@ -86,32 +93,32 @@
                               <span></span>
                             </label>
                         </th>
-                        <th width="60"># 
-						<?php
-						if($post['id_shorting'] == "asc" || $post['id_shorting'] == "") { ?>
-							<a href="?id_shorting=desc<?=($post['title_shorting']?"&title_shorting=".$post['title_shorting']:"").($post['filter_by']?"&filter_by=".$post['filter_by']:"")?>"><i class="la la-arrow-down" aria-hidden="true"></i></a>
-						<?php
-						} elseif($post['id_shorting'] == "desc") { ?>
-							<a href="?id_shorting=asc<?=($post['title_shorting']?"&title_shorting=".$post['title_shorting']:"").($post['filter_by']?"&filter_by=".$post['filter_by']:"")?>"><i class="la la-arrow-up" aria-hidden="true"></i></a>
-						<?php
-						} ?>
+                        <th width="60">
+						  <?php
+						  if($post['id_shorting'] == "asc") { ?>
+							<a href="?id_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>"># <?=($post['id_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['id_shorting'] == "desc" || $post['id_shorting'] == "") { ?>
+							<a href="?id_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>"># <?=($post['id_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?>
 						</th>
-                        <th>Title
-						<?php
-						if($post['title_shorting'] == "asc" || $post['title_shorting'] == "") { ?>
-							<a href="?title_shorting=desc<?=($post['id_shorting']?"&id_shorting=".$post['id_shorting']:"").($post['filter_by']?"&filter_by=".$post['filter_by']:"")?>"><i class="la la-arrow-down" aria-hidden="true"></i></a>
-						<?php
-						} elseif($post['title_shorting'] == "desc") { ?>
-							<a href="?title_shorting=asc<?=($post['id_shorting']?"&id_shorting=".$post['id_shorting']:"").($post['filter_by']?"&filter_by=".$post['filter_by']:"")?>"><i class="la la-arrow-up" aria-hidden="true"></i></a>
-						<?php
-						} ?>
+                        <th>
+						  <?php
+						  if($post['title_shorting'] == "asc") { ?>
+							<a href="?title_shorting=desc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-up"></i>':'')?></a>
+						  <?php
+						  } elseif($post['title_shorting'] == "desc" || $post['title_shorting'] == "") { ?>
+							<a href="?title_shorting=asc<?=$url_params?>" title="<?=$shorting_label?>">Title <?=($post['title_shorting']!=''?'<i class="fas fa-caret-down"></i>':'')?></a>
+						  <?php
+						  } ?>
 						</th>
                         <th>SEF Url</th>
                         <th>Meta Title</th>
 						<th>Meta Desc</th>
 						<th>Meta Keywords</th>			
                         <?php /*?><th width="100">
-                          Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-save"></i></button>
+                          Order <button type="submit" name="sbt_order" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-save"></i></button>
                         </th><?php */?>
                         <th>Actions</th>
                       </tr>
@@ -153,7 +160,7 @@
                         $num_rows = mysqli_num_rows($query);
                         if($num_rows>0) {
                           while($page_data=mysqli_fetch_assoc($query)) {
-                          $position_array = (array)json_decode($page_data['position']);
+                          $position_array = (array)json_decode((isset($page_data['position'])?$page_data['position']:''));
                           //$imp_position = ucwords(str_replace("_"," ",implode(", ",$position_array)));
                       ?>
                       <tr>
@@ -164,33 +171,33 @@
                             </label>
                           </td>
                         <td width="20"><?=$page_data['id']?></td>
-      									<td><?=$page_data['title']?></td>
-      									<td><a href="<?=SITE_URL.$page_data['url']?>" target="_blank"><?=$page_data['url']?></a></td>
-      									<td><?=$page_data['meta_title']?></td>
-      									<td><?=$page_data['meta_keywords']?></td>
-      									<td><?=$page_data['meta_desc']?></td>
+						<td><?=$page_data['title']?></td>
+						<td><a href="<?=SITE_URL.$page_data['url']?>" target="_blank"><?=$page_data['url']?></a></td>
+						<td><?=$page_data['meta_title']?></td>
+						<td><?=$page_data['meta_keywords']?></td>
+						<td><?=$page_data['meta_desc']?></td>
       									
                         <?php /*?><td>
                           <input type="text" class="m-input--square form-control m-input" id="ordering<?=$page_data['id']?>" value="<?=$page_data['ordering']?>" name="ordering[<?=$page_data['id']?>]">
                         </td><?php */?>
                         <td Width="190">
-
+                            <?php
+							if($page_data['published']==1) {
+								echo '<a href="controllers/custom_page.php?p_id='.$page_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Published</button></a>';
+							} elseif($page_data['published']==0) {
+								echo '<a href="controllers/custom_page.php?p_id='.$page_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-xs" style="pointer-events: none;">Unpublished</button></a>';
+							}
+							if($prms_page_edit == '1') { ?>
+                          	<a href="edit_custom_page.php?id=<?=$page_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"><i class="la la-edit"></i></a>
                           <?php
-      										if($page_data['published']==1) {
-      											echo '<a href="controllers/custom_page.php?p_id='.$page_data['id'].'&published=0"><button class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Published</button></a>';
-      										} elseif($page_data['published']==0) {
-      											echo '<a href="controllers/custom_page.php?p_id='.$page_data['id'].'&published=1"><button class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air btn-sm" style="pointer-events: none;">Unpublished</button></a>';
-      										} ?>
-
-                          <a href="edit_custom_page.php?id=<?=$page_data['id']?>&slug=<?=$page_data['slug']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill btn-sm"><i class="fa fa-pencil-alt"></i></a>
-
-                          <?php
+						  }
+						  if($prms_page_delete == '1') {
                           //if(!in_array($page_data['slug'],$inbuild_page_slug)) { ?>
-                            <a href="controllers/custom_page.php?d_id=<?=$page_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill btn-sm" onclick="return confirm('are you sure to delete this record?')"><i class="fa fa-trash"></i></a>
-      										<?php
-      										//}
-      										?>
-
+                            <a href="controllers/custom_page.php?d_id=<?=$page_data['id']?>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" onclick="return confirm('are you sure to delete this record?')"><i class="la la-trash"></i></a>
+							<?php
+							//}
+							}
+							?>
                         </td>
                       </tr>
                       <?php }
@@ -200,7 +207,10 @@
                 </form>
                 </div>
               </div>
-              <?php echo $pages->page_links(); ?>
+              <?php
+			  $current_url_params = get_all_get_params();
+			  $current_url_params = ($current_url_params?$current_url_params.'&':'?');
+			  echo $pages->page_links($current_url_params); ?>
             </div>
           </div>
         </div>

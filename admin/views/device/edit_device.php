@@ -1,11 +1,5 @@
 <script type="text/javascript">
 function check_form(a){
-	/*if(a.brand_id.value.trim()==""){
-		alert('Please select device brand');
-		a.brand_id.focus();
-		return false;
-	}*/
-
 	if(a.title.value.trim()==""){
 		alert('Please enter title');
 		a.title.focus();
@@ -20,22 +14,9 @@ function check_form(a){
 		return false;
 	}
 
-	<?php /*?><?php
-	if($device_data['device_img']=="") { ?>
-	var str_image = a.device_img.value.trim();
-	if(str_image == "") {
-		alert('Please select image');
-		return false;
+	if(jQuery('.summernote').summernote('codeview.isActivated')) {
+		jQuery('.summernote').summernote('codeview.deactivate');
 	}
-	<?php
-	} ?>
-
-	if(a.description.value.trim()==""){
-		alert('Please enter description');
-		a.description.focus();
-		a.description.value='';
-		return false;
-	}<?php */?>
 }
 
 function checkFile(fieldObj) {
@@ -50,8 +31,8 @@ function checkFile(fieldObj) {
 	var FileSize = fieldObj.files[0].size;
 	var FileSizeMB = (FileSize/10485760).toFixed(2);
 
-	if((FileExt != "gif" && FileExt != "png" && FileExt != "jpg" && FileExt != "jpeg")){
-	    var error = "Please make sure your file is in png | jpg | jpeg | gif format.\n\n";
+	if((FileExt != "gif" && FileExt != "png" && FileExt != "jpg" && FileExt != "jpeg" && FileExt != "svg")){
+	    var error = "Please make sure your file is in png | jpg | jpeg | gif | svg format.\n\n";
 	    alert(error);
 		document.getElementById(id).value = '';
 	    return false;
@@ -107,7 +88,7 @@ function checkFile(fieldObj) {
 										</div><?php */?>
 										<div class="form-group m-form__group">
 											<label for="input">
-												Device Title :
+												Title :
 											  </label>
 											<input type="text" class="form-control m-input" id="title" value="<?=$device_data['title']?>" name="title">
 										</div>
@@ -138,7 +119,7 @@ function checkFile(fieldObj) {
 										</div>
 										
 										<div class="form-group m-form__group">
-											<label for="fileInput">Device Picture :</label>
+											<label for="fileInput">Image :</label>
 											<div class="custom-file">
 												<input type="file" id="device_img" class="custom-file-input" name="device_img" onChange="checkFile(this);" accept="image/*">
 												<label class="custom-file-label" for="image">
@@ -156,14 +137,39 @@ function checkFile(fieldObj) {
                     					</div>
 										
 										<div class="form-group m-form__group">
+											<label for="fileInput">Icon Image :</label>
+											<div class="custom-file">
+												<input type="file" id="device_icon" class="custom-file-input" name="device_icon" onChange="checkFile(this);" accept="image/*">
+												<label class="custom-file-label" for="image">
+													Choose file
+												</label>
+											</div>
+											<?php
+											if($device_data['device_icon']!="") { ?>
+												<img src="../images/device/<?=$device_data['device_icon']?>" width="100" class="my-md-2">
+												<a class="btn btn-danger btn-sm" data-dismiss="fileupload" href="controllers/device.php?id=<?=$_REQUEST['id']?>&r_icon_id=<?=$device_data['id']?>" onclick="return confirm('Are you sure to delete this icon?');">Remove</a>
+												<input type="hidden" id="old_icon" name="old_icon" value="<?=$device_data['device_icon']?>">
+											<?php
+											} ?>
+                    					</div>
+										
+										<div class="form-group">
+											<label>Box Size</label>
+											<select class="form-control m-input custom-select" name="box_size" id="box_size">
+												<option value="default" <?=($device_data['box_size']=="default"?'selected="selected"':'')?>>Default</option>
+												<option value="large" <?=($device_data['box_size']=="large"?'selected="selected"':'')?>>Large</option>
+											</select>
+										</div>
+										
+										<div class="form-group m-form__group">
 											<label for="sub_title">
-												Sub Title :
+												Content Title :
 											</label>
-											<textarea class="form-control m-input" id="sub_title" name="sub_title" rows="5"><?=$device_data['sub_title']?></textarea>
+											<input type="text" class="form-control m-input" id="sub_title" value="<?=$device_data['sub_title']?>" name="sub_title">
 										</div>
 										<div class="form-group m-form__group">
 											<label for="short_description">Short Description</label>
-											<textarea class="form-control m-input summernote" name="short_description" rows="5"><?=$device_data['short_description']?></textarea>
+											<textarea class="form-control m-input" name="short_description" rows="4"><?=$device_data['short_description']?></textarea>
 										</div>
 										<div class="form-group m-form__group">
 											<label for="exampleTextarea">
@@ -180,13 +186,23 @@ function checkFile(fieldObj) {
 												</label>
 											</div>
 										</div>
+										
+										<div class="m-form__group form-group">
+											<div class="m-checkbox-list">
+												<label class="m-checkbox">
+													<input id="models_show_in_footer" type="checkbox" value="1" name="models_show_in_footer" <?php if($device_data['models_show_in_footer']=='1'){echo 'checked="checked"';}?>>
+													Models show in footer
+													<span></span>
+												</label>
+											</div>
+										</div>
 										<div class="m-form__group form-group">
 											<label for="">
 												Publish :
 											</label>
 											<div class="m-radio-inline">
 												<label class="m-radio">
-													<input type="radio" id="published" name="published" value="1" <?php if(!$brand_id){echo 'checked="checked"';}?> <?=($device_data['published']==1?'checked="checked"':'')?>>
+													<input type="radio" id="published" name="published" value="1" <?php if(!$id){echo 'checked="checked"';}?> <?=($device_data['published']==1?'checked="checked"':'')?>>
 													Yes
 													<span></span>
 												</label>

@@ -21,33 +21,44 @@ function check_form(a){
 }
 </script>
 
-<body class="login">
-	<!-- Main page container -->
-	<section class="container" role="main">
-		<?php include('confirm_message.php');?>
-		<div class="login-logo">
-			<a href="login.html" class="brand"><?=ADMIN_PANEL_NAME?></a>
-			<h4>Welcome to <?=ADMIN_PANEL_NAME?></h4>
-		</div>
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2" id="m_login" style="background-image: url('assets/app/media/img//bg/bg-3.jpg');">
+    <div class="m-grid__item m-grid__item--fluid m-login__wrapper">
+      <div class="m-login__container">
+        <div class="m-login__logo">
+          <a href="<?=ADMIN_URL?>">
+            <?=$admin_logo?>
+          </a>
+        </div>
 		
-		<form action="controllers/admin_user/confirm_password_reset.php" method="post" role="form" onSubmit="return check_form(this);">
-            <h3>Change Password</h3>
-            <div class="control-group">
-                <label class="control-label" for="input">New Password</label>
-                <div class="controls">
-                   <input type="password" class="form-control" name="new_password" placeholder="New Password" autocomplete="off" />
-                </div>
+        <div class="m-login__signin">
+          <?php
+          require_once('confirm_message.php'); ?>
+          <div class="m-login__head">
+            <h3 class="m-login__title">
+              Change Password
+            </h3>
+          </div>
+          <form class="m-login__form m-form" action="controllers/admin_user/confirm_password_reset.php" method="post" role="form" onSubmit="return check_form(this);">
+            <div class="form-group m-form__group">
+			  <input type="password" class="form-control" name="new_password" placeholder="New Password" autocomplete="off" />
             </div>
-			<div class="control-group">
-                <label class="control-label" for="input">Confirm Password</label>
-                <div class="controls">
-                   <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" autocomplete="off" />
-                </div>
+            <div class="form-group m-form__group">
+              <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" autocomplete="off" />
             </div>
-            <div class="form-actions">
-                <button class="btn btn-alt btn-large btn-primary" type="submit" name="reset">Submit</button>
+            
+            <div class="m-login__form-action">
+              <button class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary" type="submit" name="reset">Submit</button>
+			  <a href="<?=ADMIN_URL?>" class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom m-login__btn">
+                Cancel
+              </a>
             </div>
-			<input type="hidden" name="uid" value="<?=@$check_token_data['id']?>" />
-        </form>
-	</section>
-</body>
+			<input type="hidden" name="uid" value="<?=$check_token_data['id']?>" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:: Page -->

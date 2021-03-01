@@ -1,19 +1,21 @@
 <?php
 require_once("../admin/_config/config.php");
 require_once("../admin/include/functions.php");
+require_once("common.php");
 
-$date = date('Y-m-d');
-$promo_code = $_REQUEST['promo_code'];
-$amt = $_REQUEST['amt'];
-$user_id = $_REQUEST['user_id'];
-$order_id = $_REQUEST['order_id'];
-if($promo_code!="" && $user_id!='' && $order_id!='') {
+$promo_code = $_POST['promo_code'];
+$amt = $_POST['amt'];
+$order_id = $_POST['order_id'];
+if($promo_code!="" && $order_id!='') {
+	$date = date('Y-m-d');
+	$user_id = $_POST['user_id'];
+
 	$response = array();
 	$query=mysqli_query($db,"SELECT * FROM `promocode` WHERE LOWER(promocode)='".strtolower($promo_code)."' AND ((never_expire='1' AND from_date <= '".$date."') OR (never_expire!='1' AND from_date <= '".$date."' AND to_date>='".$date."')) AND status='1'");
 	$promo_code_data = mysqli_fetch_assoc($query);
 
 	$is_allow_code_from_same_cust = true;
-	if($promo_code_data['multiple_act_by_same_cust']=='1' && $promo_code_data['multi_act_by_same_cust_qty']>0) {
+	if($promo_code_data['multiple_act_by_same_cust']=='1' && $promo_code_data['multi_act_by_same_cust_qty']>0 && $user_id>0) {
 		$query=mysqli_query($db,"SELECT COUNT(*) AS multiple_act_by_same_cust FROM `orders` WHERE promocode_id='".$promo_code_data['id']."' AND user_id='".$user_id."'");
 		$act_by_same_cust_data = mysqli_fetch_assoc($query);
 		if($act_by_same_cust_data['multiple_act_by_same_cust']>$promo_code_data['multi_act_by_same_cust_qty']) {

@@ -1,6 +1,8 @@
 <?php 
 require_once("../_config/config.php");
 require_once("../include/functions.php");
+require_once("common.php");
+check_admin_staff_auth();
 
 if(isset($post['d_id'])) {
 	$query=mysqli_query($db,'DELETE FROM users WHERE id="'.$post['d_id'].'" ');
@@ -49,29 +51,45 @@ if(isset($post['d_id'])) {
 	}
 	setRedirect(ADMIN_URL.'users.php');
 } elseif(isset($post['update'])) {
+	$convert_member_user=$post['convert_member_user'];
+	$user_type=$post['user_type'];
+	$unsubscribe=$post['unsubscribe'];
+	
 	$email=real_escape_string($post['email']);
-	$phone = preg_replace("/[^\d]/", "", $post['phone']);
+	$phone = preg_replace("/[^\d]/", "", $post['cell_phone']);
+	$phone_c_code = $post['phone_c_code'];
 	$password=real_escape_string($post['password']);
 	$address=real_escape_string($post['address']);
 	$address2=real_escape_string($post['address2']);
 	$name=real_escape_string($post['first_name'].' '.$post['last_name']);
 	$first_name=real_escape_string($post['first_name']);
 	$last_name=real_escape_string($post['last_name']);
-	if($password)
-			$password = ",`password`='".md5($password)."'";
+	
+	$updt_password = "";
+	if($password) {
+		$updt_password = ",`password`='".md5($password)."'";
+	}
 
 	if($post['id']>0) {
-		$get_userdata=mysqli_query($db,'SELECT * FROM users WHERE email="'.$post['email'].'" AND id!="'.$post['id'].'"');
-		$get_userdata_row=mysqli_fetch_assoc($get_userdata);
-		if(!empty($get_userdata_row)) {
-			$msg='This email address already used so please use different email address.';
-			$_SESSION['error_msg']=$msg;
-			setRedirect(ADMIN_URL.'edit_user.php?id='.$post['id']);
-			exit();
+		if($convert_member_user == '1' || $user_type == "user") {
+			$u_e_q=mysqli_query($db,"SELECT * FROM users WHERE email='".$post['email']."' AND id!='".$post['id']."' AND user_type='user'");
+			$exist_userdata=mysqli_fetch_assoc($u_e_q);
+			if(!empty($exist_userdata)) {
+				$msg='This email address already used so please use different email address.';
+				$_SESSION['error_msg']=$msg;
+				setRedirect(ADMIN_URL.'edit_user.php?id='.$post['id']);
+				exit();
+			}
 		}
 		
-		$query=mysqli_query($db,"UPDATE `users` SET `name`='".$name."',`first_name`='".$first_name."',`last_name`='".$last_name."',`phone`='".$phone."',`email`='".$post['email']."',`address`='".$address."',`address2`='".$address2."',`city`='".$post['city']."',`state`='".$post['state']."',`postcode`='".$post['postcode']."',`company_name`='".$post['company_name']."',`other_phone`='".$post['other_phone']."',`birth_date`='".$post['birth_date']."',`vat_number`='".$post['vat_number']."',`username`='".$email."'".$password.",`update_date`='".date('Y-m-d H:i:s')."',`status`='".$post['status']."' WHERE id='".$post['id']."'");
+		$updt_sql_params = "";
+		if($convert_member_user == '1') {
+			$updt_sql_params .= ",`user_type`='user'";
+		}
+		
+		$query=mysqli_query($db,"UPDATE `users` SET `unsubscribe`='".$unsubscribe."',`name`='".$name."',`first_name`='".$first_name."',`last_name`='".$last_name."',`phone`='".$phone."',`country_code`='".$phone_c_code."',`email`='".$post['email']."',`address`='".$address."',`address2`='".$address2."',`city`='".$post['city']."',`state`='".$post['state']."',`postcode`='".$post['postcode']."',`company_name`='".$post['company_name']."',`other_phone`='".$post['other_phone']."',`birth_date`='".$post['birth_date']."',`vat_number`='".$post['vat_number']."',`username`='".$email."',`update_date`='".date('Y-m-d H:i:s')."',`status`='".$post['status']."'".$updt_sql_params.$updt_password." WHERE id='".$post['id']."'");
 		if($query=="1") {
+			if($unsubscribe == '0') {
 			$template_data = get_template_data('customer_profile_edit_from_admin');
 			$general_setting_data = get_general_setting_data();
 			$admin_user_data = get_admin_user_data();
@@ -94,12 +112,12 @@ if(isset($post['d_id'])) {
 				'{$customer_phone}',
 				'{$customer_email}',
 				'{$customer_password}',
-				'{$customer_address_line1}',
-				'{$customer_address_line2}',
-				'{$customer_city}',
-				'{$customer_state}',
+				'{$billing_address1}',
+				'{$billing_address2}',
+				'{$billing_city}',
+				'{$billing_state}',
 				'{$customer_country}',
-				'{$customer_postcode}',
+				'{$billing_postcode}',
 				'{$customer_status}',
 				'{$current_date_time}');
 
@@ -127,7 +145,7 @@ if(isset($post['d_id'])) {
 				$customer_data['country'],
 				$customer_data['postcode'],
 				($post['status']=='1'?'Active':'Inactive'),
-				date('Y-m-d H:i'));
+				format_date(date('Y-m-d H:i')).' '.format_time(date('Y-m-d H:i')));
 			
 			if(!empty($template_data)) {
 				$email_subject = str_replace($patterns,$replacements,$template_data['subject']);
@@ -138,17 +156,32 @@ if(isset($post['d_id'])) {
 				//START sms send to customer
 				if($template_data['sms_status']=='1' && $sms_sending_status=='1') {
 					$from_number = '+'.$general_setting_data['twilio_long_code'];
-					$to_number = '+'.$customer_data['phone'];
+					$to_number = '+'.$customer_data['country_code'].$customer_data['phone'];
 					if($from_number && $account_sid && $auth_token) {
 						$sms_body_text = str_replace($patterns,$replacements,$template_data['sms_content']);
+						
 						try {
+							$sms_api->messages->create(
+								$to_number,
+								array(
+									'from' => $from_number,
+									'body' => $sms_body_text
+								)
+							);
+						} catch(Services_Twilio_RestException $e) {
+							$sms_error_msg = $e->getMessage();
+							error_log($sms_error_msg);
+						}
+						
+						/*try {
 							$sms = $sms_api->account->messages->sendMessage($from_number, $to_number, $sms_body_text, $image, array('StatusCallback'=>''));
 						} catch(Services_Twilio_RestException $e) {
 							echo $sms_error_msg = $e->getMessage();
 							error_log($sms_error_msg);
-						}
+						}*/
 					}
 				} //END sms send to customer
+			}
 			}
 			
 			$msg="Customer profile has been successfully updated.";
@@ -159,16 +192,16 @@ if(isset($post['d_id'])) {
 		}
 		setRedirect(ADMIN_URL.'edit_user.php?id='.$post['id']);
 	} else {
-		$get_userdata=mysqli_query($db,'SELECT * FROM users WHERE email="'.$post['email'].'"');
-		$get_userdata_row=mysqli_fetch_assoc($get_userdata);
-		if(!empty($get_userdata_row)) {
+		$u_e_q = mysqli_query($db,"SELECT * FROM users WHERE email='".$post['email']."' AND user_type='user'");
+		$exist_userdata=mysqli_fetch_assoc($u_e_q);
+		if(!empty($exist_userdata)) {
 			$msg='This email address already used so please use different email address.';
 			$_SESSION['error_msg']=$msg;
 			setRedirect(ADMIN_URL.'edit_user.php');
 			exit();
 		}
 		
-		$query=mysqli_query($db,"INSERT INTO `users`(`name`,`first_name`,`last_name`,`phone`,`email`,`address`,`address2`,`city`,`state`,`postcode`,`company_name`,`other_phone`,`birth_date`,`vat_number`,`username`,password,`date`,`status`)  VALUES('".$name."','".$first_name."','".$last_name."','".$phone."','".$post['email']."','".$address."','".$address2."','".$post['city']."','".$post['state']."','".$post['postcode']."','".$post['company_name']."','".$post['other_phone']."','".$post['birth_date']."','".$post['vat_number']."','".$email."','".md5($password)."','".date('Y-m-d H:i:s')."','".$post['status']."')");
+		$query=mysqli_query($db,"INSERT INTO `users`(unsubscribe, `name`,`first_name`,`last_name`,`phone`,`country_code`,`email`,`address`,`address2`,`city`,`state`,`postcode`,`company_name`,`other_phone`,`birth_date`,`vat_number`,`username`,password,`date`,`status`,user_type)  VALUES('".$unsubscribe."','".$name."','".$first_name."','".$last_name."','".$phone."','".$phone_c_code."','".$post['email']."','".$address."','".$address2."','".$post['city']."','".$post['state']."','".$post['postcode']."','".$post['company_name']."','".$post['other_phone']."','".$post['birth_date']."','".$post['vat_number']."','".$email."','".md5($password)."','".date('Y-m-d H:i:s')."','".$post['status']."','user')");
 		if($query=="1") {
 			$last_insert_id = mysqli_insert_id($db);
 			$msg="Customer profile has been successfully added.";
@@ -181,50 +214,7 @@ if(isset($post['d_id'])) {
 		}
 		exit();
 	}
-} 
-/*********** Export CSV function *************/
-elseif(isset($_POST["ExportType"]))
-{
-	$data = mysqli_query($db,"SELECT a.name AS 'Name', a.email AS 'Email', a.phone AS 'Phone No', COUNT(o.id) AS 'Total Orders',  a.DATE AS 'Date' FROM users a
-LEFT JOIN orders o ON a.id = o.user_id
-WHERE o.`status`!='partial'
-GROUP BY a.id"); 
-    switch($_POST["ExportType"])
-    {
-		case "export-to-csv" :
-            // Submission from
-			$filename = 'customer-details' . ".csv";		 
-			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-			header("Content-type: text/csv");
-			header("Content-Disposition: attachment; filename=\"$filename\"");
-			ExportCSVFile($data);
-			//$_POST["ExportType"] = '';
-            exit();
-        default :
-            die("Unknown action : ".$_POST["action"]);
-            break;
-    }
-}
-else {
+} else {
 	setRedirect(ADMIN_URL.'users.php');
 }
-function ExportCSVFile($records) {
-	// create a file pointer connected to the output stream
-	$fh = fopen( 'php://output', 'w' );
-	$heading = false;
-		if(!empty($records))
-		  foreach($records as $row) {
-			if(!$heading) {
-			  // output the column headings
-			  fputcsv($fh, array_keys($row));
-			  $heading = true;
-			}
-			// loop over the rows, outputting them
-			 fputcsv($fh, array_values($row));
-			 
-		  }
-		  fclose($fh);
-}
-/*********** Export CSV function *************/
-
 exit(); ?>

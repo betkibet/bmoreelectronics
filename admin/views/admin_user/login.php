@@ -36,15 +36,15 @@ function checklogin(a){
           </div>
           <form class="m-login__form m-form" action="controllers/admin_user/login.php" method="post" role="form" onSubmit="return checklogin(this);">
             <div class="form-group m-form__group">
-              <input class="form-control m-input" type="text" name="username" id="username" placeholder="Username" autocomplete="off" value="<?=$cookie_data['username']?>">
+              <input class="form-control m-input" type="text" name="username" id="username" placeholder="Username" autocomplete="off" value="<?=$cookie_data['admin_ck_username']?>">
             </div>
             <div class="form-group m-form__group">
-              <input class="form-control m-input m-login__form-input--last" type="password" name="password" id="password" placeholder="Password" autocomplete="off" value="<?=$cookie_data['password']?>">
+              <input class="form-control m-input m-login__form-input--last" type="password" name="password" id="password" placeholder="Password" autocomplete="off" value="<?=$cookie_data['admin_ck_password']?>">
             </div>
             <div class="row m-login__form-sub">
               <div class="col m--align-left m-login__form-left">
                 <label class="m-checkbox  m-checkbox--focus">
-                  <input type="checkbox" name="remember_me" value="1" <?php if($cookie_data['remember_me'] == "1"){echo 'checked="checked"';}?>>
+                  <input type="checkbox" name="remember_me" value="1" <?php if($cookie_data['admin_ck_remember_me'] == "1"){echo 'checked="checked"';}?>>
                   Remember me
                   <span></span>
                 </label>

@@ -1,0 +1,1048 @@
+<?php
+$affiliate_data = get_affiliate_data_by_store_name($_GET['shop']);
+if(!empty($affiliate_data)) {
+
+$meta_title = "Buyback Device";
+$meta_keywords = "Buyback Device";
+$meta_desc = "Buyback Device";
+
+$csrf_token = generateFormToken('affiliate_shop'); ?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge" >
+
+<meta name="keywords" content="<?=$meta_keywords?>" />
+<meta name="description" content="<?=$meta_desc?>" />
+<title><?=$meta_title?></title>
+
+<!-- Jquery Data Table -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<?=SITE_URL?>css/style.css">
+<link rel="stylesheet" href="<?=SITE_URL?>css/constant.css">
+ <link rel="stylesheet" href="<?=SITE_URL?>css/color.css">
+  
+<link rel="stylesheet" href="<?=SITE_URL?>css/intlTelInput.css">
+
+<link rel="stylesheet" href="<?=SITE_URL?>css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="<?=SITE_URL?>css/custom.css">
+
+<style>
+.d-none{display:none;}
+.hide{display:none;}
+</style>
+
+<script src="<?=SITE_URL?>js/jquery.min.js"></script>
+<script src="<?=SITE_URL?>js/jquery.scrollTo.min.js"></script>
+
+<?=$custom_js_code?>
+</head>
+
+<body class="inner">
+	<?php
+	//START for confirm message
+	$confirm_message = getConfirmMessage()['msg'];
+	echo $confirm_message;
+	//END for confirm message ?>
+
+	<section id="search-product">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block heading text-center" style="margin-bottom:0px;">
+						<h3>Sell ​​your Apple product</h3>
+						<h4>Search By IMEI Number.</h4>
+						<form role="form">
+							<div class="form-group">
+								<input type="email" class="form-control center mx-auto srch_list_of_model" id="imei_number" name="imei_number" placeholder="Search By IMEI Number">
+							</div>
+							<!-- <button type="button" class="btn btn-default" id="get_imei_info">Submit</button> -->
+						</form>
+						<!--<p>Information about you is used as described in our <a href="#">Privacy Policy.*</a></p>-->
+						<div class="or-divider mt-4 pt-1">
+							<strong>OR</strong>
+						</div>
+						<?php /*?><a href="javascript:void(0);" id="skip_imei_step">Select Your Device</a><?php */?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<div id="wrapper">
+		<div id="main" class="">
+			<section class="sectionbox apr-section gray-bg">
+				<div class="container">
+					<div class="affiliate_section">
+					<form action="<?=SITE_URL?>controllers/affiliate_shop.php" method="post" id="apr_form" enctype="multipart/form-data">
+					<input type="hidden" name="affiliate_id" id="affiliate_id" value="<?=$affiliate_data['id']?>">
+					<input type="hidden" name="affiliate_shop_name" id="affiliate_shop_name" value="<?=$affiliate_data['shop_name']?>">
+					<div class="accordion-apr" id="accordion-apr">
+						<div class="card" id="collapse_one_pos">
+							<div class="card-header" id="headingOne">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" data-toggle="">
+								  Select device type &nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion-apr">
+							  <div class="card-body model-btn-group clearfix">
+								<ul>
+								<?php
+								$device_data = get_device_data_list();
+								$num_of_device = count($device_data);
+								if($num_of_device>0) {
+									foreach($device_data as $device_data) { ?>
+										<li>
+											<div class="custom-control custom-radio">
+												<input type="radio" class="device_id custom-control-input" name="device_id" id="device_id_<?=$device_data['id']?>" value="<?=$device_data['id']?>">
+												<label class="custom-control-label" for="device_id_<?=$device_data['id']?>">
+													<?php
+													if($device_data['device_img']) {
+														$device_img_path = SITE_URL.'libraries/phpthumb.php?imglocation='.SITE_URL.'images/device/'.$device_data['device_img'].'&h=100'; ?>
+														<p><img src="<?=$device_img_path?>" alt="<?=$device_data['title']?>"></p>
+													<?php
+													} ?>
+													<h4><?=$device_data['title']?></h4>
+												</label>
+											</div>
+										</li>
+									<?php
+									}
+								} ?>
+								</ul>
+							  </div>
+							</div>
+						</div>
+				 
+						<div class="card" id="collapse_two_pos" style="display:none;">
+							<div class="card-header" id="headingTwo">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" data-toggle="">
+								  Choose model&nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordion-apr">
+								<div class="card-body model-btn-group">
+									<!--<legend>Device Model</legend>-->
+									<div class="row">
+										<div class="col-lg-12">
+											<div id="model_list"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="card" id="collapse_six_pos" style="display:none;">
+							<div class="card-header" id="headingSix">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" data-toggle="">
+								  Choose model configuration&nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseSix" class="collapse " aria-labelledby="headingSix" data-parent="#accordion-apr">
+								<div class="card-body model-btn-group">
+									<!--<div class="selected-devices clearfix">
+										<div class="selected-devices">
+											<p><img src="https://buybackdevice-demo11.webgrowthindia.com/libraries/phpthumb.php?imglocation=https://buybackdevice-demo11.webgrowthindia.com/images/device/20191113115634.jpg&amp;h=100" alt=""></p>
+											<h4>iPhone</h4>
+										</div>
+										<div class="selected-devices">
+											<p><img src="https://buybackdevice-demo11.webgrowthindia.com/images/mobile/20191114121439.png" alt="Sell My iPhone XS Max"></p>
+											<h4>Sell My iPhone XS Max</h4>
+										</div>
+									</div>-->
+									<div class="row" id="model_fields_list"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="card" id="collapse_three_pos" style="display:none;">
+							<div class="card-header" id="headingThree">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" data-toggle="">
+								  Personal information&nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseThree" class="collapse accordion-form" aria-labelledby="headingThree" data-parent="#accordion-apr">
+							  <div class="card-body">
+								<div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <input type="text" name="first_name" id="first_name" placeholder="First Name" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="form-control"/>
+									</div>
+								  </div>
+								</div>
+								<div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <input type="text" name="phone" id="phone" placeholder="Phone Number" class="form-control"/>
+									  <input type="hidden" name="phone_c_code" id="phone_c_code"/>
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <input type="text" name="email" id="email" placeholder="Email Address" class="form-control"/>
+									</div>
+								  </div>
+								</div>
+								<div class="row">
+								  <div class="col-md-12 text-right">
+									<button type="button" class="btn btn-primary step3next">Continue</button>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						</div>
+						
+						<div class="card" id="collapse_four_pos" style="display:none;">
+							<div class="card-header" id="headingFour">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" data-toggle="">
+								  Method of payment&nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion-apr">
+							  <div class="card-body">
+								<div class="clearfix">
+								  <?php
+								  if($choosed_payment_option['bank']=="bank") { ?>
+								  <div class="float-left payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_bank" name="payment_method"  value="bank" class="custom-control-input" <?php if($default_payment_option=="bank"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_bank">Bank</label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['cheque']=="cheque") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_cheque" value="cheque" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="cheque"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_cheque"><?=$cheque_check_label?></label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['paypal']=="paypal") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_paypal" value="paypal" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="paypal"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_paypal">Paypal</label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['zelle']=="zelle") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_zelle" value="zelle" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="zelle"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_zelle">Zelle</label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['cash']=="cash") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_cash" value="cash" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="cash"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_cash">Cash<span>Meet in Person</span></label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['venmo']=="venmo") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_venmo" value="venmo" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="venmo"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_venmo">Venmo</label>
+									</div>
+								  </div>
+								  <?php
+								  }
+								  if($choosed_payment_option['amazon_gcard']=="amazon_gcard") { ?>
+								  <div class="float-left ml-2 payment-select">
+									<div class="custom-control custom-radio">
+									  <input type="radio" id="payment_method_amazon_gcard" value="amazon_gcard" name="payment_method" class="custom-control-input" <?php if($default_payment_option=="amazon_gcard"){echo 'checked="checked"';}?>>
+									  <label class="custom-control-label" for="payment_method_amazon_gcard">Amazon GCard</label>
+									</div>
+								  </div>
+								  <?php
+								  } ?>
+								</div>
+
+								<div id="opt_bank" <?php if($default_payment_option!="bank"){echo 'class="d-none"';}?>>
+								  <div class="row pt-3">
+									<div class="col-md-4">
+									  <div class="form-group">
+									   <input type="text" class="form-control" id="act_name" name="act_name" placeholder="Account Holder Name" autocomplete="off">
+									  </div>
+									</div>
+									<div class="col-md-4">
+									  <div class="form-group">
+										<input type="text" class="form-control" id="act_number" name="act_number" placeholder="Account Number" autocomplete="off">
+									  </div>
+									</div>
+									<div class="col-md-4">
+									  <div class="form-group">
+										<input type="text" class="form-control" id="act_short_code" name="act_short_code" placeholder="Short Code" autocomplete="off">
+									  </div>
+									</div>
+								  </div>
+								</div>
+
+								<div id="opt_paypal" <?php if($default_payment_option!="paypal"){echo 'class="d-none"';}?>>
+								  <div class="form-group pt-3">
+									<input type="text" placeholder="PayPal Address" id="paypal_address"  name="paypal_address" class="form-control" autocomplete="off">
+								  </div>
+								</div>
+								
+								<div id="opt_venmo" <?php if($default_payment_option!="venmo"){echo 'class="d-none"';}?>>
+								  <div class="form-group pt-3">
+									<input type="text" placeholder="Venmo Email Address" id="venmo_email_address"  name="venmo_email_address" class="form-control" autocomplete="off">
+								  </div>
+								</div>
+								
+								<div id="opt_zelle" <?php if($default_payment_option!="zelle"){echo 'class="d-none"';}?>>
+								  <div class="form-group pt-3">
+									<input type="text" placeholder="Zelle Email Address" id="zelle_email_address"  name="zelle_email_address" class="form-control" autocomplete="off">
+								  </div>
+								</div>
+								
+								<div id="opt_amazon_gcard" <?php if($default_payment_option!="amazon_gcard"){echo 'class="d-none"';}?>>
+								  <div class="form-group pt-3">
+									<input type="text" placeholder="Amazon GCard Email Address" id="amazon_gcard_email_address"  name="amazon_gcard_email_address" class="form-control" autocomplete="off">
+								  </div>
+								</div>
+								
+								<div id="opt_cash" <?php if($default_payment_option!="cash"){echo 'class="d-none"';}?>>
+									<div class="row pt-3">
+										<div class="col-md-6">
+									  		<div class="form-group">
+										  		<input type="email" class="form-control" id="cash_name" name="cash_name" placeholder="Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+									  		<div class="form-group">
+									  			<input type="tel" class="form-control" id="cash_phone" name="cash_phone" placeholder="Mobile Phone number">
+									  			<input type="hidden" name="f_cash_phone" id="f_cash_phone" />
+											</div>
+										</div>
+									</div>
+								</div>
+							
+								<div class="row">
+								  <div class="col-md-12 text-right">
+									<button type="button" class="btn btn-primary step4next">Continue</button>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						</div>
+						
+						<div class="card" id="collapse_five_pos" style="display:none;">
+							<div class="card-header" id="headingFive">
+							  <h5 class="mb-0">
+								<button type="button" class="btn btn-link collapsed" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-toggle="">
+								  Shipping information&nbsp;<i class="fas fa-chevron-down first-step-arrow-down hide"></i><i class="fas fa-chevron-up first-step-arrow-up"></i>
+								</button>
+							  </h5>
+							</div>
+							<div id="collapseFive" class="collapse shpipping-info" aria-labelledby="headingFive" data-parent="#accordion-apr">
+							  <div class="card-body">
+								<div class="row">
+								  <div class="col-md-12">
+									<div class="form-group">
+										<label><strong>How would you like to send your device?</strong></label>
+										<div class="amount-radio clearfix">
+											<div class="custom-control custom-radio">
+												<input class="custom-control-input" type="radio" name="shipping_method" id="shipping_method_send_me_label" value="send_me_label" checked="checked">
+												<label class="custom-control-label" for="shipping_method_send_me_label">Post Me A Prepaid Label</label>
+											</div>
+											<div class="custom-control custom-radio">
+												<input class="custom-control-input" type="radio" name="shipping_method" id="shipping_method_own_print_label" value="own_print_label">
+												<label class="custom-control-label" for="shipping_method_own_print_label">I'll Print A Prepaid Label</label>
+											</div>
+											<div class="custom-control custom-radio">
+												<input class="custom-control-input" type="radio" name="shipping_method" id="shipping_method_own_courier" value="own_courier">
+												<label class="custom-control-label" for="shipping_method_own_courier">I'll Use My Own Courier</label>
+											</div>
+										</div>
+									</div>
+								  </div>
+								</div>
+									
+								<div class="row">
+								  <div class="col-md-4">
+									<div class="form-group">
+									  <input type="text" name="billing_first_name" id="billing_first_name" placeholder="First Name" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-4">
+									<div class="form-group">
+									  <input type="text" name="billing_last_name" id="billing_last_name" placeholder="Last Name" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-4">
+									<div class="form-group">
+									  <input type="text" name="billing_company_name" id="billing_company_name" placeholder="Company Name" class="form-control"/>
+									</div>
+								  </div>
+								</div>
+								<div class="row">
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <textarea name="billing_address" id="billing_address" placeholder="Address" class="form-control" rows="3"></textarea>
+									</div>
+								  </div>
+								  <div class="col-md-6">
+									<div class="form-group">
+									  <textarea name="billing_address2" id="billing_address2" placeholder="Address2" class="form-control" rows="3"></textarea>
+									</div>
+								  </div>
+								</div>
+								
+								<div class="row">
+								  <div class="col-md-3">
+									<div class="form-group">
+									  <input type="text" name="billing_city" id="billing_city" placeholder="City" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-3">
+									<div class="form-group">
+									  <input type="text" name="billing_state" id="billing_state" placeholder="State" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-3">
+									<div class="form-group">
+									  <input type="text" name="billing_postcode" id="billing_postcode" placeholder="Post Code" class="form-control"/>
+									</div>
+								  </div>
+								  <div class="col-md-3">
+									<div class="form-group">
+									  <input type="text" name="billing_phone" id="billing_phone" placeholder="Phone Number" class="form-control"/>
+									  <input type="hidden" name="billing_phone_c_code" id="billing_phone_c_code"/>
+									  
+									</div>
+								  </div>
+								</div>
+
+								<div class="row">
+								  <div class="col-md-12">
+									<div class="checkbox">
+										<input type="checkbox" class="checkboxele" name="chk_newsletter_promotions" id="chk_newsletter_promotions" value="1"/>
+										<label for="chk_newsletter_promotions">
+											<span class="checkmark"></span> I would like to receive the <?=$company_name?> newsletter and promotions
+										</label>
+									</div>
+									
+									<div class="checkbox">
+										<label for="terms_and_conditions">
+											<input type="checkbox" class="checkboxele" name="terms_and_conditions" id="terms_and_conditions" value="1">
+											<span class="checkmark"></span> By continuing you accept the General <a href="javascript:void(0)" data-toggle="modal" data-target="#terms_of_website_use">Terms and Conditions</a> of <?=$company_name?> and you further agree to the processing of your personal data that are necessary to perform the assignment.
+										</label>
+									</div>
+								  </div>
+								</div>
+								
+								<div class="row">
+								  <div class="col-md-12 text-right">
+									<button type="button" class="btn btn-primary sell-btn sell-button step5next">Sell for <span class="show_final_amt"></span> <img src="https://img.icons8.com/ios/50/000000/hand-peace.png"></button>
+								  </div>
+								</div>
+								
+							  </div>
+							</div>
+						</div>  
+					</div>
+					<input type="hidden" name="csrf_token" value="<?=$csrf_token?>">
+					</form>
+				</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	
+	<div class="modal fade common_popup" id="terms_of_website_use" role="dialog">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="modal-body">
+				<h3 class="title">Terms & Conditions</h3>
+				<?php
+				$terms_pg_data = get_inbuild_page_data('terms-and-conditions');
+				echo $terms_pg_data['data']['content']; ?>
+			</div>
+		  </div>
+		</div>
+	</div>
+									
+	<script>
+	var tpj=jQuery;
+	(function( tpj ) {
+		tpj(function() {
+			
+			var telInput = tpj("#phone");
+			telInput.intlTelInput({
+			  initialCountry: "<?=$phone_country_short_code?>",
+		 	  allowDropdown: false,
+			  geoIpLookup: function(callback) {
+				tpj.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+				  var countryCode = (resp && resp.country) ? resp.country : "";
+				  callback(countryCode);
+				});
+			  },
+			  utilsScript: "<?=SITE_URL?>js/intlTelInput-utils.js"
+			});
+	
+			var telInput2 = tpj("#billing_phone");
+			telInput2.intlTelInput({
+			  initialCountry: "<?=$phone_country_short_code?>",
+		 	  allowDropdown: false,
+			  geoIpLookup: function(callback) {
+				tpj.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+				  var countryCode = (resp && resp.country) ? resp.country : "";
+				  callback(countryCode);
+				});
+			  },
+			  utilsScript: "<?=SITE_URL?>js/intlTelInput-utils.js"
+			});
+			
+			var telInput3 = tpj("#cash_phone");
+			telInput3.intlTelInput({
+			  initialCountry: "<?=$phone_country_short_code?>",
+		 	  allowDropdown: false,
+			  geoIpLookup: function(callback) {
+				tpj.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+				  var countryCode = (resp && resp.country) ? resp.country : "";
+				  callback(countryCode);
+				});
+			  },
+			  utilsScript: "<?=SITE_URL?>js/intlTelInput-utils.js"
+			});
+			
+			/*tpj("#skip_imei_step").on("click", function() {
+				tpj("#collapseOne").collapse('show');
+				setTimeout(function() {
+					tpj.scrollTo($('#collapse_one_pos'), 500);
+				}, 500);
+			});*/
+
+			//START for up down arrow
+			tpj(".first-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".first-step-arrow-up").show();
+				
+				tpj("#collapseOne").collapse('show');
+				tpj("#collapseOne").addClass('show');
+			});
+			tpj(".first-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".first-step-arrow-down").show();
+				
+				tpj("#collapseOne").collapse('hide');
+				tpj("#collapseOne").removeClass('show');
+			});
+
+			tpj(".second-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".second-step-arrow-up").show();
+				
+				tpj("#collapseTwo").collapse('show');
+				tpj("#collapseTwo").addClass('show');
+			});
+			tpj(".second-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".second-step-arrow-down").show();
+				
+				tpj("#collapseTwo").collapse('hide');
+				tpj("#collapseTwo").removeClass('show');
+			});
+			
+			tpj(".third-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".third-step-arrow-up").show();
+				
+				tpj("#collapseThree").collapse('show');
+				tpj("#collapseThree").addClass('show');
+			});
+			tpj(".third-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".third-step-arrow-down").show();
+				
+				tpj("#collapseThree").collapse('hide');
+				tpj("#collapseThree").removeClass('show');
+			});
+			
+			tpj(".fourth-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".fourth-step-arrow-up").show();
+				
+				tpj("#collapseFour").collapse('show');
+				tpj("#collapseFour").addClass('show');
+			});
+			tpj(".fourth-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".fourth-step-arrow-down").show();
+				
+				tpj("#collapseFour").collapse('hide');
+				tpj("#collapseFour").removeClass('show');
+			});
+			
+			tpj(".fifth-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".fifth-step-arrow-up").show();
+				
+				tpj("#collapseFive").collapse('show');
+				tpj("#collapseFive").addClass('show');
+			});
+			tpj(".fifth-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".fifth-step-arrow-down").show();
+				
+				tpj("#collapseFive").collapse('hide');
+				tpj("#collapseFive").removeClass('show');
+			});
+			
+			tpj(".six-step-arrow-down").click(function(e) {
+				tpj(this).hide();
+				tpj(".six-step-arrow-up").show();
+				
+				tpj("#collapseSix").collapse('show');
+				tpj("#collapseSix").addClass('show');
+			});
+			tpj(".six-step-arrow-up").click(function(e) {
+				tpj(this).hide();
+				tpj(".six-step-arrow-down").show();
+				
+				tpj("#collapseSix").collapse('hide');
+				tpj("#collapseSix").removeClass('show');
+			}); //END for up down arrow
+
+			tpj(document).on('click', '#quantity-section', function() {
+				checkdata();
+				tpj("#collapse_three_pos").show();
+				tpj("#collapseThree").collapse('show');
+				tpj("#collapseThree").addClass('show');
+
+				tpj("#collapseSix").collapse('hide');
+				tpj("#collapseSix").removeClass('show');
+				tpj(".six-step-arrow-up").hide();
+				tpj(".six-step-arrow-down").show();
+
+				setTimeout(function() {
+					tpj.scrollTo(tpj('#collapse_three_pos'), 500);
+				}, 500);
+			});
+
+			tpj(".step3next").on("click", function() {
+				var ok = check_step3_validations();
+				if(ok == false) {
+					return false;
+				}
+				tpj("#collapseFour").collapse('show');
+				tpj("#collapseFour").addClass('show');
+				tpj("#collapse_four_pos").show();
+				
+				tpj("#collapseThree").collapse('hide');
+				tpj("#collapseThree").removeClass('show');
+				tpj(".third-step-arrow-up").hide();
+				tpj(".third-step-arrow-down").show();
+				
+				setTimeout(function() {
+					tpj.scrollTo(tpj('#collapse_four_pos'), 500);
+				}, 500);
+			});
+	
+			tpj(".step4next").on("click", function() {
+				var ok = check_step4_validations();
+				if(ok == false) {
+					return false;
+				}
+				tpj("#collapseFive").collapse('show');
+				tpj("#collapseFive").addClass('show');
+				tpj("#collapse_five_pos").show();
+				
+				tpj("#collapseFour").collapse('hide');
+				tpj("#collapseFour").removeClass('show');
+				tpj(".fourth-step-arrow-up").hide();
+				tpj(".fourth-step-arrow-down").show();
+				
+				setTimeout(function() {
+					tpj.scrollTo(tpj('#collapse_five_pos'), 500);
+				}, 500);
+			});
+	
+			tpj(".step5next").on("click", function() {
+				var ok = check_step3_validations();
+				if(ok == false) {
+					return false;
+				}
+				
+				var ok2 = check_step4_validations();
+				if(ok2 == false) {
+					return false;
+				}
+	
+				var billing_first_name = tpj("#billing_first_name").val().trim();
+				var billing_last_name = tpj("#billing_last_name").val().trim();
+				var billing_phone = tpj("#billing_phone").val().trim();
+				var billing_address = tpj("#billing_address").val().trim();
+				var billing_city = tpj("#billing_city").val().trim();
+				var billing_state = tpj("#billing_state").val().trim();
+				var billing_postcode = tpj("#billing_postcode").val().trim();
+				var billing_company_name = tpj("#billing_company_name").val().trim();
+				if(billing_first_name == "") {
+					alert("Please enter shipping first name");
+					return false;
+				} else if(billing_last_name == "") {
+					alert("Please enter shipping last name");
+					return false;
+				} else if(billing_address == "") {
+					alert("Please enter shipping address");
+					return false;
+				} else if(billing_city == "") {
+					alert("Please enter shipping city");
+					return false;
+				} else if(billing_state == "") {
+					alert("Please enter shipping state");
+					return false;
+				} else if(billing_postcode == "") {
+					alert("Please enter shipping post code");
+					return false;
+				} else if(billing_phone == "") {
+					alert("Please enter shipping phone");
+					return false;
+				}
+				
+				var telInput2 = tpj("#billing_phone");
+				tpj("#billing_phone_c_code").val(telInput2.intlTelInput("getSelectedCountryData").dialCode);
+				if(!telInput2.intlTelInput("isValidNumber")) {
+					alert('Please enter valid shipping phone');
+					return false;
+				}
+		
+				if(tpj("#terms_and_conditions").prop("checked") == false) {
+					alert("You must agree to terms & conditions.");
+					return false;
+				}
+	
+				tpj("#apr_form").submit();
+				return true;
+			});
+			
+			tpj("#get_imei_info").click(function(e) {
+				var imei_number = tpj("#imei_number").val().trim();
+				if(imei_number == "") {
+					tpj("#imei_number").focus();
+					return false;
+				}
+				post_data = "imei_number="+imei_number+"&mode=imei&token=<?=get_unique_id_on_load()?>";
+				tpj(document).ready(function(tpj){
+					tpj.ajax({
+						type: "POST",
+						url:"<?=SITE_URL?>ajax/affiliate/get_model_list.php",
+						data:post_data,
+						success:function(data) {
+							if(data!="") {
+								tpj("#model_list").html(data);
+								tpj("#model_fields_list").html("");
+								tpj("#collapseTwo").collapse('show');
+								tpj("#collapseTwo").addClass('show');
+								tpj("#collapse_two_pos").show();
+								
+								tpj("#collapseOne").collapse('hide');
+								tpj("#collapseOne").removeClass('show');
+								tpj(".first-step-arrow-up").hide();
+								tpj(".first-step-arrow-down").show();
+								
+								setTimeout(function() {
+									tpj.scrollTo(tpj('#collapse_two_pos'), 500);
+								}, 500);
+							} else {
+								tpj("#model_list").html("");
+								tpj("#model_fields_list").html("");
+							}
+						}
+					});
+				});
+			});
+			
+			tpj(".device_id").click(function(e) {
+				var device_id = tpj(this).val();
+				post_data = "device_id="+device_id+"&token=<?=get_unique_id_on_load()?>";
+				tpj(document).ready(function(tpj){
+					tpj.ajax({
+						type: "POST",
+						url:"<?=SITE_URL?>ajax/affiliate/get_model_list.php",
+						data:post_data,
+						success:function(data) {
+							if(data!="") {
+								tpj("#model_list").html(data);
+								tpj("#model_fields_list").html("");
+								tpj("#collapseTwo").collapse('show');
+								tpj("#collapseTwo").addClass('show');
+								tpj("#collapse_two_pos").show();
+								
+								tpj("#collapseOne").collapse('hide');
+								tpj("#collapseOne").removeClass('show');
+								tpj(".first-step-arrow-up").hide();
+								tpj(".first-step-arrow-down").show();
+								
+								setTimeout(function() {
+									tpj.scrollTo(tpj('#collapse_two_pos'), 500);
+								}, 500);
+							} else {
+								tpj("#model_list").html("");
+								tpj("#model_fields_list").html("");
+							}
+						}
+					});
+				});
+			});
+			
+			//tpj(".model_id").click(function(e) {
+			tpj(document).on('click', '.model_id', function() {
+				var model_id = tpj(this).val();
+				post_data = "model_id="+model_id+"&token=<?=get_unique_id_on_load()?>";
+				tpj(document).ready(function(tpj){
+					tpj.ajax({
+						type: "POST",
+						url:"<?=SITE_URL?>ajax/affiliate/get_model_fields_list.php",
+						data:post_data,
+						success:function(data) {
+							if(data!="") {
+								tpj("#model_fields_list").html(data);
+
+								tpj("#collapseSix").collapse('show');
+								tpj("#collapseSix").addClass('show');
+								tpj("#collapse_six_pos").show();
+
+								tpj("#collapseTwo").collapse('hide');
+								tpj("#collapseTwo").removeClass('show');
+								tpj(".second-step-arrow-up").hide();
+								tpj(".second-step-arrow-down").show();
+
+								setTimeout(function() {
+									tpj.scrollTo(tpj('#model_fields_list'), 500);
+								}, 500);
+							} else {
+								tpj("#model_fields_list").html("");
+							}
+						}
+					});
+				});
+			});
+			
+			tpj("input[type='radio']").click(function () {
+				var payment_method_val = tpj("input[name='payment_method']:checked").val();
+				if(payment_method_val) {
+				  if(payment_method_val == 'bank') {
+					tpj('#opt_bank').removeClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'cheque') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').removeClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'paypal') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').removeClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'venmo') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').removeClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'zelle') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').removeClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'amazon_gcard') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_amazon_gcard').removeClass('d-none');
+					tpj('#opt_cash').addClass('d-none');
+				  } else if(payment_method_val == 'cash') {
+					tpj('#opt_bank').addClass('d-none');
+					tpj('#opt_cheque').addClass('d-none');
+					tpj('#opt_paypal').addClass('d-none');
+					tpj('#opt_venmo').addClass('d-none');
+					tpj('#opt_zelle').addClass('d-none');
+					tpj('#opt_cash').removeClass('d-none');
+					tpj('#opt_amazon_gcard').addClass('d-none');
+				  }
+				}
+			});
+			
+			function check_step3_validations() {
+				var first_name = tpj("#first_name").val().trim();
+				var last_name = tpj("#last_name").val().trim();
+				var phone = tpj("#phone").val().trim();
+				var email = tpj("#email").val().trim();
+	
+				var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	
+				if(first_name == "") {
+					alert("Please enter first name");
+					return false;
+				} else if(last_name == "") {
+					alert("Please enter last name");
+					return false;
+				} else if(phone == "") {
+					alert("Please enter phone number");
+					return false;
+				} 
+				
+				var telInput = tpj("#phone");
+				tpj("#phone_c_code").val(telInput.intlTelInput("getSelectedCountryData").dialCode);
+				if(!telInput.intlTelInput("isValidNumber")) {
+					alert('Please enter valid phone');
+					return false;
+				}
+				
+				if(email == "") {
+					alert("Please enter email address");
+					return false;
+				} else if(email!="" && !email.match(mailformat)) {
+					alert("You have entered an invalid email address!");
+					return false;
+				}
+			}
+	
+			function check_step4_validations() {
+				<?php
+				if($choosed_payment_option['bank']=="bank") { ?>
+				if(document.getElementById("payment_method_bank").checked==true) {
+					if(document.getElementById("act_name").value.trim()=="") {
+						alert('Please enter account holder name');
+						return false;
+					} else if(document.getElementById("act_number").value.trim()=="") {
+						alert('Please enter account number');
+						return false;
+					} else if(document.getElementById("act_short_code").value.trim()=="") {
+						alert('Please enter short code');
+						return false;
+					}
+				}
+				<?php
+				}
+				if($choosed_payment_option['paypal']=="paypal") { ?>
+				if(document.getElementById("payment_method_paypal").checked==true) {
+					if(document.getElementById("paypal_address").value.trim()=="") {
+						alert('Please enter paypal address');
+						return false;
+					}
+				}
+				<?php
+				}
+				if($choosed_payment_option['venmo']=="venmo") { ?>
+				if(document.getElementById("payment_method_venmo").checked==true) {
+					if(document.getElementById("venmo_email_address").value.trim()=="") {
+						alert('Please enter venmo email address');
+						return false;
+					}
+				}
+				<?php
+				}
+				if($choosed_payment_option['zelle']=="zelle") { ?>
+				if(document.getElementById("payment_method_zelle").checked==true) {
+					if(document.getElementById("zelle_email_address").value.trim()=="") {
+						alert('Please enter zelle email address');
+						return false;
+					}
+				}
+				<?php
+				}
+				if($choosed_payment_option['amazon_gcard']=="amazon_gcard") { ?>
+				if(document.getElementById("payment_method_amazon_gcard").checked==true) {
+					if(document.getElementById("amazon_gcard_email_address").value.trim()=="") {
+						alert('Please enter amazon GCard email address');
+						return false;
+					}
+				}
+				<?php
+				}
+				if($choosed_payment_option['cash']=="cash") { ?>
+				if(document.getElementById("payment_method_cash").checked==true) {
+					if(document.getElementById("cash_name").value.trim()=="") {
+						alert('Please enter cash name');
+						return false;
+					} else if(document.getElementById("cash_phone").value.trim()=="") {
+						alert('Please enter cash phone');
+						return false;
+					}
+
+					var telInput3 = $("#cash_phone");
+					$("#f_cash_phone").val(telInput3.intlTelInput("getNumber"));
+					if(!telInput3.intlTelInput("isValidNumber")) {
+						alert('Please enter valid cash phone');
+						return false;
+					}
+				}
+				<?php
+				} ?>
+			}
+		});
+	})(jQuery);
+	</script>
+	
+	<script src="<?=SITE_URL?>js/popper.min.js"></script>
+	<script src="<?=SITE_URL?>js/bootstrap_4.3.1.min.js"></script>
+	<script src="<?=SITE_URL?>js/slick.min.js"></script>
+	<script src="<?=SITE_URL?>js/jquery.autocomplete.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script src="<?=SITE_URL?>js/intlTelInput.js"></script>
+	<script src="<?=SITE_URL?>js/bootstrapvalidator.min.js"></script>
+	<script>
+	$(function() {
+		//tpj(".datepicker").datepicker();
+	});
+
+	$(document).ready(function(){
+		tpj('[data-toggle="tooltip"]').tooltip();
+	});
+	</script>
+</body>
+</html>
+<?php
+} ?>
