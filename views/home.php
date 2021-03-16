@@ -189,7 +189,7 @@ foreach($home_page_settings_list as $home_page_settings_data) {
 			  <div class="row">
 				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4">
 				  <div class="block heading text-center">
-					<h3>Choose you device's category <span>to calculate the cost:</span></h3>
+					<h3>Choose your device's category <span>to calculate the cost:</span></h3>
 					<form action="<?=SITE_URL?>search" method="post">
 					  <div class="form-group">
 						<input type="text" name="search" class="form-control border-bottom border-top-0 border-right-0 border-left-0 center mx-auto srch_list_of_model" id="autocomplete" placeholder="Search for your device here...">
@@ -239,7 +239,7 @@ foreach($home_page_settings_list as $home_page_settings_data) {
 				  <div class="row">
 					<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 					  <div class="block heading text-center">
-						<h3>Choose you device<span> to calculate the cost:</span></h3>
+						<h3>Choose your device<span> to calculate the cost:</span></h3>
 						<form action="<?=SITE_URL?>search" method="post">
 						  <div class="form-group">
 							<input type="text" name="search" class="form-control border-bottom border-top-0 border-right-0 border-left-0 center mx-auto srch_list_of_model" id="autocomplete" placeholder="Search for your device here...">
@@ -341,7 +341,7 @@ foreach($home_page_settings_list as $home_page_settings_data) {
 						<div class="col-md-4">
 							<div class="block calculate-cost clearfix">
 								<img src="<?=SITE_URL?>images/white-logo-symbol.png" alt="">
-								<h3>Choose you device's to <span>calculate the cost</span></h3>
+								<h3>Choose your device's to <span>calculate the cost</span></h3>
 								<form class="form-inline" action="<?=SITE_URL?>search" method="post">
 									<div class="form-group">
 										<input type="text" name="search" class="form-control border-bottom border-top-0 border-right-0 border-left-0 center mx-auto srch_list_of_model" id="autocomplete" placeholder="<?=$searchbox_placeholder?>">
